@@ -9,8 +9,10 @@ interface SignUpProps {
 
 const SignUp : FunctionComponent<SignUpProps> =({ setIsSignedIn , isSignedIn}) => {
     return (
-         <div>
-              
+         <div className="flex  items-center justify-center bg-black">
+              <div>
+                  Create An Account For Free
+            </div> 
          </div>
     )
 }
