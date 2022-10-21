@@ -2,6 +2,9 @@ import React , {useState , FunctionComponent} from "react"
 import {FcGoogle } from "react-icons/fc"
 
 import {FaFacebook , FaTwitter , FaLinkedinIn} from "react-icons/fa"
+import {BsFillPersonFill} from "react-icons/bs"
+import {MdEmail} from "react-icons/md"
+import {AiFillEye ,  AiFillEyeInvisible } from "react-icons/ai"
 
 import {Field, Form , Formik} from 'formik'
 
@@ -58,15 +61,38 @@ const SignUp : FunctionComponent<SignUpProps> =({ setIsSignedIn , isSignedIn}) =
                         <div>
                             <Field name="fullName"  type="text" placeholder="Full name" />
                                 <label htmlFor="fullName">
-                                 Full name :
+                                 Full name
                             </label>
-
-                        </div>
-                    </div>
+                            <BsFillPersonFill />
+                            </div>
+                           
+                           <div>
+                            <Field name="email"  type="email" placeholder="Email Address" />
+                                <label htmlFor="email">
+                                  Email Address
+                            </label>
+                            <MdEmail/>
+                            </div>
+                           
+                           <div>
+                            <Field name="password"  type="password" placeholder="Password"/>
+                                <label htmlFor="pasword">
+                                  Password
+                            </label>
+                            <AiFillEyeInvisible/>
+                              <button type="submit"> Sign Up </button>
+                              </div>
+ </div>
                     
                 </Form>
-
             </Formik>
+
+            <p >
+          <span>Already a member?</span>
+          <button type="submit">
+            Sign In
+          </button>
+        </p>
 
          </div>
     )
