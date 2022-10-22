@@ -10,10 +10,10 @@ body {
 #form {
      border: solid 1px black
 }
-
+/* 
 #form-child {
-      border: solid 2px red;
-}
+      border: solid 2px #fff;
+} */
 
 .tw-flex-center {
      @apply flex justify-center items-center;

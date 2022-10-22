@@ -25,7 +25,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
     >
       <div className="flex flex-col items-center mb-6 mt-12">
-        {/* Add Font weight */}
+  
         <div className="leading-none mb-4 text-[40px] font-extralight">
           Create An Account For Free
         </div>
@@ -65,8 +65,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         onSubmit={() => console.log("Submitted")}
       >
         <Form>
-          <div id="form-child" className="px-2 py-3">
-            <div className="relative mb-2">
+          <div  className="px-2 py-3">
+            <div className="relative mb-3">
               <Field
                 name="fullName"
                 type="text"
@@ -87,7 +87,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
               />
             </div>
 
-            <div className="relative mb-2">
+            <div className="relative mb-3">
               <Field
                 name="email"
                 type="email"
@@ -108,7 +108,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
               />
             </div>
 
-            <div className="relative mb-2">
+            <div className="relative mb-3">
               <Field
                 name="password"
                 type="password"
@@ -127,11 +127,20 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 size={25}
                 className="absolute top-1/2 -translate-y-2/3 right-4"
               />
-              <button type="submit"> Sign Up </button>
             </div>
+            <button id="form-child" type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign Up </button>
           </div>
         </Form>
       </Formik>
+      <p className="text-xl flex gap-2 mt-32 justify-center">
+          <span>Already a member?</span>
+          <button
+            type="submit"
+            className="text-white underline"
+          >
+            Sign In
+          </button>
+        </p>
     </div>
   );
 };
