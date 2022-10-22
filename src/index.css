@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+#form {
+     border: solid 1px black
+}
+
+#form-child {
+      border: solid 2px red;
+}
