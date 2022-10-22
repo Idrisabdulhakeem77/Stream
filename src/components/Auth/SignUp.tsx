@@ -1,5 +1,4 @@
 import React, { useState, FunctionComponent } from "react";
-import { FcGoogle } from "react-icons/fc";
 
 import { FaFacebook, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -19,6 +18,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   setIsSignedIn,
   isSignedIn,
 }) => {
+  const [showPassword , setShowPassword] = useState<boolean>(false)
   return (
     <div
       id="form"
@@ -111,7 +111,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
             <div className="relative mb-3">
               <Field
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="w-full bg-dark-lighten px-5 py-4 pr-12 rounded-xl outline-none peer text-white"
               />
@@ -123,10 +123,20 @@ const SignUp: FunctionComponent<SignUpProps> = ({
               >
                 Password
               </label>
-              <AiFillEyeInvisible
-                size={25}
-                className="absolute top-1/2 -translate-y-2/3 right-4"
-              />
+               { showPassword ? (
+                 <AiFillEye
+                 onClick={() => setShowPassword(!showPassword)}
+                 size={25}
+                 className="absolute top-1/2 -translate-y-2/3 right-4"
+               />
+               ) : (
+                 <AiFillEyeInvisible
+                 onClick={() => setShowPassword(!showPassword)}
+                 size={25}
+                 className="absolute top-1/2 -translate-y-2/3 right-4"
+               />
+               )}
+             
             </div>
             <button id="form-child" type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign Up </button>
           </div>
