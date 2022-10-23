@@ -31,7 +31,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         </div>
         <div className="flex gap-3 mb-4">
           <button className="h-10 w-10 rounded-full tw-flex-center bg-black  hover:brightness-75 transition duration-300">
-            <FaGoogle size={30} color="white" />
+            <FaGoogle size={30}  />
           </button>
           <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
             <FaFacebook size={30} />
@@ -146,7 +146,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
           <span>Already a member?</span>
           <button
             type="submit"
-            className="text-white underline"
+            className=" underline"
           >
             Sign In
           </button>

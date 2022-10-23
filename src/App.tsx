@@ -7,7 +7,7 @@ function App() {
     <div className="App">
         <SignIn setIsSignedIn={null} isSignedIn={true}/> 
 
-        <SignUp setIsSignedIn={null} isSignedIn={true}/>     
+        {/* <SignUp setIsSignedIn={null} isSignedIn={true}/>      */}
     </div>
   );
 }
