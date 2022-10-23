@@ -14,7 +14,7 @@ interface SignUpProps {
   isSignedIn: boolean;
 }
 
-const SignUp: FunctionComponent<SignUpProps> = ({
+const SignIn: FunctionComponent<SignUpProps> = ({
   setIsSignedIn,
   isSignedIn,
 }) => {
@@ -135,4 +135,4 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   );
 };
 
-export default SignUp;
+export default SignIn;
