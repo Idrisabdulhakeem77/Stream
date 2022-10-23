@@ -27,7 +27,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
       <div className="flex flex-col items-center mb-6 mt-12">
   
         <div className="leading-none mb-4 text-[40px] font-extralight">
-          Create An Account For Free
+         Login to Anime Stream
         </div>
         <div className="flex gap-3 mb-4">
           <button className="h-10 w-10 rounded-full tw-flex-center bg-black  hover:brightness-75 transition duration-300">
@@ -44,7 +44,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
           </button>
         </div>
 
-        <div className="text-lg"> or use your email for Registration</div>
+        <div className="text-lg"> or use your email to Login:</div>
       </div>
 
       <Formik
