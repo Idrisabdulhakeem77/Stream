@@ -1,12 +1,12 @@
 import React from 'react';
-import SignIn from './components/Auth/SignIn';
-import SignUp from './components/Auth/SignUp';
-import Auth from './pages/Auth';
+// import Auth from './pages/Auth';
+import Sidebar from './components/common/Sidebar';
 
 function App() {
   return (
     <div className="App">
-       <Auth/>
+       {/* <Auth/> */}
+       <Sidebar/>
     </div>
   );
 }
