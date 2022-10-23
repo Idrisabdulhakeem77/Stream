@@ -126,6 +126,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           <span>Not a member yet?</span>
           <button
             type="submit"
+            onClick={() => setIsSignedIn(!isSignedIn)}
             className=" underline"
           >
             Sign up
