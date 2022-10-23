@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-     background-color: black;
-     color: #fff;
-}
+
 
 #form {
      border: solid 1px black

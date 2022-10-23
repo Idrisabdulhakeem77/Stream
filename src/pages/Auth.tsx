@@ -12,9 +12,9 @@ const Auth : FunctionComponent<Authprops> = () => {
          <>
            <Title value='Sign In | Anime Stream' />
 
-           <div className=" bg-dark min-h-screen">
-               {!isSignedIn ?? <SignIn isSignedIn={isSignedIn} setIsSignedIn={setIsSiggnedIn} /> }
-               {isSignedIn ?? <SignUp isSignedIn={isSignedIn} setIsSignedIn={setIsSiggnedIn} /> }
+           <div className="bg-dark text-white min-h-screen">
+               {!isSignedIn && <SignIn isSignedIn={isSignedIn} setIsSignedIn={setIsSiggnedIn} /> }
+               {isSignedIn && <SignUp isSignedIn={isSignedIn} setIsSignedIn={setIsSiggnedIn} /> }
             </div>
          
          </>
