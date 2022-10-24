@@ -6,11 +6,16 @@ import { MdOutlineExplore } from "react-icons/md";
 import { BiSearch, BiUserCircle } from "react-icons/bi";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineLogin } from "react-icons/hi";
+import {useCurrentViewPort} from "../hooks/useCurrentViewPort"
 
 interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = () => {
+  const {width} = useCurrentViewPort()
   return (
+    <>
+     
+     {console.log(width)}
     <div>
       <Link to="/">
         <h1 className="text-xl text-red-600  font-semibold  uppercase">
@@ -63,6 +68,7 @@ const Sidebar: FC<SidebarProps> = () => {
       </button>
       </div>
     </div>
+    </>
   );
 };
 
