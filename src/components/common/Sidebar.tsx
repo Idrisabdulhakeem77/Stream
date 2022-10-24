@@ -11,18 +11,23 @@ import {useCurrentViewPort} from "../hooks/useCurrentViewPort"
 interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = () => {
-  const {width} = useCurrentViewPort()
+  const {isMobile} = useCurrentViewPort()
   return (
     <>
      
-     {console.log(width)}
     <div>
-      <Link to="/">
-        <h1 className="text-xl text-red-600  font-semibold  uppercase">
-          <span>Anime</span>
-          <span className="text-black">Stream</span>
-        </h1>
-      </Link>
+       {!isMobile &&  (
+         <Link to="/">
+         <h1 className="text-xl text-red-600  font-semibold  uppercase">
+           <span>Anime</span>
+           <span className="text-black">Stream</span>
+         </h1>
+       </Link>
+         
+       )
+
+       }
+     
 
       <div className="text-black text-lg font-medium mt-10">MENU</div>
       <div className="flex flex-col gap-6 mt-8 ml-8">
