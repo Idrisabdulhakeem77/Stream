@@ -23,12 +23,6 @@ const Home: FC = () => {
        <div>
          <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
        </div> */}
-       <div className="flex justify-between ">
-
-       <div>Left</div>
-       <div className="flex-"> Main </div>
-       <div>Right</div>
-      </div> 
     </>
   );
 };
