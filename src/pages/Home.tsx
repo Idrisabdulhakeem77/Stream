@@ -11,7 +11,7 @@ const Home: FC = () => {
     
       <Title value="Anime Stream" />
 
-      {/* <div className="flex justify-between items-center my-4 px-4 md:hidden">
+        <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest"> AnimeStream </div>
         </Link>
@@ -22,7 +22,7 @@ const Home: FC = () => {
 
        <div>
          <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
-       </div> */}
+       </div> 
     </>
   );
 };
