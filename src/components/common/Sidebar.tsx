@@ -8,9 +8,12 @@ import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineLogin } from "react-icons/hi";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 
-interface SidebarProps {}
+interface SidebarProps {
+  isSidebarOpen : boolean,
+  setIsSidebarOpen : any 
+}
 
-const Sidebar: FC<SidebarProps> = () => {
+const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
