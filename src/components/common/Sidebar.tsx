@@ -17,9 +17,7 @@ const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
-      <div className={`ml-4 h-screen w-[70vw] border-l-slate-900  ${
-        isSidebarOpen && "translate-x-0"
-      }`}>
+      <div className="ml-4 h-screen w-[70vw] border-black ">
         {!isMobile && (
           <Link to="/">
             <h1 className="text-xl  font-semibold  uppercase text-black">
@@ -30,7 +28,7 @@ const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
         )}
 
         {/* <div className="text-black text-lg font- mt-10">MENU</div> */}
-        {/* <div className="flex flex-col gap-4 mt-4 ml-8">  */}
+        <div className="flex flex-col gap-4 mt-4 ml-4"> 
           <Link
             to="/"
             className="flex gap-1 items-center hover:text-gray-700 transition duration-300"
@@ -49,23 +47,23 @@ const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
 
           <Link
             to="/search"
-            className="flex  gap-4 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-1 items-center hover:text-gray-700 transition duration-300"
           >
-            <BiSearch size={25}  />
+            <BiSearch size={25} />
             <p>Search</p>
           </Link>
-        {/* </div> */}
+        </div>
 
         {/* <div className="text-black text-lg font-medium mt-6">LIBRARY</div> */}
-        {/* <div className="flex flex-col gap-4 mt-4 ml-8"> */}
+        <div className="flex flex-col gap-4 mt-4 ml-4">
           <button className="flex gap-1 items-center hover:text-gray-700 transition duration-300">
             <BsBookmarkHeart size={25} />
             <p>Bookmarked</p>
           </button>
-        {/* </div> */}
+        </div>
 
         {/* <div className="text-black text-lg font-medium mt-6">GENERAL</div> */}
-        {/* <div className="flex flex-col gap-4 mt-4 ml-8"> */}
+        <div className="flex flex-col gap-4 mt-4 ml-4">
           <button className="flex gap-1 items-center ">
             <BiUserCircle size={25} />
             <p> Profile </p>
@@ -80,7 +78,7 @@ const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
             <HiOutlineLogin size={25} />
             <p> Login</p>
           </button>
-        {/* </div> */}
+        </div>
       </div>
     </>
   );
