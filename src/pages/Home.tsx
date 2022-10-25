@@ -15,7 +15,7 @@ const Home: FC = () => {
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest"> AnimeStream </div>
         </Link>
-        <button onClick={(prevState) => setIsSidebarOpen(!prevState)}>
+        <button onClick={() => setIsSidebarOpen((prevState) => !prevState)}>
           <FaBars size={25} />
         </button>
       </div>
