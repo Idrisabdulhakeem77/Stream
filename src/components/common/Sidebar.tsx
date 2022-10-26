@@ -1,14 +1,15 @@
 import { FC } from "react";
-import { AiOutlineHome, AiOutlineHistory, AiFillStar } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineHistory, AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { FaCcDiscover } from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
 import { BiSearch, BiUserCircle } from "react-icons/bi";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsBookmarkHeart , BsCameraVideo } from "react-icons/bs";
 import { HiOutlineLogin } from "react-icons/hi";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import { BsFillEyeFill } from "react-icons/bs";
-import { RiSlideshow3Fill } from "react-icons/ri";
+import { RiSlideshow4Line } from "react-icons/ri";
+import {FiAnchor} from "react-icons/fi"
+
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -19,7 +20,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
-      <div className="h-screen w-[70vw] md:max-w-[250px]" id="main-div">
+      <div className="h-screen w-[70vw] md:max-w-[250px]" >
         {!isMobile && (
           <Link
             to="/"
@@ -37,7 +38,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
             to="/"
-            className="flex gap-1 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <AiOutlineHome size={25} />
             <p>Home</p>
@@ -45,7 +46,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/discover"
-            className="flex gap-1 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <MdOutlineExplore size={25} />
             <p>Discover</p>
@@ -53,7 +54,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/search"
-            className="flex gap-1 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <BiSearch size={25} />
             <p>Search</p>
@@ -62,18 +63,18 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
         <div className="text-black text-lg text-center mt-2">LIBRARY</div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          <button className="flex gap-1 items-center hover:text-gray-700 transition duration-300">
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <BsBookmarkHeart size={25} />
             <p>Bookmarked</p>
           </button>
 
-          <button className="flex gap-1 items-center hover:text-gray-700 transition duration-300">
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <AiOutlineHistory size={25} />
             <p>Recent</p>
           </button>
 
-          <button className="flex gap-1 items-center hover:text-gray-700 transition duration-300">
-            <AiFillStar size={25} />
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+            <AiOutlineStar size={25} />
             <p>Top Rated</p>
           </button>
         </div>
@@ -82,30 +83,36 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           Categories
         </div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          {/* <button>
-             <RiSlideshow3Fill size={25}/>
-             <p>Tv Shows</p>
-           </button> */}
 
-          <button className="flex gap-1 items-center hover:text-gray-700 transition duration-300">
-            <AiFillStar size={25} />
-            <p>Top Rated</p>
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+            <RiSlideshow4Line size={25} />
+            <p>Tv Shows</p>
+          </button>
+
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+            <BsCameraVideo size={25} />
+            <p>Movies</p>
+          </button>
+
+          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+            <FiAnchor size={25} />
+            <p>Anime</p>
           </button>
         </div>
 
-        {/* <div className="text-black ttext-lg font-medium mt-6">GENERAL</div> */}
-        <div className="flex flex-col gap-4 mt-4 ml-4">
-          <button className="flex gap-1 items-center ">
+        <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div>
+        <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
+          <button className="flex gap-3 items-center ">
             <BiUserCircle size={25} />
             <p> Profile </p>
           </button>
 
-          <button className="flex gap-1 items-center ">
+          <button className="flex gap-3 items-center ">
             <HiOutlineLogin size={25} />
             <p>Demo Login</p>
           </button>
 
-          <button className="flex gap-1 items-center ">
+          <button className="flex gap-3 items-center ">
             <HiOutlineLogin size={25} />
             <p> Login</p>
           </button>
