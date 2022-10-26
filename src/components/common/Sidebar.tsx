@@ -20,21 +20,25 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
-      <div className="h-screen w-[70vw] md:max-w-[250px]" >
+      <div className={`h-screen w-[70vw] md:max-w-[250px]
+         md:sticky md:translate-x-0 md:bg-transparent md:shadow-none 
+         
+      top-0 fixed transition duration-300 z-20 
+       -translate-x-full md:translate-x-0  ${isSidebarOpen && "translate-x-0 " } ` }>
         {!isMobile && (
           <Link
             to="/"
             className="flex  items-center justify-center mt-4 mb-3 border-black font-semibold"
           >
-            <BsFillEyeFill size={20} className="mr-1 " />
-            <h1 className="text-xl    uppercase text-black">
+            <BsFillEyeFill size={15} className="mr-1 " />
+            <h1 className="text-lg   uppercase text-black">
               <span>Anime</span>
               <span>Stream</span>
             </h1>
           </Link>
         )}
 
-        <div className="text-black text-lg text-center">MENU</div>
+        <div className="text-black text-xs text-center ">MENU</div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
             to="/"
