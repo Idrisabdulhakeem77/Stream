@@ -17,7 +17,7 @@ const Sidebar: FC<SidebarProps> = ( { isSidebarOpen , setIsSidebarOpen } ) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
-      <div className="ml-4 h-screen w-[70vw] border-black ">
+      <div className="h-screen w-[70vw]" id="main-div">
         {!isMobile && (
           <Link to="/">
             <h1 className="text-xl  font-semibold  uppercase text-black">

@@ -6,10 +6,11 @@
 #form {
      border: solid 1px black
 }
-/* 
-#form-child {
-      border: solid 2px #fff;
-} */
+
+#main-div{
+    border: solid 2px red
+}
+
 
 .tw-flex-center {
      @apply flex justify-center items-center;
