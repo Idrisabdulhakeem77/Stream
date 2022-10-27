@@ -38,7 +38,7 @@ const Home: FC = () => {
               }}
               className={`${
                 currentTab === "movie" &&
-                "font-medium  transition duration-200 hover:text-black hover:scale-125  after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
+                "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
               }`}
             >
               Movie
@@ -50,7 +50,7 @@ const Home: FC = () => {
               }}
               className={`${
                 currentTab === "tv" &&
-                "font-medium  transition duration-200 hover:text-black hover:scale-125  after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
+                "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[45%] after:bg-black"
               }`}
             >
               Tv Shows
@@ -62,7 +62,7 @@ const Home: FC = () => {
               }}
               className={`${
                 currentTab === "anime" &&
-                "font-medium  transition duration-200 hover:text-black hover:scale-125  after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
+                "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[80%] after:bg-black"
               }`}
             >
               Anime
