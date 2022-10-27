@@ -25,19 +25,20 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
       top-0 fixed transition duration-300 z-20 
        -translate-x-full md:translate-x-0  ${isSidebarOpen && "translate-x-0 " } ` }> */}
-       <div  className={`shrink-0 md:max-w-[260px] w-[70vw] pl-8 top-0 pt-10  
+       {/* <div  className={`shrink-0 md:max-w-[260px] w-[70vw] pl-8 top-0 pt-10  
         md:sticky md:translate-x-0 md:bg-transparent md:shadow-none
     
       -translate-x-full fixed h-screen shadow-md transition duration-300 bg-dark-lighten z-50 ${
-        isSidebarOpen && "translate-x-0 "
-      }`}>
+        isSidebarOpen && "translate-x-0 " */}
+      {/* }`}> */}
+       <div className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  sticky  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"} top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none   z-50 ` }>
         {!isMobile && (
           <Link
             to="/"
-            className="flex  items-center justify-center mt-4 mb-3 border-black font-semibold"
+            className="flex items-center justify-center mt-4 mb-3 border-black"
           >
             <BsFillEyeFill size={15} className="mr-1 " />
-            <h1 className="text-lg uppercase text-black">
+            <h1 className="text-lg uppercase text-black font-medium">
               <span>Anime</span>
               <span>Stream</span>
             </h1>
