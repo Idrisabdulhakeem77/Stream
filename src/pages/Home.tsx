@@ -6,6 +6,7 @@ import Sidebar from "../components/common/Sidebar";
 
 const Home: FC = () => {
     const [isSidebarOpen , setIsSidebarOpen] = useState(false)
+    const [currentTab , setCurrentTab] = useState(localStorage.getItem("CurrentTab"))
   return (
     <>
     
@@ -20,8 +21,16 @@ const Home: FC = () => {
         </button>
       </div>
 
-       <div>
+       <div className="flex items-start"> 
          <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
+          
+          <div>
+            <div className="inline-flex  gap-[40px]  relative pb-4 border-b border-dark">
+               <button onClick={() => {setCurrentTab("movie") ; localStorage.setItem("currentTab" , "movie") }}>Movie</button>
+              <button onClick={() => {setCurrentTab("tv") ; localStorage.setItem("currentTab" , "tv") }}>Tv Shows</button>
+              <button onClick={() => {setCurrentTab("anime") ; localStorage.setItem("currentTab" , "anime") }}>Anime</button>
+             </div>
+          </div>
        </div> 
     </>
   );

@@ -25,7 +25,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   }
   return (
     <>
-       <div className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  sticky  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"} top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none   z-50 ` }>
+       <div className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  fixed  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"} top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none   z-50 ` }>
         {!isMobile && (
           <Link
             to="/"
@@ -43,7 +43,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
              <FaTimes size={25}/>
            </button>
         </div>
-        <div className="text-black text-xs text-center ">MENU</div>
+        {/* <div className="hidden   text-black text-xs text-center sm:hidden">MENU</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
             to="/"
@@ -70,7 +70,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </Link>
         </div>
 
-        <div className="text-black text-lg text-center mt-2">LIBRARY</div>
+        {/* <div className="text-black text-lg text-center mt-2">LIBRARY</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <BsBookmarkHeart size={25} />
@@ -87,10 +87,10 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <p>Top Rated</p>
           </button>
         </div>
-
+{/* 
         <div className="text-black text-lg font-medium mt-4 text-center">
           Categories
-        </div>
+        </div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
 
           <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
@@ -109,7 +109,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </button>
         </div>
 
-        <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div>
+        {/* <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button className="flex gap-3 items-center ">
             <BiUserCircle size={25} />
