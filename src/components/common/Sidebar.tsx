@@ -9,6 +9,7 @@ import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import { BsFillEyeFill } from "react-icons/bs";
 import { RiSlideshow4Line } from "react-icons/ri";
 import {FiAnchor} from "react-icons/fi"
+import {FaTimes} from "react-icons/fa"
 
 
 interface SidebarProps {
@@ -18,19 +19,12 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const { isMobile } = useCurrentViewPort();
+
+  const closeSideBar = () => {
+    setIsSidebarOpen(false)
+  }
   return (
     <>
-      {/* <div className={`h-screen w-[70vw] md:max-w-[250px]
-         md:sticky md:translate-x-0 md:bg-transparent md:shadow-none 
-
-      top-0 fixed transition duration-300 z-20 
-       -translate-x-full md:translate-x-0  ${isSidebarOpen && "translate-x-0 " } ` }> */}
-       {/* <div  className={`shrink-0 md:max-w-[260px] w-[70vw] pl-8 top-0 pt-10  
-        md:sticky md:translate-x-0 md:bg-transparent md:shadow-none
-    
-      -translate-x-full fixed h-screen shadow-md transition duration-300 bg-dark-lighten z-50 ${
-        isSidebarOpen && "translate-x-0 " */}
-      {/* }`}> */}
        <div className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  sticky  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"} top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none   z-50 ` }>
         {!isMobile && (
           <Link
@@ -44,7 +38,11 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </h1>
           </Link>
         )}
-
+        <div  className="md:hidden absolute top-2 right-4 text-red-dark hover:text-red-400 bg-transparent transition ">
+           <button onClick={closeSideBar}>
+             <FaTimes size={25}/>
+           </button>
+        </div>
         <div className="text-black text-xs text-center ">MENU</div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
