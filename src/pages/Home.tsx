@@ -3,6 +3,7 @@ import Title from "../components/Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "../components/Common/Sidebar";
+import SearchBox from "../components/Common/SearchBox";
 
 const Home: FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,7 +30,7 @@ const Home: FC = () => {
           setIsSidebarOpen={setIsSidebarOpen}
         />
 
-        <div>
+        <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] border-dark min-h-screen">
           <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4 px-4 text-gray-600 ">
             <button
               onClick={() => {
@@ -69,8 +70,13 @@ const Home: FC = () => {
             </button>
           </div>
         </div>
+
+
+        <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
+             <SearchBox />
+         </div>
       </div>
-      { console.log(currentTab)}
+       
     </>
   );
 };
