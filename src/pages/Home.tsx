@@ -30,7 +30,7 @@ const Home: FC = () => {
           setIsSidebarOpen={setIsSidebarOpen}
         />
 
-        <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] border-dark min-h-screen">
+        <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] md:border-dark min-h-screen">
           <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4 px-4 text-gray-600 ">
             <button
               onClick={() => {
