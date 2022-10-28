@@ -1,8 +1,8 @@
 import { useState, FC } from "react";
-import Title from "../components/common/Title";
+import Title from "../components/Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import Sidebar from "../components/common/Sidebar";
+import Sidebar from "../components/Common/Sidebar";
 
 const Home: FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

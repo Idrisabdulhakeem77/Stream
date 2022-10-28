@@ -1,5 +1,5 @@
 import React , {FunctionComponent, useState } from 'react'
-import Title from "../components/common/Title";
+import Title from "../components/Common/Title";
 import SignIn from '../components/Auth/SignIn';
 import SignUp from '../components/Auth/SignUp';
 
