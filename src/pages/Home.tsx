@@ -108,10 +108,8 @@ const Home: FC = () => {
               {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
 
-            <MainHomeFilms data={dataMovie} dataDetails={dataMovieDetail}  isBannerLoading={isLoadingMovieDetail} isSectionLoading={isLoadingMovie} />
-
-
           </div>
+          <MainHomeFilms data={dataMovie} dataDetails={dataMovieDetail}  isBannerLoading={isLoadingMovieDetail} isSectionLoading={isLoadingMovie} />
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
