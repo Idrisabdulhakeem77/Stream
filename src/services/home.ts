@@ -29,7 +29,7 @@ export const getHomeMovies = async (): Promise<HomeFilms> => {
   return data;
 };
 
-export const getMovieBannerInfo = async (movies: Item[]): Promise<any> => {
+export const getMovieBannerInfo = async (movies: Items[]): Promise<any> => {
   const detailRes = await Promise.all(
     movies.map((movie) => axios.get(`/movie/${movie.id}`))
   );
