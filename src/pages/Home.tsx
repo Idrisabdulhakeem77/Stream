@@ -6,6 +6,9 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import User from "../components/Common/User";
 import BannerSlider from "../components/Slider/BannerSlider";
+import MainHomeFilms from "../components/Home/MainHomeFilm";
+
+
 
 
 
@@ -79,7 +82,7 @@ const Home: FC = () => {
                {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
 
-            <BannerSlider/>
+            <MainHomeFilms />
               
           </div>
         </div>

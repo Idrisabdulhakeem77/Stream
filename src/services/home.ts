@@ -24,8 +24,7 @@ export const getHomeMovies = async (): Promise<HomeFilms> => {
           media_type: "movie",
         })
       );
-    
-       console.log(data)
+  
        
       return final;
     }, {} as HomeFilms);
