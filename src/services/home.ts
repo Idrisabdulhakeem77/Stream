@@ -31,3 +31,27 @@ export const getHomeMovies = async (): Promise<HomeFilms> => {
   
     return data;
   };
+
+
+  export const getMovieBannerInfo = async (movies: Item[]): Promise<any> => {
+    const detailRes = await Promise.all(
+      movies.map((movie) => axios.get(`/movie/${movie.id}`))
+    );
+  
+    const translationRes = await Promise.all(
+      movies.map((movie) => axios.get(`/movie/${movie.id}/translations`))
+    );
+  
+    const translations = translationRes.map((item: any) =>
+      item.data.translations
+        .filter((translation: any) =>
+          ["vi", "fr", "ja", "pt", "ru", "es"].includes(translation.iso_639_1)
+        )
+        .reduce((acc: any, element: any) => {
+          if (element.iso_639_1 === "vi") {
+            return [element, ...acc];
+          }
+          return [...acc, element];
+        }, [] as any)
+        .map((translation: any) => translation.data.title)
+    );

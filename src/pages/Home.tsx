@@ -19,6 +19,19 @@ const Home: FC = () => {
     error: errorMovie,
   } = useQuery<HomeFilms, Error>(["home movies"], getHomeMovies);
 
+
+  const {
+    data: dataMovieDetail,
+    isLoading: isLoadingMovieDetail,
+    isError: isErrorMovieDetail,
+    error: errorMovieDetail,
+  } = useQuery<any, Error>(
+    ["detailMovies", dataMovie?.Trending],
+    () => getMovieBannerInfo(dataMovie?.Trending as Item[]),
+    { enabled: !!dataMovie?.Trending }
+  );
+
+
  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
