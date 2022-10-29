@@ -5,6 +5,9 @@ import { FaBars } from "react-icons/fa";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import User from "../components/Common/User";
+import BannerSlider from "../components/Slider/BannerSlider";
+
+
 
 const Home: FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -75,6 +78,8 @@ const Home: FC = () => {
                <p> Unknown</p>
                {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
+
+            <BannerSlider/>
               
           </div>
         </div>
