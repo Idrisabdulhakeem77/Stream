@@ -73,7 +73,7 @@ const Home: FC = () => {
           </div>
            <div className="flex items-center md:hidden gap-4" > 
                <p> Unknown</p>
-               <img src="../../" alt="user" className="w-7 h-7 rounded-full object-cover" />
+               {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
               
           </div>
