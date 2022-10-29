@@ -1,13 +1,15 @@
 import { FC } from "react";
 import { Items } from "../../shared/types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay , EffectFade } from "swiper";
+import { Navigation, Autoplay, EffectFade } from "swiper";
 
 interface BannerSliderProps {
   films: Items[] | undefined;
   isBannerLoading: boolean;
   dataDetails: any;
 }
+
+const elements = ["1", "2", "3"];
 
 const BannerSlider: FC<BannerSliderProps> = ({
   films,
@@ -24,9 +26,17 @@ const BannerSlider: FC<BannerSliderProps> = ({
           </div>
       )} */}
 
-       <div> 
-           Slider Component
-         </div>
+      <div>Slider Component</div>
+
+      {isBannerLoading ? (
+        " loading"
+      ) : (
+        <Swiper slidesPerView={1} modules={[Navigation, Autoplay]} navigation>
+          {elements.map((el, i) => {
+            return <SwiperSlide key={i}> Slider {el}</SwiperSlide>;
+          })}
+        </Swiper>
+      )}
     </>
   );
 };
