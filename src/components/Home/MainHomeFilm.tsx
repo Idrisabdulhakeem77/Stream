@@ -1,26 +1,29 @@
-import {FC} from 'react'
-import  {HomeFilms} from '../../shared/types'
-
+import { FC } from "react";
+import { HomeFilms } from "../../shared/types";
+import BannerSlider from "../../components/Slider/BannerSlider";
 
 interface MainHomeFilmProps {
-    dataMovie : HomeFilms | undefined ,
-    dataMovieDetails : any ,
-    isLoadingMovieDetail : boolean ,
-    isLoadingMovie : boolean
-
+  data: HomeFilms | undefined;
+  isBannerLoading: boolean;
+  isSectionLoading: boolean;
+  dataDetails: any;
 }
 
+const MainHomeFilms: FC<MainHomeFilmProps> = ({
+  isBannerLoading,
+  data,
+  dataDetails,
+  isSectionLoading,
+}) => {
+  return (
+    <>
+      <BannerSlider
+        films={data?.Trending}
+        isBannerLoading={isBannerLoading}
+        dataDetails={dataDetails}
+      />
+    </>
+  );
+};
 
-const MainHomeFilms : FC<MainHomeFilmProps> = ( { dataMovieDetails , dataMovie , isLoadingMovie , isLoadingMovieDetail}) => {
-       
-
-
-    return (
-        <>
-         {console.log( "Visited")}
-         </>
-    )
-}
-
-
-export default MainHomeFilms
+export default MainHomeFilms;

@@ -108,7 +108,7 @@ const Home: FC = () => {
               {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
 
-            <MainHomeFilms dataMovie={dataMovie} dataMovieDetails={dataMovieDetail}  isLoadingMovieDetail={isLoadingMovieDetail} isLoadingMovie={isLoadingMovie} />
+            <MainHomeFilms data={dataMovie} dataDetails={dataMovieDetail}  isBannerLoading={isLoadingMovieDetail} isSectionLoading={isLoadingMovie} />
 
 
           </div>
