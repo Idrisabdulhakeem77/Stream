@@ -8,8 +8,8 @@ import User from "../components/Common/User";
 import BannerSlider from "../components/Slider/BannerSlider";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
-import { HomeFilms } from "../shared/types";
-import { getHomeMovies } from "../services/home";
+import { HomeFilms  , Items } from "../shared/types";
+import { getHomeMovies , getMovieBannerInfo } from "../services/home";
 
 const Home: FC = () => {
   const {
@@ -27,10 +27,14 @@ const Home: FC = () => {
     error: errorMovieDetail,
   } = useQuery<any, Error>(
     ["detailMovies", dataMovie?.Trending],
-    () => getMovieBannerInfo(dataMovie?.Trending as Item[]),
+    () => getMovieBannerInfo(dataMovie?.Trending as Items[]),
     { enabled: !!dataMovie?.Trending }
   );
+ 
 
+
+
+  console.log(dataMovieDetail, isLoadingMovieDetail , isErrorMovieDetail , errorMovieDetail)
 
  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
