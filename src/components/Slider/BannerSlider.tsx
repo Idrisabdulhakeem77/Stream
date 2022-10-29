@@ -18,14 +18,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
 }) => {
   return (
     <>
-      {/* {isBannerLoading ? (
-        <h2> Loading ohhh</h2>
-      ) : (
-          <div>
-             This is the slider component
-          </div>
-      )} */}
-
+      
       <div>Slider Component</div>
 
       {isBannerLoading ? (

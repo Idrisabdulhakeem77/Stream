@@ -1,4 +1,5 @@
 import axios from "../shared/axios";
+import { ANIME_API_URL } from "../shared/constants";
 import { Items } from "../shared/types";
 import { HomeFilms } from "../shared/types";
 
@@ -61,3 +62,9 @@ export const getMovieBannerInfo = async (movies: Items[]): Promise<any> => {
     translation: translations[index],
   }));
 };
+
+
+export const  getAnime = () => {
+   const data = axios.get(`${ANIME_API_URL}/`)
+   
+}
