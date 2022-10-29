@@ -3,20 +3,31 @@ import { Items } from "../../shared/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface BannerSliderProps {
-   films : any,
-   isBannerLoading : boolean 
-   dataDetails : any
+  films: Items[] | undefined;
+  isBannerLoading: boolean;
+  dataDetails: any;
 }
 
-
-
-const BannerSlider: FC<BannerSliderProps> = ( { films  , isBannerLoading ,  dataDetails }) => {
+const BannerSlider: FC<BannerSliderProps> = ({
+  films,
+  isBannerLoading,
+  dataDetails,
+}) => {
   return (
-    <Swiper
-
-      >
-       
-    </Swiper>
+    <>
+    
+      {isBannerLoading ? (
+        <h2> Loading ohhh</h2>
+      ) : (
+        <Swiper autoplay={{ delay: 5000, disableOnInteraction: false }}>
+          {(films as Items[]).map((film, index) => (
+            <SwiperSlide key={index}>
+               
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
+    </>
   );
 };
 

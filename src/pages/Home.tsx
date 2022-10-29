@@ -34,7 +34,7 @@ const Home: FC = () => {
 
 
 
-  console.log(dataMovieDetail, isLoadingMovieDetail , isErrorMovieDetail , errorMovieDetail)
+
 
  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
