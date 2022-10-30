@@ -1,9 +1,11 @@
 import {FC} from 'react'
 
-interface FilmItemProps {}
+interface FilmItemProps {
+     item : any 
+}
 
 
-const FilmItem : FC<FilmItemProps> = () => {
+const FilmItem : FC<FilmItemProps> = ( { item }) => {
     return (
          <div>
              Film Item
