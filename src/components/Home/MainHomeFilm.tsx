@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { HomeFilms } from "../../shared/types";
 import BannerSlider from "../../components/Slider/BannerSlider";
+import SectionSlider from "../Slider/SectionSlider";
 
 interface MainHomeFilmProps {
   data: HomeFilms | undefined;
@@ -22,6 +23,9 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
         isBannerLoading={isBannerLoading}
         dataDetails={dataDetails}
       /> */}
+   
+
+      <SectionSlider/>
     </>
   );
 };

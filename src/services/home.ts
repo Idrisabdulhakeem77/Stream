@@ -64,7 +64,3 @@ export const getMovieBannerInfo = async (movies: Items[]): Promise<any> => {
 };
 
 
-export const  getAnime = () => {
-   const data = axios.get(`${ANIME_API_URL}/`)
-   
-}
