@@ -23,5 +23,5 @@ export interface Items {
 
 
 export interface HomeFilms {
-     [key : string] : Items[] ;
+     [key : string] : Items[];
 } 
