@@ -24,15 +24,16 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
         isBannerLoading={isBannerLoading}
         dataDetails={dataDetails}
   /> */}
+  
    <ul className="flex flex-col gap-10 mt-12">
       {isSectionLoading ? (
         <>
-          {new Array(2).fill("").map((_, index) => {
+          {new Array(2).fill("").map((_, index) => (
             <li key={index}>
               <Skeleton className="mb-3 max-w-[10%] h-8 rounded-md" />
               <SectionSlider films={undefined} />
-            </li>;
-          })}
+            </li>
+          ))}
         </>
       ) : (
         Object.entries(data as HomeFilms)
