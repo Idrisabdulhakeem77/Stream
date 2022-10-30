@@ -22,13 +22,14 @@ const FilmItem: FC<FilmItemProps> = ({ item }) => {
       <div className="shadow-sm bg-dark-darken pb-2 rounded-md overflow-hidden hover:scale-105 hover:brightness-110 transition duration-300 relative group">
         <LazyLoadImage
           alt="Poster film"
+          
           src={
             item.media_type === "person"
               ? resizeImage(item.profile_path || "", "w342")
               : resizeImage(item.poster_path, "w342")
           }
           className="object-cover"
-          effect="blur"
+          
         />
         <p className="whitespace-nowrap overflow-hidden text-ellipsis text-base text-gray-300 mt-1 text-center px-2 group-hover:text-white transition duration-300">
           {item.title || item.name}
