@@ -2,6 +2,7 @@ import {FC} from "react"
 import {Items} from "../../shared/types"
 import { Swiper , SwiperSlide} from 'swiper/react'
 import { Navigation} from "swiper"
+import FilmItem from "../Common/FilmItem"
 
 
 interface SectionSliderProps { 
@@ -10,17 +11,11 @@ interface SectionSliderProps {
 
 const SectionSlider : FC<SectionSliderProps> = ( { films }) => {
      return(
-         <div className="relative"> 
-            <Swiper modules={[Navigation] } navigation={true} slidesPerView="auto" slidesPerGroupAuto spaceBetween={30}>
-                {films?.map((film , index) => (
-                    <SwiperSlide key={film.id}>
-                        
-                    </SwiperSlide>
-
-                ))}
-                 
-            </Swiper>
-         </div>
+        <>
+           <div>
+              Sldier Componet 
+           </div>
+         </>
      )
 
 }

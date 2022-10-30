@@ -24,16 +24,30 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
         dataDetails={dataDetails}
       /> */}
         
-     { isSectionLoading ? "loading" : (
+     {/* { isSectionLoading ? "loading" : (
          Object.entries(data as HomeFilms).filter(section => section[0] !== "Trending").map((section ,index) => {
             <li key={index}>
                 <h2> {section[0]} </h2>
                 <SectionSlider films={section[1]}/>
             </li>
          })
-     )}          
+     )}           */}
+
+         {/* <SectionSlider films={undefined}/> */}
+              
+              { isSectionLoading ? "Loading" : (
+                  Object.entries(data as HomeFilms).filter((section) => section[0] !== "Trending").map((section , index) =>  (
+                    <li key={index}> 
+                       <h2> { section[0] }</h2>
+                       <SectionSlider films={section[1]}/>
+                     </li>
+             ) )
+              )}
+
+           {  }
 
 
+          { console.log(Object.entries(data as HomeFilms))}
    
     </>
   );
