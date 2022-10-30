@@ -32,10 +32,6 @@ const Home: FC = () => {
   );
  
 
-
-
-
-
  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
