@@ -17,11 +17,11 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
 }) => {
   return (
     <>
-      <BannerSlider
+      {/* <BannerSlider
         films={data?.Trending}
         isBannerLoading={isBannerLoading}
         dataDetails={dataDetails}
-      />
+      /> */}
     </>
   );
 };
