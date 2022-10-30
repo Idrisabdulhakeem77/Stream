@@ -11,8 +11,14 @@ interface SectionSliderProps {
 const SectionSlider : FC<SectionSliderProps> = ( { films }) => {
      return(
          <div className="relative"> 
-            <Swiper modules={[Navigation] }>
-                 <SwiperSlide></SwiperSlide>
+            <Swiper modules={[Navigation] } navigation={true} slidesPerView="auto" slidesPerGroupAuto spaceBetween={30}>
+                {films?.map((film , index) => (
+                    <SwiperSlide key={film.id}>
+                        
+                    </SwiperSlide>
+
+                ))}
+                 
             </Swiper>
          </div>
      )
