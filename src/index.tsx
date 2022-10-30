@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import "swiper/css/bundle"
+
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
