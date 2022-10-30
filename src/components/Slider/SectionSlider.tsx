@@ -12,8 +12,10 @@ interface SectionSliderProps {
 const SectionSlider : FC<SectionSliderProps> = ( { films }) => {
      return(
         <>
-           <div>
-              Sldier Componet 
+           <div className="relative">
+                <Swiper modules={[Navigation]} navigation={true} slidesPerView="auto" slidesPerGroupAuto loop spaceBetween={30}>
+                  
+               </Swiper>
            </div>
          </>
      )
