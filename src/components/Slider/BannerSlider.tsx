@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Items } from "../../shared/types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, EffectFade, EffectFlip } from "swiper";
+import { Navigation, Autoplay, EffectFlip } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { resizeImage } from "../../shared/utils";
 import { AiFillStar } from "react-icons/ai";
@@ -58,6 +58,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
                 <LazyLoadImage
                   src={resizeImage(film.backdrop_path, "w1280")}
                   alt="Backdrop image"
+                  effect="blur"
                   
                 />
 

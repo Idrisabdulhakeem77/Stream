@@ -8,8 +8,8 @@ import User from "../components/Common/User";
 import BannerSlider from "../components/Slider/BannerSlider";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
-import { HomeFilms  , Items } from "../shared/types";
-import { getHomeMovies , getMovieBannerInfo } from "../services/home";
+import { HomeFilms, Items } from "../shared/types";
+import { getHomeMovies, getMovieBannerInfo } from "../services/home";
 
 const Home: FC = () => {
   const {
@@ -18,7 +18,6 @@ const Home: FC = () => {
     isError: isErrorMovie,
     error: errorMovie,
   } = useQuery<HomeFilms, Error>(["home movies"], getHomeMovies);
-
 
   const {
     data: dataMovieDetail,
@@ -30,9 +29,7 @@ const Home: FC = () => {
     () => getMovieBannerInfo(dataMovie?.Trending as Items[]),
     { enabled: !!dataMovie?.Trending }
   );
- 
 
- 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
     localStorage.getItem("currentTab")
@@ -103,9 +100,13 @@ const Home: FC = () => {
               <p> Unknown</p>
               {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
             </div>
-
           </div>
-          <MainHomeFilms data={dataMovie} dataDetails={dataMovieDetail}  isBannerLoading={isLoadingMovieDetail} isSectionLoading={isLoadingMovie} />
+          <MainHomeFilms
+            data={dataMovie}
+            dataDetails={dataMovieDetail}
+            isBannerLoading={isLoadingMovieDetail}
+            isSectionLoading={isLoadingMovie}
+          />
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
