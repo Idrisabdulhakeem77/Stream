@@ -30,7 +30,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
     
     
     <>
-    <div className="mt-6 relative h-0 md:pb-[45%] pb-[55%]  tw-banner-slider">
+    <div className="mt-4 relative h-0 md:pb-[45%] pb-[35%]  tw-banner-slider">
 
       {isBannerLoading ? (
         " loading"
@@ -72,19 +72,19 @@ const BannerSlider: FC<BannerSliderProps> = ({
                 </div>
 
                 <div className="absolute top-[50%] -translate-y-1/2 left-[5%] md:max-w-md max-w-[200px]">
-                  <h2 className="md:text-5xl text-xl  text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
+                  <h2 className="md:text-5xl text-xl text-white text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
                     {film.title || film.name}
                   </h2>
                   <div className="">
-                    <p className="text-white font-semibold md:text-2xl text-base mt-6">
+                    {/* <p className="text-black font-semibold md:text-2xl text-base mt-6">
                       {dataDetails[index].translation[0] ||
                         dataDetails[index].translation[1] ||
                         dataDetails[index].translation[2] ||
                         dataDetails[index].translation[3] ||
                         dataDetails[index].translation[4] ||
                         dataDetails[index].translation[5]}
-                    </p>
-                    <p className="mt-1">
+                    </p> */}
+                    <p className="mt-1 text-white">
                       {film.release_date &&
                         `Release date: ${film.release_date}`}
                       {film.first_air_date &&
@@ -95,14 +95,14 @@ const BannerSlider: FC<BannerSliderProps> = ({
                         <div className="flex gap-2 flex-wrap mt-5">
                           {dataDetails[index].genre.map((genre : any) => (
                             <div
-                              className="px-3 py-1 border rounded-full "
+                              className="px-3 py-1 border rounded-full text-white "
                               key={genre.id}
                             >
                               {genre.name}
                             </div>
                           ))}
                         </div>
-                        <p className=" mt-3 text-base  tw-multiline-ellipsis">
+                        <p className=" mt-3 text-base text-white tw-multiline-ellipsis">
                           {film.overview}
                         </p>
                       </>
