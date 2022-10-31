@@ -1,11 +1,10 @@
-import { useState, FC } from "react";
+import { useState, FC, useEffect } from "react";
 import Title from "../components/Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import User from "../components/Common/User";
-import BannerSlider from "../components/Slider/BannerSlider";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
@@ -35,7 +34,11 @@ const Home : FC = () => {
   const [currentTab, setCurrentTab] = useState(
     localStorage.getItem("currentTab")
   );
+
+
+
   return (
+  
     <>
      
       <Title value="Anime Stream" />
