@@ -11,6 +11,7 @@ import {BsFillPlayFill} from 'react-icons/bs'
 import "swiper/css";
 import "swiper/css/navigation";
 import { Link } from "react-router-dom";
+import Skeleton from "../Common/Skeleton";
 
 interface BannerSliderProps {
   films: Items[] | undefined;
@@ -33,7 +34,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
     <div className="mt-4 relative h-0 md:pb-[45%] pb-[35%]  tw-banner-slider">
 
       {isBannerLoading ? (
-        " loading"
+         <Skeleton className="absolute top-0 left-0 w-full h-full rounded-lg"/>
       ) : (
   
         <Swiper
@@ -63,27 +64,21 @@ const BannerSlider: FC<BannerSliderProps> = ({
                 />
 
                 <div className="absolute top-0 left-0 w-full h-full rounded-lg pointer-events-none tw-black-backdrop group-hover:bg-[#00000026] transition duration-7000"></div>
+
                 <div className="hidden md:flex absolute top-[5%] right-[3%] bg-primary px-3 py-1 rounded-full text-white  items-center gap-1">
                   <span>{film.vote_average.toFixed(1)}</span>
                   <AiFillStar size={15} />
                 </div>
+
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-16 h-16 rounded-full bg-gradient-to-br from-primary to-[#c353b4] tw-flex-center z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-700">
                   <BsFillPlayFill size={35} className="text-white" />
                 </div>
 
                 <div className="absolute top-[50%] -translate-y-1/2 left-[5%] md:max-w-md max-w-[200px]">
-                  <h2 className="md:text-5xl text-xl text-white text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
+                  <h2 className="md:text-4xl text-lg text-white text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
                     {film.title || film.name}
                   </h2>
                   <div className="">
-                    {/* <p className="text-black font-semibold md:text-2xl text-base mt-6">
-                      {dataDetails[index].translation[0] ||
-                        dataDetails[index].translation[1] ||
-                        dataDetails[index].translation[2] ||
-                        dataDetails[index].translation[3] ||
-                        dataDetails[index].translation[4] ||
-                        dataDetails[index].translation[5]}
-                    </p> */}
                     <p className="mt-1 text-white">
                       {film.release_date &&
                         `Release date: ${film.release_date}`}
