@@ -19,6 +19,7 @@ const Home : FC = () => {
     error: errorMovie,
   } = useQuery<HomeFilms, Error>(["home movies"], getHomeMovies);
 
+
   const {
     data: dataMovieDetail,
     isLoading: isLoadingMovieDetail,
@@ -58,6 +59,8 @@ const Home : FC = () => {
         />
 
         <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] md:border-dark min-h-screen">
+           
+           {/* TAB */}
           <div className="flex justify-between items-center md:items-start">
 
              {/* Button Div */}
@@ -106,6 +109,7 @@ const Home : FC = () => {
               <img src="/Images/user.svg" alt="user" className="w-7 h-7 rounded-full object-cover" />
             </div>
           </div>
+
           <MainHomeFilms
             data={dataMovie}
             dataDetails={dataMovieDetail}
