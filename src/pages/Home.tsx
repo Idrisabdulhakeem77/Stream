@@ -59,7 +59,9 @@ const Home : FC = () => {
 
         <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] md:border-dark min-h-screen">
           <div className="flex justify-between items-center md:items-start">
-            <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4 px-4 text-gray-600 ">
+
+             {/* Button Div */}
+            <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4  text-gray-600 ">
               <button
                 onClick={() => {
                   setCurrentTab("movie");
@@ -97,9 +99,11 @@ const Home : FC = () => {
                 Anime
               </button>
             </div>
+
+
             <div className="flex items-center md:hidden gap-4">
               <p> Unknown</p>
-              {/* <img src="" alt="user" className="w-7 h-7 rounded-full object-cover" /> */}
+              <img src="/Images/user.svg" alt="user" className="w-7 h-7 rounded-full object-cover" />
             </div>
           </div>
           <MainHomeFilms
