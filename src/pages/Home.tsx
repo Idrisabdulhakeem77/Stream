@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
 import { getHomeMovies, getMovieBannerInfo } from "../services/home";
 
-const Home: FC = () => {
+const Home : FC = () => {
   const {
     data: dataMovie,
     isLoading: isLoadingMovie,
@@ -36,6 +36,7 @@ const Home: FC = () => {
   );
   return (
     <>
+     
       <Title value="Anime Stream" />
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
