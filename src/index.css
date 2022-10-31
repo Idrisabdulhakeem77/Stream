@@ -2,19 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
 #form {
-     border: solid 1px black
+  border: solid 1px black;
 }
 
-#main-div{
-    border: solid 2px red
+#main-div {
+  border: solid 2px red;
 }
-
 
 .tw-flex-center {
-     @apply flex justify-center items-center;
-   }
+  @apply flex justify-center items-center;
+}
 
+.tw-multiline-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
 
-   
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.tw-multiline-ellipsis-2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
