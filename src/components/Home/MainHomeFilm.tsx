@@ -19,11 +19,11 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
 }) => {
   return (
     <>
-      {/* <BannerSlider
+      <BannerSlider
         films={data?.Trending}
         isBannerLoading={isBannerLoading}
         dataDetails={dataDetails}
-  /> */}
+  />
   
    <ul className="flex flex-col gap-10 mt-12">
       {isSectionLoading ? (
