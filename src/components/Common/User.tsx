@@ -4,7 +4,7 @@ import {FC} from 'react'
 
 const User : FC = () => {
      return(
-         <div className='flex'>
+         <div className='flex gap-2'>
              <img src="/Images/user.svg"  alt="user" className="w-8 h-8 rounded-full"/>
               <div>
                  <h2> Idris Abdulhakeem </h2>

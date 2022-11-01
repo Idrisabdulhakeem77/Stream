@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 const SearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <div className="absolute rounded-full z-20 top-6 left-7 right-6 bg-dark-lighten ">
+    <div className="absolute rounded-full z-20 mt-4 top-10 left-7 right-6 bg-dark-lighten ">
       <form className="relative">
         <button className="absolute top-1/2 -translate-y-1/2 left-5 text-white">
           <FaSearch  size={25} className=""/>
