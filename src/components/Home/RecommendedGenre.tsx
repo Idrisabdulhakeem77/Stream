@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import {FC} from 'react'
+import { Link } from 'react-router-dom'
 import {getRecommendedGenre} from '../../services/search'
 import {  getRecommendedGenreType } from "../../shared/types"
 
@@ -29,14 +30,20 @@ const RecommendedGenres: FC<RecommendedGenresProps>  = ( { currentTab  }) => {
     const randomGenres = getRandomGenres(
       currentTab === "movie" ? data.movieGenres : data.tvGenres
     );
-    
+
    
 
 
       return (
-         <div>
-             Recommended Genre
-         </div>
+         <ul className='mt-12 flex gap-3 flex-wrap'>
+              { randomGenres.map( (genre , index) => (
+                 <li key={index} className="mb-2">
+                     <Link to="/">
+                         { genre?.name}
+                     </Link>
+                 </li>
+              ))}
+         </ul>
       )
 } 
 
