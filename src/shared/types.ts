@@ -31,11 +31,6 @@ export interface getRecommendedGenreType {
      tvGenres : { id : number , name : string}[];
 }
 
-export interface getRecommendGenres2Type {
-     // movieGenres: { id: number; name: string }[];
-      movieGenres : any
-     tvGenres: { id: number; name: string }[];
-   }
 
 export interface ItemsPage {
     page: number;
