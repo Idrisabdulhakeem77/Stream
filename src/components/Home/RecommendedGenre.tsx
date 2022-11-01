@@ -1,5 +1,17 @@
 import {FC} from 'react'
 
 
+interface RecommendedGenresProps {
+     currentTab : string
+}
 
-const Recomd
+const RecommendedGenres: FC<RecommendedGenresProps>  = ( { currentTab  }) => {
+      return (
+         <div>
+             Recommended Genre
+         </div>
+      )
+} 
+
+
+export default  RecommendedGenres 

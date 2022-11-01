@@ -9,6 +9,7 @@ import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
 import { getHomeMovies, getMovieBannerInfo } from "../services/home";
+import RecommendedGenres from "../components/Home/RecommendedGenre";
 
 const Home: FC = () => {
   const {
@@ -123,6 +124,9 @@ const Home: FC = () => {
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
           <User />
           <SearchBox />
+
+          {/* CurrentTab set to movie dont foeget to make it dynamic */}
+          <RecommendedGenres currentTab="movie"/>
         </div>
       </div>
     </>
