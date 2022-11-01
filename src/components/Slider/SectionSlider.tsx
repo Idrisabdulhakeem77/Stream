@@ -20,7 +20,7 @@ const SectionSlider: FC<SectionSliderProps> = ({ films }) => {
           slidesPerGroupAuto
           loop
           spaceBetween={30}
-          className="md:!w-[calc(100vw_-_260px_-_310px_-_2px_-_4vw_-_10px)] !w-[calc(100vw-8vw-2px)] tw-section-slider !py-2"
+          className="md:!w-[calc(100vw_-_260px_-_310px_-_2px_-_4vw_-_10px)] !w-[calc(100vw-8vw-2px)] tw-section-slider !py-1"
         >
           {films?.map((film) => (
             <SwiperSlide key={film.id} className="!w-[175px]">

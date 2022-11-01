@@ -3,9 +3,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { resizeImage } from "../../shared/utils";
 import {AiFillStar} from 'react-icons/ai'
+import {item} from '../../shared/types'
 
 interface FilmItemProps {
-  item: any;
+  item: item;
 }
 
 const FilmItem: FC<FilmItemProps> = ({ item }) => {
