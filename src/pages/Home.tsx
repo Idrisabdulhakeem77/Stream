@@ -10,14 +10,13 @@ import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
 import { getHomeMovies, getMovieBannerInfo } from "../services/home";
 
-const Home : FC = () => {
+const Home: FC = () => {
   const {
     data: dataMovie,
     isLoading: isLoadingMovie,
     isError: isErrorMovie,
     error: errorMovie,
   } = useQuery<HomeFilms, Error>(["home movies"], getHomeMovies);
-
 
   const {
     data: dataMovieDetail,
@@ -35,12 +34,8 @@ const Home : FC = () => {
     localStorage.getItem("currentTab")
   );
 
-
-
   return (
-  
     <>
-     
       <Title value="Anime Stream" />
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
@@ -62,11 +57,9 @@ const Home : FC = () => {
         />
 
         <div className="flex-grow  pt-0 pb-7 border-x md:px-[2vw] px-[4vw] md:border-dark min-h-screen">
-           
-           {/* TAB */}
+          {/* TAB */}
           <div className="flex justify-between items-center md:items-start">
-
-             {/* Button Div */}
+            {/* Button Div */}
             <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4  text-gray-600 ">
               <button
                 onClick={() => {
@@ -106,13 +99,19 @@ const Home : FC = () => {
               </button>
             </div>
 
-
             <div className="flex items-center md:hidden gap-4">
               <p> Unknown</p>
-              <img src="/Images/user.svg" alt="user" className="w-7 h-7 rounded-full object-cover" />
+              <img
+                src="/Images/user.svg"
+                alt="user"
+                className="w-7 h-7 rounded-full object-cover"
+              />
             </div>
           </div>
 
+
+
+          {/* Component contains both the banner Slider and section slideer */}
           <MainHomeFilms
             data={dataMovie}
             dataDetails={dataMovieDetail}
