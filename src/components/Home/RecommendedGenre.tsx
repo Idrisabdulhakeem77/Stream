@@ -14,12 +14,16 @@ const getRandomGenres = ( genres : { id : number , name : string}[] ) => {
 
 const RecommendedGenres: FC<RecommendedGenresProps>  = ( { currentTab  }) => {
 
-     const  { data , isError , isLoading , error }  = useQuery<getRecommendedGenreType | Error> (["genres"] , getRecommendedGenre) 
+     const  { data , isError , isLoading , error }  = useQuery<getRecommendedGenreType ,  Error>(["genres"] , getRecommendedGenre) 
 
 
-     const randomGenres = getRandomGenres(
-        currentTab === "movie" ? data.movieGenres : data.
-   )
+   //   const randomGenres = getRandomGenres(
+   //      currentTab === "movie" ?
+
+
+
+    
+   // const randomGenres = getRandomGenres( currentTab === "movie" ? data.movieGenres : data.)
 
       if(isError) return <div> Error </div>    
       
