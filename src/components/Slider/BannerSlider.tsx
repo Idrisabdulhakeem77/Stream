@@ -40,7 +40,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
         <Swiper
           navigation={true}
           effect={"flip"}
-          autoplay={{ delay : 5000 , disableOnInteraction : false}}
+          autoplay={{ delay : 6000 , disableOnInteraction : false}}
           grabCursor={true}
           modules={[Navigation, Autoplay , EffectFlip]}
           slidesPerView={1}
