@@ -12,7 +12,7 @@ interface SectionSliderProps {
 const SectionSlider: FC<SectionSliderProps> = ({ films }) => {
   return (
     <>
-      <div className="relative">
+      <div className="relative ">
         <Swiper
           modules={[Navigation]}
           navigation={true}

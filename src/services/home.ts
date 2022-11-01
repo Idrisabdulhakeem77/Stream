@@ -1,5 +1,4 @@
 import axios from "../shared/axios";
-import { ANIME_API_URL } from "../shared/constants";
 import { Items } from "../shared/types";
 import { HomeFilms } from "../shared/types";
 
@@ -25,7 +24,6 @@ export const getHomeMovies = async (): Promise<HomeFilms> => {
       })
     );
      
-    
     return final;
 
   }, {} as HomeFilms);

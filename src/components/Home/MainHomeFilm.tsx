@@ -25,7 +25,7 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
         dataDetails={dataDetails}
   />
   
-   <ul className="flex flex-col gap-10 mt-12">
+   <ul className="flex flex-col mt-12">
       {isSectionLoading ? (
         <>
           {new Array(2).fill("").map((_, index) => (
