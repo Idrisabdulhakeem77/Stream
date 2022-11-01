@@ -18,8 +18,6 @@ export const getHomeMovies = async (): Promise<HomeFilms> => {
 
   
   const data = responses.reduce((final, current, index) => {
-    console.log(index )
-     
     final[Object.entries(endpoints)[index][0]] = current.data.results.map(
       (item: Items) => ({
         ...item,
