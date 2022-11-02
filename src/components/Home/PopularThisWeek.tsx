@@ -1,5 +1,5 @@
 import {FC} from 'react'
-
+import {getTrendingNow} from  '../../services/home'
 
 
 

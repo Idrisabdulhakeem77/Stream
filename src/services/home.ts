@@ -67,7 +67,7 @@ export const getMovieBannerInfo = async (movies: Items[]): Promise<any> => {
 };
 
 
-export const getTrendingNow = async () => {
+export const getTrendingNow = async () : Promise<Items[]> => {
    return  (await axios.get('/trending/all/day?page=2')).data.results
 }
 
