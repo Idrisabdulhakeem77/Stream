@@ -64,7 +64,7 @@ const RightbarFilms: FC<RightbarFilmsProps> = ({
               </li>
             ))}
       </ul>
-      <button onClick={() => navigate("/")}>See More</button>
+      <button onClick={() => navigate("/explore")}>See More</button>
     </div>
   );
 };
