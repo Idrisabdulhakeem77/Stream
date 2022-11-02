@@ -1,6 +1,14 @@
 import {FC} from 'react'
 
 
-interface PopulatThis
 
-const PopularThisWeek = 
+
+const PopularThisWeek : FC = ( ) => {
+    return (
+         <div>
+             Popular
+         </div>
+    )
+} 
+
+export default PopularThisWeek

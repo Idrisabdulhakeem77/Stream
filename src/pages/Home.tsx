@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
 import { getHomeMovies, getMovieBannerInfo } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
+import PopularThisWeek from "../components/Home/PopularThisWeek";
 
 const Home: FC = () => {
   const {
@@ -127,6 +128,7 @@ const Home: FC = () => {
 
           {/* CurrentTab set to movie dont foeget to make it dynamic */}
           <RecommendedGenres currentTab="movie"/>
+           <PopularThisWeek/>
         </div>
       </div>
     </>
