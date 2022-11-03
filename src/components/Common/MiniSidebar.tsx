@@ -1,8 +1,8 @@
 import {FunctionComponent} from 'react'
 import { Link } from 'react-router-dom'
 import {BsFillEyeFill} from 'react-icons/bs'
-import { AiOutlineHome } from 'react-icons/ai'
-import {MdOutlineExplore} from 'react-icons/md'
+import {links} from './data'
+
 
 
 // ADD REACT TOASTIFY LIBRARY
@@ -14,8 +14,13 @@ const MiniSidebar : FunctionComponent = () => {
                  <BsFillEyeFill size={25}/>
              </Link>
               <div>
-                 <Link to="/">  <AiOutlineHome size={25} />   </Link>
-                 <Link to="explore"> <MdOutlineExplore size={25} /></Link>
+                 { ( links as []).map(( link , index) => {
+                     const { url , icon } = link 
+                      return (
+                         <Link to={url}> {icon}</Link>
+                      )
+                 })}
+                  
               </div>
           </div>
      )
