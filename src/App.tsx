@@ -9,8 +9,6 @@ import Auth from './pages/Auth';
 function App() {
   return (
     <div className="App">
-       {/* <Auth/> */}
-       {/* <Sidebar/> */}
          <Routes>
              <Route path='/' element={<Home/>}/> 
              <Route path='explore' element={<Explore/>} />
