@@ -1,37 +1,36 @@
-import { FC } from "react";
-import { Items } from "../../shared/types";
-import { BsThreeDots } from "react-icons/bs";
-import Skeleton from "./Skeleton";
-import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { resizeImage } from "../../shared/utils";
+import { FunctionComponent } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link, useNavigate } from "react-router-dom";
+import { Items } from "../../shared/types";
+import { resizeImage } from "../../shared/utils";
+import Skeleton from "./Skeleton";
 
 interface RightbarFilmsProps {
   films: Items[] | undefined;
-  isLoading: boolean;
   name: string;
-  limitNumber: number;
+  limitNumber?: number;
+  isLoading: boolean;
   className?: string;
 }
 
-const RightbarFilms: FC<RightbarFilmsProps> = ({
+const RightbarFilms: FunctionComponent<RightbarFilmsProps> = ({
   films,
-  isLoading,
-  limitNumber,
   name,
+  limitNumber,
+  isLoading,
   className = "",
 }) => {
   const navigate = useNavigate();
-  return (
-    <div className="mt-8">
-      <p className="capitalize font-bold  flex justify-between items-center">
-        <span> {name} </span>
-        <BsThreeDots size={20} />
-      </p>
 
-      <ul className="flex flex-col gap-4">
+  return (
+    <div className={className}>
+      <p className="mb-6 text-xl font-medium flex justify-between items-center">
+        <span>{name}</span>
+        <BsThreeDotsVertical size={20} />
+      </p>
+      <ul className="flex flex-col gap-5">
         {isLoading
           ? new Array(limitNumber).fill("").map((_, index) => (
               <li key={index} className="flex gap-5 items-center h-[156px]">
@@ -39,24 +38,33 @@ const RightbarFilms: FC<RightbarFilmsProps> = ({
                 <Skeleton className="flex-grow h-[85%] rounded-md" />
               </li>
             ))
-          : (films as Items[]).slice(0, limitNumber).map((film, index) => (
-              <li key={film.id} className="mb-2">
-                <Link to="" className="flex gap-5 items-center">
+          : (films as Items[]).slice(0, limitNumber).map((item) => (
+              <li key={item.id}>
+                <Link
+                  to={
+                    item.media_type === "movie"
+                      ? `/movie/${item.id}`
+                      : `/tv/${item.id}`
+                  }
+                  className="hover:brightness-75 transiton duration-300 flex gap-5 items-center"
+                >
                   <div className="shrink-0 max-w-[100px] w-full">
                     <LazyLoadImage
-                      src={resizeImage(film.backdrop_path, "w154")}
-                      effect="blur"
-                      alt="Poster image"
+                      src={resizeImage(item.poster_path, "w154")}
                       className="w-full h-full object-cover rounded-md"
+                      alt="poster"
+                      effect="blur"
                     />
                   </div>
                   <div className="flex-grow">
-                    <p className=" mb-2 text-lg">{film.title || film.name}</p>
-                    <p className="mb-4 text-sm">
-                      {film.release_date || film.first_air_date}
+                    <p className=" mb-3 text-lg">
+                      {item.title || item.name}
                     </p>
-                    <div className="inline-flex gap-2 items-center px-3 py-[2px] rounded-full text-primary border border-black text-sm">
-                      <span>{film.vote_average.toFixed(1)}</span>
+                    <p className="mb-8">
+                      {item.release_date || item.first_air_date}
+                    </p>
+                    <div className="inline-flex gap-2 items-center px-3 py-[2px] rounded-full text-primary border border-primary text-sm">
+                      <span>{item.vote_average.toFixed(1)}</span>
                       <AiFillStar size={15} />
                     </div>
                   </div>
@@ -64,7 +72,12 @@ const RightbarFilms: FC<RightbarFilmsProps> = ({
               </li>
             ))}
       </ul>
-      <button onClick={() => navigate("/explore")}>See More</button>
+      <button
+        onClick={() => navigate("/explore")}
+        className="bg-dark-lighten py-2 w-full mb-3 rounded-full mt-7 hover:brightness-75 transition duration-300 "
+      >
+        See more
+      </button>
     </div>
   );
 };
