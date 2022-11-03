@@ -2,6 +2,7 @@ import {FunctionComponent} from 'react'
 import { Link } from 'react-router-dom'
 import {BsFillEyeFill} from 'react-icons/bs'
 import {links} from './data'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 
 
@@ -22,6 +23,9 @@ const MiniSidebar : FunctionComponent = () => {
                  })}
                   
               </div>
+              <button>
+                  <LazyLoadImage src={}/>
+              </button>
           </div>
      )
 }
