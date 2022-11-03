@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route  , Routes } from 'react-router-dom';
 
+import Explore from './pages/Explore';
 import Home from './pages/Home';
-// import Auth from './pages/Auth';
+import Auth from './pages/Auth';
 // import Sidebar from './components/common/Sidebar';
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
        {/* <Auth/> */}
        {/* <Sidebar/> */}
          <Routes>
-             <Route path='/' element={<Home/>}/>
+             <Route path='/' element={<Home/>}/> 
+             <Route path='explore' element={<Explore/>} />
+             <Route path="auth" element={<Auth />} />
          </Routes>
          
     </div>
