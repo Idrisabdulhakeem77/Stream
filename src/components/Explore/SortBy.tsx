@@ -12,4 +12,6 @@ const SortBy :FunctionComponent<SortByProps>  = () => {
      )
 }
 
+export default SortBy
+
 
