@@ -7,11 +7,14 @@ export const useCurrentSeaarchParams = () => {
 
     const currentSearchParms =  JSON.parse(JSON.stringify(SUPPORTED_QUERY)) as {
          [key : string] : string[]
-    }
+    } 
+
+    console.log(currentSearchParms)
      
     searchParams.forEach((value , key) => {
         currentSearchParms[key].push(value)
     })
+
 
     return [currentSearchParms] as const 
 }
