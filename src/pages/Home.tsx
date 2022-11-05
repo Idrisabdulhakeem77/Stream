@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from "react";
+import { useState, FC } from "react";
 import Title from "../components/Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
@@ -31,10 +31,15 @@ const Home: FC = () => {
     { enabled: !!dataMovie?.Trending }
   );
 
+  
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
     localStorage.getItem("currentTab")
   );
+
+  if(isErrorMovieDetail) return <div>ERR : {errorMovieDetail.message} </div>
+  if(isErrorMovie) return  <div> ERR : {errorMovie.message} </div>
 
   return (
     <>
@@ -114,12 +119,24 @@ const Home: FC = () => {
 
 
           {/* Component contains both the banner Slider and section slideer */}
-          <MainHomeFilms
-            data={dataMovie}
-            dataDetails={dataMovieDetail}
-            isBannerLoading={isLoadingMovieDetail}
-            isSectionLoading={isLoadingMovie}
-          />
+            { 
+               currentTab === "movie" &&  <MainHomeFilms
+               data={dataMovie}
+               dataDetails={dataMovieDetail}
+               isBannerLoading={isLoadingMovieDetail}
+               isSectionLoading={isLoadingMovie}
+             />
+            }
+
+
+{ 
+               currentTab === "movie" &&  <MainHomeFilms
+               data={dataMovie}
+               dataDetails={dataMovieDetail}
+               isBannerLoading={isLoadingMovieDetail}
+               isSectionLoading={isLoadingMovie}
+             />
+            }
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
