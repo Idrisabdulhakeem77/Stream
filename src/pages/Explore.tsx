@@ -76,7 +76,7 @@ const Explore: FC<ExploreProps> = () => {
             </div>
           )}
 
-<div className="flex justify-between items-center md:items-start">
+          <div className="flex justify-between items-center md:items-start">
             {/* Button Div */}
             <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4  text-gray-600 ">
               <button
@@ -116,7 +116,7 @@ const Explore: FC<ExploreProps> = () => {
                 Anime
               </button>
             </div>
-            </div>
+          </div>
         </div>
       </div>
 
