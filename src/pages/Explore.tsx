@@ -28,6 +28,17 @@ const Explore: FC<ExploreProps> = () => {
     });
   };
 
+  useEffect(() => {
+      const changeConfig = ( key : string , value : string | number) => {
+          setConfig(( prevConfig) => (
+             { 
+                ...prevConfig ,
+                 [key] : value
+             }
+          ))
+      }
+  } , [])
+
   const { isMobile } = useCurrentViewPort();
   return (
     <>
