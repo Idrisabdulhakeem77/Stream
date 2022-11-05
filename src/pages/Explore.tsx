@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import Title from "../components/Common/Title";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import { useSearchParams } from "react-router-dom";
 import MiniSidebar from "../components/Common/MiniSidebar";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
@@ -14,6 +15,9 @@ import {ConfigType} from '../shared/types'
 interface ExploreProps {}
 
 const Explore: FC<ExploreProps> = () => {
+
+  const [searchParams , setSearchParams] = useSearchParams()
+
   const [showScrollBtn, setShowStrollBtn] = useState(true);
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
   const [currentTab, setCurrentTab] = useState(
@@ -37,6 +41,24 @@ const Explore: FC<ExploreProps> = () => {
              }
           ))
       }
+
+      const sortType = searchParams.get("sort_by") || "popularity.desc";
+      changeConfig("sort_by", sortType);
+  
+      const genreType = searchParams.getAll("genre") || [];
+      changeConfig("with_genres", genreType.toString());
+  
+      const minRuntime = Number(searchParams.get("minRuntime")) || 0;
+      const maxRuntime = Number(searchParams.get("maxRuntime")) || 200;
+      changeConfig("with_runtime.gte", minRuntime);
+      changeConfig("with_runtime.lte", maxRuntime);
+  
+      const releaseFrom = searchParams.get("from") || "2002-11-04";
+      const releaseTo = searchParams.get("to") || "2022-07-28";
+      changeConfig("primary_release_date.gte", releaseFrom);
+      changeConfig("primary_release_date.lte", releaseTo);
+      changeConfig("air_date.gte", releaseFrom);
+      changeConfig("air_date.lte", releaseTo);
   } , [])
 
   const { isMobile } = useCurrentViewPort();
