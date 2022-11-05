@@ -8,7 +8,7 @@ import User from "../components/Common/User";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
-import { getHomeMovies, getMovieBannerInfo } from "../services/home";
+import { getHomeMovies, getMovieBannerInfo  } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 
@@ -31,7 +31,7 @@ const Home: FC = () => {
     { enabled: !!dataMovie?.Trending }
   );
 
-  
+
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
