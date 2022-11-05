@@ -38,3 +38,8 @@ export interface ItemsPage {
     total_results: number;
     total_pages: number;
   }
+
+
+  export interface ConfigType { 
+     [key: string]: string | number;
+  }
