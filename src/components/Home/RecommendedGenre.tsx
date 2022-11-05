@@ -12,7 +12,7 @@ const getRandomGenres = ( genres : { id : number , name : string}[] ) => {
 
 
 interface RecommendedGenresProps {
-     currentTab : string
+     currentTab : string | null
 }
 
 

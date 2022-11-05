@@ -8,7 +8,12 @@ import User from "../components/Common/User";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
-import { getHomeMovies, getMovieBannerInfo , getHomeTV, getTvBanner  } from "../services/home";
+import {
+  getHomeMovies,
+  getMovieBannerInfo,
+  getHomeTV,
+  getTvBanner,
+} from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 
@@ -31,7 +36,12 @@ const Home: FC = () => {
     { enabled: !!dataMovie?.Trending }
   );
 
-  const { data : dataTV , isLoading : isTvLoading , isError : isTvError , error : tvError } = useQuery<HomeFilms , Error>( ["home-tv"] , getHomeTV )
+  const {
+    data: dataTV,
+    isLoading: isTvLoading,
+    isError: isTvError,
+    error: tvError,
+  } = useQuery<HomeFilms, Error>(["home-tv"], getHomeTV);
 
   const {
     data: dataTvDetail,
@@ -44,17 +54,16 @@ const Home: FC = () => {
     { enabled: !!dataTV?.Trending }
   );
 
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
     localStorage.getItem("currentTab")
   );
 
-  if(isErrorMovieDetail) return <div>ERR : {errorMovieDetail.message} </div>
-  if(isErrorMovie) return  <div> ERR : {errorMovie.message} </div>
+  if (isErrorMovieDetail) return <div>ERR : {errorMovieDetail.message} </div>;
+  if (isErrorMovie) return <div> ERR : {errorMovie.message} </div>;
 
-  if(isTvErrorDetail) return <div>ERR : {errorTvDetail.message} </div>
-  if(isTvError) return  <div> ERR : {tvError.message} </div>
+  if (isTvErrorDetail) return <div>ERR : {errorTvDetail.message} </div>;
+  if (isTvError) return <div> ERR : {tvError.message} </div>;
 
   return (
     <>
@@ -131,27 +140,24 @@ const Home: FC = () => {
             </div>
           </div>
 
-
-
           {/* Component contains both the banner Slider and section slideer */}
-            { 
-               currentTab === "movie" &&  <MainHomeFilms
-               data={dataMovie}
-               dataDetails={dataMovieDetail}
-               isBannerLoading={isLoadingMovieDetail}
-               isSectionLoading={isLoadingMovie}
-             />
-            }
+          {currentTab === "movie" && (
+            <MainHomeFilms
+              data={dataMovie}
+              dataDetails={dataMovieDetail}
+              isBannerLoading={isLoadingMovieDetail}
+              isSectionLoading={isLoadingMovie}
+            />
+          )}
 
-
-{/* { 
-               currentTab === "tv" &&  <MainHomeFilms
-               data={dataTV}
-               dataDetails={dataTvDetail}
-               isBannerLoading={isTvDetailLoading}
-               isSectionLoading={isTvLoading}
-             />
-            } */}
+          {currentTab === "tv" && (
+            <MainHomeFilms
+              data={dataTV}
+              dataDetails={dataTvDetail}
+              isBannerLoading={isTvDetailLoading}
+              isSectionLoading={isTvLoading}
+            />
+          )}
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
@@ -159,8 +165,8 @@ const Home: FC = () => {
           <SearchBox />
 
           {/* CurrentTab set to movie dont foeget to make it dynamic */}
-          <RecommendedGenres currentTab="movie"/>
-           <PopularThisWeek/>
+          <RecommendedGenres currentTab={ currentTab} />
+          <PopularThisWeek />
         </div>
       </div>
     </>
