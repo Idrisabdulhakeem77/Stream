@@ -16,7 +16,7 @@ export const links = [
 
   {
     name: "discover",
-    url: "/discover",
+    url: "/explore",
     icon: <MdOutlineExplore size={25} />,
   },
 
