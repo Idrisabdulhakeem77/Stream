@@ -8,6 +8,7 @@ import SortBy from "../components/Explore/SortBy";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
+import ExploreResult from '../components/Explore/ExploreResult'
 
 interface ExploreProps {}
 
@@ -118,9 +119,10 @@ const Explore: FC<ExploreProps> = () => {
             </div>
           </div>
         </div>
+           <ExploreResult/>
       </div>
 
-      <SortBy />
+      {/* <SortBy /> */}
     </>
   );
 };
