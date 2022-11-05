@@ -108,7 +108,24 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
 
   return  (
       <>
-         { }
+        {movies?.pages.reduce(
+            (acc, current) => [...acc, ...current.results],
+            [] as any
+          ).length === 0 ? (
+            <div className="flex flex-col items-center mb-12">
+              <p className="text-white text-3xl mt-5">There is no such films</p>
+            </div>
+          ) : (
+            <InfiniteScroll
+              dataLength={movies?.pages.length || 0}
+              next={() => fetchNextPageMovie()}
+              hasMore={Boolean(hasNextPageMovie)}
+              loader={<div>Loading...</div>}
+              endMessage={<></>}
+            >
+              <ExploreMovieResult pages={movies?.pages} />
+            </InfiniteScroll>
+          )}
         </>
   );
 };

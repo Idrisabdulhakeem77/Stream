@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import axios from '../shared/axios'
 import { ConfigType, Items, ItemsPage } from "../shared/types";
 
 
@@ -22,7 +21,7 @@ export const getExploreMovie: (
         ...item,
         media_type: "movie",
       }));
-  
+   console.log(data)
     return {
       ...data,
       results: adjustedItems,
