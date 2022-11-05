@@ -4,7 +4,7 @@ import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { useCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
 import {useCurrentViewPort} from '../hooks/useCurrentViewPort'
-
+import Select  from 'react-select'
 interface SortByProps {}
 
 const SortBy: FunctionComponent<SortByProps> = () => {
