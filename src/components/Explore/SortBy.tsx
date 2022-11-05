@@ -3,12 +3,14 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { useCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
+import {useCurrentViewPort} from '../hooks/useCurrentViewPort'
 
 interface SortByProps {}
 
 const SortBy: FunctionComponent<SortByProps> = () => {
   const [openSort, setOpenSort] = useState(false);
   const [parent] = useAutoAnimate();
+  const { isMobile} = useCurrentViewPort()
 
   const [searchParams, setSearchParams] = useSearchParams();
 
