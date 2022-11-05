@@ -67,10 +67,11 @@ interface ExploreTvResultProps {
 
 
 interface ExploreResultProps {
-  pages?: ItemsPage[];
+   currentTab : string ;
+    config : ConfigType
 }
 
-const ExploreResult: FunctionComponent<ExploreResultProps> = ({ pages }) => {
+const ExploreResult: FunctionComponent<ExploreResultProps> = ({ currentTab , config }) => {
   return <div>Explore Results</div>;
 };
 

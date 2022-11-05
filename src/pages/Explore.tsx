@@ -17,7 +17,7 @@ const Explore: FC<ExploreProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(true);
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
   const [currentTab, setCurrentTab] = useState(
-    localStorage.getItem("currentTab")
+    localStorage.getItem("currentTab") || "tv"
   );
 
   const [config , setConfig] = useState<ConfigType>({})
@@ -121,7 +121,7 @@ const Explore: FC<ExploreProps> = () => {
               </button>
             </div>
           </div>
-          <ExploreResult />
+          <ExploreResult currentTab={currentTab} config={config}/>
         </div>
       </div>
 
