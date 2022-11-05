@@ -33,6 +33,39 @@ const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
   );
 };
 
+interface ExploreTvResultProps {
+    pages?: ItemsPage[];
+  }
+  
+  const ExploreTvResult: FunctionComponent<ExploreTvResultProps> = ({
+    pages,
+  }) => {
+    return (
+      <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
+        {pages &&
+          pages.map((page) =>
+            page.results.map((item) => (
+              <li key={item.id}>
+                <FilmItem item={item} />
+              </li>
+            ))
+          )}
+        {!pages &&
+          [...new Array(15)].map((_, index) => (
+            <li key={index}>
+              <Skeleton className="h-0 pb-[160%]" />
+            </li>
+          ))}
+      </ul>
+    );
+  };
+  
+
+
+
+
+
+
 interface ExploreResultProps {
   pages?: ItemsPage[];
 }
