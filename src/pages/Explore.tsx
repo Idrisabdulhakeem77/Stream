@@ -9,6 +9,7 @@ import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
+import {ConfigType} from '../shared/types'
 
 interface ExploreProps {}
 
@@ -18,6 +19,8 @@ const Explore: FC<ExploreProps> = () => {
   const [currentTab, setCurrentTab] = useState(
     localStorage.getItem("currentTab")
   );
+
+  const [config , setConfig] = useState<ConfigType>({})
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

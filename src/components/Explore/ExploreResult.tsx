@@ -7,10 +7,12 @@ import FilmItem from '../Common/FilmItem'
 import Skeleton from '../Common/Skeleton'
 
 
-interface ExploreResultProps {}
+interface ExploreResultProps { 
+     pages?:ItemsPage[]
+}
 
 
-const ExploreResult : FunctionComponent<ExploreResultProps> = () => {
+const ExploreResult : FunctionComponent<ExploreResultProps> = ( {pages} ) => {
       return (
           <div>
              Explore Results

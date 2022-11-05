@@ -28,3 +28,7 @@ export const getExploreMovie: (
       results: adjustedItems,
     };
   };
+
+
+
+export const getAnime : ( page : number , config?: ConfigType)
