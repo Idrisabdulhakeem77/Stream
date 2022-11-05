@@ -5,6 +5,8 @@ import MiniSidebar from "../components/Common/MiniSidebar";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import SortBy from "../components/Explore/SortBy";
+import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
+import Sidebar from "../components/Common/Sidebar";
 
 interface ExploreProps {}
 
@@ -17,6 +19,8 @@ const Explore: FC<ExploreProps> = () => {
       behavior: "smooth",
     });
   };
+
+  const { isMobile } = useCurrentViewPort();
   return (
     <>
       <Title value="Explore" />
@@ -44,6 +48,18 @@ const Explore: FC<ExploreProps> = () => {
         <button onClick={() => setIsSidebarActive((prevState) => !prevState)}>
           <FaBars size={25} />
         </button>
+      </div>
+
+      <div className="flex flex-col-reverse md:flex-row">
+        {!isMobile && <MiniSidebar />}
+        {isMobile && (
+          <Sidebar
+            isSidebarOpen={isSiderBarActive}
+            setIsSidebarOpen={setIsSidebarActive}
+          />
+        )}
+
+        <div className="flex-grow px-[2vw] pt-6"></div>
       </div>
 
       <SortBy />
