@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ConfigType, ItemsPage } from "../../shared/types";
 import FilmItem from "../Common/FilmItem";
 import Skeleton from "../Common/Skeleton";
+import {getExploreMovie} from '../../services/explore'
 
 interface ExploreMovieResultProps {
   pages?: ItemsPage[];
@@ -62,16 +63,29 @@ interface ExploreTvResultProps {
   
 
 
-
-
-
-
 interface ExploreResultProps {
    currentTab : string ;
     config : ConfigType
 }
 
 const ExploreResult: FunctionComponent<ExploreResultProps> = ({ currentTab , config }) => {
+    const {
+        data: movies,
+        error: errorMovies,
+        fetchNextPage: fetchNextPageMovie,
+        hasNextPage: hasNextPageMovie,
+      } = useInfiniteQuery<ItemsPage, Error>(
+        ["explore-result-movie", config],
+        ({ pageParam = 1 }) => getExploreMovie(pageParam, config),
+        {
+          getNextPageParam: (lastPage) =>
+            lastPage.page + 1 <= lastPage.total_pages
+              ? lastPage.page + 1
+              : undefined,
+        }
+      );
+ 
+
   return <div>Explore Results</div>;
 };
 
