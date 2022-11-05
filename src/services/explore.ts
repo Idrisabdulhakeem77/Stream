@@ -21,7 +21,6 @@ export const getExploreMovie: (
         ...item,
         media_type: "movie",
       }));
-   console.log(data)
     return {
       ...data,
       results: adjustedItems,
