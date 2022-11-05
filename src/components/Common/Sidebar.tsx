@@ -54,7 +54,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </Link>
 
           <Link
-            to="/discover"
+            to="/explore"
             className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <MdOutlineExplore size={25} />

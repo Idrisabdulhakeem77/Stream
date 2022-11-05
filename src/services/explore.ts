@@ -30,5 +30,3 @@ export const getExploreMovie: (
   };
 
 
-
-export const getAnime : ( page : number , config?: ConfigType)
