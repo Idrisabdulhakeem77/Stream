@@ -18,7 +18,7 @@ const MiniSidebar : FunctionComponent = () => {
                  { ( links as []).map(( link , index) => {
                      const { url , icon } = link 
                       return (
-                         <Link to={url}> {icon}</Link>
+                         <Link key={index} to={url}> {icon}</Link>
                       )
                  })}
                   
