@@ -158,7 +158,7 @@ const Explore: FC<ExploreProps> = () => {
         </div>
       </div>
 
-      {/* <SortBy /> */}
+      <SortBy />
     </>
   );
 };

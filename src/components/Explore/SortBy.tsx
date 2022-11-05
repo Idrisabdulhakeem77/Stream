@@ -8,7 +8,7 @@ import Select  from 'react-select'
 interface SortByProps {}
 
 const SortBy: FunctionComponent<SortByProps> = () => {
-  const [openSort, setOpenSort] = useState(false);
+  const [openSort, setOpenSort] = useState(true);
   const [parent] = useAutoAnimate();
   const { isMobile} = useCurrentViewPort()
 
@@ -29,6 +29,16 @@ const SortBy: FunctionComponent<SortByProps> = () => {
           {!openSort && <FiChevronRight size={20} />}
         </button>
       </div>
+      {openSort && (
+        <div className="py-3 border-t border-dark-darken">
+          <p className="text-lg mb-2 text-white/80">Sort results by </p>
+          <Select
+            options={options}
+            defaultValue={options[0]}
+      
+          />
+        </div>
+      )}
     </div>
   );
 };
