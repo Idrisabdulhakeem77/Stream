@@ -80,11 +80,11 @@ export const getTrendingNow = async () : Promise<Items[]> => {
 
 export const getHomeTV = async (): Promise<HomeFilms> => {
   const endpoints: { [key: string]: string } = {
-    Trending: "/trending/movie/day",
-    Popular: "/movie/popular",
-    "Top Rated": "/movie/top_rated",
-    Hot: "/trending/movie/day?page=2",
-    Upcoming: "/movie/upcoming",
+    Trending: "/trending/tv/day",
+    Popular: "/tv/popular",
+    "Top Rated": "/tv/top_rated",
+    Hot: "/trending/tv/day?page=2",
+    Upcoming: "/tv/upcoming",
   };
 
   const responses = await Promise.all(
