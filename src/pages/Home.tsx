@@ -158,6 +158,8 @@ const Home: FC = () => {
               isSectionLoading={isTvLoading}
             />
           )}
+
+           { currentTab === "anime" && <div> Yay the anime tab </div>}
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
