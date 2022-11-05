@@ -8,7 +8,7 @@ import User from "../components/Common/User";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
 import { HomeFilms, Items } from "../shared/types";
-import { getHomeMovies, getMovieBannerInfo , getHomeTV  } from "../services/home";
+import { getHomeMovies, getMovieBannerInfo , getHomeTV, getTvBanner  } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 
@@ -33,8 +33,17 @@ const Home: FC = () => {
 
   const { data : dataTV , isLoading : isTvLoading , isError : isTvError , error : tvError } = useQuery<HomeFilms , Error>( ["home-tv"] , getHomeTV )
 
-   
-  
+  const {
+    data: dataTvDetail,
+    isLoading: isTvDetailLoading,
+    isError: isTvErrorDetail,
+    error: errorTvDetail,
+  } = useQuery<any, Error>(
+    ["detailMovies", dataMovie?.Trending],
+    () => getTvBanner(dataTV?.Trending as Items[]),
+    { enabled: !!dataTV?.Trending }
+  );
+
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
@@ -43,6 +52,9 @@ const Home: FC = () => {
 
   if(isErrorMovieDetail) return <div>ERR : {errorMovieDetail.message} </div>
   if(isErrorMovie) return  <div> ERR : {errorMovie.message} </div>
+
+  if(isTvErrorDetail) return <div>ERR : {errorTvDetail.message} </div>
+  if(isTvError) return  <div> ERR : {tvError.message} </div>
 
   return (
     <>
@@ -135,8 +147,8 @@ const Home: FC = () => {
 { 
                currentTab === "tv" &&  <MainHomeFilms
                data={dataTV}
-               dataDetails={dataMovieDetail}
-               isBannerLoading={isLoadingMovieDetail}
+               dataDetails={dataTvDetail}
+               isBannerLoading={isTvDetailLoading}
                isSectionLoading={isTvLoading}
              />
             }
