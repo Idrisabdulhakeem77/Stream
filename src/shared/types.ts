@@ -43,3 +43,8 @@ export interface ItemsPage {
   export interface ConfigType { 
      [key: string]: string | number;
   }
+
+
+ export interface User {
+     
+ } 

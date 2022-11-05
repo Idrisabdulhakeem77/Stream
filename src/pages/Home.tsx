@@ -144,14 +144,14 @@ const Home: FC = () => {
             }
 
 
-{ 
+{/* { 
                currentTab === "tv" &&  <MainHomeFilms
                data={dataTV}
                dataDetails={dataTvDetail}
                isBannerLoading={isTvDetailLoading}
                isSectionLoading={isTvLoading}
              />
-            }
+            } */}
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
