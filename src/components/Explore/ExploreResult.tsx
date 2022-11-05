@@ -102,8 +102,15 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
           : undefined,
     }
   );
+   
+  if(errorMovies) return <div> Error : {errorMovies.message}</div>
+  if(errorTvs) return <div> Error : {errorTvs.message}</div>
 
-  return <div>Explore Results</div>;
+  return  (
+      <>
+         { }
+        </>
+  );
 };
 
 export default ExploreResult;

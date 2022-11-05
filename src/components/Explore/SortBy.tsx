@@ -20,6 +20,8 @@ const SortBy: FunctionComponent<SortByProps> = () => {
     { value: "release_date.desc", label: "Most recent" },
   ];
 
+  
+
   return (
     <div className="px-4 pt-3 bg-dark-lighten rounded-md">
       <div className="flex justify-between items-center pb-4">
