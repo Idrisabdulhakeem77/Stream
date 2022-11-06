@@ -16,7 +16,7 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes}) => {
   return (
     <>
       <div className="mt-4 relative h-0 md:pb-[45%]pb-[35%] tw-banner-slider mb-4"></div>
-      <Swiper
+      {/* <Swiper
         navigation={true}
         effect={"flip"}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
@@ -27,12 +27,11 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes}) => {
       >
           {  ( animes as Animes[]).map((anime , index) => (
              <SwiperSlide>
-                 <Link to={`anime/${anime.mal_id}`}>
-                     <LazyLoadImage src={"https://cdn.myanimelist.net/images/anime/1208/94745l.jpg"} alt="image" effect="blur"/>
+                 <Link to="/">
                  </Link>
              </SwiperSlide>
           ))}
-      </Swiper>
+      </Swiper> */}
     </>
   );
 };
