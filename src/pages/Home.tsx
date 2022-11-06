@@ -164,7 +164,8 @@ const Home: FC = () => {
           )}
 
          { currentTab === "anime" && (
-            <Anime data={animes}/>
+            <Anime data={animes}
+            isSectionLoading={isAnimeLoading}/>
          )}
         </div>
 
