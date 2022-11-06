@@ -64,3 +64,6 @@ export interface Animes{
   
 }
 
+
+
+
