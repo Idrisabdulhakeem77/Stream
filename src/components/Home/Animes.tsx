@@ -1,5 +1,6 @@
 import { FC} from 'react'
 import { Animes } from '../../shared/types'
+import AnimeBannerSlider from '../Slider/AnimeBannerSlider'
 
 
 interface AnimeProps {
@@ -9,9 +10,9 @@ interface AnimeProps {
 
 const Anime : FC<AnimeProps> = ( { data }) => {
      return (
-         <div>
-             Anime
-         </div>
+        <>
+          <AnimeBannerSlider animes={data}/>
+         </>
      )
      
 }
