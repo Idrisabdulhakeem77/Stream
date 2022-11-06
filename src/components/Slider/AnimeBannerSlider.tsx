@@ -15,7 +15,7 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes }) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
-      <div className="mt-4 relative h-0 md:pb-[45%]pb-[35%] tw-banner-slider mb-4"></div>
+      <div className="mt-4 relative h-4 md:pb-[45%] pb-[35%]  tw-banner-slider mb-4  ">
       <Swiper
         navigation={true}
         effect={"flip"}
@@ -23,19 +23,20 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes }) => {
         grabCursor={true}
         modules={[Navigation, Autoplay, EffectFlip]}
         slidesPerView={1}
-        className="!absolute !top-0 !left-0 w-full h-[300px] !rounded-lg"
+        className="!absolute !top-0 !left-0 w-[450px] h-[400px] !rounded-lg place-content-center place-items-center"
       >
         {(animes as Animes[]).map((anime, index) => {
-             
+             const image = anime.images.jpg.large_image_url
             return (
               <SwiperSlide>
                 <Link to="/">
-                   <LazyLoadImage   />
+                   <LazyLoadImage  src={`${image}`}   />
                 </Link>
               </SwiperSlide>
             );
         })}
       </Swiper>
+      </div>
     </>
   );
 };
