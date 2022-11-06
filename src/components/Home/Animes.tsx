@@ -9,8 +9,10 @@ interface AnimeProps {
 
 
 const Anime : FC<AnimeProps> = ( { data }) => {
+
      return (
         <>
+         
           <AnimeBannerSlider animes={data}/>
          </>
      )

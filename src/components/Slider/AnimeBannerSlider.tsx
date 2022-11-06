@@ -4,19 +4,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFlip } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { resizeImage } from "../../shared/utils";
 
 interface AnimeBannerSliderProps {
   animes: Animes[] | undefined;
 }
 
-const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes}) => {
+const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes }) => {
   const { isMobile } = useCurrentViewPort();
   return (
     <>
       <div className="mt-4 relative h-0 md:pb-[45%]pb-[35%] tw-banner-slider mb-4"></div>
-      {/* <Swiper
+      <Swiper
         navigation={true}
         effect={"flip"}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
@@ -25,13 +25,17 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes}) => {
         slidesPerView={1}
         className="!absolute !top-0 !left-0 w-full h-[300px] !rounded-lg"
       >
-          {  ( animes as Animes[]).map((anime , index) => (
-             <SwiperSlide>
-                 <Link to="/">
-                 </Link>
-             </SwiperSlide>
-          ))}
-      </Swiper> */}
+        {(animes as Animes[]).map((anime, index) => {
+             
+            return (
+              <SwiperSlide>
+                <Link to="/">
+                   <LazyLoadImage   />
+                </Link>
+              </SwiperSlide>
+            );
+        })}
+      </Swiper>
     </>
   );
 };
