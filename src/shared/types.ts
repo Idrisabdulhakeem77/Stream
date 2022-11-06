@@ -1,3 +1,5 @@
+
+
 export interface Items {
   poster_path: string;
   overview: string;
@@ -48,3 +50,17 @@ export interface User {
   photoURL: string | null;
   uid: string;
 }
+
+
+
+export interface Animes{
+  score : number ,
+  mal_id : number,
+  title : string ,
+  syniosis : string ,
+   images : Object
+   genres : Object[]
+   trailer : Object[]
+  
+}
+

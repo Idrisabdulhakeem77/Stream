@@ -7,7 +7,7 @@ import SearchBox from "../components/Common/SearchBox";
 import User from "../components/Common/User";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
-import { HomeFilms, Items } from "../shared/types";
+import { Animes, HomeFilms, Items } from "../shared/types";
 import {
   getHomeMovies,
   getMovieBannerInfo,
@@ -56,7 +56,7 @@ const Home: FC = () => {
     { enabled: !!dataTV?.Trending }
   );
 
-  const { data : animes , isLoading : isAnimeLoading, error:  animeError , isError : isAnimeError}  = useQuery(['animes'] , getAnime)
+  const { data : animes , isLoading : isAnimeLoading, error:  animeError , isError : isAnimeError}  = useQuery<Animes , Error>(['animes'] , getAnime)
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
@@ -163,9 +163,7 @@ const Home: FC = () => {
             />
           )}
 
-           { currentTab === "anime" && (
-              <Anime data={animes}/>
-           )}
+      
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
