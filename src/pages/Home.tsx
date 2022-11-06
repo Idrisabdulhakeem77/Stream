@@ -16,6 +16,7 @@ import {
 } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
+import {getAnime} from '../services/anime'
 
 const Home: FC = () => {
   const {
@@ -53,6 +54,8 @@ const Home: FC = () => {
     () => getTvBanner(dataTV?.Trending as Items[]),
     { enabled: !!dataTV?.Trending }
   );
+
+  const { data : animes , isLoading : isAnimeLoading} = useQuery(['animes'] , getAnime)
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
