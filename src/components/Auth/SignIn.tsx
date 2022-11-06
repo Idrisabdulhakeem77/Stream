@@ -1,12 +1,18 @@
 import React, { useState, FunctionComponent } from "react";
 
-import { FaFacebook, FaTwitter,  FaGoogle  , FaGithub} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { SignInWithProvder } from "./signInWithProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { Field, Form, Formik } from "formik";
 
 import * as Yup from "yup";
+import {
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  TwitterAuthProvider,
+} from "firebase/auth";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -17,28 +23,41 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   setIsSignedIn,
   isSignedIn,
 }) => {
-  const [showPassword , setShowPassword] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   return (
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
     >
       <div className="flex flex-col items-center mb-6 mt-12">
-  
         <div className="leading-none mb-4 text-[40px] font-extralight">
-         Login to Anime Stream
+          Login to Anime Stream
         </div>
         <div className="flex gap-3 mb-4">
-          <button className="h-10 w-10 rounded-full tw-flex-centehover:brightness-75 transition duration-300">
-            <FaGoogle size={30}  />
+          <button
+            onClick={() =>
+              SignInWithProvder(new GoogleAuthProvider(), "google")
+            }
+            className="h-10 w-10 rounded-full tw-flex-centehover:brightness-75 transition duration-300"
+          >
+            <FaGoogle size={30} />
           </button>
-          <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
+          <button
+            onClick={() =>
+              SignInWithProvder(new FacebookAuthProvider(), "google")
+            }
+            className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300"
+          >
             <FaFacebook size={30} />
           </button>
-          <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
+          <button
+            onClick={() =>
+              SignInWithProvder(new TwitterAuthProvider(), "google")
+            }
+            className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300"
+          >
             <FaTwitter size={30} />
           </button>
-  
         </div>
 
         <div className="text-lg"> or use your email to Login:</div>
@@ -51,7 +70,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           password: "",
         }}
         validationSchema={Yup.object({
-          fullname: Yup.string()
+          fullname: Yup.string() 
             .required("Required")
             .max(30, "Must be a 30 or less"),
           email: Yup.string().required("Required"),
@@ -62,9 +81,8 @@ const SignIn: FunctionComponent<SignUpProps> = ({
         onSubmit={() => console.log("Submitted")}
       >
         <Form>
-          <div  className="px-2 py-3">
-            
-           <div className="relative mb-3">
+          <div className="px-2 py-3">
+            <div className="relative mb-3">
               <Field
                 name="email"
                 type="email"
@@ -100,35 +118,41 @@ const SignIn: FunctionComponent<SignUpProps> = ({
               >
                 Password
               </label>
-               { showPassword ? (
-                 <AiFillEye
-                 onClick={() => setShowPassword(!showPassword)}
-                 size={25}
-                 className="absolute top-1/2 -translate-y-2/3 right-4"
-               />
-               ) : (
-                 <AiFillEyeInvisible
-                 onClick={() => setShowPassword(!showPassword)}
-                 size={25}
-                 className="absolute top-1/2 -translate-y-2/3 right-4"
-               />
-               )}
-             
+              {showPassword ? (
+                <AiFillEye
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={25}
+                  className="absolute top-1/2 -translate-y-2/3 right-4"
+                />
+              ) : (
+                <AiFillEyeInvisible
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={25}
+                  className="absolute top-1/2 -translate-y-2/3 right-4"
+                />
+              )}
             </div>
-            <button id="form-child" type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign in </button>
+            <button
+              id="form-child"
+              type="submit"
+              className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"
+            >
+              {" "}
+              Sign in{" "}
+            </button>
           </div>
         </Form>
       </Formik>
       <p className="text-xl flex gap-2 mt-32 justify-center">
-          <span>Not a member yet?</span>
-          <button
-            type="submit"
-            onClick={() => setIsSignedIn(!isSignedIn)}
-            className=" underline"
-          >
-            Sign up
-          </button>
-        </p>
+        <span>Not a member yet?</span>
+        <button
+          type="submit"
+          onClick={() => setIsSignedIn(!isSignedIn)}
+          className=" underline"
+        >
+          Sign up
+        </button>
+      </p>
     </div>
   );
 };
