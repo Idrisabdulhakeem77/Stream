@@ -7,7 +7,7 @@ interface AnimeProps {
 }
 
 
-const Anime : FC<AnimeProps> = ( { data}) => {
+const Anime : FC<AnimeProps> = ( { data }) => {
      return (
          <div>
              Anime
