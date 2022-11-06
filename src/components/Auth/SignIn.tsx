@@ -1,7 +1,6 @@
 import React, { useState, FunctionComponent } from "react";
 
-import { FaFacebook, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
-import { BsFillPersonFill } from "react-icons/bs";
+import { FaFacebook, FaTwitter,  FaGoogle  , FaGithub} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
@@ -30,7 +29,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
          Login to Anime Stream
         </div>
         <div className="flex gap-3 mb-4">
-          <button className="h-10 w-10 rounded-full tw-flex-center bg-black  hover:brightness-75 transition duration-300">
+          <button className="h-10 w-10 rounded-full tw-flex-centehover:brightness-75 transition duration-300">
             <FaGoogle size={30}  />
           </button>
           <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
@@ -39,9 +38,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
             <FaTwitter size={30} />
           </button>
-          <button className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300">
-            <FaLinkedinIn size={30} />
-          </button>
+  
         </div>
 
         <div className="text-lg"> or use your email to Login:</div>
