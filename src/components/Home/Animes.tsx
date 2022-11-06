@@ -1,10 +1,12 @@
 import { FC} from 'react'
 
 
-interface AnimeProps {}
+interface AnimeProps {
+     data : string[] | undefined 
+}
 
 
-const Anime : FC<AnimeProps> = () => {
+const Anime : FC<AnimeProps> = ( { data}) => {
      return (
          <div>
              Anime

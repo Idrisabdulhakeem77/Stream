@@ -17,6 +17,7 @@ import {
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 import {getAnime} from '../services/anime'
+import Anime from "../components/Home/Animes";
 
 const Home: FC = () => {
   const {
@@ -55,7 +56,7 @@ const Home: FC = () => {
     { enabled: !!dataTV?.Trending }
   );
 
-  const { data : animes , isLoading : isAnimeLoading} = useQuery(['animes'] , getAnime)
+  const { data : animes , isLoading : isAnimeLoading, error:  animeError , isError : isAnimeError}  = useQuery(['animes'] , getAnime)
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
@@ -162,7 +163,9 @@ const Home: FC = () => {
             />
           )}
 
-           { currentTab === "anime" && <div> Yay the anime tab </div>}
+           { currentTab === "anime" && (
+              <Anime data={animes}/>
+           )}
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
