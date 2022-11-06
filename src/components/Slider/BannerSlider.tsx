@@ -8,8 +8,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import {BsFillPlayFill} from 'react-icons/bs'
 
-import "swiper/css";
-import "swiper/css/navigation";
+
 import { Link } from "react-router-dom";
 import Skeleton from "../Common/Skeleton";
 

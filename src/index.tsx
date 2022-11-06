@@ -9,6 +9,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 import "swiper/css/bundle";
+import "swiper/css";
+import "swiper/css/navigation";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const queryClient = new QueryClient();
