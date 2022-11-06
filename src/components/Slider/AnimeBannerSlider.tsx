@@ -23,7 +23,7 @@ const AnimeBannerSlider: FC<AnimeBannerSliderProps> = ({ animes }) => {
           grabCursor={true}
           modules={[Navigation, Autoplay, EffectFlip]}
           slidesPerView={1}
-          className="!absolute !top-0 !left-0 w-[450px] h-[400px] !rounded-lg place-content-center place-items-center"
+          className="!absolute !top-0 !left-0 w-[450px] h-[400px] !rounded-lg "
         >
           {(animes as Animes[]).map((anime, index) => {
             const image = anime.images.jpg.large_image_url;

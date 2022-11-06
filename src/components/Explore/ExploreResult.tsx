@@ -62,7 +62,7 @@ const ExploreTvResult: FunctionComponent<ExploreTvResultProps> = ({
 };
 
 interface ExploreResultProps {
-  currentTab: string;
+  currentTab: string | null;
   config: ConfigType;
 }
 
