@@ -16,7 +16,7 @@ const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
   pages,
 }) => {
   return (
-    <ul className="grid ">
+    <ul className="flex ">
       {pages &&
         pages.map((page) =>
           page.results.map((item) => (
@@ -43,7 +43,7 @@ const ExploreTvResult: FunctionComponent<ExploreTvResultProps> = ({
   pages,
 }) => {
   return (
-    <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
+    <ul className="grid grid-cols-sm gap-x-8 gap-y-10 pt-2">
       {pages &&
         pages.map((page) =>
           page.results.map((item) => (
