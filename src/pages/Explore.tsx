@@ -10,24 +10,37 @@ import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
-import {ConfigType} from '../shared/types'
+import { ConfigType } from "../shared/types";
 
 interface ExploreProps {}
 
 const Explore: FC<ExploreProps> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [searchParams , setSearchParams] = useSearchParams()
-
-  const [showScrollBtn, setShowStrollBtn] = useState(true);
+  const [showScrollBtn, setShowStrollBtn] = useState(false);
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
   const [currentTab, setCurrentTab] = useState(
-    localStorage.getItem("currentTab") 
+    localStorage.getItem("currentTab")
   );
-   
 
-  console.log(currentTab)
-   
-  const [config , setConfig] = useState<ConfigType>({})
+  useEffect(() => {
+    const checkIfScrollbuttonShowUp = () => {
+      const scrollOffset = document.documentElement.scrollTop;
+
+      console.log(scrollOffset);
+
+      if (scrollOffset > 1000) {
+        setShowStrollBtn(true);
+      } else {
+        setShowStrollBtn(false);
+      }
+    };
+    window.addEventListener("scroll", checkIfScrollbuttonShowUp);
+    return () =>
+      window.removeEventListener("scroll", checkIfScrollbuttonShowUp);
+  }, []);
+
+  const [config, setConfig] = useState<ConfigType>({});
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -36,33 +49,31 @@ const Explore: FC<ExploreProps> = () => {
   };
 
   useEffect(() => {
-      const changeConfig = ( key : string , value : string | number) => {
-          setConfig(( prevConfig) => (
-             { 
-                ...prevConfig ,
-                 [key] : value
-             }
-          ))
-      }
+    const changeConfig = (key: string, value: string | number) => {
+      setConfig((prevConfig) => ({
+        ...prevConfig,
+        [key]: value,
+      }));
+    };
 
-      const sortType = searchParams.get("sort_by") || "popularity.desc";
-      changeConfig("sort_by", sortType);
-  
-      const genreType = searchParams.getAll("genre") || [];
-      changeConfig("with_genres", genreType.toString());
-  
-      const minRuntime = Number(searchParams.get("minRuntime")) || 0;
-      const maxRuntime = Number(searchParams.get("maxRuntime")) || 200;
-      changeConfig("with_runtime.gte", minRuntime);
-      changeConfig("with_runtime.lte", maxRuntime);
-  
-      const releaseFrom = searchParams.get("from") || "2002-11-04";
-      const releaseTo = searchParams.get("to") || "2022-07-28";
-      changeConfig("primary_release_date.gte", releaseFrom);
-      changeConfig("primary_release_date.lte", releaseTo);
-      changeConfig("air_date.gte", releaseFrom);
-      changeConfig("air_date.lte", releaseTo);
-  } , [])
+    const sortType = searchParams.get("sort_by") || "popularity.desc";
+    changeConfig("sort_by", sortType);
+
+    const genreType = searchParams.getAll("genre") || [];
+    changeConfig("with_genres", genreType.toString());
+
+    const minRuntime = Number(searchParams.get("minRuntime")) || 0;
+    const maxRuntime = Number(searchParams.get("maxRuntime")) || 200;
+    changeConfig("with_runtime.gte", minRuntime);
+    changeConfig("with_runtime.lte", maxRuntime);
+
+    const releaseFrom = searchParams.get("from") || "2002-11-04";
+    const releaseTo = searchParams.get("to") || "2022-07-28";
+    changeConfig("primary_release_date.gte", releaseFrom);
+    changeConfig("primary_release_date.lte", releaseTo);
+    changeConfig("air_date.gte", releaseFrom);
+    changeConfig("air_date.lte", releaseTo);
+  }, []);
 
   const { isMobile } = useCurrentViewPort();
   return (
@@ -157,7 +168,7 @@ const Explore: FC<ExploreProps> = () => {
               </button>
             </div>
           </div>
-          <ExploreResult currentTab={currentTab} config={config}/>
+          <ExploreResult currentTab={currentTab} config={config} />
         </div>
       </div>
 
