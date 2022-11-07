@@ -16,7 +16,7 @@ const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
   pages,
 }) => {
   return (
-    <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
+    <ul className="grid ">
       {pages &&
         pages.map((page) =>
           page.results.map((item) => (
@@ -106,8 +106,6 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
 
   if (errorMovies) return <div> Error : {errorMovies.message}</div>;
   if (errorTvs) return <div> Error : {errorTvs.message}</div>;
-
-  console.log(movies);
 
   return (
     <>
