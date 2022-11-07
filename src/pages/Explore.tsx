@@ -11,6 +11,7 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
 import { ConfigType } from "../shared/types";
+import axios from "axios";
 
 interface ExploreProps {}
 
@@ -75,6 +76,15 @@ const Explore: FC<ExploreProps> = () => {
     // eslint-disable-next-line
   }, [location.search]);
 
+
+   useEffect(() => {
+       const fetchData = async () => {
+           const data = (await axios.get("https://api.jikan.moe/v4/top/anime")).data
+           console.log(data)
+       }
+
+        fetchData()
+   } , [])
   const { isMobile } = useCurrentViewPort();
   return (
     <>

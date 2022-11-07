@@ -62,6 +62,8 @@ const ExploreTvResult: FunctionComponent<ExploreTvResultProps> = ({
   );
 };
 
+
+
 interface ExploreResultProps {
   currentTab: string | null;
   config: ConfigType;
@@ -106,6 +108,8 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
 
   if (errorMovies) return <div> Error : {errorMovies.message}</div>;
   if (errorTvs) return <div> Error : {errorTvs.message}</div>;
+
+   
 
   return (
     <>
@@ -156,6 +160,15 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
           )}
         </>
       )}
+
+
+       { currentTab === "anime" && (
+          <>
+            <div>
+               Anime explore
+            </div>
+           </>
+       )}
     </>
   );
 };

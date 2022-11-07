@@ -41,6 +41,8 @@ export const getExploreMovie: (
         },
       })
     ).data;
+
+    console.log(data)
   
     const adjustedItems = data.results
       .filter((item: Items) => item.poster_path)
