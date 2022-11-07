@@ -73,7 +73,9 @@ const Explore: FC<ExploreProps> = () => {
     changeConfig("primary_release_date.lte", releaseTo);
     changeConfig("air_date.gte", releaseFrom);
     changeConfig("air_date.lte", releaseTo);
-  }, []);
+
+    // eslint-disable-next-line
+  }, [location.search]);
 
   const { isMobile } = useCurrentViewPort();
   return (
