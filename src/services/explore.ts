@@ -34,7 +34,7 @@ export const getExploreMovie: (
     config?: ConfigType
   ) => Promise<ItemsPage> = async (page, config = {}) => {
     const data = (
-      await axios.get("/discover/movie", {
+      await axios.get("/discover/tv", {
         params: {
           ...config,
           page,
@@ -46,7 +46,7 @@ export const getExploreMovie: (
       .filter((item: Items) => item.poster_path)
       .map((item: any) => ({
         ...item,
-        media_type: "movie",
+        media_type: "tv",
       }));
   
     return {

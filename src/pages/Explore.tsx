@@ -168,7 +168,7 @@ const Explore: FC<ExploreProps> = () => {
               </button>
             </div>
           </div>
-          
+          <ExploreResult currentTab={currentTab} config={config} />
 
 
         </div>
