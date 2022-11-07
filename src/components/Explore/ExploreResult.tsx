@@ -5,7 +5,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ConfigType, ItemsPage } from "../../shared/types";
 import FilmItem from "../Common/FilmItem";
 import Skeleton from "../Common/Skeleton";
-import { getExploreMovie , getExploreTV  } from "../../services/explore";
+import { getExploreMovie, getExploreTV } from "../../services/explore";
+import { current } from "@reduxjs/toolkit";
 
 interface ExploreMovieResultProps {
   pages?: ItemsPage[];
@@ -15,12 +16,12 @@ const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
   pages,
 }) => {
   return (
-    <ul className="grid gap-x-8 gap-y-10">
+    <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
       {pages &&
         pages.map((page) =>
           page.results.map((item) => (
             <li key={item.id}>
-              <FilmItem item={item} /> 
+              <FilmItem item={item} />
             </li>
           ))
         )}
@@ -102,14 +103,62 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
           : undefined,
     }
   );
-   
-  if(errorMovies) return <div> Error : {errorMovies.message}</div>
-  if(errorTvs) return <div> Error : {errorTvs.message}</div>
 
-  return  (
-      <>
-       
+  if (errorMovies) return <div> Error : {errorMovies.message}</div>;
+  if (errorTvs) return <div> Error : {errorTvs.message}</div>;
+
+  console.log(movies);
+
+  return (
+    <>
+      {currentTab === "movie" && (
+        <>
+          {movies?.pages.reduce(
+            (acc, current) => [...acc, current.results],
+            [] as any
+          ).length === 0 ? (
+            <div className="flex flex-col items-center mb-12">
+              <div>Error</div>
+              <p className="text-3xl mt-5"> there is no such film</p>
+            </div>
+          ) : (
+            <InfiniteScroll
+              dataLength={movies?.pages.length || 0}
+              next={() => fetchNextPageMovie()}
+              hasMore={Boolean(hasNextPageMovie)}
+              loader={<div>Loading more</div>}
+              endMessage={<></>}
+            >
+              <ExploreMovieResult pages={movies?.pages} />
+            </InfiniteScroll>
+          )}
         </>
+      )}
+
+      {currentTab === "tv" && (
+        <>
+          {tvs?.pages.reduce(
+            (acc, current) => [...acc, current.results],
+            [] as any
+          ).length === 0 ? (
+            <div className="flex flex-col items-center mb-12">
+              <div>Error</div>
+              <p className="text-3xl mt-5"> there is no such film</p>
+            </div>
+          ) : (
+            <InfiniteScroll
+              dataLength={tvs?.pages.length || 0}
+              next={() => fetchNextPageTv()}
+              hasMore={Boolean(hasNextPageTv)}
+              loader={<div>Loading more</div>}
+              endMessage={<></>}
+            >
+              <ExploreTvResult pages={tvs?.pages} />
+            </InfiniteScroll>
+          )}
+        </>
+      )}
+    </>
   );
 };
 

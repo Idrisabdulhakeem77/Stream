@@ -168,14 +168,13 @@ const Explore: FC<ExploreProps> = () => {
               </button>
             </div>
           </div>
-          <ExploreResult currentTab={currentTab} config={config} />
-        </div>
+          
 
-        {/* {isMobile && (
-          <h2 className="text-black text-3xl font-medium uppercase ml-3 mt-3">
-            Find films that best fit you
-          </h2>
-        )} */}
+
+        </div>
+        <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
+            another content
+        </div>
       </div>
     </>
   );
