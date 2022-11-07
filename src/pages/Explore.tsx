@@ -27,7 +27,7 @@ const Explore: FC<ExploreProps> = () => {
     const checkIfScrollbuttonShowUp = () => {
       const scrollOffset = document.documentElement.scrollTop;
 
-      console.log(scrollOffset);
+  
 
       if (scrollOffset > 1000) {
         setShowStrollBtn(true);
