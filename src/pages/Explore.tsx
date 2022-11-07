@@ -27,8 +27,6 @@ const Explore: FC<ExploreProps> = () => {
     const checkIfScrollbuttonShowUp = () => {
       const scrollOffset = document.documentElement.scrollTop;
 
-  
-
       if (scrollOffset > 1000) {
         setShowStrollBtn(true);
       } else {
@@ -172,9 +170,13 @@ const Explore: FC<ExploreProps> = () => {
           </div>
           <ExploreResult currentTab={currentTab} config={config} />
         </div>
-      </div>
 
-      {/* <SortBy /> */}
+        {/* {isMobile && (
+          <h2 className="text-black text-3xl font-medium uppercase ml-3 mt-3">
+            Find films that best fit you
+          </h2>
+        )} */}
+      </div>
     </>
   );
 };
