@@ -175,7 +175,7 @@ const Explore: FC<ExploreProps> = () => {
 
         </div>
         <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
-            another content
+            <ExploreFilter currentTab={currentTab}/>
         </div>
       </div>
     </>
