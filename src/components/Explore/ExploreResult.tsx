@@ -1,12 +1,10 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ConfigType, ItemsPage } from "../../shared/types";
 import FilmItem from "../Common/FilmItem";
 import Skeleton from "../Common/Skeleton";
 import { getExploreMovie, getExploreTV } from "../../services/explore";
-import { current } from "@reduxjs/toolkit";
 
 interface ExploreMovieResultProps {
   pages?: ItemsPage[];
@@ -105,6 +103,9 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
           : undefined,
     }
   );
+
+
+ 
 
   if (errorMovies) return <div> Error : {errorMovies.message}</div>;
   if (errorTvs) return <div> Error : {errorTvs.message}</div>;

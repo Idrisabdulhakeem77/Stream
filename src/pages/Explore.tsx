@@ -5,13 +5,12 @@ import { useSearchParams } from "react-router-dom";
 import MiniSidebar from "../components/Common/MiniSidebar";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import SortBy from "../components/Explore/SortBy";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
 import { ConfigType } from "../shared/types";
-import axios from "axios";
+
 
 interface ExploreProps {}
 
@@ -77,14 +76,7 @@ const Explore: FC<ExploreProps> = () => {
   }, [location.search]);
 
 
-   useEffect(() => {
-       const fetchData = async () => {
-           const data = (await axios.get("https://api.jikan.moe/v4/top/anime")).data
-           console.log(data)
-       }
-
-        fetchData()
-   } , [])
+  
   const { isMobile } = useCurrentViewPort();
   return (
     <>
