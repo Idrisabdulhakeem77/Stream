@@ -29,6 +29,9 @@ const FilterBy: FunctionComponent<FilterByProps> = ({ currentTab }) => {
           <div className="py-3 border-t border-dark-darken"> 
              <p className="text-lg mb-4 text-white/80"> Genres  </p>
             <FilterByGenre currentTab={currentTab}/>
+
+            <p className="text-lg mb-4 text-white/80"> Runtime  </p>
+            <FilterByRating currentTab={currentTab}/>
             </div>
       )}
     </div>
