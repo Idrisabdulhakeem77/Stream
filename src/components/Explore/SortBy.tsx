@@ -19,6 +19,33 @@ const SortBy: FunctionComponent<SortByProps> = () => {
     { value: "vote_average.desc", label: "Most rating" },
     { value: "release_date.desc", label: "Most recent" },
   ];
+  
+
+
+  const customStyles = {
+    control: (styles: any) => ({
+      ...styles,
+      backgroundColor: "#49494b",
+      boxShadow: "none",
+      border: 0,
+    }),
+    option: (
+      styles: any,
+      { data, isDisabled, isFocused, isSelected }: any
+    ) => ({
+      ...styles,
+      backgroundColor: isSelected ? "#989898" : "#49494b",
+    }),
+
+    singleValue: (provided: any) => {
+      return { ...provided, color: "white" };
+    },
+
+    menu: (styles: any) => ({
+      ...styles,
+      backgroundColor: "#49494b",
+    }),
+  };
 
   
 
