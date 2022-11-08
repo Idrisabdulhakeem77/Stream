@@ -47,6 +47,17 @@ const SortBy: FunctionComponent<SortByProps> = () => {
     }),
   };
 
+  const [currentSearchParams] = useCurrentSeaarchParams();
+
+  const chooseSort = (option: any) => {
+    const sortValue = option?.value || "";
+
+    setSearchParams({
+      ...currentSearchParams,
+      sort_by: sortValue,
+    });
+  };
+
   
 
   return (
@@ -62,8 +73,10 @@ const SortBy: FunctionComponent<SortByProps> = () => {
         <div className="py-3 border-t border-dark-darken">
           <p className="text-lg mb-2 text-white/80">Sort results by </p>
           <Select
+          styles={customStyles}
             options={options}
             defaultValue={options[0]}
+            onChange={chooseSort}
       
           />
         </div>
