@@ -13,8 +13,6 @@ const SortBy: FunctionComponent<SortByProps> = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(searchParams , setSearchParams)
-
   const options = [
     { value: "popularity.desc", label: "Most popular" },
     { value: "vote_average.desc", label: "Most rating" },
