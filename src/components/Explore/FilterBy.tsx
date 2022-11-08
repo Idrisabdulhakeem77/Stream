@@ -2,6 +2,7 @@ import { FunctionComponent , useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown , FiChevronRight } from 'react-icons/fi'
 import FilterByGenre from '../Explore/FilterByGenre'
+import FilterByRating from '../Explore/FilterByRating'
 
 interface FilterByProps {
   currentTab: string | null;
@@ -31,7 +32,7 @@ const FilterBy: FunctionComponent<FilterByProps> = ({ currentTab }) => {
             <FilterByGenre currentTab={currentTab}/>
 
             <p className="text-lg mb-4 text-white/80"> Runtime  </p>
-            <FilterByRating currentTab={currentTab}/>
+            <FilterByRating/>
             </div>
       )}
     </div>
