@@ -10,7 +10,7 @@ interface SortByProps {}
 const SortBy: FunctionComponent<SortByProps> = () => {
   const [openSort, setOpenSort] = useState(true);
   const [parent] = useAutoAnimate();
-  const { isMobile} = useCurrentViewPort()
+
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -58,10 +58,13 @@ const SortBy: FunctionComponent<SortByProps> = () => {
     });
   };
 
-  
+  const sortType = searchParams.get("sort_by") || "popularity.desc";
 
   return (
-    <div className="px-4 pt-3 bg-dark-lighten rounded-md">
+    <div 
+     // @ts-ignore
+     ref={parent}
+    className="px-4 pt-3 bg-dark-lighten rounded-md">
       <div className="flex justify-between items-center pb-4">
         <p className="text-lg"> Sort</p>
         <button onClick={() => setOpenSort( ( prevState) => !prevState)}>
@@ -70,14 +73,14 @@ const SortBy: FunctionComponent<SortByProps> = () => {
         </button>
       </div>
       {openSort && (
-        <div className="py-3 border-t border-dark-darken">
+        <div className="py-3 border-t border-dark-darken mb-24 md:mb-0 ">
           <p className="text-lg mb-2 text-white/80">Sort results by </p>
           <Select
           styles={customStyles}
             options={options}
             defaultValue={options[0]}
             onChange={chooseSort}
-      
+            value={options.find((option) => option.value === sortType)}
           />
         </div>
       )}
