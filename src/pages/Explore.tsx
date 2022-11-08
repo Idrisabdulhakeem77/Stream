@@ -10,7 +10,7 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
 import { ConfigType } from "../shared/types";
-import ExploreFilter from '../components/Explore/ExploreFIlter'
+import ExploreFilter from '../components/Explore/ExploreFilter'
 
 interface ExploreProps {}
 
