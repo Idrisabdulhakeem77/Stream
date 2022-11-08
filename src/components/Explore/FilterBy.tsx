@@ -2,10 +2,12 @@ import {FunctionComponent} from 'react'
 
 
 
-interface FilterByProps {}
+interface FilterByProps {
+     currentTab : string | null
+}
 
 
-const FilterBy : FunctionComponent<FilterByProps> = ( ) => {
+const FilterBy : FunctionComponent<FilterByProps> = ({ currentTab} ) => {
       return (
          <div>
              Filterby
