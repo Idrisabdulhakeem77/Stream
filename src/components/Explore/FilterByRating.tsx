@@ -5,7 +5,7 @@ import { useCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
 interface FilterByRatingProps {}
 
 const MAX_RUNTIME = 200;
-const gap = 20;
+const GAP = 20;
 
 const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
   const sliderRangeRef = useRef<HTMLDivElement>(null!);
@@ -36,6 +36,39 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
     setMaxRuntime(value);
     const rightOffet = 100 - (value / MAX_RUNTIME) * 100;
     sliderRangeRef.current.style.right = rightOffet + "%";
+  };
+
+
+  const handleDragSliderRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    if (e.target.name === "min-range") {
+      updateMinRangeBar(
+        maxRuntime - Number(e.target.value) < GAP
+          ? maxRuntime - GAP
+          : Number(e.target.value)
+      );
+
+      timeoutRef.current = setTimeout(() => {
+        setSearchParams({
+          ...currentSearchparams,
+          minRuntime: e.target.value,
+        });
+      }, 500);
+    } else {
+      updateMaxRangeBar(
+        Number(e.target.value) - minRuntime < GAP
+          ? minRuntime + GAP
+          : Number(e.target.value)
+      );
+
+      timeoutRef.current = setTimeout(() => {
+        setSearchParams({
+          ...currentSearchparams,
+          maxRuntime: e.target.value,
+        });
+      }, 500);
+    }
   };
 
   return <div>Filter By rating</div>;
