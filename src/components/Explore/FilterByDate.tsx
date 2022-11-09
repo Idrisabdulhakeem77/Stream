@@ -23,28 +23,31 @@ const FilterByDate: FunctionComponent<FilterByDateProps> = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
-        <label htmlFor="from"> From</label>
+        <label htmlFor="from" className="text-lg text-white/70"> From</label>
         <input
-          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
+          
           type="date"
           name="from"
           id="from"
           onChange={handleFilterDate}
           value={searchParams.get("from") || "2000-12-13"}
+          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
+
         />
       </div>
 
       <div className="flex justify-between items-center">
-        <label htmlFor="to"> To</label>
+        <label htmlFor="to" className=" text-lg text-white/70"> To</label>
         <input
-          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
+          
           type="date"
           name="to"
           id="to"
           onChange={handleFilterDate}
           value={searchParams.get("to") || "2023-01-01"}
+          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
         />
       </div>
     </div>

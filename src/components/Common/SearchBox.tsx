@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState  , FunctionComponent} from "react";
 import { FaSearch } from "react-icons/fa";
+
+ interface SearchBoxProps { }
 
 const SearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
