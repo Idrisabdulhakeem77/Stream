@@ -72,56 +72,57 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
   };
 
   return(
-    <div>
-    <div className="flex justify-between mb-3">
-      <div className="flex gap-2 items-center">
-        <span>From</span>
-        <p className="flex gap-1 items-center">
-          <span className="text-lg font-medium text-white/60">
-            {minRuntime}
-          </span>
-          <span className="text-sm">min</span>
-        </p>
+     <div>
+      <div className="flex justify-between mb-3">
+        <div className="flex gap-2 items-center">
+          <span>From</span>
+          <p className="flex gap-1 items-center">
+            <span className="text-lg font-medium text-white/60">
+              {minRuntime}
+            </span>
+            <span className="text-sm">min</span>
+          </p>
+        </div>
+        <div className="flex gap-2 items-center">
+          <span>To</span>
+          <p className="flex gap-1 items-center">
+            <span className="text-lg font-medium text-white/60">
+              {maxRuntime}
+            </span>
+            <span className="text-sm">min</span>
+          </p>
+        </div>
       </div>
-      <div className="flex gap-2 items-center">
-        <span>To</span>
-        <p className="flex gap-1 items-center">
-          <span className="text-lg font-medium text-white/60">
-            {maxRuntime}
-          </span>
-          <span className="text-sm">min</span>
-        </p>
+      <div className="relative h-[5px] bg-dark-darken rounded-md">
+        <div
+          ref={sliderRangeRef}
+          className="absolute top-0 h-[5px] bg-primary rounded-md"
+        ></div>
+      </div>
+      <div className="relative">
+        <input
+          className="absolute -top-[5px] left-0 w-full h-[5px] appearance-none [background:none] pointer-events-none tw-slider-range"
+          type="range"
+          min="0"
+          max={MAX_RUNTIME}
+          step="10"
+          name="min-range"
+          value={minRuntime}
+          onChange={handleDragSliderRange}
+        />
+        <input
+          className="absolute -top-[5px] left-0 w-full h-[5px] appearance-none [background:none] pointer-events-none tw-slider-range"
+          type="range"
+          min="0"
+          max={MAX_RUNTIME}
+          step="10"
+          name="max-range"
+          value={maxRuntime}
+          onChange={handleDragSliderRange}
+        />
+
       </div>
     </div>
-    <div className="relative h-[5px] bg-dark-darken rounded-md">
-      <div
-        ref={sliderRangeRef}
-        className="absolute top-0 h-[5px] bg-primary rounded-md"
-      ></div>
-    </div>
-    <div className="relative">
-      <input
-        className="absolute -top-[5px] left-0 w-full h-[5px] appearance-none [background:none] pointer-events-none tw-slider-range"
-        type="range"
-        min="0"
-        max={MAX_RUNTIME}
-        step="10"
-        name="min-range"
-        value={minRuntime}
-        onChange={handleDragSliderRange}
-      />
-      <input
-        className="absolute -top-[5px] left-0 w-full h-[5px] appearance-none [background:none] pointer-events-none tw-slider-range"
-        type="range"
-        min="0"
-        max={MAX_RUNTIME}
-        step="10"
-        name="max-range"
-        value={maxRuntime}
-        onChange={handleDragSliderRange}
-      />
-    </div>
-  </div>
   );
 };
 

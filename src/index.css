@@ -34,6 +34,11 @@
   -webkit-box-orient: vertical;
 }
 
+.tw-slider-range::-webkit-slider-thumb {
+  @apply appearance-none h-4 w-4 rounded-full bg-white pointer-events-auto;
+}
+
+
 .grid-cols-sm {
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 }
