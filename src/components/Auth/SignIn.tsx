@@ -37,7 +37,13 @@ const SignIn: FunctionComponent<SignUpProps> = ({
      e.preventDefault()
 
      const email = emailRef.current.value
-    const password = passwordRef.current.value  }
+    const password = passwordRef.current.value
+     if(!email.trim() || !password.trim()) return 
+
+     setisLoading(true)
+
+     
+  }
 
   return (
     <>
