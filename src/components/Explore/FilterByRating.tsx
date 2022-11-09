@@ -49,8 +49,6 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
           : Number(e.target.value)
       );
 
-      console.log(currentSearchparams)
-
       timeoutRef.current = setTimeout(() => {
         setSearchParams({
           ...currentSearchparams,
@@ -98,7 +96,7 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
       <div className="relative h-[5px] bg-dark-darken rounded-md">
         <div
           ref={sliderRangeRef}
-          className="absolute top-0 h-[5px] bg-primary rounded-md"
+          className="absolute top-0 h-[5px]  red rounded-md"
         ></div>
       </div>
       <div className="relative">
