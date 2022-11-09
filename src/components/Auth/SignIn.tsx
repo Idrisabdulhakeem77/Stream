@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent } from "react";
+import React, { useState, FunctionComponent, useRef } from "react";
 
 import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -13,6 +13,7 @@ import {
   FacebookAuthProvider,
   TwitterAuthProvider,
 } from "firebase/auth";
+import { useAppSelector } from "../../store/hooks";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -24,6 +25,11 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   isSignedIn,
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [Loading , setisLoading] = useState(false)
+  const emailRef = useRef<HTMLInputElement>(null!)
+  const passwordRef = useRef<HTMLInputElement>(null!)
+  const currentUser = useAppSelector( state => state.user)
+  const [error , setError] = useState("")
   return (
     <div
       id="form"

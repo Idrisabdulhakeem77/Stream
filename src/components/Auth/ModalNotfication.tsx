@@ -6,7 +6,9 @@ interface ModalNotificationProps {}
 
 const ModalNotification : FunctionComponent<ModalNotificationProps> = ( ) => {
      return (
-         
+         <div>
+            
+            </div>
      )
 }
 
