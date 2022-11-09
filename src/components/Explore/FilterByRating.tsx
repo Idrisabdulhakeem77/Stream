@@ -32,7 +32,11 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
     sliderRangeRef.current.style.left = leftOffet + "%";
   };
 
-  
+  const updateMaxRangeBar = (value: number) => {
+    setMaxRuntime(value);
+    const rightOffet = 100 - (value / MAX_RUNTIME) * 100;
+    sliderRangeRef.current.style.right = rightOffet + "%";
+  };
 
   return <div>Filter By rating</div>;
 };
