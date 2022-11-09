@@ -14,6 +14,7 @@ import {
   TwitterAuthProvider,
 } from "firebase/auth";
 import { useAppSelector } from "../../store/hooks";
+import ModalNotification from "./ModalNotfication";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -31,6 +32,12 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   const currentUser = useAppSelector( state => state.user)
   const [error , setError] = useState("")
   return (
+
+     {
+      currentUser && (
+         <ModalNotification
+      )
+     }
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
