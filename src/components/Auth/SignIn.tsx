@@ -1,4 +1,5 @@
 import React, { useState, FunctionComponent, useRef, FormEvent } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -15,6 +16,7 @@ import {
 } from "firebase/auth";
 import { useAppSelector } from "../../store/hooks";
 import ModalNotification from "./ModalNotfication";
+import { auth } from "../../shared/firebase";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -41,8 +43,11 @@ const SignIn: FunctionComponent<SignUpProps> = ({
      if(!email.trim() || !password.trim()) return 
 
      setisLoading(true)
+     signInWithEmailAndPassword( auth , email , password )
+       .catch( (err)  => {})
+       .finally(() => setisLoading(false)) 
 
-     
+
   }
 
   return (
