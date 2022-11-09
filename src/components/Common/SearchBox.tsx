@@ -1,10 +1,20 @@
-import { useState  , FunctionComponent} from "react";
+import { useState  , FunctionComponent , useRef , useEffect} from "react";
+import { useLocation , useNavigate, useSearchParams  } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 
- interface SearchBoxProps { }
+ interface SearchBoxProps { 
+     autoFocus?: boolean
+ }
 
-const SearchBox = () => {
-  const [searchInput, setSearchInput] = useState("");
+const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
+  const [searchInput, setSearchInput] = useState( searchParams.get('query') || "" );
+  const timeOutRef = useRef<any>(null)
+  const [suggestion , setSuggestion] = useState<string[]>([])
+
+  const navigate = useNavigate()
+  
   return (
     <div className="absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ">
       <form className="relative">
