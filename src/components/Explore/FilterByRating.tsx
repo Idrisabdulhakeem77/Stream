@@ -49,6 +49,8 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
           : Number(e.target.value)
       );
 
+      console.log(currentSearchparams)
+
       timeoutRef.current = setTimeout(() => {
         setSearchParams({
           ...currentSearchparams,
