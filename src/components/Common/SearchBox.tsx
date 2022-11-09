@@ -1,59 +1,71 @@
-import { useState  , FunctionComponent , useRef , useEffect, FormEvent} from "react";
-import { useLocation , useNavigate, useSearchParams  } from "react-router-dom";
+import {
+  useState,
+  FunctionComponent,
+  useRef,
+  useEffect,
+  FormEvent,
+} from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import {getSearchKeyWord} from '../../services/search'
+import { getSearchKeyWord } from "../../services/search";
 
- interface SearchBoxProps { 
-     autoFocus?: boolean
- }
- 
- let initialState = true
+interface SearchBoxProps {
+  autoFocus?: boolean;
+}
 
-const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
-  const location = useLocation()
-  const [searchParams] = useSearchParams()
-  const [searchInput, setSearchInput] = useState( searchParams.get('query') || "" );
-  const timeOutRef = useRef<any>(null)
-  const [suggestion , setSuggestion] = useState<string[]>([])
+let initialState = true;
 
-  const navigate = useNavigate()
+const SearchBox: FunctionComponent<SearchBoxProps> = () => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const [searchInput, setSearchInput] = useState(
+    searchParams.get("query") || ""
+  );
+  const timeOutRef = useRef<any>(null);
+  const [suggestion, setSuggestion] = useState<string[]>([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-     if(timeOutRef.current) clearTimeout(timeOutRef.current)
+    if (timeOutRef.current) clearTimeout(timeOutRef.current);
 
-     setSuggestion([])
+    setSuggestion([]);
 
-     if(!searchInput.trim()) return 
-    
-      timeOutRef.current = setTimeout( async () => {
-          const keywords = await getSearchKeyWord(searchInput.trim())
-          setSuggestion(keywords)
+    if (!searchInput.trim()) return;
 
-          if(initialState) {
-            initialState = false
-             setSuggestion([])
-          }
+    timeOutRef.current = setTimeout(async () => {
+      const keywords = await getSearchKeyWord(searchInput.trim());
+      setSuggestion(keywords);
 
-      } , 300)
-     
-      return () => clearTimeout( timeOutRef.current)
-  } , [searchInput])
+      if (initialState) {
+        initialState = false;
+        setSuggestion([]);
+      }
+    }, 300);
 
-  const handleSearch = ( e : FormEvent) => {
+    return () => clearTimeout(timeOutRef.current);
+  }, [searchInput]);
 
-    e.preventDefault()
-     
-    if(!searchInput.trim()) return
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
 
-    navigate(`/search?query=${encodeURIComponent(searchInput.trim())}`)
+    if (!searchInput.trim()) return;
 
-  }
-  
+    navigate(`/search?query=${encodeURIComponent(searchInput.trim())}`);
+    clearTimeout(timeOutRef.current);
+    setSuggestion([]);
+  };
+
+  useEffect(() => {
+    setSuggestion([]);
+    clearTimeout(timeOutRef.current);
+  }, [location.search]);
+
   return (
     <div className="absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ">
       <form className="relative">
         <button className="absolute top-1/2 -translate-y-1/2 left-5 text-white">
-          <FaSearch  size={25} className=""/>
+          <FaSearch size={25} className="" />
         </button>
 
         <input
@@ -61,7 +73,7 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
           placeholder="Search..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-        className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white"
+          className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white"
         />
       </form>
     </div>
