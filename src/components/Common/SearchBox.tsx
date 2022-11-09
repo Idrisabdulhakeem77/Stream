@@ -14,6 +14,16 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
   const [suggestion , setSuggestion] = useState<string[]>([])
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+     if(timeOutRef.current) clearTimeout(timeOutRef.current)
+
+     setSuggestion([])
+
+     if(!searchInput.trim()) return 
+
+     
+  } , [])
   
   return (
     <div className="absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ">

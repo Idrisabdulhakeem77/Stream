@@ -9,3 +9,17 @@ export const getRecommendedGenre = async() : Promise<getRecommendedGenreType> =>
          movieGenres , tvGenres
     }    
 } 
+
+
+export const getSearchKeyWord = async(query : string) : Promise<string[]>  => {
+     return (
+         await axios.get('/search/keyword' , {
+             params : {
+                 query
+             }
+         })
+     ).data.results
+     .map( (item : any) => item.name)
+     .filter(( _ : any , index : number) => index < 5) 
+     
+}
