@@ -30,8 +30,19 @@ const FilterByDate: FunctionComponent<FilterByDateProps> = () => {
           type="date"
           name="from"
           id="from"
-          onChange={(e) => handleFilterDate(e)}
+          onChange={handleFilterDate}
           value={searchParams.get("from") || "2000-12-13"}
+        />
+      </div>
+
+      <div className="flex justify-between items-center">
+        <label htmlFor="to"> To</label>
+        <input
+          type="date"
+          name="to"
+          id="to"
+          onChange={handleFilterDate}
+          value={searchParams.get("to") || "2023-01-01"}
         />
       </div>
     </div>
