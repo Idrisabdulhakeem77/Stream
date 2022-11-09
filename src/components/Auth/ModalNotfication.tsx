@@ -1,7 +1,11 @@
 import { FunctionComponent } from "react";
 
 
-interface ModalNotificationProps {} 
+interface ModalNotificationProps {
+    type : string ,
+    setError ?: any ,
+    message : string
+} 
 
 
 const ModalNotification : FunctionComponent<ModalNotificationProps> = ( ) => {

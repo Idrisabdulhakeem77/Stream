@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, useRef } from "react";
+import React, { useState, FunctionComponent, useRef, FormEvent } from "react";
 
 import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -31,9 +31,21 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   const passwordRef = useRef<HTMLInputElement>(null!);
   const currentUser = useAppSelector((state) => state.user);
   const [error, setError] = useState("");
+ 
+
+  const signInHandler = (e : FormEvent) => {
+     e.preventDefault()
+
+     const email = emailRef.current.value
+    const password = passwordRef.current.value  }
+
   return (
     <>
-      {currentUser && <ModalNotification />}
+      {currentUser && <ModalNotification message="Sign In succesfully" type="success" />}
+      { Loading &&  <div>Loading.....</div>}
+       { error && (
+         <ModalNotification message="Couldnt Sign in" type="error" setError={setError}/>
+       )} 
       <div
         id="form"
         className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
@@ -89,7 +101,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           })}
           onSubmit={() => console.log("Submitted")}
         >
-          <Form>
+          <Form onSubmit={signInHandler}>
             <div className="px-2 py-3">
               <div className="relative mb-3">
                 <Field
@@ -157,7 +169,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           <button
             type="submit"
             onClick={() => setIsSignedIn(!isSignedIn)}
-            className=" underline"
+            className="underline"
           >
             Sign up
           </button>
