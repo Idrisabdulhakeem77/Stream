@@ -96,7 +96,7 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
       <div className="relative h-[5px] bg-dark-darken rounded-md">
         <div
           ref={sliderRangeRef}
-          className="absolute top-0 h-[5px]  red rounded-md"
+          className="absolute top-0 h-[5px]  rounded-md"
         ></div>
       </div>
       <div className="relative">
