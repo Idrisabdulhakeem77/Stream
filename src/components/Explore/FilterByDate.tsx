@@ -27,6 +27,7 @@ const FilterByDate: FunctionComponent<FilterByDateProps> = () => {
       <div className="flex justify-between items-center">
         <label htmlFor="from"> From</label>
         <input
+          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
           type="date"
           name="from"
           id="from"
@@ -38,6 +39,7 @@ const FilterByDate: FunctionComponent<FilterByDateProps> = () => {
       <div className="flex justify-between items-center">
         <label htmlFor="to"> To</label>
         <input
+          className="outline-none bg-dark-lighten-2 px-3 py-1 rounded-md"
           type="date"
           name="to"
           id="to"
