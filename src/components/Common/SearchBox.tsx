@@ -15,7 +15,7 @@ interface SearchBoxProps {
 
 let initialState = true;
 
-const SearchBox: FunctionComponent<SearchBoxProps> = () => {
+const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus}) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
@@ -62,8 +62,8 @@ const SearchBox: FunctionComponent<SearchBoxProps> = () => {
   }, [location.search]);
 
   return (
-    <div className="absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ">
-      <form className="relative">
+    <div className={`absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ${suggestion.length > 0 && "!rounded-3xl"} `}>
+      <form className="relative" onSubmit={handleSearch}>
         <button className="absolute top-1/2 -translate-y-1/2 left-5 text-white">
           <FaSearch size={25} className="" />
         </button>
@@ -73,9 +73,33 @@ const SearchBox: FunctionComponent<SearchBoxProps> = () => {
           placeholder="Search..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          autoFocus={autoFocus}
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white"
         />
       </form>
+
+      {suggestion.length > 0 && (
+        <ul className="hidden group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%]">
+          {suggestion.map((suggestion, index) => (
+            <li
+              key={index}
+              className="focus:bg-red-500 outline-none"
+              tabIndex={index - 1}
+            >
+              <button
+                onClick={() => {
+                  navigate(`/search?query=${encodeURIComponent(suggestion)}`);
+                  setSuggestion([]);
+                }}
+                className="flex items-center gap-3 ml-5 hover:text-white transition duration-300"
+              >
+                <FaSearch size={25} />
+                <span>{suggestion}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
