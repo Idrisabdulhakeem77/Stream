@@ -32,10 +32,10 @@ const FilterBy: FunctionComponent<FilterByProps> = ({ currentTab }) => {
              <p className="text-lg mb-4 text-white/80"> Genres  </p>
             <FilterByGenre currentTab={currentTab}/>
 
-            <p className="text-lg mb-4 text-white/80"> Runtime  </p>
+            <p className="text-lg mb-4 mt-4 text-white/80"> Runtime  </p>
             <FilterByRating/>
 
-            <p className="text-lg mb-4 text-white/80"> Runtime  </p>
+            <p className="text-lg mb-4 mt-4 text-white/80"> Realease Dates  </p>
             <FilterByDate/>
             </div>
       )}
