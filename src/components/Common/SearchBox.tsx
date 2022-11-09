@@ -1,10 +1,13 @@
-import { useState  , FunctionComponent , useRef , useEffect} from "react";
+import { useState  , FunctionComponent , useRef , useEffect, FormEvent} from "react";
 import { useLocation , useNavigate, useSearchParams  } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import {getSearchKeyWord} from '../../services/search'
 
  interface SearchBoxProps { 
      autoFocus?: boolean
  }
+ 
+ let initialState = true
 
 const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
   const location = useLocation()
@@ -21,9 +24,30 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ( ) => {
      setSuggestion([])
 
      if(!searchInput.trim()) return 
+    
+      timeOutRef.current = setTimeout( async () => {
+          const keywords = await getSearchKeyWord(searchInput.trim())
+          setSuggestion(keywords)
 
+          if(initialState) {
+            initialState = false
+             setSuggestion([])
+          }
+
+      } , 300)
      
-  } , [])
+      return () => clearTimeout( timeOutRef.current)
+  } , [searchInput])
+
+  const handleSearch = ( e : FormEvent) => {
+
+    e.preventDefault()
+     
+    if(!searchInput.trim()) return
+
+    navigate(`/search?query=${encodeURIComponent(searchInput.trim())}`)
+
+  }
   
   return (
     <div className="absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ">
