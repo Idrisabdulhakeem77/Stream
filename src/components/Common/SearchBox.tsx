@@ -24,20 +24,22 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
   const timeOutRef = useRef<any>(null);
   const [suggestion, setSuggestion] = useState<string[]>([]);
 
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (timeOutRef.current) clearTimeout(timeOutRef.current);
-
-  
-
-    if (!searchInput.trim()) return;
+    if (timeOutRef.current) {
+       clearTimeout(timeOutRef.current)
+    };
+     
+    setSuggestion([])
+     
+     if (!searchInput.trim()) return;
 
     timeOutRef.current = setTimeout(async () => {
       const keywords = await getSearchKeyWord(searchInput.trim());
   
        setSuggestion(keywords);
+
        if (initialState) {
         initialState = false;
         setSuggestion([]);
