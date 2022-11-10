@@ -1,4 +1,4 @@
-import { FunctionComponent , useState } from "react";
+import { FunctionComponent , useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 
@@ -16,6 +16,20 @@ const ModalNotification : FunctionComponent<ModalNotificationProps> = (  { type 
    const [timeLeft , setTimeLeft] = useState( type === "success" ? TIMEOUT_AUTO_CLOSE_SUCCESS : TIMEOUT_AUTO_CLOSE_ERROR)
    const navigate = useNavigate()
    const [searchParams] = useSearchParams()
+
+   const isCloseModalAutomatically = timeLeft === 0; 
+
+   useEffect(() => {
+     if(isCloseModalAutomatically) {
+         navigate(searchParams.get('redirect') || "/")
+     }  else {
+         setError('')
+     }
+       //eslint-disable-next-line
+   } , [isCloseModalAutomatically])
+
+
+   
      return ( 
          <div>
             
