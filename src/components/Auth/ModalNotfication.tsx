@@ -28,6 +28,12 @@ const ModalNotification : FunctionComponent<ModalNotificationProps> = (  { type 
        //eslint-disable-next-line
    } , [isCloseModalAutomatically])
 
+   useEffect(() => {
+      const timeout = setInterval(() => {
+          setTimeLeft(prev => prev - 1)
+      } , 1000)
+   } , []) 
+ 
 
    
      return ( 
