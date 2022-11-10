@@ -32,15 +32,17 @@ const ModalNotification : FunctionComponent<ModalNotificationProps> = (  { type 
       const timeout = setInterval(() => {
           setTimeLeft(prev => prev - 1)
       } , 1000)
+
+      return () => clearInterval(timeout)
    } , []) 
  
-
+ 
    
      return ( 
          <div>
             
             </div>
-     )
+    )
 }
 
 export default ModalNotification
