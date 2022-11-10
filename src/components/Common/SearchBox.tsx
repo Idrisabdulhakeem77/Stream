@@ -1,6 +1,6 @@
 import {
   useState,
-  FunctionComponent,
+  FC,
   useRef,
   useEffect,
   FormEvent,
@@ -15,7 +15,7 @@ interface SearchBoxProps {
 
 let initialState = true;
 
-const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus = false }) => {
+const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
