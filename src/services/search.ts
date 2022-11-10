@@ -19,7 +19,7 @@ export const getSearchKeyWord = async(query : string) : Promise<string[]>  => {
              }
          })
      ).data.results
-     .map( (item : any) => item.name)
+     .map( (item : any) => item.name )
      .filter(( _ : any , index : number) => index < 5) 
      
 }
