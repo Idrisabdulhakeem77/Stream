@@ -49,8 +49,12 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
           } `
 
         }}
-        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 "
-      ></div>
+        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center"
+      >
+        <div className="mt-[230px] font-bold text-black text-[40px] text-center">
+          {type === "success" ? "Successfully Logged in! 🤓" : "oooppss 😑"}
+        </div>
+      </div>
     </>
   );
 };
