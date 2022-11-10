@@ -15,7 +15,7 @@ interface SearchBoxProps {
 
 let initialState = true;
 
-const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus }) => {
+const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus = false }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
@@ -23,6 +23,7 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus }) => {
   );
   const timeOutRef = useRef<any>(null);
   const [suggestion, setSuggestion] = useState<string[]>([]);
+
 
   const navigate = useNavigate();
 
@@ -35,20 +36,19 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus }) => {
 
     timeOutRef.current = setTimeout(async () => {
       const keywords = await getSearchKeyWord(searchInput.trim());
+  
        setSuggestion(keywords);
-        
-      //  if (initialState) {
-      //   initialState = false;
-      //   setSuggestion([]);
-      // }
-       console.log(suggestion)
-        
-    }, 3000);
-    console.log(searchInput)
-    
+       if (initialState) {
+        initialState = false;
+        setSuggestion([]);
+      }     
+    }, 300);
+
     return () => clearTimeout(timeOutRef.current);
 
   }, [searchInput]);
+
+
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -57,14 +57,12 @@ const SearchBox: FunctionComponent<SearchBoxProps> = ({autoFocus }) => {
 
     navigate(`/search?query=${encodeURIComponent(searchInput.trim())}`);
     clearTimeout(timeOutRef.current);
-    
+    setSuggestion([])
   };
 
   useEffect(() => {
     setSuggestion([]);
     clearTimeout(timeOutRef.current);
-    console.log(location)
-    
   }, [location.search]);
 
   return (
