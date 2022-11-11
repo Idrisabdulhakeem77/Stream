@@ -27,7 +27,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
     if (isCloseModalAutomatically) {
       navigate(searchParams.get("redirect") || "/");
     } else {
-      console.log("Error")
+      console.log("Error");
     }
     //eslint-disable-next-line
   }, [isCloseModalAutomatically]);
@@ -45,15 +45,23 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
       <div
         style={{
           backgroundImage: `${
-            type === "success" ? 'url(/Images/success)' : 'url(/Images/fail)'
-          } `
-
+            type === "success" ? "url(/Images/success)" : "url(/Images/fail)"
+          } `,
         }}
         className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center"
       >
         <div className="mt-[230px] font-bold text-black text-[40px] text-center">
           {type === "success" ? "Successfully Logged in! 🤓" : "oooppss 😑"}
         </div>
+        <p>
+          {message}
+          <br />
+          {type === "success" ? (
+            <span>Yay lets goooo!!👊</span>
+          ) : (
+            <span> Stay put and try again ✊ </span>
+          )}
+        </p>
       </div>
     </>
   );
