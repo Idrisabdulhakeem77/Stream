@@ -70,9 +70,13 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
             <span> Stay put and try again ✊ </span>
           )}
         </p>
-        <button>
-
+        <button onClick={checkSuccess}>
+           <p> { type === "success" ? "CONTINUE" : "TRY AGAIN"}</p>
+           <p> { timeLeft}</p> 
         </button>
+      </div>
+      <div onClick={setError('')}>
+         
       </div>
     </>
   );
