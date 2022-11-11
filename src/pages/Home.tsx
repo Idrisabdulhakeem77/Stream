@@ -7,7 +7,7 @@ import SearchBox from "../components/Common/SearchBox";
 import User from "../components/Common/User";
 import MainHomeFilms from "../components/Home/MainHomeFilm";
 import { useQuery } from "@tanstack/react-query";
-import { Animes, HomeFilms, Items } from "../shared/types";
+import { HomeFilms, Items } from "../shared/types";
 import {
   getHomeMovies,
   getMovieBannerInfo,
@@ -16,8 +16,7 @@ import {
 } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
-import {getAnime} from '../services/anime'
-import Anime from "../components/Home/Animes";
+
 
 const Home: FC = () => {
   const {
@@ -56,7 +55,6 @@ const Home: FC = () => {
     { enabled: !!dataTV?.Trending }
   );
 
-  const { data : animes , isLoading : isAnimeLoading, error:  animeError , isError : isAnimeError}  = useQuery<Animes[] , Error>(['animes'] , getAnime)
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
