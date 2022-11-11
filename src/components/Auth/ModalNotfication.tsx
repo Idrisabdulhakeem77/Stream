@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 interface ModalNotificationProps {
-  type: string;
+  type: "success" | "error";
   setError?: any;
   message: string;
 }
@@ -40,6 +40,14 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
     return () => clearInterval(timeout);
   }, []);
 
+  const checkSuccess = () => {
+     if(type === "success") {
+         navigate(`${searchParams.get('redirect') || "/"}`)
+     } else {
+       setError("")
+     }
+  }
+
   return (
     <>
       <div
@@ -62,6 +70,9 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
             <span> Stay put and try again ✊ </span>
           )}
         </p>
+        <button>
+
+        </button>
       </div>
     </>
   );
