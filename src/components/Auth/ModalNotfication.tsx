@@ -56,7 +56,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
             type === "success" ? "url(/Images/success)" : "url(/Images/fail)"
           } `,
         }}
-        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center"
+        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center bg-b"
       >
         <div className="mt-[230px] font-bold text-black text-[40px] text-center">
           {type === "success" ? "Successfully Logged in! 🤓" : "oooppss 😑"}

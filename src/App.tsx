@@ -4,7 +4,6 @@ import { Route  , Routes } from 'react-router-dom';
 import Explore from './pages/Explore';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
-// import Sidebar from './components/common/Sidebar';
 
 function App() {
   return (
