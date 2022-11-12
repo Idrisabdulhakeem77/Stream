@@ -71,7 +71,6 @@ const Home: FC = () => {
   
   return (
     <>
-     { console.log(currentUser)}
       <Title value="Anime Stream" />
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
