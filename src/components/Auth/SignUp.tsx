@@ -10,10 +10,11 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { useAppSelector } from "../../store/hooks";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider , FacebookAuthProvider } from "firebase/auth";
 import { auth, db } from "../../shared/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { convertErrorCodeToMessage, getRandomAvatar } from "../../shared/utils";
+import {SignInWithProvder} from './signInWithProvider'
 import ModalNotification from "./ModalNotfication";
 
 interface SignUpProps {
@@ -71,10 +72,14 @@ const SignUp: FunctionComponent<SignUpProps> = ({
           Create An Account For Free
         </div>
         <div className="flex gap-3 mb-4">
-          <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
+          <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300"
+           onClick={ () => SignInWithProvder( new GoogleAuthProvider() , "google")}
+          >
             <FaGoogle size={30} />
           </button>
-          <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
+          <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300"
+            onClick={() => SignInWithProvder(new FacebookAuthProvider() , "facebook")}
+           >
             <FaFacebook size={30} />
           </button>
           <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
