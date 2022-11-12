@@ -5,7 +5,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Field, Form, Formik , ErrorMessage } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 
 import * as Yup from "yup";
 
@@ -32,10 +32,12 @@ const SignUp: FunctionComponent<SignUpProps> = ({
     await createUserWithEmailAndPassword(auth, values.email, values.password);
   };
 
-  const SignUpSchema = Yup.object().shape({
-    fullname: Yup.string().required("Required").max(30, "Must be a 30 or less") ,
-    email : Yup.string().required("Require").email() ,
-    password :Yup.string().required("Required").min( 6 , "Password must be six characters or more" )
+  const SignUpSchema = Yup.object({
+    fullname: Yup.string().required("Required").max(30, "Must be a 30 or less"),
+    email: Yup.string().required("Require").email(),
+    password: Yup.string()
+      .required("Required")
+      .min(6, "Password must be six characters or more"),
   });
 
   return (
@@ -63,26 +65,26 @@ const SignUp: FunctionComponent<SignUpProps> = ({
       </div>
 
       <Formik
-        
         initialValues={{
           fullname: "",
           email: "",
           password: "",
         }}
-        validationSchema={ SignUpSchema}
-        onSubmit={() => console.log("form submitted")}
+         validationSchema={SignUpSchema}
+        onSubmit={ SignUpHandler}
+    
       >
         <Form>
           <div className="px-2 py-3">
             <div className="relative mb-3">
               <Field
-                name="fullName"
+                name="fullname"
                 type="text"
                 placeholder="Full name"
                 className="w-full bg-dark-lighten px-5 py-4 pr-12 rounded-xl outline-none peer  text-white "
               />
               <label
-                htmlFor="fullName"
+                htmlFor="fullname"
                 className={`absolute left-5 text-gray-400 transition duration-500 pointer-events-none 
                 translate-y-[-50%] visible peer-placeholder-shown:opacity-0 peer-placeholder-shown:invisible peer-placeholder-shown:translate-y-[-10%] ease-in-out
                 `}
@@ -94,7 +96,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 className="absolute top-1/2 -translate-y-2/3 right-4"
               />
               <p>
-                 <ErrorMessage name="fullname"/>
+                <ErrorMessage name="fullname" />
               </p>
             </div>
 
@@ -118,8 +120,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 className="absolute top-1/2 -translate-y-2/3 right-4"
               />
               <p>
-                  <ErrorMessage  name="Email" />
-                  </p> 
+                <ErrorMessage name="email" />
+              </p>
             </div>
 
             <div className="relative mb-3">
@@ -150,7 +152,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                   className="absolute top-1/2 -translate-y-2/3 right-4"
                 />
               )}
-               <ErrorMessage name="password"/>
+              <ErrorMessage name="password" />
             </div>
             <button
               type="submit"
