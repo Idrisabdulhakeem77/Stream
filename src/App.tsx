@@ -68,7 +68,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
         <Route path="auth" element={<Auth />} />
-        <Route path="animes" element={<Anime />} />
+        <Route path="anime" element={<Anime />} />
       </Routes>
     </div>
   );
