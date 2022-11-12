@@ -11,6 +11,7 @@ import { setCurrentUser } from "./store/slice/userSlice";
 import userEvent from "@testing-library/user-event";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
+import Anime from "./pages/Animes";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -67,6 +68,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
         <Route path="auth" element={<Auth />} />
+        <Route path="animes" element={<Anime />} />
       </Routes>
     </div>
   );
