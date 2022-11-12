@@ -44,6 +44,19 @@ function App() {
             })
           );
         });
+      } else {
+        onSnapshot(doc(db, "users", user.uid), (doc) => {
+          console.log(doc.data());
+          dispatch(
+            setCurrentUser({
+              email: user.email,
+              displayName: user.displayName,
+              emailVerified: doc.data()?.emailVerified,
+              photoURL: doc.data()?.photoURL,
+              uid: user.uid,
+            })
+          );
+        });
       }
     });
   }, [dispatch]);
