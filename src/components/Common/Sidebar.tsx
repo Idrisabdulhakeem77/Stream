@@ -84,6 +84,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
   return (
     <>
+        <ToastContainer/>
+
       <div
         className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  fixed  -translate-x-full transition duration-300 ${
           isSidebarOpen && "translate-x-0"
@@ -135,45 +137,51 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
         {/* <div className="text-black text-lg text-center mt-2">LIBRARY</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <button
+          onClick={ () => privateUrlhandler("/bookmarks")}
+          className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <BsBookmarkHeart size={25} />
             <p>Bookmarked</p>
           </button>
 
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <button 
+            onClick={ () => privateUrlhandler("/recent")}
+           className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <AiOutlineHistory size={25} />
             <p>Recent</p>
           </button>
 
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link  to="/top-rated" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <AiOutlineStar size={25} />
             <p>Top Rated</p>
-          </button>
+          </Link>
         </div>
         {/* 
         <div className="text-black text-lg font-medium mt-4 text-center">
           Categories
         </div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link to="tv-shows" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <RiSlideshow4Line size={25} />
             <p>Tv Shows</p>
-          </button>
+          </Link>
 
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link to="movies" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <BsCameraVideo size={25} />
             <p>Movies</p>
-          </button>
+          </Link>
 
-          <button className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link to="/animes" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <FiAnchor size={25} />
             <p>Anime</p>
-          </button>
+          </Link>
         </div>
 
         {/* <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          <button className="flex gap-3 items-center ">
+          <button
+           onClick={ () => privateUrlhandler("/profile")}
+          className="flex gap-3 items-center ">
             <BiUserCircle size={25} />
             <p> Profile </p>
           </button>
@@ -184,7 +192,9 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </button>
 
           {currentUser ? (
-            <button className="flex gap-3 items-center ">
+            <button
+             onClick={signOutHandler}
+            className="flex gap-3 items-center ">
               <HiOutlineLogin size={25} />
               <p> Logout</p>
             </button>
