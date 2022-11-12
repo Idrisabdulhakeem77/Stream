@@ -8,7 +8,7 @@ interface ModalNotificationProps {
 }
 
 const TIMEOUT_AUTO_CLOSE_ERROR = 5;
-const TIMEOUT_AUTO_CLOSE_SUCCESS = 2;
+const TIMEOUT_AUTO_CLOSE_SUCCESS = 20;
 
 const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
   type,
@@ -52,9 +52,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
     <>
       <div
         style={{
-          backgroundImage: `${
-            type === "success" ? "url(/Images/success)" : "url(/Images/fail)"
-          } `,
+          backgroundImage: `${ type === "success" ? "url(/Images/success.jpg)" : "url(/Images/fail.jpg)"}`
         }}
         className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center bg-b"
       >

@@ -26,7 +26,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   isSignedIn,
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const currentUser = useAppSelector((state) => state.user);
+  const currentUser = useAppSelector((state) => state.user.user);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -58,7 +58,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
 
   return (
     <>
-     { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>}
+     { console.log(currentUser)}
+     {/* { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>} */}
       { loading && <div>Loading</div>}
       { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" />}
     <div

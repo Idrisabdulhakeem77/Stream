@@ -31,7 +31,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   const [Loading, setisLoading] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null!);
   const passwordRef = useRef<HTMLInputElement>(null!);
-  const currentUser = useAppSelector((state) => state.user);
+  const currentUser = useAppSelector((state) => state.user.user);
   const [error, setError] = useState("");
  
 
