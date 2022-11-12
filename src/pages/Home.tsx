@@ -137,7 +137,7 @@ const Home: FC = () => {
             <div className="flex items-center md:hidden gap-4">
               <p> { currentUser ? currentUser.displayName : "Unknown" }</p>
               <img
-                src="/Images/user.svg"
+                src={ currentUser ? (currentUser.photoURL as string) : "/Images/user.svg"}
                 alt="user"
                 className="w-7 h-7 rounded-full object-cover"
               />
