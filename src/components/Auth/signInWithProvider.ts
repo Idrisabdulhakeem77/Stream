@@ -24,11 +24,7 @@ export const SignInWithProvder = (provider: any, type: string) => {
       token = credential?.accessToken;
     }
 
-    if(type === "twitter") {
-      const credential = TwitterAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      const secret = credential?.secret;
-    }
+   
 
     setDoc(doc(db, "users", user.uid), {
       fullname: user.displayName,

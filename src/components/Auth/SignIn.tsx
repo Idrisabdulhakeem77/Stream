@@ -74,7 +74,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
             >
               <FaGoogle size={30} />
             </button>
-            <button
+            {/* <button
               onClick={() =>
                 SignInWithProvder(new FacebookAuthProvider(), "google")
               }
@@ -89,7 +89,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
               className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300"
             >
               <FaTwitter size={30} />
-            </button>
+            </button> */}
           </div>
 
           <div className="text-lg"> or use your email to Login:</div>
