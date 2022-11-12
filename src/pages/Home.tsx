@@ -16,9 +16,10 @@ import {
 } from "../services/home";
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
-
+import { useAppSelector } from "../store/hooks";
 
 const Home: FC = () => {
+   const currentUser = useAppSelector(state => state.user.user)
   const {
     data: dataMovie,
     isLoading: isLoadingMovie,
@@ -66,9 +67,11 @@ const Home: FC = () => {
 
   if (isTvErrorDetail) return <div>ERR : {errorTvDetail.message} </div>;
   if (isTvError) return <div> ERR : {tvError.message} </div>;
-
+  
+  
   return (
     <>
+     { console.log(currentUser)}
       <Title value="Anime Stream" />
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
@@ -133,7 +136,7 @@ const Home: FC = () => {
             </div>
 
             <div className="flex items-center md:hidden gap-4">
-              <p> Unknown</p>
+              <p> { currentUser ? currentUser.displayName : "Unknown" }</p>
               <img
                 src="/Images/user.svg"
                 alt="user"

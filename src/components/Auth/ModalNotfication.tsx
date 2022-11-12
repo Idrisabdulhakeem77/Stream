@@ -76,7 +76,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
         </button>
       </div>
       <div
-        onClick={setError("")}
+        // onClick={setError("")}
         className="fixed h-full w-full top-0 left-0 z-13 bg-black"
       ></div>
     </>

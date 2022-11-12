@@ -60,7 +60,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
     <>
      { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>}
       { loading && <div>Loading</div>}
-      { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" setError={error}/>}
+      { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" />}
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
