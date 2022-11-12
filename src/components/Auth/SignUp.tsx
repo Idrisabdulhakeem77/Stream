@@ -11,7 +11,9 @@ import * as Yup from "yup";
 
 import { useAppSelector } from "../../store/hooks";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../shared/firebase";
+import { auth, db } from "../../shared/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { convertErrorCodeToMessage, getRandomAvatar } from "../../shared/utils";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -28,8 +30,20 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   const [error, setError] = useState("");
 
   const SignUpHandler = async (values: { [key: string]: string }) => {
-    console.log(values);
-    await createUserWithEmailAndPassword(auth, values.email, values.password);
+     try {
+       setLoading(true)
+      const user = ( await createUserWithEmailAndPassword(auth, values.email, values.password)).user
+      
+      setDoc(doc(db , "users" , user.uid) , { 
+         fullname : values.fullname ,
+        photoUrl : getRandomAvatar() ,
+         Bookmarked : [] , 
+         recentlyWatched : []
+      })
+     } catch(err : any) {
+         setError(convertErrorCodeToMessage(err.code))
+     }
+    
   };
 
   const SignUpSchema = Yup.object({
@@ -157,7 +171,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
             <button
               type="submit"
               className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"
-              onClick={() => console.log("yeah you clicked me so??")}
             >
               {" "}
               Sign Up{" "}
