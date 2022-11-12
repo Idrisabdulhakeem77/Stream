@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from "react";
 
-import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaGoogle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -8,6 +8,11 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Field, Form, Formik } from "formik";
 
 import * as Yup from "yup";
+
+
+import {useAppSelector} from '../../store/hooks'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../shared/firebase";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -19,6 +24,15 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   isSignedIn,
 }) => {
   const [showPassword , setShowPassword] = useState<boolean>(false)
+  const currentUser = useAppSelector(state => state.user)
+  const [loading , setLoading] = useState(false)
+  const [error , setError]  = useState("")
+
+
+  const SignUpHandler = async( values : { [key : string] : string }) => {
+      console.log(values)
+    await createUserWithEmailAndPassword( auth , values.email , values.password)
+  }
   return (
     <div
       id="form"
@@ -60,7 +74,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
             .required("No password provided.")
             .min(6, "Password is too short - should be 6 chars minimum."),
         })}
-        onSubmit={() => console.log("Submitted")}
+        onSubmit={SignUpHandler}
       >
         <Form>
           <div  className="px-2 py-3">
