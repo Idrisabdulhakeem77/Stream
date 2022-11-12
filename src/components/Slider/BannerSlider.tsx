@@ -30,7 +30,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
     
     
     <>
-    <div className="mt-4 relative h-0 md:pb-[45%] pb-[35%]  tw-banner-slider mb-4">
+    {/* <div className="mt-4 relative h-0 md:pb-[45%] pb-[35%]  tw-banner-slider mb-4">
 
       {isBannerLoading ? (
          <Skeleton className="absolute top-0 left-0 w-full h-full rounded-lg"/>
@@ -109,7 +109,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
         </Swiper>
       
       )}
-      </div>
+      </div> */}
     </>
   );
 };
