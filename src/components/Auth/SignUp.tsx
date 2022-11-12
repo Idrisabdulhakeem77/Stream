@@ -43,7 +43,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
      } catch(err : any) {
          setError(convertErrorCodeToMessage(err.code))
      }
-    
+     
+     setLoading(false)
   };
 
   const SignUpSchema = Yup.object({
