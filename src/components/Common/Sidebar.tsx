@@ -11,6 +11,9 @@ import { RiSlideshow4Line } from "react-icons/ri";
 import { FiAnchor } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
 import { useAppSelector } from "../../store/hooks";
+import { signOut } from "firebase/auth";
+import { auth } from "../../shared/firebase";
+import {toast , ToastContainer} from 'react-toastify'
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -29,11 +32,20 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   const signOutHandler = () => {
       try {
-      
+         signOut(auth)
+          .then(() => {
+             
+          })
          
       } catch(err : any) {
          alert(err.message)
       }
+  }
+
+  const privateUrlhandler = ( destinationurl : string) => {
+      if(!currentUser) {
+         toas
+      } 
   }
   return (
     <>
