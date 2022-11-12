@@ -13,7 +13,7 @@ import { FaTimes } from "react-icons/fa";
 import { useAppSelector } from "../../store/hooks";
 import { signOut } from "firebase/auth";
 import { auth } from "../../shared/firebase";
-import {toast , ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from "react-toastify";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -25,36 +25,63 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const currentUser = useAppSelector((state) => state.user.user);
   const location = useLocation();
   const navigate = useNavigate();
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const closeSideBar = () => {
     setIsSidebarOpen(false);
   };
 
-  const signOutHandler = () => {
-      try {
-         signOut(auth)
-          .then(() => {
-             
-          })
-         
-      } catch(err : any) {
-         alert(err.message)
-      }
-  }
+// //   const signOutHandler = () => {
+// //     signOut(auth)
+// //     .then(() => {
+// //       toast.success("Signed In successfully", {
+// //         autoClose: 3000,
+// //         draggable: true,
+// //         pauseOnHover: true,
+// //         closeOnClick: true,
+// //         hideProgressBar: false,
+// //         position: "top-right",
+// //       });
+// //       setTimeout(() => {
+// //         window.location.reload();
+// //       }, 2000);
 
-  const privateUrlhandler = ( destinationurl : string) => {
-      if(!currentUser) {
-         toast.info( " You need to sign in to access this route" , {
-             autoClose : 3000,
-             draggable : true,
-             pauseOnHover : true,
-             closeOnClick : true,
-             hideProgressBar : false ,
-             position : "top-right"
+// //  });
+//   };
 
-         })
-      } 
-  }
+ const signOutHandler = () => {
+     signOut(auth)
+     .then(() => {
+         toast.success(" Successfully Signed in" , {
+           position : "top-right" ,
+           autoClose : 3000 ,
+           closeOnClick : true ,
+           draggable : true ,
+            pauseOnHover : true,
+            hideProgressBar : false
+            
+         } )
+
+          setTimeout(() => {
+             window.location.reload()
+          } , 1000)
+     })
+     .catch(err => alert(err))
+     .finally(() => setLoading(false))
+ }
+
+
+  const privateUrlhandler = (destinationurl: string) => {
+    if (!currentUser) {
+      toast.info(" You need to sign in to access this route", {
+        autoClose: 3000,
+        draggable: true,
+        pauseOnHover: true,
+        closeOnClick: true,
+        hideProgressBar: false,
+        position: "top-right",
+      });
+    }
+  };
   return (
     <>
       <div
@@ -157,18 +184,18 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </button>
 
           {currentUser ? (
-            <button
-              
-              className="flex gap-3 items-center "
-            >
+            <button className="flex gap-3 items-center ">
               <HiOutlineLogin size={25} />
               <p> Logout</p>
             </button>
           ) : (
-            <Link to={`/auth?redirect=${encodeURIComponent(location.pathname)}`} className="flex gap-3 items-center ">
+            <Link
+              to={`/auth?redirect=${encodeURIComponent(location.pathname)}`}
+              className="flex gap-3 items-center "
+            >
               <HiOutlineLogin size={25} />
               <p> Login</p>
-            </Link >
+            </Link>
           )}
         </div>
       </div>
