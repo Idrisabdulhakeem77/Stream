@@ -12,6 +12,7 @@ import userEvent from "@testing-library/user-event";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
+import { getAnime } from "./services/anime";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -61,6 +62,8 @@ function App() {
       }
     });
   }, [dispatch]);
+ 
+
 
   return (
     <div className="App">

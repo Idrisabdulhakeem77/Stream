@@ -4,15 +4,19 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import MiniSidebar from "../components/Common/MiniSidebar";
 import Sidebar from "../components/Common/Sidebar";
-import {Link} from 'react-router-dom'
-import {FaBars} from 'react-icons/fa'
- 
+import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { Anime}
+
 interface AnimeProps {}
 
 const Anime: FC<AnimeProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
+
+  const { data : animes , error : animeErrors , } = useInfiniteQuery<
 
   useEffect(() => {
     const checkIfScrollbuttonShowUp = () => {
@@ -73,6 +77,8 @@ const Anime: FC<AnimeProps> = () => {
           />
         )}
       </div>
+
+      
     </>
   );
 };
