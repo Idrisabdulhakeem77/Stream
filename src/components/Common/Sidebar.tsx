@@ -44,7 +44,15 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   const privateUrlhandler = ( destinationurl : string) => {
       if(!currentUser) {
-         toas
+         toast.info( " You need to sign in to access this route" , {
+             autoClose : 3000,
+             draggable : true,
+             pauseOnHover : true,
+             closeOnClick : true,
+             hideProgressBar : false ,
+             position : "top-right"
+
+         })
       } 
   }
   return (
