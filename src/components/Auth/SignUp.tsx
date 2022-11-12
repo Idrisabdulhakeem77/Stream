@@ -14,6 +14,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../shared/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { convertErrorCodeToMessage, getRandomAvatar } from "../../shared/utils";
+import ModalNotification from "./ModalNotfication";
 
 interface SignUpProps {
   setIsSignedIn: any;
@@ -56,6 +57,10 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   });
 
   return (
+    <>
+     { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>}
+      { loading && <div>Loading</div>}
+      { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" setError={error}/>}
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
@@ -190,6 +195,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         </button>
       </p>
     </div>
+    </>
   );
 };
 
