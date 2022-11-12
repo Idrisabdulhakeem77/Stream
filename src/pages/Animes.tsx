@@ -47,7 +47,7 @@ const Anime: FC<AnimeProps> = () => {
   };
   return (
     <>
-     { console.log(animes?.pages)}
+      
       <Title value="Anime" />
       {showScrollBtn && (
         <button
