@@ -1,4 +1,4 @@
-import { FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, signInWithPopup , TwitterAuthProvider  } from "firebase/auth";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { auth, db } from "../../shared/firebase";
 
@@ -24,9 +24,15 @@ export const SignInWithProvder = (provider: any, type: string) => {
       token = credential?.accessToken;
     }
 
+    if(type === "twitter") {
+      const credential = TwitterAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const secret = credential?.secret;
+    }
+
     setDoc(doc(db, "users", user.uid), {
-      firstName: user.displayName,
-      lastName: "",
+      fullname: user.displayName,
+
       ...(type === "google" && { photoUrl: user.photoURL }),
       ...(type === "facebook" && {
         photoUrl: user.photoURL + "?access_token=" + token,

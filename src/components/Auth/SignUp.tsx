@@ -58,8 +58,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
 
   return (
     <>
-     { console.log(currentUser)}
-     {/* { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>} */}
+
+     { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>}
       { loading && <div>Loading</div>}
       { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" />}
     <div
