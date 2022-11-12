@@ -5,12 +5,11 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik , ErrorMessage } from "formik";
 
 import * as Yup from "yup";
 
-
-import {useAppSelector} from '../../store/hooks'
+import { useAppSelector } from "../../store/hooks";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../shared/firebase";
 
@@ -23,29 +22,34 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   setIsSignedIn,
   isSignedIn,
 }) => {
-  const [showPassword , setShowPassword] = useState<boolean>(false)
-  const currentUser = useAppSelector(state => state.user)
-  const [loading , setLoading] = useState(false)
-  const [error , setError]  = useState("")
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const currentUser = useAppSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  const SignUpHandler = async (values: { [key: string]: string }) => {
+    console.log(values);
+    await createUserWithEmailAndPassword(auth, values.email, values.password);
+  };
 
-  const SignUpHandler = async( values : { [key : string] : string }) => {
-      console.log(values)
-    await createUserWithEmailAndPassword( auth , values.email , values.password)
-  }
+  const SignUpSchema = Yup.object().shape({
+    fullname: Yup.string().required("Required").max(30, "Must be a 30 or less") ,
+    email : Yup.string().required("Require").email() ,
+    password :Yup.string().required("Required").min( 6 , "Password must be six characters or more" )
+  });
+
   return (
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
     >
       <div className="flex flex-col items-center mb-6 mt-12">
-  
         <div className="leading-none mb-4 text-[40px] font-extralight">
           Create An Account For Free
         </div>
         <div className="flex gap-3 mb-4">
           <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
-            <FaGoogle size={30}  />
+            <FaGoogle size={30} />
           </button>
           <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
             <FaFacebook size={30} />
@@ -53,31 +57,23 @@ const SignUp: FunctionComponent<SignUpProps> = ({
           <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
             <FaTwitter size={30} />
           </button>
-      
         </div>
 
         <div className="text-lg"> or use your email for Registration</div>
       </div>
 
       <Formik
+        
         initialValues={{
           fullname: "",
           email: "",
           password: "",
         }}
-        validationSchema={Yup.object({
-          fullname: Yup.string()
-            .required("Required")
-            .max(30, "Must be a 30 or less"),
-          email: Yup.string().required("Required"),
-          password: Yup.string()
-            .required("No password provided.")
-            .min(6, "Password is too short - should be 6 chars minimum."),
-        })}
-        onSubmit={ () => console.log("form submitted") }
+        validationSchema={ SignUpSchema}
+        onSubmit={() => console.log("form submitted")}
       >
         <Form>
-          <div  className="px-2 py-3">
+          <div className="px-2 py-3">
             <div className="relative mb-3">
               <Field
                 name="fullName"
@@ -97,6 +93,9 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 size={25}
                 className="absolute top-1/2 -translate-y-2/3 right-4"
               />
+              <p>
+                 <ErrorMessage name="fullname"/>
+              </p>
             </div>
 
             <div className="relative mb-3">
@@ -118,6 +117,9 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 size={25}
                 className="absolute top-1/2 -translate-y-2/3 right-4"
               />
+              <p>
+                  <ErrorMessage  name="Email" />
+                  </p> 
             </div>
 
             <div className="relative mb-3">
@@ -135,35 +137,42 @@ const SignUp: FunctionComponent<SignUpProps> = ({
               >
                 Password
               </label>
-               { showPassword ? (
-                 <AiFillEye
-                 onClick={() => setShowPassword(!showPassword)}
-                 size={25}
-                 className="absolute top-1/2 -translate-y-2/3 right-4"
-               />
-               ) : (
-                 <AiFillEyeInvisible
-                 onClick={() => setShowPassword(!showPassword)}
-                 size={25}
-                 className="absolute top-1/2 -translate-y-2/3 right-4"
-               />
-               )}
-             
+              {showPassword ? (
+                <AiFillEye
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={25}
+                  className="absolute top-1/2 -translate-y-2/3 right-4"
+                />
+              ) : (
+                <AiFillEyeInvisible
+                  onClick={() => setShowPassword(!showPassword)}
+                  size={25}
+                  className="absolute top-1/2 -translate-y-2/3 right-4"
+                />
+              )}
+               <ErrorMessage name="password"/>
             </div>
-            <button type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign Up </button>
+            <button
+              type="submit"
+              className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"
+              onClick={() => console.log("yeah you clicked me so??")}
+            >
+              {" "}
+              Sign Up{" "}
+            </button>
           </div>
         </Form>
       </Formik>
       <p className="text-xl flex gap-2 mt-32 justify-center">
-          <span>Already a member?</span>
-          <button
-            type="submit"
-            onClick={() => setIsSignedIn(!isSignedIn)}
-            className=" underline"
-          >
-            Sign In
-          </button>
-        </p>
+        <span>Already a member?</span>
+        <button
+          type="submit"
+          onClick={() => setIsSignedIn(!isSignedIn)}
+          className=" underline"
+        >
+          Sign In
+        </button>
+      </p>
     </div>
   );
 };
