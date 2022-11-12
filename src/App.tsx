@@ -35,7 +35,6 @@ function App() {
 
       if (user.providerData[0].providerId === "google.com") {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-          console.log(doc.data());
           dispatch(
             setCurrentUser({
               email: user.email,

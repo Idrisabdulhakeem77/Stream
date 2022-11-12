@@ -76,4 +76,7 @@ export interface Animes {
   };
   genres: Object[];
   trailer: Object[];
+  pagination : {
+    last_visible_page : number
+  }
 }
