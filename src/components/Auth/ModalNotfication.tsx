@@ -41,12 +41,12 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
   }, []);
 
   const checkSuccess = () => {
-     if(type === "success") {
-         navigate(`${searchParams.get('redirect') || "/"}`)
-     } else {
-       setError("")
-     }
-  }
+    if (type === "success") {
+      navigate(`${searchParams.get("redirect") || "/"}`);
+    } else {
+      setError("");
+    }
+  };
 
   return (
     <>
@@ -71,13 +71,14 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
           )}
         </p>
         <button onClick={checkSuccess}>
-           <p> { type === "success" ? "CONTINUE" : "TRY AGAIN"}</p>
-           <p> { timeLeft}</p> 
+          <p> {type === "success" ? "CONTINUE" : "TRY AGAIN"}</p>
+          <p> {timeLeft}</p>
         </button>
       </div>
-      <div onClick={setError('')}>
-         
-      </div>
+      <div
+        onClick={setError("")}
+        className="fixed h-full w-full top-0 left-0 z-13 bg-black"
+      ></div>
     </>
   );
 };
