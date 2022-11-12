@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { AiOutlineHome, AiOutlineHistory, AiOutlineStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineExplore } from "react-icons/md";
 import { BiSearch, BiUserCircle } from "react-icons/bi";
 import { BsBookmarkHeart, BsCameraVideo } from "react-icons/bs";
@@ -20,9 +20,21 @@ interface SidebarProps {
 const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const { isMobile } = useCurrentViewPort();
   const currentUser = useAppSelector((state) => state.user.user);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [loading , setLoading] = useState(false)
   const closeSideBar = () => {
     setIsSidebarOpen(false);
   };
+
+  const signOutHandler = () => {
+      try {
+      
+         
+      } catch(err : any) {
+         alert(err.message)
+      }
+  }
   return (
     <>
       <div
@@ -125,15 +137,18 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </button>
 
           {currentUser ? (
-            <button className="flex gap-3 items-center ">
+            <button
+              
+              className="flex gap-3 items-center "
+            >
               <HiOutlineLogin size={25} />
               <p> Logout</p>
             </button>
           ) : (
-            <button className="flex gap-3 items-center ">
+            <Link to={`/auth?redirect=${encodeURIComponent(location.pathname)}`} className="flex gap-3 items-center ">
               <HiOutlineLogin size={25} />
               <p> Login</p>
-            </button>
+            </Link >
           )}
         </div>
       </div>
