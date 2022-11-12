@@ -74,7 +74,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
             .required("No password provided.")
             .min(6, "Password is too short - should be 6 chars minimum."),
         })}
-        onSubmit={SignUpHandler}
+        onSubmit={ () => console.log("form submitted") }
       >
         <Form>
           <div  className="px-2 py-3">
@@ -150,7 +150,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                )}
              
             </div>
-            <button id="form-child" type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign Up </button>
+            <button type="submit" className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"> Sign Up </button>
           </div>
         </Form>
       </Formik>
