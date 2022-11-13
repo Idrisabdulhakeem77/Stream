@@ -12,7 +12,7 @@ interface ExploreMovieResultProps {
   pages?: ItemsPage[];
 }
 
-const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
+export const ExploreMovieResult: FunctionComponent<ExploreMovieResultProps> = ({
   pages,
 }) => {
   return (

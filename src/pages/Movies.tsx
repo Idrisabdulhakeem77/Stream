@@ -1,5 +1,8 @@
 import { FC, useState, useEffect } from "react";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
+import {ExploreMovieResult} from '../components/Explore/ExploreResult'
+import {getExploreMovie} from "../services/explore"
+import {useInfiniteQuery} from "@tanstack/react-query"
 
 interface MoviesProps {}
 
@@ -7,6 +10,10 @@ const Movies: FC<MoviesProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
+
+  
+
+
   useEffect(() => {
     const checkIfScrollbuttonShowUp = () => {
       const scrollOffset = document.documentElement.scrollTop;
@@ -28,7 +35,23 @@ const Movies: FC<MoviesProps> = () => {
       behavior: "smooth",
     });
   };
-  return <div>Movies</div>;
+
+  const {
+    data: movies,
+    error: errorMovies,
+    fetchNextPage: fetchNextPageMovie,
+    hasNextPage: hasNextPageMovie,
+  } = useInfiniteQuery<ItemsPage, Error>(
+    ["explore-result-movie", config],
+    ({ pageParam = 1 }) => getExploreMovie(pageParam, config),
+    {
+      getNextPageParam: (lastPage) =>
+        lastPage.page + 1 <= lastPage.total_pages
+          ? lastPage.page + 1
+          : undefined,
+    }
+  );
+  return ;
 };
 
 export default Movies;
