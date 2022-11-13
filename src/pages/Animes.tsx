@@ -109,7 +109,7 @@ const Anime: FC<AnimeProps> = () => {
               loader={<div>Loading more</div>}
               endMessage={<></>}
             >
-              <div className="flex-grow">
+              <div className="">
                 {animes?.pages.map((page) => {
                   const { data } = page;
                   return (
