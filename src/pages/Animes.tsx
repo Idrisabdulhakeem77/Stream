@@ -17,9 +17,9 @@ const Anime: FC<AnimeProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
 
-  const { data : animes , error : animeErrors , } = useInfiniteQuery<Animes[] , Error> (["animes"] , ( { pageParam = 1}) => getAnime(pageParam) , {
+  const { data : animes , error : animeErrors , } = useInfiniteQuery<Animes[] , Error> (["animes"] , ( { pageParam = 10}) => getAnime(pageParam) , {
        getNextPageParam : ( lastPage) => {
-          console.log(lastPage)
+          // console.log(lastPage)
        }
          
   })

@@ -38,16 +38,7 @@ export interface ItemsPage {
 }
 
 
-export interface AnimeItempage {
-    pagination : {
-        current_page : number 
-        has_next_page : boolean
-    }
 
-    data : Object[] | undefined
-    items : Object | undefined
-
-}
 export interface ConfigType {
   [key: string]: string | number;
 }
@@ -79,4 +70,13 @@ export interface Animes {
   pagination : {
     last_visible_page : number
   }
+}
+
+
+export interface AnimeItempage {
+     pagination : {
+      
+     } 
+
+     data : string[] | undefined
 }
