@@ -9,6 +9,7 @@ import { FaBars } from "react-icons/fa";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { AnimeItempage } from "../shared/types";
 import { getAnime } from "../services/anime";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface AnimeProps {}
 
@@ -33,21 +34,6 @@ const Anime: FC<AnimeProps> = () => {
           : undefined,
     }
   );
-  // const {
-  //   data
-  //   error ,
-  //   fetchNextPage: fetchNextPageMovie,
-  //   hasNextPage: hasNextPageMovie,
-  // } = useInfiniteQuery<ItemsPage, Error>(
-  //   ["explore-result-movie", config],
-  //   ({ pageParam = 1 }) => getExploreMovie(pageParam, config),
-  //   {
-  //     getNextPageParam: (lastPage) =>
-  //       lastPage.page + 1 <= lastPage.total_pages
-  //         ? lastPage.page + 1
-  //         : undefined,
-  //   }
-  // );
 
   useEffect(() => {
     const checkIfScrollbuttonShowUp = () => {
@@ -110,8 +96,33 @@ const Anime: FC<AnimeProps> = () => {
       </div>
 
       <div>
-
-         
+        {animes?.pages.reduce(
+          (acc, current) => [...acc, current.data],
+          [] as any
+        ).length === 0 ? (
+          <div>no such anime</div>
+        ) : (
+          <InfiniteScroll
+            dataLength={animes?.pages.length || 0}
+            next={() => fetchNextPage()}
+            hasMore={Boolean(hasNextPage)}
+            loader={<div>Loading more</div>}
+            endMessage={<></>}
+          >
+            <div>
+               { animes?.pages.map(page => {
+                   const { data} = page
+                   return (
+                      <div>
+                         { data.map(d => (
+                             <h1>{d.title}</h1>
+                         ))}
+                         </div>
+                   )
+               })}
+            </div>
+          </InfiniteScroll>
+        )}
       </div>
     </>
   );
