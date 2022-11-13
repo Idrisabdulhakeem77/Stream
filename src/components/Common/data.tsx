@@ -67,8 +67,8 @@ export const links = [
   },
 
   {
-    name: "login",
-    url: "/login",
+    name: "auth",
+    url: "/auth",
     icon: <HiOutlineLogin size={25} />,
   },
 ];
