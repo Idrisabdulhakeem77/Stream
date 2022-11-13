@@ -3,6 +3,7 @@ import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import {ExploreMovieResult} from '../components/Explore/ExploreResult'
 import {getExploreMovie} from "../services/explore"
 import {useInfiniteQuery} from "@tanstack/react-query"
+import { ItemsPage} from '../shared/types'
 
 interface MoviesProps {}
 
