@@ -7,7 +7,7 @@ import Sidebar from "../components/Common/Sidebar";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Animes} from '../shared/types'
+import { AnimeItempage} from '../shared/types'
 import { getAnime } from "../services/anime";
 
 interface AnimeProps {}
@@ -17,7 +17,7 @@ const Anime: FC<AnimeProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
 
-  const { data : animes , error : animeErrors , } = useInfiniteQuery<Animes[] , Error> (["animes"] , ( { pageParam = 10}) => getAnime(pageParam) , {
+  const { data : animes , error , hasNextPage , fetchNextPage} = useInfiniteQuery< AnimeItempage[], Error> (["animes"] , ( { pageParam = 10}) => getAnime(pageParam) , {
        getNextPageParam : ( lastPage) => {
           // console.log(lastPage)
        }
