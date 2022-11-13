@@ -48,7 +48,7 @@ export const getExploreMovie: (
         ...item,
         media_type: "tv",
       }));
-    console.log(data , adjustedItems)
+   
     return {
       ...data,
       results: adjustedItems,

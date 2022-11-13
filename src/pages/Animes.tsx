@@ -7,7 +7,7 @@ import Sidebar from "../components/Common/Sidebar";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { AnimeItempage} from '../shared/types'
+import { AnimeItempage } from "../shared/types";
 import { getAnime } from "../services/anime";
 
 interface AnimeProps {}
@@ -17,12 +17,37 @@ const Anime: FC<AnimeProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
 
-  const { data : animes , error , hasNextPage , fetchNextPage} = useInfiniteQuery< AnimeItempage[], Error> (["animes"] , ( { pageParam = 10}) => getAnime(pageParam) , {
-       getNextPageParam : ( lastPage) => {
-          // console.log(lastPage)
-       }
-         
-  })
+  const {
+    data: animes,
+    error,
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery<AnimeItempage, Error>(
+    ["animes"],
+    ({ pageParam = 1 }) => getAnime(pageParam),
+    {
+      getNextPageParam: (lastPage) =>
+        lastPage.pagination.current_page + 1 <=
+        lastPage.pagination.last_visible_page
+          ? lastPage.pagination.current_page + 1
+          : undefined,
+    }
+  );
+  // const {
+  //   data
+  //   error ,
+  //   fetchNextPage: fetchNextPageMovie,
+  //   hasNextPage: hasNextPageMovie,
+  // } = useInfiniteQuery<ItemsPage, Error>(
+  //   ["explore-result-movie", config],
+  //   ({ pageParam = 1 }) => getExploreMovie(pageParam, config),
+  //   {
+  //     getNextPageParam: (lastPage) =>
+  //       lastPage.page + 1 <= lastPage.total_pages
+  //         ? lastPage.page + 1
+  //         : undefined,
+  //   }
+  // );
 
   useEffect(() => {
     const checkIfScrollbuttonShowUp = () => {
@@ -47,7 +72,6 @@ const Anime: FC<AnimeProps> = () => {
   };
   return (
     <>
-      
       <Title value="Anime" />
       {showScrollBtn && (
         <button
@@ -85,7 +109,10 @@ const Anime: FC<AnimeProps> = () => {
         )}
       </div>
 
-      
+      <div>
+
+         
+      </div>
     </>
   );
 };
