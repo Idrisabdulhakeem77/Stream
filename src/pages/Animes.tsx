@@ -93,36 +93,36 @@ const Anime: FC<AnimeProps> = () => {
             setIsSidebarOpen={setIsSidebarActive}
           />
         )}
-      </div>
 
-      <div>
-        {animes?.pages.reduce(
-          (acc, current) => [...acc, current.data],
-          [] as any
-        ).length === 0 ? (
-          <div>no such anime</div>
-        ) : (
-          <InfiniteScroll
-            dataLength={animes?.pages.length || 0}
-            next={() => fetchNextPage()}
-            hasMore={Boolean(hasNextPage)}
-            loader={<div>Loading more</div>}
-            endMessage={<></>}
-          >
-            <div>
-               { animes?.pages.map(page => {
-                   const { data} = page
-                   return (
-                      <div>
-                         { data.map(d => (
-                             <h1>{d.title}</h1>
-                         ))}
-                         </div>
-                   )
-               })}
-            </div>
-          </InfiniteScroll>
-        )}
+        <div>
+          {animes?.pages.reduce(
+            (acc, current) => [...acc, current.data],
+            [] as any
+          ).length === 0 ? (
+            <div>no such anime</div>
+          ) : (
+            <InfiniteScroll
+              dataLength={animes?.pages.length || 0}
+              next={() => fetchNextPage()}
+              hasMore={Boolean(hasNextPage)}
+              loader={<div>Loading more</div>}
+              endMessage={<></>}
+            >
+              <div>
+                {animes?.pages.map((page) => {
+                  const { data } = page;
+                  return (
+                    <div>
+                      {data.map((d) => (
+                        <h1>{d.title}</h1>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </InfiniteScroll>
+          )}
+        </div>
       </div>
     </>
   );
