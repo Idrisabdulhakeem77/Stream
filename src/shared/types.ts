@@ -75,8 +75,10 @@ export interface Animes {
 
 export interface AnimeItempage {
      pagination : {
-      
-     } 
-
-     data : string[] | undefined
+      last_visible_page : number ,
+      has_next_page : boolean,
+      current_page : number,
+       items : { count : number , per_page : number , total : number }
+     }
+     data : Animes[]
 }
