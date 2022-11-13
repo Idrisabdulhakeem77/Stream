@@ -1,10 +1,12 @@
 import { FunctionComponent } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ConfigType, ItemsPage } from "../../shared/types";
+import { AnimeItempage, ConfigType, ItemsPage } from "../../shared/types";
 import FilmItem from "../Common/FilmItem";
 import Skeleton from "../Common/Skeleton";
 import { getExploreMovie, getExploreTV } from "../../services/explore";
+import { getAnime } from "../../services/anime";
+import AnimeItem from "../Common/AnimeItem";
 
 interface ExploreMovieResultProps {
   pages?: ItemsPage[];
@@ -60,16 +62,20 @@ const ExploreTvResult: FunctionComponent<ExploreTvResultProps> = ({
   );
 };
 
-interface AnimeExploreResultProps {} 
+interface AnimeExploreResultProps {
+  pages: AnimeItempage[] | undefined;
+}
 
-const AnimeExplore : FunctionComponent<AnimeExploreResultProps> = () => {
-    return (
-      <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
+const AnimeExplore: FunctionComponent<AnimeExploreResultProps> = ({
+  pages,
+}) => {
+  return (
+    <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
       {pages &&
         pages.map((page) =>
-          page.results.map((item) => (
-            <li key={item.id}>
-              <FilmItem item={item} />
+          page.data.map((item) => (
+            <li key={item.mal_id}>
+              <AnimeItem item={item} />
             </li>
           ))
         )}
@@ -80,10 +86,8 @@ const AnimeExplore : FunctionComponent<AnimeExploreResultProps> = () => {
           </li>
         ))}
     </ul>
-    )
-}
-
-
+  );
+};
 
 interface ExploreResultProps {
   currentTab: string | null;
@@ -127,13 +131,26 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
     }
   );
 
-
- 
+  const {
+    data: animes,
+    error: animeError,
+    hasNextPage: hasNextPageAnime,
+    fetchNextPage: fetchNextAnimePage,
+  } = useInfiniteQuery<AnimeItempage, Error>(
+    ["animes"],
+    ({ pageParam = 1 }) => getAnime(pageParam),
+    {
+      getNextPageParam: (lastPage) =>
+        lastPage.pagination.current_page + 1 <=
+        lastPage.pagination.last_visible_page
+          ? lastPage.pagination.current_page + 1
+          : undefined,
+    }
+  );
 
   if (errorMovies) return <div> Error : {errorMovies.message}</div>;
   if (errorTvs) return <div> Error : {errorTvs.message}</div>;
-
-   
+  if (animeError) return <div> Error : {animeError.message}</div>;
 
   return (
     <>
@@ -185,14 +202,29 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
         </>
       )}
 
-
-       { currentTab === "anime" && (
-          <>
-            <div>
-               Anime explore
+      {currentTab === "anime" && (
+        <>
+          {animes?.pages.reduce(
+            (acc, current) => [...acc, current.data],
+            [] as any
+          ).length === 0 ? (
+            <div className="flex flex-col items-center mb-12">
+              <div>Error</div>
+              <p className="text-3xl mt-5"> there is no such film</p>
             </div>
-           </>
-       )}
+          ) : (
+            <InfiniteScroll
+              dataLength={animes?.pages.length || 0}
+              next={() => fetchNextPageTv()}
+              hasMore={Boolean(hasNextPageTv)}
+              loader={<div>Loading more</div>}
+              endMessage={<></>}
+            >
+              <AnimeExplore pages={animes?.pages} />
+            </InfiniteScroll>
+          )}
+        </>
+      )}
     </>
   );
 };
