@@ -10,6 +10,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { AnimeItempage } from "../shared/types";
 import { getAnime } from "../services/anime";
 import InfiniteScroll from "react-infinite-scroll-component";
+import AnimeItem from "../components/Common/AnimeItem";
 
 interface AnimeProps {}
 
@@ -108,15 +109,17 @@ const Anime: FC<AnimeProps> = () => {
               loader={<div>Loading more</div>}
               endMessage={<></>}
             >
-              <div>
+              <div className="flex-grow">
                 {animes?.pages.map((page) => {
                   const { data } = page;
                   return (
-                    <div>
+                    <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
                       {data.map((d) => (
-                        <h1>{d.title}</h1>
+                        <li key={d.mal_id}>
+                          <AnimeItem item={d} />
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   );
                 })}
               </div>
