@@ -13,6 +13,7 @@ import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
 import { getAnime } from "./services/anime";
+import Movies from "./pages/Movies";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
