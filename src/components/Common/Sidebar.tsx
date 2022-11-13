@@ -171,7 +171,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <p>Movies</p>
           </Link>
 
-          <Link to="/animes" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link to="/anime" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
             <FiAnchor size={25} />
             <p>Anime</p>
           </Link>
