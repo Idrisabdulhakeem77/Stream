@@ -95,7 +95,7 @@ const Anime: FC<AnimeProps> = () => {
           />
         )}
 
-        <div>
+        <div className="flex-grow px-[2vw] pt-6">
           {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
             [] as any

@@ -191,8 +191,8 @@ const ExploreResult: FunctionComponent<ExploreResultProps> = ({
           ) : (
             <InfiniteScroll
               dataLength={tvs?.pages.length || 0}
-              next={() => fetchNextPageTv()}
-              hasMore={Boolean(hasNextPageTv)}
+              next={() => fetchNextAnimePage()}
+              hasMore={Boolean(hasNextPageAnime)}
               loader={<div>Loading more</div>}
               endMessage={<></>}
             >
