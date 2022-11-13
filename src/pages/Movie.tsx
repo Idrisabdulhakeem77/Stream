@@ -1,1 +1,0 @@
-import { FunctionComponent } from "react";
