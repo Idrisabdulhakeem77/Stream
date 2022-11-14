@@ -1,3 +1,4 @@
+
 import { FunctionComponent, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -27,7 +28,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
     if (isCloseModalAutomatically) {
       navigate(searchParams.get("redirect") || "/");
     } else {
-      console.log("Error");
+      console.log("Err");
     }
     //eslint-disable-next-line
   }, [isCloseModalAutomatically]);
