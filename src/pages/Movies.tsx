@@ -3,11 +3,13 @@ import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import {ExploreMovieResult} from '../components/Explore/ExploreResult'
 import {getExploreMovie} from "../services/explore"
 import {useInfiniteQuery} from "@tanstack/react-query"
-import { ItemsPage} from '../shared/types'
+import {  ItemsPage} from '../shared/types'
 
-interface MoviesProps {}
+interface MoviesProps {
+  
+}
 
-const Movies: FC<MoviesProps> = () => {
+const Movies: FC<MoviesProps> = ( ) => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
@@ -43,8 +45,8 @@ const Movies: FC<MoviesProps> = () => {
     fetchNextPage: fetchNextPageMovie,
     hasNextPage: hasNextPageMovie,
   } = useInfiniteQuery<ItemsPage, Error>(
-    ["explore-result-movie", config],
-    ({ pageParam = 1 }) => getExploreMovie(pageParam, config),
+    ["explore-result-movie"],
+    ({ pageParam = 1 }) => getExploreMovie(pageParam),
     {
       getNextPageParam: (lastPage) =>
         lastPage.page + 1 <= lastPage.total_pages
@@ -52,7 +54,9 @@ const Movies: FC<MoviesProps> = () => {
           : undefined,
     }
   );
-  return ;
+  return (
+     <ExploreMovieResult pages={movies?.pages} />
+  ) ;
 };
 
 export default Movies;
