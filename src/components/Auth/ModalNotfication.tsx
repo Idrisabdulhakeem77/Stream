@@ -9,7 +9,7 @@ interface ModalNotificationProps {
 }
 
 const TIMEOUT_AUTO_CLOSE_ERROR = 5;
-const TIMEOUT_AUTO_CLOSE_SUCCESS = 2;
+const TIMEOUT_AUTO_CLOSE_SUCCESS = 10;
 
 const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
   type,
@@ -64,14 +64,14 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
           {message}
           <br />
           {type === "success" ? (
-            <span>Yay lets goooo!!👊</span>
+            <span className="text-black text-center border-t border-black">Yay lets goooo!!👊</span>
           ) : (
-            <span> Stay put and try again ✊ </span>
+            <span className="text-black text-center "> Stay put and try again ✊ </span>
           )}
         </p>
         <button onClick={checkSuccess}>
           <p> {type === "success" ? "CONTINUE" : "TRY AGAIN"}</p>
-          <p> {timeLeft}</p>
+          <p className="text-black"> {timeLeft}</p>
         </button>
       </div>
       <div
