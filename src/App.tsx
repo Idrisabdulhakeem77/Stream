@@ -11,9 +11,11 @@ import { setCurrentUser } from "./store/slice/userSlice";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
+import  Profile from "./pages/Profile"
 
 import Movies from "./pages/Movies";
 import TvShows from './pages/TvShows'
+import Protected from "./components/Common/Proctected";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -74,6 +76,7 @@ function App() {
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
         <Route path="tv-shows" element={<TvShows/>}/>
+        <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
       </Routes> 
     </div>
   );
