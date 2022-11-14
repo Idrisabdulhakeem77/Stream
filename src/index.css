@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#form {
-  border: solid 1px black;
-}
 
-#main-div {
-  border: solid 2px red;
-}
 
 .tw-flex-center {
   @apply flex justify-center items-center;
