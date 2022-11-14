@@ -14,6 +14,7 @@ import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
 import { getAnime } from "./services/anime";
 import Movies from "./pages/Movies";
+import TvShows from './pages/TvShows'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -73,7 +74,8 @@ function App() {
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
-      </Routes>
+        <Route path="tv-series" element={<TvShows/>}/>
+      </Routes> 
     </div>
   );
 }

@@ -15,7 +15,7 @@ import { idText } from "typescript";
 
 interface MoviesProps {}
 
-const Movies: FC<MoviesProps> = () => {
+const TvShows: FC<MoviesProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
@@ -166,4 +166,4 @@ const Movies: FC<MoviesProps> = () => {
   );
 };
 
-export default Movies;
+export default TvShows;
