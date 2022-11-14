@@ -57,6 +57,7 @@ const Anime: FC<AnimeProps> = () => {
       behavior: "smooth",
     });
   };
+  if(error) return <div> Error : {error.message}</div>
   return (
     <>
       <Title value="Anime" />

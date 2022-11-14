@@ -15,7 +15,7 @@ import ExploreFilter from '../components/Explore/ExploreFilter'
 interface ExploreProps {}
 
 const Explore: FC<ExploreProps> = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
