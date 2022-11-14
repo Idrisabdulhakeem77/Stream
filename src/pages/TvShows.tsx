@@ -19,7 +19,7 @@ const Movies: FC<MoviesProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
-  const [config, setConfig] = useState<({});
+  const [config, setConfig] = useState<ConfigType>({});
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
