@@ -8,11 +8,10 @@ import { useAppDispatch } from "./store/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./shared/firebase";
 import { setCurrentUser } from "./store/slice/userSlice";
-import userEvent from "@testing-library/user-event";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
-import { getAnime } from "./services/anime";
+
 import Movies from "./pages/Movies";
 import TvShows from './pages/TvShows'
 
