@@ -1,6 +1,5 @@
 import { FC, useState, useEffect } from "react";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
-
 import { getExploreTV } from "../services/explore";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ConfigType, ItemsPage } from "../shared/types";
@@ -12,6 +11,7 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import InfiniteScroll from 'react-infinite-scroll-component'
 import FilmItem from "../components/Common/FilmItem";
+import { idText } from "typescript";
 
 interface MoviesProps {}
 
@@ -90,6 +90,8 @@ const Movies: FC<MoviesProps> = () => {
           : undefined,
     }
   );
+
+  if(errorTvs) return <div> Error : {errorTvs.message} </div>
   return (
     <>
       <Title value="Movie | Stream" />

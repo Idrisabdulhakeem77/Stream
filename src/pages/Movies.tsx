@@ -1,6 +1,5 @@
 import { FC, useState, useEffect } from "react";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
-import { ExploreMovieResult } from "../components/Explore/ExploreResult";
 import { getExploreMovie } from "../services/explore";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ConfigType, ItemsPage } from "../shared/types";
@@ -19,7 +18,7 @@ const Movies: FC<MoviesProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
-  const [config, setConfig] = useState({});
+  const [config, setConfig] = useState<ConfigType>({});
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -88,6 +87,7 @@ const Movies: FC<MoviesProps> = () => {
           : undefined,
     }
   );
+  if(errorMovies) return <div> Error : {errorMovies.message} </div>
   return (
     <>
       <Title value="Movie | Stream" />
