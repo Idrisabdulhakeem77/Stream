@@ -74,7 +74,7 @@ function App() {
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
-        <Route path="tv-series" element={<TvShows/>}/>
+        <Route path="tv-shows" element={<TvShows/>}/>
       </Routes> 
     </div>
   );
