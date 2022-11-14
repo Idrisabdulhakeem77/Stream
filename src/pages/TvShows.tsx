@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
-import { ExploreMovieResult } from "../components/Explore/ExploreResult";
+
 import { getExploreTV } from "../services/explore";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ConfigType, ItemsPage } from "../shared/types";
