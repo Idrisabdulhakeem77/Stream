@@ -10,9 +10,7 @@ import { Field, Form, Formik } from "formik";
 
 import * as Yup from "yup";
 import {
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  TwitterAuthProvider,
+  GoogleAuthProvider
 } from "firebase/auth";
 import { useAppSelector } from "../../store/hooks";
 import ModalNotification from "./ModalNotfication";
@@ -74,22 +72,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
             >
               <FaGoogle size={30} />
             </button>
-            {/* <button
-              onClick={() =>
-                SignInWithProvder(new FacebookAuthProvider(), "google")
-              }
-              className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300"
-            >
-              <FaFacebook size={30} />
-            </button>
-            <button
-              onClick={() =>
-                SignInWithProvder(new TwitterAuthProvider(), "google")
-              }
-              className="h-10 w-10 rounded-full tw-flex-center  hover:brightness-75 transition duration-300"
-            >
-              <FaTwitter size={30} />
-            </button> */}
+           
           </div>
 
           <div className="text-lg"> or use your email to Login:</div>

@@ -88,7 +88,7 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
       </form>
                                   
       {suggestion.length > 0 && (
-        <ul className="group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%]">
+        <ul className="group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%] z-40">
           {suggestion.map((suggestion, index) => (
             <li
               key={index}
