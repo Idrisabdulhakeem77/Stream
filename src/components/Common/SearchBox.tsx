@@ -30,15 +30,18 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
     if (timeOutRef.current) {
        clearTimeout(timeOutRef.current)
     };
-     
+      
     setSuggestion([])
      
      if (!searchInput.trim()) return;
 
     timeOutRef.current = setTimeout(async () => {
       const keywords = await getSearchKeyWord(searchInput.trim());
-  
+       
+      
+
        setSuggestion(keywords);
+       console.log(suggestion)
 
        if (initialState) {
         initialState = false;
@@ -83,13 +86,13 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white"
         />
       </form>
-
+                                  
       {suggestion.length > 0 && (
-        <ul className="hidden group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%]">
+        <ul className="group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%]">
           {suggestion.map((suggestion, index) => (
             <li
               key={index}
-              className="focus:bg-red-500 outline-none"
+              className="focus:bg-red-500 outline-none mb-2"
               tabIndex={index - 1}
             >
               <button

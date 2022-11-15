@@ -27,9 +27,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
   useEffect(() => {
     if (isCloseModalAutomatically) {
       navigate(searchParams.get("redirect") || "/");
-    } else {
-      console.log("Err");
-    }
+    } 
     //eslint-disable-next-line
   }, [isCloseModalAutomatically]);
 
