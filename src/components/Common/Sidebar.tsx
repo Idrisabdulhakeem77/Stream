@@ -14,8 +14,8 @@ import { useAppSelector } from "../../store/hooks";
 import { signOut } from "firebase/auth";
 import { auth } from "../../shared/firebase";
 import { toast, ToastContainer } from "react-toastify";
-import { setCurrentUser} from '../../store/slice/userSlice'
-import {useAppDispatch} from '../../store/hooks'
+import { setCurrentUser } from "../../store/slice/userSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -32,48 +32,46 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
     setIsSidebarOpen(false);
   };
 
-  const dispatch =  useAppDispatch()
-  console.log(currentUser)
+  const dispatch = useAppDispatch();
+  console.log(currentUser);
 
-// //   const signOutHandler = () => {
-// //     signOut(auth)
-// //     .then(() => {
-// //       toast.success("Signed In successfully", {
-// //         autoClose: 3000,
-// //         draggable: true,
-// //         pauseOnHover: true,
-// //         closeOnClick: true,
-// //         hideProgressBar: false,
-// //         position: "top-right",
-// //       });
-// //       setTimeout(() => {
-// //         window.location.reload();
-// //       }, 2000);
+  // //   const signOutHandler = () => {
+  // //     signOut(auth)
+  // //     .then(() => {
+  // //       toast.success("Signed In successfully", {
+  // //         autoClose: 3000,
+  // //         draggable: true,
+  // //         pauseOnHover: true,
+  // //         closeOnClick: true,
+  // //         hideProgressBar: false,
+  // //         position: "top-right",
+  // //       });
+  // //       setTimeout(() => {
+  // //         window.location.reload();
+  // //       }, 2000);
 
-// //  });
-//   };
+  // //  });
+  //   };
 
- const signOutHandler = () => {
-     signOut(auth)
-     .then(() => {
-         toast.success(" Successfully Signed out" , {
-           position : "top-right" ,
-           autoClose : 3000 ,
-           closeOnClick : true ,
-           draggable : true ,
-            pauseOnHover : true,
-            hideProgressBar : false
-            
-         } )
+  const signOutHandler = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success(" Successfully Signed out", {
+          position: "top-right",
+          autoClose: 3000,
+          closeOnClick: true,
+          draggable: true,
+          pauseOnHover: true,
+          hideProgressBar: false,
+        });
 
-          setTimeout(() => {
-             window.location.reload()
-          } , 1000)
-     })
-     .catch(err => alert(err))
-     .finally(() => setLoading(false))
- }
-
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      })
+      .catch((err) => alert(err))
+      .finally(() => setLoading(false));
+  };
 
   const privateUrlhandler = (destinationurl: string) => {
     if (!currentUser) {
@@ -85,11 +83,13 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         hideProgressBar: false,
         position: "top-right",
       });
+      return;
     }
+    navigate(destinationurl);
   };
   return (
     <>
-        <ToastContainer/>
+      <ToastContainer />
 
       <div
         className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  fixed  -translate-x-full transition duration-300 ${
@@ -143,20 +143,25 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {/* <div className="text-black text-lg text-center mt-2">LIBRARY</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button
-          onClick={ () => privateUrlhandler("/bookmarks")}
-          className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+            onClick={() => privateUrlhandler("/bookmarks")}
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <BsBookmarkHeart size={25} />
             <p>Bookmarked</p>
           </button>
 
-          <button 
-            onClick={ () => privateUrlhandler("/recent")}
-           className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <button
+            onClick={() => privateUrlhandler("/recent")}
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <AiOutlineHistory size={25} />
             <p>Recent</p>
           </button>
 
-          <Link  to="/top-rated" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link
+            to="/top-rated"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <AiOutlineStar size={25} />
             <p>Top Rated</p>
           </Link>
@@ -166,17 +171,26 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           Categories
         </div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
-          <Link to="tv-shows" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link
+            to="tv-shows"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <RiSlideshow4Line size={25} />
             <p>Tv Shows</p>
           </Link>
 
-          <Link to="movies" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link
+            to="movies"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <BsCameraVideo size={25} />
             <p>Movies</p>
           </Link>
 
-          <Link to="/anime" className="flex gap-3 items-center hover:text-gray-700 transition duration-300">
+          <Link
+            to="/anime"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+          >
             <FiAnchor size={25} />
             <p>Anime</p>
           </Link>
@@ -185,27 +199,36 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {/* <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button
-           onClick={ () => privateUrlhandler("/profile")}
-          className="flex gap-3 items-center ">
+            onClick={() => privateUrlhandler("/profile")}
+            className="flex gap-3 items-center "
+          >
             <BiUserCircle size={25} />
             <p> Profile </p>
           </button>
 
-          <button className="flex gap-3 items-center " onClick={ () =>  dispatch(setCurrentUser({ 
-              displayName : "Guest" ,
-              email : "guest@gmail.com" ,
-              emailVerified : true,
-              photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg" ,
-              uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2"
-          })) }>
+          <button
+            className="flex gap-3 items-center "
+            onClick={() =>
+              dispatch(
+                setCurrentUser({
+                  displayName: "Guest",
+                  email: "guest@gmail.com",
+                  emailVerified: true,
+                  photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg",
+                  uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2",
+                })
+              )
+            }
+          >
             <HiOutlineLogin size={25} />
             <p>Demo Login</p>
           </button>
 
           {currentUser ? (
             <button
-             onClick={signOutHandler}
-            className="flex gap-3 items-center ">
+              onClick={signOutHandler}
+              className="flex gap-3 items-center "
+            >
               <HiOutlineLogin size={25} />
               <p> Logout</p>
             </button>
