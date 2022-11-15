@@ -38,7 +38,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
       
       setDoc(doc(db , "users" , user.uid) , { 
          fullname : values.fullname ,
-        photoUrl : getRandomAvatar() ,
+         photoUrl : getRandomAvatar() ,
          Bookmarked : [] , 
          recentlyWatched : []
       })
