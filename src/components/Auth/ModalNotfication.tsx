@@ -55,9 +55,9 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
         style={{
           backgroundImage: `${ type === "success" ? "url(/Images/success.jpg)" : "url(/Images/fail.jpg)"}`
         }}
-        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center bg-b"
+        className="bg-cover bg-no-repeat bg-center min-h-[450px] w-full max-w-[350px] fixed rounded-xl z-20 tw-absolute-center text-center"
       >
-        <div className="mt-[230px] font-bold text-black text-[40px] text-center">
+        <div className="mt-[230px] font-bold  text-[40px] ">
           {type === "success" ? "Successfully Logged in! 🤓" : "oooppss 😑"}
         </div>
         <p>

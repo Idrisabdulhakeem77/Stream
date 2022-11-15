@@ -51,7 +51,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
  const signOutHandler = () => {
      signOut(auth)
      .then(() => {
-         toast.success(" Successfully Signed in" , {
+         toast.success(" Successfully Signed out" , {
            position : "top-right" ,
            autoClose : 3000 ,
            closeOnClick : true ,
