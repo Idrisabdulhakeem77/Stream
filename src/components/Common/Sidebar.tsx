@@ -14,9 +14,8 @@ import { useAppSelector } from "../../store/hooks";
 import { signOut } from "firebase/auth";
 import { auth } from "../../shared/firebase";
 import { toast, ToastContainer } from "react-toastify";
-import { setGuestUser} from '../../store/slice/userSlice'
-// import {useAppDispatch} from '../../store/hooks'
-import {useDispatch} from "react-redux"
+import { setCurrentUser} from '../../store/slice/userSlice'
+import {useAppDispatch} from '../../store/hooks'
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -33,7 +32,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
     setIsSidebarOpen(false);
   };
 
-  const dispatch =  useDispatch()
+  const dispatch =  useAppDispatch()
+  console.log(currentUser)
 
 // //   const signOutHandler = () => {
 // //     signOut(auth)
@@ -191,7 +191,13 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <p> Profile </p>
           </button>
 
-          <button className="flex gap-3 items-center " onClick={ }>
+          <button className="flex gap-3 items-center " onClick={ () =>  dispatch(setCurrentUser({ 
+              displayName : "Guest" ,
+              email : "guest@gmail.com" ,
+              emailVerified : true,
+              photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg" ,
+              uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2"
+          })) }>
             <HiOutlineLogin size={25} />
             <p>Demo Login</p>
           </button>
