@@ -33,25 +33,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   const dispatch = useAppDispatch();
-  console.log(currentUser);
-
-  // //   const signOutHandler = () => {
-  // //     signOut(auth)
-  // //     .then(() => {
-  // //       toast.success("Signed In successfully", {
-  // //         autoClose: 3000,
-  // //         draggable: true,
-  // //         pauseOnHover: true,
-  // //         closeOnClick: true,
-  // //         hideProgressBar: false,
-  // //         position: "top-right",
-  // //       });
-  // //       setTimeout(() => {
-  // //         window.location.reload();
-  // //       }, 2000);
-
-  // //  });
-  //   };
 
   const signOutHandler = () => {
     signOut(auth)
