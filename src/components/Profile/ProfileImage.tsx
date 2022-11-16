@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useAppSelector } from "../../store/hooks";
-import { BsTrash } from "react-icons/bs";
 import { HiOutlineUpload } from "react-icons/hi";
 
 interface ProfileImageProps {}
@@ -21,7 +20,7 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
 
       <label
         htmlFor="upload-image"
-        className="flex items-center gap-2 px-5 py-3 mt-4 mb-4 place-items-center  bg-green-400 rounded-full border-t border-black"
+        className="flex items-center gap-2 px-5 py-3 mt-4 mb-4 place-items-center w-[80%] mx-auto transition duration-300  bg-green-400 rounded-full border-t border-black"
       >
         <HiOutlineUpload size={25} />
         <p> Upload a New Image </p>{" "}
@@ -40,7 +39,7 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
       <textarea
         id="bio"
         rows={4}
-        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
         placeholder="Write About Your Self...."
       ></textarea>
     </div>
