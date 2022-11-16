@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useAppSelector } from "../../store/hooks";
 import { BsTrash } from "react-icons/bs";
+import {HiOutlineUpload} from 'react-icons/hi'
 
 interface ProfileImageProps {}
 
@@ -18,6 +19,15 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
       <button className="absolute top-12 left-48">
         <BsTrash size={20} />
       </button>
+
+      <label htmlFor="upload-image" className="flex items-center gap-2 px-5 py-3 mt-2"> 
+      <HiOutlineUpload size={25} />
+      <p> Upload a New Image </p> </label>
+      
+      <input type="file" accept="image/*" id="upload-image" className="hidden" />
+
+      <h1> Bio </h1>
+      <textarea></textarea>
     </div>
   );
 };
