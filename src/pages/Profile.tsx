@@ -28,6 +28,7 @@ const Profile: FC<ProfileProps> = () => {
 
         <div className="flex item-start">
            {!isMobile ? <MiniSidebar/> : null }
+           { isMobile ? <Sidebar isSidebarOpen={isSidebarActive} setIsSidebarOpen={setIsSidebarActive}/> : null} 
            <ProfileImage/>
           </div> 
       </>
