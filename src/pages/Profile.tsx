@@ -4,6 +4,7 @@ import  {useCurrentViewPort} from '../components/hooks/useCurrentViewPort'
 import {Link} from 'react-router-dom'
 import {FaBars} from  'react-icons/fa'
 import MiniSidebar from "../components/Common/MiniSidebar"
+import ProfileImage from "../components/Profile/ProfileImage";
 
 interface ProfileProps {}
 
@@ -27,6 +28,7 @@ const Profile: FC<ProfileProps> = () => {
 
         <div className="flex item-start">
            {!isMobile ? <MiniSidebar/> : null }
+           <ProfileImage/>
           </div> 
       </>
   ); 
