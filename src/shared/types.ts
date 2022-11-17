@@ -187,3 +187,10 @@ export interface DetailTV {
   media_type?: "tv";
 }
 
+
+export interface FilmInfo {
+  detail?: DetailMovie | DetailTV | undefined;
+}
+
+
+
