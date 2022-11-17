@@ -3,7 +3,7 @@ import axios from '../shared/axios'
 
 
 
-export const getFullMovieDetails = async (  id : number ) :Promise<FilmInfo> => { 
+export const getFullMovieDetails = async (  id : number )  => { 
     const response =  await Promise.all([
         axios.get(`/movie/${id}`),
         axios.get(`/movie/${id}/credits`),
@@ -11,11 +11,5 @@ export const getFullMovieDetails = async (  id : number ) :Promise<FilmInfo> => 
         axios.get(`/movie/${id}/similar`),
         axios.get(`/movie/${id}/videos`),
     ])
-
-
-
-    return {
-         ( response as any)
-    }
      
 }
