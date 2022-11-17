@@ -116,3 +116,5 @@ export interface DetailMovie {
   vote_count: number;
   media_type?: "movie";
 }
+
+

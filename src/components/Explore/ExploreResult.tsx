@@ -73,7 +73,7 @@ const AnimeExplore: FunctionComponent<AnimeExploreResultProps> = ({
     <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
       {pages &&
         pages.map((page) =>
-          page.data.map((item) => (
+          page.data?.map((item) => (
             <li key={item.mal_id}>
               <AnimeItem item={item} />
             </li>
