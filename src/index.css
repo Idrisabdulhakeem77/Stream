@@ -48,14 +48,3 @@ body {
 .tw-absolute-center {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
-
-
-#text-form {
-    border: solid 1px black;
-    margin-left: 2.5rem;
-     height: 80vh;
-     padding : 40px ;
-     width: 30vw;
-     margin-top: 2.5rem;
-     /* text-align: center; */
-}
