@@ -9,7 +9,7 @@ interface ModalNotificationProps {
 }
 
 const TIMEOUT_AUTO_CLOSE_ERROR = 5;
-const TIMEOUT_AUTO_CLOSE_SUCCESS = 1200;
+const TIMEOUT_AUTO_CLOSE_SUCCESS = 2;
 
 const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
   type,
