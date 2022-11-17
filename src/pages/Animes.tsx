@@ -115,7 +115,7 @@ const Anime: FC<AnimeProps> = () => {
                   const { data } = page;
                   return (
                     <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
-                      {data.map((d) => (
+                      {data?.map((d) => (
                         <li key={d.mal_id}>
                           <AnimeItem item={d} key={d.mal_id} />
                         </li>
