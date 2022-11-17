@@ -199,7 +199,23 @@ export interface Cast {
   order: number;
 }
 
+export interface Reviews {
+  author: string;
+  author_details: {
+    name: string;
+    username: string;
+    avatar_path: string;
+    rating: any;
+  };
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+}
+
+
 export interface FilmInfo {
   detail?: DetailMovie | DetailTV | undefined;
-  cast?: Cast[] | undefined;
+  credits?: Cast[] | undefined;
 }
