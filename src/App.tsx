@@ -17,6 +17,7 @@ import Movies from "./pages/Movies";
 import TvShows from './pages/TvShows'
 import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
+import axios from './shared/axios'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -67,7 +68,14 @@ function App() {
     });
   }, [dispatch]);
  
+  const fetchData = async() => {
+     const {data} = await axios.get("/movie/505642/credits")
+     console.log(data)
+  }
 
+  useEffect(() => {
+      fetchData()
+  } , [])
 
   return (
     <div className="App">

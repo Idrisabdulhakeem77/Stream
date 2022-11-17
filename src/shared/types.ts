@@ -37,8 +37,6 @@ export interface ItemsPage {
   total_pages: number;
 }
 
-
-
 export interface ConfigType {
   [key: string]: string | number;
 }
@@ -67,20 +65,19 @@ export interface Animes {
   };
   genres: Object[];
   trailer: Object[];
-  pagination : {
-    last_visible_page : number
-  }
+  pagination: {
+    last_visible_page: number;
+  };
 }
 
-
 export interface AnimeItempage {
-     pagination : {
-      last_visible_page : number ,
-      has_next_page : boolean,
-      current_page : number,
-       items : { count : number , per_page : number , total : number }
-     }
-     data : Animes[] | undefined
+  pagination: {
+    last_visible_page: number;
+    has_next_page: boolean;
+    current_page: number;
+    items: { count: number; per_page: number; total: number };
+  };
+  data: Animes[] | undefined;
 }
 
 export interface DetailMovie {
@@ -187,10 +184,22 @@ export interface DetailTV {
   media_type?: "tv";
 }
 
+export interface Cast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
 
 export interface FilmInfo {
   detail?: DetailMovie | DetailTV | undefined;
+  cast?: Cast[] | undefined;
 }
-
-
-
