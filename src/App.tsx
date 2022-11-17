@@ -16,6 +16,7 @@ import  Profile from "./pages/Profile"
 import Movies from "./pages/Movies";
 import TvShows from './pages/TvShows'
 import Protected from "./components/Common/Proctected";
+import MovieDetail from "./pages/Movies/MovieDetail";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -73,6 +74,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
+        <Route path="/movie/:id" element={<MovieDetail/>}/>
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
