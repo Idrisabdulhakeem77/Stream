@@ -265,6 +265,17 @@ export interface Episode {
   }[];
 }
 
+export interface DetailSeason {
+  _id: string;
+  air_date: string;
+  episodes: Episode[];
+  name: string;
+  overview: string;
+  id: number;
+  poster_path: string;
+  season_number: number;
+}
+
 
 export interface FilmInfo {
   detail?: DetailMovie | DetailTV | undefined;
