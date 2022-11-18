@@ -11,7 +11,10 @@ interface MovieDetailProps {}
 const MovieDetail : FC<MovieDetailProps> = () => {
     const { id } = useParams()
     
-    const {data : MovieInfoData , error , isError} = useQuery<FilmInfo | undefined>( ['movie-info'] , getFullMovieDetails(Number(id as string)))  
+    const {data : MovieInfoData , error , isError} = useQuery<FilmInfo | undefined>( ['movie-info'] ,  () => getFullMovieDetails(Number(id as string)))  
+
+
+    if(isError) retur
      
 
    return (
