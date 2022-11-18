@@ -20,7 +20,7 @@ const MovieDetail : FC<MovieDetailProps> = () => {
      
 
    return (
-      <FilmDetail/>
+      <FilmDetail {...data }/>
    )
 }
 
