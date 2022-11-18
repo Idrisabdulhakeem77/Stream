@@ -281,6 +281,6 @@ export interface FilmInfo {
   reviews?: Reviews[] | undefined;
   similar?: Items[] | undefined;
   videos?: Video[] | undefined;
-  details?: DetailMovie | DetailTV | undefined;
+  detail?: DetailMovie | DetailTV | undefined;
   credits?: Cast[] | undefined;
 }

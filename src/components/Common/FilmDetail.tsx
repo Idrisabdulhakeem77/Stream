@@ -5,7 +5,7 @@ import Title from "./Title";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
-  details,
+  detail,
   credits,
   videos,
   reviews,
@@ -15,7 +15,7 @@ const FilmDetail: FC<FilmInfo> = ({
      const [isSidebarActive , setIsSidebarActive] = useState(false)
   return (
      <>
-       { details ? <Title value={`${( details as DetailTV).name || (details as DetailMovie).title}`}/> : null}
+       { detail ? <Title value={`${( detail as DetailTV).name || (detail as DetailMovie).title}`}/> : null}
      </>
   );
 };
