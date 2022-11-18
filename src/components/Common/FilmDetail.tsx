@@ -1,10 +1,9 @@
 import {FC} from 'react'
+import { FilmInfo } from '../../shared/types'
 
 
-interface FilmDetailProps {} 
-
-
-const FilmDetail :FC<FilmDetailProps> =  ( ) => {
+const FilmDetail :FC<FilmInfo> =  ( { similar ,detail ,credits ,videos ,reviews} ) => {
+    
      return (
          <div>
              Film Info
