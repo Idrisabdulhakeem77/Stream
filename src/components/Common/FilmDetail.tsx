@@ -15,7 +15,9 @@ const FilmDetail: FC<FilmInfo> = ({
      const [isSidebarActive , setIsSidebarActive] = useState(false)
   return (
      <>
-       { detail ? <Title value={`${( detail as DetailTV).name || (detail as DetailMovie).title}`}/> : null}
+       { detail ? <Title value={`${( detail as DetailTV).name || (detail as DetailMovie).title} | Stream`}/> : null}
+
+       
      </>
   );
 };
