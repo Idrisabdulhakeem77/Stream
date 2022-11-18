@@ -1,10 +1,10 @@
 import {FC} from 'react'
 
 
-interface FilmInfoProps {} 
+interface FilmDetailProps {} 
 
 
-const FilmInfo :FC<FilmInfoProps> =  ( ) => {
+const FilmDetail :FC<FilmDetailProps> =  ( ) => {
      return (
          <div>
              Film Info
@@ -12,4 +12,4 @@ const FilmInfo :FC<FilmInfoProps> =  ( ) => {
      )
 }
 
-export default FilmInfo
+export default FilmDetail

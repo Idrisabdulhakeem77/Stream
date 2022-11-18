@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import {getFullMovieDetails} from '../../services/movie'
 import { FilmInfo} from "../../shared/types"
-import FilmInfo from '../../components/Common/FilmDetail'
+import FilmDetail from '../../components/Common/FilmDetail'
 
 
 interface MovieDetailProps {}
@@ -20,7 +20,7 @@ const MovieDetail : FC<MovieDetailProps> = () => {
      
 
    return (
-      <FilmInfo/>
+      <FilmDetail/>
    )
 }
 
