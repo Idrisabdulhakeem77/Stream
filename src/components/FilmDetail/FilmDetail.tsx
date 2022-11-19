@@ -45,7 +45,17 @@ const FilmDetail: FC<FilmInfo> = ({
                   className="bg-cover bg-no-repeat bg-center md:h-[400px] h-[300px] relative "
                  >
                    <div className="text-white" id="image-container">
-                      <h1> {} </h1>
+                      <h1> { ( detail as DetailTV).name || (detail as DetailMovie).title } </h1>
+                      <div className="flex justify-between">
+                         <div>
+                           { detail.genres.map(genre => (
+                              <li key={genre.id} className="mb-2">
+ 
+                              </li>
+                           )) }
+                         </div>
+                          
+                      </div>
                     </div>
                 </div>
              ) : null}
