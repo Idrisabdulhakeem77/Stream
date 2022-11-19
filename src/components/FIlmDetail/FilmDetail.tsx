@@ -5,6 +5,8 @@ import Title from "../Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "../Common/Sidebar";
+import Skeleton from "../Common/Skeleton";
+import { resizeImage } from "../../shared/utils";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -36,6 +38,17 @@ const FilmDetail: FC<FilmInfo> = ({
           isSidebarOpen={isSidebarActive}
           setIsSidebarOpen={setIsSidebarActive}
         />
+         <div className="flex-grow ">
+             {!detail ? <Skeleton className=""/> : null}
+             {detail ? (
+                <div style={{ backgroundImage : `url(${resizeImage(detail.backdrop_path )})`}}
+                  className="bg-cover bg-no-repeat bg-center md:h-[400px] h-[300px] relative "
+                 >
+                   <div className="" id="image-container">
+                    </div>
+                </div>
+             ) : null}
+         </div>
         </div>
      </>
   );
