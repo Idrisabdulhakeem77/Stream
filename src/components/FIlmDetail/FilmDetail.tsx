@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
 import { DetailMovie, DetailTV, FilmInfo } from "../../shared/types";
 import { useAppSelector } from "../../store/hooks";
-import Title from "./Title";
+import Title from "../Common/Title";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Common/Sidebar";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -23,8 +23,7 @@ const FilmDetail: FC<FilmInfo> = ({
        <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest">
-            {" "}
-            AnimeStream{" "}
+            AnimeStream
           </div>
         </Link>
         <button onClick={() => setIsSidebarActive((prevState) => !prevState)}>

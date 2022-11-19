@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import {getFullMovieDetails} from '../../services/movie'
 import { FilmInfo} from "../../shared/types"
-import FilmDetail from '../../components/Common/FilmDetail'
+import FilmDetail from '../../components/FIlmDetail/FilmDetail'
 
 
 interface MovieDetailProps {}
