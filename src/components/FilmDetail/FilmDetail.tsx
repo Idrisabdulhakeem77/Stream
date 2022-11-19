@@ -44,7 +44,8 @@ const FilmDetail: FC<FilmInfo> = ({
                 <div style={{ backgroundImage : `url(${resizeImage(detail.backdrop_path )})`}}
                   className="bg-cover bg-no-repeat bg-center md:h-[400px] h-[300px] relative "
                  >
-                   <div className="" id="image-container">
+                   <div className="text-white" id="image-container">
+                      <h1> {} </h1>
                     </div>
                 </div>
              ) : null}
