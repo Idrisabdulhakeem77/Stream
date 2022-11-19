@@ -11,6 +11,7 @@ import { AnimeItempage } from "../shared/types";
 import { getAnime } from "../services/anime";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeItem from "../components/Common/AnimeItem";
+import Skeleton from "../components/Common/Skeleton";
 
 interface AnimeProps {}
 
@@ -22,6 +23,7 @@ const Anime: FC<AnimeProps> = () => {
   const {
     data: animes,
     error,
+    isLoading,
     hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery<AnimeItempage, Error>(
@@ -96,6 +98,8 @@ const Anime: FC<AnimeProps> = () => {
           />
         )}
 
+    
+
         <div className="flex-grow px-[2vw] pt-6">
           {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
@@ -120,9 +124,12 @@ const Anime: FC<AnimeProps> = () => {
                           <AnimeItem item={d} key={d.mal_id} />
                         </li>
                       ))}
+                      
                     </ul>
                   );
                 })}
+
+                 
               </div>
             </InfiniteScroll>
           )}
