@@ -49,14 +49,22 @@ const FilmDetail: FC<FilmInfo> = ({
                       <div className="flex justify-between">
                          <div>
                            { detail.genres.map(genre => (
-                              <li key={genre.id} className="mb-2">
- 
+                              <li key={genre.id} className="mb-2 list-none">
+                                 { genre.name}
                               </li>
                            )) }
                          </div>
-                          
+                         <div>
+                             {`${( detail as DetailMovie).vote_average.toFixed(1)} / 10 `}
+                          </div>   
                       </div>
+                      <div>
+                       <p>
+                         {(detail as DetailMovie).overview}
+                       </p>
                     </div>
+                    </div>
+                    
                 </div>
              ) : null}
          </div>
