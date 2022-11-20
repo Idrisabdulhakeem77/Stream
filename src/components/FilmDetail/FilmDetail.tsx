@@ -30,9 +30,9 @@ const FilmDetail: FC<FilmInfo> = ({
       ) : null}
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
-      <div className="bg-gradient-to-br from-transparent to-black/70 h-full rounded-bl-2xl">
+      {/* <div className="bg-gradient-to-br from-transparent to-black/70 h-full rounded-bl-2xl"> */}
         <Link to="/">
-          <div className="uppercase font-medium text-lg tracking-widest">
+          <div className="uppercase font-medium text-lg tracking-widest ">
             AnimeStream
           </div>
         </Link>
@@ -48,18 +48,19 @@ const FilmDetail: FC<FilmInfo> = ({
         />
         <div className="flex-grow ">
           {!detail ? <Skeleton className="" /> : null}
-          {detail ? (
+          {/* {detail ? (
             <div
               style={{
                 backgroundImage: `url(${resizeImage(detail.backdrop_path)})`,
               }}
-              className="bg-cover bg-no-repeat bg-center md:h-[450px] h-[300px] relative"
-            >
+              className="bg-cover bg-no-repeat bg-center md:h-[400px] h-[300px] relative"
+            >  <div className="bg-gradient-to-br from-transparent to-black/70 h-full rounded-bl-2xl">
+              </div>
               <div
-                className="text-white w-[400px] absolute top-9 font-extrabold right-10"
+                className="text-white w-[400px] h-[300px] absolute top-9 font-extrabold right-10"
                 id="image-container"
               >
-                <h1 className="text-[50px] mb-4">
+                <h1 className="text-[40px] mb-4">
                   {" "}
                   {(detail as DetailTV).name ||
                     (detail as DetailMovie).title}{" "}
@@ -91,8 +92,7 @@ const FilmDetail: FC<FilmInfo> = ({
                 </div>
               </div>
             </div>
-          ) : null}
-        </div>
+          ) : null} */}
         </div>
       </div>
     </>
