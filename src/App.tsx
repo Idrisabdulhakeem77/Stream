@@ -15,6 +15,7 @@ import  Profile from "./pages/Profile"
 
 import Movies from "./pages/Movies";
 import TvShows from './pages/TvShows'
+import Search from "./pages/Search";
 import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
 import axios from './shared/axios'
@@ -87,6 +88,7 @@ function App() {
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
         <Route path="tv-shows" element={<TvShows/>}/>
+        <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
       </Routes> 
     </div>
