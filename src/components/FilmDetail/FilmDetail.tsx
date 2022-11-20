@@ -47,7 +47,7 @@ const FilmDetail: FC<FilmInfo> = ({
           setIsSidebarOpen={setIsSidebarActive}
         />
         <div className="flex-grow ">
-          {!detail ? <Skeleton className="" /> : null}
+          {!detail ? <Skeleton className="h-[400px] rounded-bl-2xl>" /> : null}
           {/* {detail ? (
             <div
               style={{
