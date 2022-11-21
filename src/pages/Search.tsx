@@ -73,7 +73,7 @@ const Search: FunctionComponent<SearchProps> = () => {
               </div>
 
               {openSearchFilter && (
-                <div className="flex md:flex-col md:py-6 py-2 flex-row">
+                <div className="md:py-6 py-2 border-t border-dark-darken text-white text-lg flex md:flex-col flex-row gap-3">
                   <button
                     onClick={() => {
                       setSearchParams({ query: query || "", page: "1" });
@@ -81,7 +81,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                     }}
 
                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "All" && "bg-dark-"
+                      currentTab === "All" && "bg-dark-lighten-2"
                     }`}
                   >
                     <span> All</span>
