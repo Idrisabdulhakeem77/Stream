@@ -8,6 +8,7 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
+import  Footer from '../components/Common/Footer'
 
 interface SearchProps {}
 
@@ -136,6 +137,8 @@ const Search: FunctionComponent<SearchProps> = () => {
           </div>
         )}
       </div>
+
+      <Footer/>
     </>
   );
 };
