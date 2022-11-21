@@ -6,6 +6,8 @@ import { FaBars } from "react-icons/fa";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
+import {useAutoAnimate} from "@formkit/auto-animate/react"
+import {FiChevronDown , FiChevronRight} from 'react-icons/fi'
 
 interface SearchProps {}
 
@@ -13,6 +15,8 @@ const Search: FunctionComponent<SearchProps> = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const { isMobile } = useCurrentViewPort();
+  const [parent] = useAutoAnimate()
+  const [openSearchFilter , setOpenSearchFilter] = useState(true)
 
   const query = searchParams.get("query");
   return (
@@ -38,14 +42,26 @@ const Search: FunctionComponent<SearchProps> = () => {
         />
 
         <div className="flex-grow">
-          <div className="">
-            {/* <SearchBox autoFocus /> */}
+          <div className="md:max-w-[50vw] w-full ">
+             <h1 className="text-lg font-medium text-center">  Find your favourite movies, TV shows, Animes  and more </h1>
+             {/* <SearchBox autoFocus /> */}
+             
           </div>
         </div>
 
         {!isMobile && (
           <div className="shrink-0 md:max-w-[310px] w-full pt-4 px-3">
-            Last Column
+             <div 
+             // @ts-ignore
+               ref={parent}
+             className="bg-dark-lighten rounded-sm px-3 py-4">
+                  <div>
+                     <p className="text-lg"> Search Results </p>
+                     <button onClick={ () => setOpenSearchFilter((prevState) => !prevState )}>
+                          { openSearchFilter ? <FiChevronDown size={20}/> : <FiChevronRight size={20} />}
+                     </button>
+                  </div>
+             </div>
           </div>
         )}
       </div>
