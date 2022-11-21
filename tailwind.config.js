@@ -10,7 +10,8 @@ module.exports = {
           "dark-blue" : "#121433",
           "red-dark": "hsl(360, 67%, 44%)",
           "red-light": "hsl(360, 71%, 66%)",
-          primary : "#DD3A37"
+          primary : "#DD3A37" ,
+          "dark-lighten-2": "#49494b",
            
        }
     },

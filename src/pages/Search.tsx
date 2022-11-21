@@ -6,8 +6,8 @@ import { FaBars } from "react-icons/fa";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
-import {useAutoAnimate} from "@formkit/auto-animate/react"
-import {FiChevronDown , FiChevronRight} from 'react-icons/fi'
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 
 interface SearchProps {}
 
@@ -15,8 +15,9 @@ const Search: FunctionComponent<SearchProps> = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const { isMobile } = useCurrentViewPort();
-  const [parent] = useAutoAnimate()
-  const [openSearchFilter , setOpenSearchFilter] = useState(true)
+  const [parent] = useAutoAnimate();
+  const [openSearchFilter, setOpenSearchFilter] = useState(true);
+  const [currentTab, setCurrentTab] = useState("All");
 
   const query = searchParams.get("query");
   return (
@@ -43,25 +44,95 @@ const Search: FunctionComponent<SearchProps> = () => {
 
         <div className="flex-grow">
           <div className="md:max-w-[50vw] w-full ">
-             <h1 className="text-lg font-medium text-center">  Find your favourite movies, TV shows, Animes  and more </h1>
-             {/* <SearchBox autoFocus /> */}
-             
+            <h1 className="text-lg font-medium text-center">
+              {" "}
+              Find your favourite movies, TV shows, Animes , People and more{" "}
+            </h1>
+            {/* <SearchBox autoFocus /> */}
           </div>
         </div>
 
         {!isMobile && (
           <div className="shrink-0 md:max-w-[310px] w-full pt-4 px-3">
-             <div 
-             // @ts-ignore
-               ref={parent}
-             className="bg-dark-lighten rounded-sm px-3 py-4">
-                  <div>
-                     <p className="text-lg"> Search Results </p>
-                     <button onClick={ () => setOpenSearchFilter((prevState) => !prevState )}>
-                          { openSearchFilter ? <FiChevronDown size={20}/> : <FiChevronRight size={20} />}
-                     </button>
-                  </div>
-             </div>
+            <div
+              // @ts-ignore
+              ref={parent}
+              className="bg-dark-lighten rounded-sm px-3 py-4"
+            >
+              <div className="flex justify-between items-center pb-3">
+                <p className="text-lg"> Search Results </p>
+                <button
+                  onClick={() => setOpenSearchFilter((prevState) => !prevState)}
+                >
+                  {openSearchFilter ? (
+                    <FiChevronDown size={20} />
+                  ) : (
+                    <FiChevronRight size={20} />
+                  )}
+                </button>
+              </div>
+
+              {openSearchFilter && (
+                <div className="flex md:flex-col md:py-6 py-2 flex-row">
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("All");
+                    }}
+
+                   className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "All" && "bg-dark-"
+                    }`}
+                  >
+                    <span> All</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("Movie");
+                    }}
+                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "Movie" && "bg-dark-lighten-2"
+                    }`}
+                  >
+                    <span> Movies</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("Tv");
+                    }}
+                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "Tv" && "bg-dark-lighten-2"
+                    }`}
+                  >
+                    <span> Tv Shows</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("Animes");
+                    }}
+                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "Animes" && "bg-dark-lighten-2"
+                    }`}
+                  >
+                    <span> Animes</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("People");
+                    }}
+                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "People" && "bg-dark-lighten-2"
+                    }`}
+                  >
+                    <span> People</span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
