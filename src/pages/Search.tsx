@@ -9,6 +9,7 @@ import SearchBox from "../components/Common/SearchBox";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import  Footer from '../components/Common/Footer'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface SearchProps {}
 
@@ -48,11 +49,24 @@ const Search: FunctionComponent<SearchProps> = () => {
             <h1 className="text-lg font-medium text-center">
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}
-              <SearchBox autoFocus/>
+              {/* <SearchBox autoFocus/> */}
             </h1>
            
           </div>
+          {!query ? (
+             <div className="mt-[50px] flex justify-center">
+                <LazyLoadImage
+                  src="/Images/ken.png"
+                  effect="opacity"
+                  className="object-cover max-w-[700px] w-[80vw] rounded-xl"
+                 />
+             </div>
+         ) : null}
+
+          
         </div>
+
+         
 
         {!isMobile && (
           <div className="shrink-0 md:max-w-[310px] w-full pt-4 px-3">
