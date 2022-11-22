@@ -23,6 +23,7 @@ const Search: FunctionComponent<SearchProps> = () => {
   const [currentTab, setCurrentTab] = useState("All");
 
   const query = searchParams.get("query");
+  const page = searchParams.get("page") || 1 ;
   return (
     <>
       {!query ? <Title value="Search | Stream" /> : null}
@@ -45,8 +46,8 @@ const Search: FunctionComponent<SearchProps> = () => {
           setIsSidebarOpen={setIsSidebarActive}
         />
 
-        <div className="flex-grow" id="parent">
-          <div className="" id="test">
+        <div className="flex-grow">
+          <div className="" >
             <h1 className="text-lg font-medium text-center">
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}

@@ -7,7 +7,7 @@ interface SearchResultsProps {
      query : string
 }
 
-const SearchResults : FunctionComponent<SearchResultsProps> = () => {
+const SearchResults : FunctionComponent<SearchResultsProps> = ({ currentTab , page , query}) => {
       return (
          <div>
              Search
