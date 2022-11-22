@@ -44,7 +44,7 @@ const Search: FunctionComponent<SearchProps> = () => {
         />
 
         <div className="flex-grow">
-          <div className="md:max-w-[50vw] w-full ">
+          <div className="md:max-w-[50vw] w-full " id="test">
             <h1 className="text-lg font-medium text-center">
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}
