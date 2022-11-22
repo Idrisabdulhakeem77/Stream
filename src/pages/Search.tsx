@@ -10,6 +10,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import  Footer from '../components/Common/Footer'
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import SearchResult from "../components/Search/SearchResult"
 
 interface SearchProps {}
 
@@ -128,13 +129,13 @@ const Search: FunctionComponent<SearchProps> = () => {
               </div>
             </div>
           )}
-          {/* {query && (
+          {query && (
             <SearchResult
               currentTab={currentTab}
               query={query}
               page={Number(page)}
             />
-          )} */}
+          )}
           
         </div>
 
