@@ -62,7 +62,79 @@ const Search: FunctionComponent<SearchProps> = () => {
                  />
              </div>
          ) : null}
-
+         
+           {isMobile && query && (
+            <div className="shrink-0 md:max-w-[310px] w-full md:pt-32 pt-[104px] px-3">
+              <div
+                // @ts-ignore
+                ref={parent}
+                className="bg-dark-lighten rounded-md shadow-md px-4 pt-3"
+              >
+                <div className="flex justify-between items-center text-white pb-3">
+                  <p className="text-lg ">Search Results</p>
+                  <button onClick={() => setOpenSearchFilter((prev) => !prev)}>
+                    {openSearchFilter && <FiChevronDown size={20} />}
+                    {!openSearchFilter && <FiChevronRight size={20} />}
+                  </button>
+                </div>
+                {openSearchFilter && (
+                  <div className="md:py-6 py-2 border-t border-dark-darken text-white text-lg flex md:flex-col flex-row gap-3">
+                    <button
+                      onClick={() => {
+                        setSearchParams({ query: query || "", page: "1" });
+                        setCurrentTab("multi");
+                      }}
+                      className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                        currentTab === "multi" && "bg-dark-lighten-2"
+                      }`}
+                    >
+                      <span>All</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSearchParams({ query: query || "", page: "1" });
+                        setCurrentTab("movie");
+                      }}
+                      className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                        currentTab === "movie" && "bg-dark-lighten-2"
+                      }`}
+                    >
+                      <span>Movie</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSearchParams({ query: query || "", page: "1" });
+                        setCurrentTab("tv");
+                      }}
+                      className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                        currentTab === "tv" && "bg-dark-lighten-2"
+                      }`}
+                    >
+                      <span>TV Show</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSearchParams({ query: query || "", page: "1" });
+                        setCurrentTab("person");
+                      }}
+                      className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                        currentTab === "person" && "bg-dark-lighten-2"
+                      }`}
+                    >
+                      <span>People</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          {/* {query && (
+            <SearchResult
+              currentTab={currentTab}
+              query={query}
+              page={Number(page)}
+            />
+          )} */}
           
         </div>
 
