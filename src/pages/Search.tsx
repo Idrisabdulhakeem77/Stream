@@ -82,10 +82,10 @@ const Search: FunctionComponent<SearchProps> = () => {
                     <button
                       onClick={() => {
                         setSearchParams({ query: query || "", page: "1" });
-                        setCurrentTab("multi");
+                        setCurrentTab("All");
                       }}
                       className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                        currentTab === "multi" && "bg-dark-lighten-2"
+                        currentTab === "All" && "bg-dark-lighten-2"
                       }`}
                     >
                       <span>All</span>
@@ -110,7 +110,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                         currentTab === "tv" && "bg-dark-lighten-2"
                       }`}
                     >
-                      <span>TV Show</span>
+                      <span>TV</span>
                     </button>
                     <button
                       onClick={() => {
@@ -194,7 +194,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       currentTab === "Tv" && "bg-dark-lighten-2"
                     }`}
                   >
-                    <span> Tv Shows</span>
+                    <span> Tv</span>
                   </button>
                   <button
                     onClick={() => {
