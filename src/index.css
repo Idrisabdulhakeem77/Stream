@@ -53,3 +53,12 @@ body {
 #image-container {
    border: solid 2px white;
 }
+
+#test {
+    border: solid 2px black;
+}
+
+
+#parent {
+   border: solid 1px black;
+}

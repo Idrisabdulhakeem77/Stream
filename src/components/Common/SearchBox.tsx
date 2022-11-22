@@ -71,7 +71,7 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
   }, [location.search]);
 
   return (
-    <div className={`absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ${suggestion.length > 0 && "!rounded-3xl"} `}>
+    <div className={`w-full absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-dark-lighten ${suggestion.length > 0 && "!rounded-3xl"} `}>
       <form className="relative" onSubmit={handleSearch}>
         <button className="absolute top-1/2 -translate-y-1/2 left-5 text-white">
           <FaSearch size={25} className="" />
