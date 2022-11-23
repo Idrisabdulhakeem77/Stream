@@ -153,7 +153,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
-            to="tv-shows"
+            to="tv"
             className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <RiSlideshow4Line size={25} />

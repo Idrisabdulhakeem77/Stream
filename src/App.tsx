@@ -76,7 +76,7 @@ function App() {
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
         <Route path="movies" element={<Movies />} />
-        <Route path="tv-shows" element={<TvShows/>}/>
+        <Route path="tv" element={<TvShows/>}/>
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
       </Routes> 
