@@ -8,9 +8,9 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import  Footer from '../components/Common/Footer'
+import Footer from "../components/Common/Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import SearchResult from "../components/Search/SearchResult"
+import SearchResult from "../components/Search/SearchResult";
 
 interface SearchProps {}
 
@@ -23,7 +23,7 @@ const Search: FunctionComponent<SearchProps> = () => {
   const [currentTab, setCurrentTab] = useState("All");
 
   const query = searchParams.get("query");
-  const page = searchParams.get("page") || 1 ;
+  const page = searchParams.get("page") || 1;
   return (
     <>
       {!query ? <Title value="Search | Stream" /> : null}
@@ -46,26 +46,30 @@ const Search: FunctionComponent<SearchProps> = () => {
           setIsSidebarOpen={setIsSidebarActive}
         />
 
-        <div className="flex-grow">
-          <div className="" >
+        <div className="flex-grow" id="parent">
+          <div
+            className={`relative z-30 md:max-w-[50vw] w-full mx-auto  transition duration-300 text-xl ${
+              query && "!translate-y-0"
+            }`}
+          >
             <h1 className="text-lg font-medium text-center">
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}
-              {/* <SearchBox autoFocus/> */}
             </h1>
-           
+            <SearchBox autoFocus />
           </div>
+
           {!query ? (
-             <div className="mt-[50px] flex justify-center">
-                <LazyLoadImage
-                  src="/Images/ken.png"
-                  effect="opacity"
-                  className="object-cover max-w-[700px] w-[80vw] rounded-xl"
-                 />
-             </div>
-         ) : null}
-         
-           {isMobile && query && (
+            <div className="mt-[90px] flex justify-center">
+              <LazyLoadImage
+                src="/Images/ken.png"
+                effect="opacity"
+                className="object-cover max-w-[700px] w-[80vw] rounded-xl"
+              />
+            </div>
+          ) : null}
+
+          {isMobile && query && (
             <div className="shrink-0 md:max-w-[310px] w-full md:pt-32 pt-[104px] px-3">
               <div
                 // @ts-ignore
@@ -137,10 +141,7 @@ const Search: FunctionComponent<SearchProps> = () => {
               page={Number(page)}
             />
           )}
-          
         </div>
-
-         
 
         {!isMobile && (
           <div className="shrink-0 md:max-w-[310px] w-full pt-4 px-3">
@@ -169,8 +170,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("All");
                     }}
-
-                   className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
                       currentTab === "All" && "bg-dark-lighten-2"
                     }`}
                   >
@@ -181,7 +181,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("Movie");
                     }}
-                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
                       currentTab === "Movie" && "bg-dark-lighten-2"
                     }`}
                   >
@@ -192,7 +192,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("Tv");
                     }}
-                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
                       currentTab === "Tv" && "bg-dark-lighten-2"
                     }`}
                   >
@@ -203,7 +203,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("Animes");
                     }}
-                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
                       currentTab === "Animes" && "bg-dark-lighten-2"
                     }`}
                   >
@@ -214,7 +214,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("People");
                     }}
-                    className = {`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
                       currentTab === "People" && "bg-dark-lighten-2"
                     }`}
                   >
@@ -227,7 +227,7 @@ const Search: FunctionComponent<SearchProps> = () => {
         )}
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };
