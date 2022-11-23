@@ -12,6 +12,8 @@ interface SearchResultsProps {
 
 const SearchResults : FunctionComponent<SearchResultsProps> = ({ currentTab , page , query}) => {
      const { data , error , isError } = useQuery<ItemsPage , Error>(["search-query" , currentTab , page , query] , () => getSearchResult( page , query ,currentTab) , { keepPreviousData : true})
+
+     if(isError) return <div> Error : {error.message} </div>
       return (
          <div>
              Search
