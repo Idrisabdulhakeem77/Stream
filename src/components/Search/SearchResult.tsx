@@ -11,9 +11,15 @@ interface SearchResultsProps {
 }
 
 const SearchResults : FunctionComponent<SearchResultsProps> = ({ currentTab , page , query}) => {
-     const { data , error , isError } = useQuery<ItemsPage , Error>(["search-query" , currentTab , page , query] , () => getSearchResult( page , query ,currentTab) , { keepPreviousData : true})
+     const { data , error , isError ,isPreviousData } = useQuery<ItemsPage , Error>(["search-query" , currentTab , page , query] , () => getSearchResult( page , query ,currentTab) , { keepPreviousData : true})
 
      if(isError) return <div> Error : {error.message} </div>
+
+     const changePageHandler = (page: number): string => {
+          if (isPreviousData) return "";
+          return `/search?query=${encodeURIComponent(query)}&page=${page}`;
+        };
+
       return (
          <div>
              Search
