@@ -1,30 +1,39 @@
 import { FunctionComponent } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getSearchResult } from "../../services/search"
+import { getSearchResult } from "../../services/search";
 import { ItemsPage } from "../../shared/types";
 
-
 interface SearchResultsProps {
-     currentTab : string, 
-     page : number ,
-     query : string
+  currentTab: string;
+  page: number;
+  query: string;
 }
 
-const SearchResults : FunctionComponent<SearchResultsProps> = ({ currentTab , page , query}) => {
-     const { data , error , isError ,isPreviousData } = useQuery<ItemsPage , Error>(["search-query" , currentTab , page , query] , () => getSearchResult( page , query ,currentTab) , { keepPreviousData : true})
+const SearchResults: FunctionComponent<SearchResultsProps> = ({
+  currentTab,
+  page,
+  query,
+}) => {
+  const { data, error, isError, isPreviousData } = useQuery<ItemsPage, Error>(
+    ["search-query", currentTab, page, query],
+    () => getSearchResult(page, query, currentTab),
+    { keepPreviousData: true }
+  );
 
-     if(isError) return <div> Error : {error.message} </div>
+  if (isError) return <div> Error : {error.message} </div>;
 
-     const changePageHandler = (page: number): string => {
-          if (isPreviousData) return "";
-          return `/search?query=${encodeURIComponent(query)}&page=${page}`;
-        };
+  const changePageHandler = (page: number): string => {
+    if (isPreviousData) return "";
+    return `/search?query=${encodeURIComponent(query)}&page=${page}`;
+  };
 
-      return (
-         <div>
-             Search
-         </div>
-      )
-}
+  return (
+    <div>
+      <p>
+          Search result for '{query }' is ({ data?.total_results} found)
+      </p>
+    </div>
+  );
+};
 
-export default SearchResults
+export default SearchResults;
