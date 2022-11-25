@@ -5,7 +5,7 @@ import { Navigation, Autoplay, EffectFlip } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import { Link } from "react-router-dom";
-import { resizeImage } from "../../shared/utils";
+
 
 interface AnimeBannerSliderProps {
   animes: Animes[] | undefined;
