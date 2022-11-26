@@ -1,20 +1,16 @@
 import { FunctionComponent } from "react";
-import {Items} from '../../shared/types'
-
+import { Items } from "../../shared/types";
 
 interface FilmListForBookmarkedAndRecentProps {
-     films : Items[] | undefined
-     pageType : string 
-     loading : boolean
+  films: Items[];
+  pageType: string;
+  loading: boolean;
 }
 
+const FilmListForBookmarkedAndRecent: FunctionComponent<
+  FilmListForBookmarkedAndRecentProps
+> = ({ films, loading, pageType }) => {
+  return <div>Something</div>;
+};
 
-const  FilmListForBookmarkedAndRecent : FunctionComponent<FilmListForBookmarkedAndRecentProps> =() => {
-      return(
-         <div>
-             Something
-         </div>
-      )
-}
-
-export default FilmListForBookmarkedAndRecent
+export default FilmListForBookmarkedAndRecent;

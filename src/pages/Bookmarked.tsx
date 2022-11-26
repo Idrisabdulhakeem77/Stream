@@ -40,12 +40,13 @@ const Bookmark : FunctionComponent<BookmarkProps> = () => {
     if(error) return <div>Error : {error} </div>
      return (
         <>
-         { console.log(bookmarkFilms)}
         <div>
             
            <Title value="Bookmark | Stream"/>
               <FilmListForBookmarkedAndRecent
-                 films={}
+                 films={bookmarkFilms}
+                 loading={loading}
+                 pageType = "Bookmark"
                 />
            <Footer/>
         </div>
