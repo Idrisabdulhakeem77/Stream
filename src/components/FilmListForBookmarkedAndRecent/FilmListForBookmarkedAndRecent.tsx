@@ -8,6 +8,7 @@ import { updateDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { db } from "../../shared/firebase";
 import { AiOutlineDelete } from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
 
 interface FilmListForBookmarkedAndRecentProps {
   films: Items[];
@@ -21,6 +22,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
   const user = useAppSelector((state) => state.user.user);
   const [isShowPrompt, setIsShowPrompt] = useState(false);
   const [selections, setSelections] = useState<number[]>([]);
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   const [parent] = useAutoAnimate();
   const [show] = useAutoAnimate();
@@ -44,19 +46,34 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               This will remove your films from this {pageType} list.
             </p>
             <p className="text-center ">Are you sure?</p>
-             <div className=" flex justify-end mt-8">
-               <button
-                 onClick={() => setIsShowPrompt(false)}
-               className="px-6 py-1 rounded-md text-white hover:brightness-75 transition duration-300"> 
-                  Cancel
-               </button>
-               <button
-               className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300">
-                  Yes
-               </button>
-             </div>
+            <div className=" flex justify-end mt-8">
+              <button
+                onClick={() => setIsShowPrompt(false)}
+                className="px-6 py-1 rounded-md text-white hover:brightness-75 transition duration-300"
+              >
+                Cancel
+              </button>
+              <button className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300">
+                Yes
+              </button>
+            </div>
+            <div
+              onClick={() => setIsShowPrompt(false)}
+              className="fixed top-0 left-0 w-full h-full z-30 bg-black/60"
+            ></div>
           </div>
         )}
+
+        <div className="flex md:hidden justify-between items-center px-5 my-5">
+          <Link to="/" className="flex gap-2 items-center">
+            <div className="uppercase font-medium text-lg tracking-widest ">
+              AnimeStream
+            </div>
+          </Link>
+          <button onClick={() => setIsSidebarActive((prev) => !prev)}>
+            <FaBars size={25} />
+          </button>
+        </div>
       </div>
     </>
   );
