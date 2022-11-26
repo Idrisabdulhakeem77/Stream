@@ -32,7 +32,7 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({
   return (
     <div>
       <p>
-          Search result for '{query }' is ({ data?.total_results} found)
+          Search result for '{query }' is ({ data?.total_results} not  found)
       </p>
 
       { data && data.results.length === 0  && (
