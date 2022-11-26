@@ -1,7 +1,7 @@
 import { FunctionComponent , useEffect , useState } from "react";
 import Footer from "../components/Common/Footer";
 import Title from "../components/Common/Title";
-import FilmListForBookmarkedAndRecent from '../components/Bookmark/FilmListForBookmarkedAndRecent'
+import FilmListForBookmarkedAndRecent from '../components/FilmListForBookmarkedAndRecent/FilmListForBookmarkedAndRecent'
 import { Items} from '../shared/types'
 import {useAppSelector} from "../store/hooks"
 import {doc , onSnapshot} from 'firebase/firestore' 
