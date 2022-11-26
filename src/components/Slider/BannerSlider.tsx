@@ -66,7 +66,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
                   </div>
 
                   <div className="absolute top-[50%] -translate-y-1/2 left-[5%] md:max-w-md max-w-[200px]">
-                    <h2 className="md:text-4xl text-lg text-white text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
+                    <h2 className="md:text-4xl text-lg text-primary font-black tracking-wide md:tw-multiline-ellipsis-2 tw-multiline-ellipsis-3">
                       {film.title || film.name}
                     </h2>
                     <div className="">
@@ -79,7 +79,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
                       {!isMobile && (
                         <>
                           <div className="flex gap-2 flex-wrap mt-5">
-                            {dataDetails[index].genre.map((genre: any) => (
+                            {dataDetails[index]?.genre?.map((genre: any) => (
                               <div
                                 className="px-3 py-1 border rounded-full text-white "
                                 key={genre.id}
