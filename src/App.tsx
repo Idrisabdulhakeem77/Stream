@@ -18,7 +18,7 @@ import TvShows from './pages/TvShows'
 import Search from "./pages/Search";
 import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
-import axios from "axios"
+import Bookmark from "./pages/Bookmarked";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -27,15 +27,7 @@ function App() {
   const dispatch = useAppDispatch();
   const location = useLocation();
  
-   const fetchData =async () => {
-      const response = await axios.get('https://api.themoviedb.org/3/movie/550?api_key=166ef97c1dbaca45757f8a7d461d59e0')
 
-      console.log(response)
-   }
-   
-   useEffect(() => {
-        fetchData()
-       } , [])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -90,6 +82,7 @@ function App() {
         <Route path="tv" element={<TvShows/>}/>
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
+        <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
       </Routes> 
     </div>
   );
