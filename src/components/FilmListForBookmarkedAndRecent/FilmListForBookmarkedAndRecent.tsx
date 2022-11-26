@@ -12,6 +12,7 @@ import { FaBars } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {MdOutlineCancel} from 'react-icons/md'
 import {BiSelectMultiple} from 'react-icons/bi'
+import BookmarkResults from "../Bookmark/BookmarkResults";
 
 interface FilmListForBookmarkedAndRecentProps {
   films: Items[];
@@ -149,7 +150,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
             </h1>
             <div
               // @ts-ignore
-              ref={parent}
+              ref={action}
               className="flex flex-col md:flex-row  items-start md:items-center gap-5 md:justify-between mb-8"
               id="test"
             > 
@@ -208,14 +209,16 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
 
                { isEditting && (
                   <div className="flex gap-2  ">
-                      <button className={`flex gap-2 items-center  hover:text-primary transition duration-300  ${isSelectAll ? "text-primary" : "!text-gray-lighten"} ` }>
+                      <button 
+                       onClick={selectAllHandler}
+                      className={`flex gap-2 items-center  hover:text-primary transition duration-300  ${isSelectAll ? "text-primary" : "!text-gray-lighten"} ` }>
                          <BiSelectMultiple size={25}/>
                          <p> Select All</p>
                       </button>
                       <button 
                        disabled={selections.length === 0}
                        onClick={() => setIsShowPrompt(true)}
-                      className=" disabled:text-gray flex gap-2 items-center  hover:text-primary transition duration-300 "  >
+                      className="disabled:text-red flex gap-2 items-center  hover:text-primary transition duration-300 "  >
                           <AiOutlineDelete size={25}/>
                          <p> Delete</p>
                       </button>
@@ -229,6 +232,36 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                )}
                
             </div>
+            
+            <ul
+             // @ts-ignore
+             ref={parent}
+              className={`grid grid-cols-sm md:grid-cols-lg gap-x-8 gap-y-10 ${
+                isEditting && "!gap-y-16"
+              }`}
+            >
+              { loading && 
+                [...new Array(6)].map((_ , index) => (
+                   <li key={index}>
+                     <Skeleton classID="h-0 pb-[160%]"/>
+                   </li>
+                ))   
+              }
+
+               { currentTab === "All" && (
+                 <BookmarkResults
+                 films={films}
+                 isEditting={isEditting}
+                 isLoading={loading}
+                 pageType={pageType}
+                 selections={selections}
+                 setSelection={setSelections}
+                  
+                  />
+               )}
+               
+            </ul>
+             
           </div>
         </div>
       </div>
