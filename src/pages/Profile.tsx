@@ -53,7 +53,7 @@ const Profile: FC<ProfileProps> = () => {
                  isUpdatingEmail={isUpdatingEmail}
                  setIsUpdatingEmail={setIsUpdatingEmail}
                  emailValueRef={emailValueRef}
-                 isShowPromptReAuthFor={isShowPromptReAuthFor}
+                 setIsShowPromptReAuthFor={setIsShowPromptReAuthFor}
                 />
             </div>
           </div>
