@@ -20,7 +20,7 @@ const Search: FunctionComponent<SearchProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [parent] = useAutoAnimate();
   const [openSearchFilter, setOpenSearchFilter] = useState(true);
-  const [currentTab, setCurrentTab] = useState("All");
+  const [currentTab, setCurrentTab] = useState("all");
 
   const query = searchParams.get("query");
   const page = searchParams.get("page") || 1;
@@ -88,13 +88,13 @@ const Search: FunctionComponent<SearchProps> = () => {
                     <button
                       onClick={() => {
                         setSearchParams({ query: query || "", page: "1" });
-                        setCurrentTab("All");
+                        setCurrentTab("all");
                       }}
                       className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                        currentTab === "All" && "bg-dark-lighten-2"
+                        currentTab === "all" && "bg-dark-lighten-2"
                       }`}
                     >
-                      <span>All</span>
+                      <span>all</span>
                     </button>
                     <button
                       onClick={() => {
@@ -168,46 +168,35 @@ const Search: FunctionComponent<SearchProps> = () => {
                   <button
                     onClick={() => {
                       setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("All");
+                      setCurrentTab("all");
                     }}
                     className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "All" && "bg-dark-lighten-2"
+                      currentTab === "all" && "bg-dark-lighten-2"
                     }`}
                   >
-                    <span> All</span>
+                    <span> all</span>
                   </button>
                   <button
                     onClick={() => {
                       setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("Movie");
+                      setCurrentTab("movie");
                     }}
                     className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "Movie" && "bg-dark-lighten-2"
+                      currentTab === "movie" && "bg-dark-lighten-2"
                     }`}
                   >
-                    <span> Movies</span>
+                    <span> movies</span>
                   </button>
                   <button
                     onClick={() => {
                       setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("Tv");
+                      setCurrentTab("tv");
                     }}
                     className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "Tv" && "bg-dark-lighten-2"
+                      currentTab === "tv" && "bg-dark-lighten-2"
                     }`}
                   >
                     <span> Tv</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("Animes");
-                    }}
-                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "Animes" && "bg-dark-lighten-2"
-                    }`}
-                  >
-                    <span> Animes</span>
                   </button>
                   <button
                     onClick={() => {
