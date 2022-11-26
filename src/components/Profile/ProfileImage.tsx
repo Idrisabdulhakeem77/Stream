@@ -8,7 +8,7 @@ interface ProfileImageProps {}
 const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
   const currentUser = useAppSelector((state) => state.user.user);
   return (
-    <div  id="text-form" className="bg-white rounded-md   md:h-[50vh] p-[40px]  w-[100%] md:w-[30vw] mt-10 ml-10 ">
+    <div  className="bg-white rounded-md   md:h-[50vh] p-[40px]  w-[100%] md:w-[30vw] mt-10 ml-10 ">
       <h1 className="text-3xl font-semibold pb-6 text-center"> {currentUser?.displayName}</h1>
       <LazyLoadImage
         src="/Images/user.svg"
