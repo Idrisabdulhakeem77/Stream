@@ -19,7 +19,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
   FilmListForBookmarkedAndRecentProps
 > = ({ films, loading, pageType }) => {
   const user = useAppSelector((state) => state.user.user);
-  const [isShowPrompt, setIsShowPrompt] = useState(true);
+  const [isShowPrompt, setIsShowPrompt] = useState(false);
   const [selections, setSelections] = useState<number[]>([]);
 
   const [parent] = useAutoAnimate();
@@ -44,7 +44,17 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               This will remove your films from this {pageType} list.
             </p>
             <p className="text-center ">Are you sure?</p>
-             <div className="flex justify-end mbt-8"></div>
+             <div className=" flex justify-end mt-8">
+               <button
+                 onClick={() => setIsShowPrompt(false)}
+               className="px-6 py-1 rounded-md text-white hover:brightness-75 transition duration-300"> 
+                  Cancel
+               </button>
+               <button
+               className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300">
+                  Yes
+               </button>
+             </div>
           </div>
         )}
       </div>
