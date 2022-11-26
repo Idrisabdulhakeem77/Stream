@@ -30,6 +30,8 @@ const Profile: FC<ProfileProps> = () => {
            {!isMobile ? <MiniSidebar/> : null }
            { isMobile ? <Sidebar isSidebarOpen={isSidebarActive} setIsSidebarOpen={setIsSidebarActive}/> : null} 
            <ProfileImage/>
+
+           
           </div> 
       </>
   ); 

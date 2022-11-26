@@ -42,7 +42,7 @@ export const links = [
   },
   {
     name: "tv_shows",
-    url: "/tv_shows",
+    url: "/tv",
     icon: <RiSlideshow4Line size={25} />,
   },
   {

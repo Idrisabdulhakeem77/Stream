@@ -84,7 +84,7 @@ function App() {
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
         <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
-        <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Recent/>  </Protected>}/>
+        <Route  path="recent"  element={<Protected isSignedIn={isSignedIn}> <Recent/>  </Protected>}/>
       </Routes> 
     </div>
   );

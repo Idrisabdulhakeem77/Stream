@@ -9,7 +9,7 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
   const currentUser = useAppSelector((state) => state.user.user);
   return (
     // className="shrink-0 md:max-w-[500px] border-b-2 border-black px-6 py-2 text-center"
-    <div  id="text-form" className="bg-white rounded-md h-[80vh] p-[40px] w-[30vw] mt-10 ml-10">
+    <div  id="text-form" className="bg-white rounded-md h-[50vh] p-[40px] w-[30vw] mt-10 ml-10">
       <h1 className="text-3xl font-semibold pb-6 text-center"> {currentUser?.displayName}</h1>
       <LazyLoadImage
         src="/Images/user.svg"
@@ -32,16 +32,6 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
         id="upload-image"
         className="hidden"
       />
-
-      <label htmlFor="bio" className="block mb-2  font-medium text-lg  text-gray-900 ">
-        Bio
-      </label>
-      <textarea
-        id="bio"
-        rows={4}
-        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
-        placeholder="Write About Your Self...."
-      ></textarea>
     </div>
   );
 };
