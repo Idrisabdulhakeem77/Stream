@@ -19,26 +19,24 @@ const Email = ({
 }: EmailProps) => {
   const user = useAppSelector((state) => state.user.user);
 
-  const submitHandler = (e : FormEvent) => {
-     e.preventDefault()
-     if(!emailValueRef.current.value.trim().length() ) {
-        toast.error("You have to type something", {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    if (!emailValueRef.current.value.trim().length) {
+      toast.error("You have to type something", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-          return
-     }
+      return;
+    }
 
-     setIsShowPromptReAuthFor("email")
-
-     
-  }
+    setIsShowPromptReAuthFor("email");
+  };
 
   return (
     <>
@@ -46,7 +44,7 @@ const Email = ({
 
       <p className="text-lg">Email </p>
       {!isUpdatingEmail && (
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between mt-1">
           <p> {user?.email}</p>
           <button
             className="hover:text-primary transition duration-300"
@@ -60,8 +58,8 @@ const Email = ({
       {isUpdatingEmail && (
         <>
           <form
-  onSubmit={(e) => submitHandler(e)}
- className="flex justify-between gap-48 mt-1"
+            onSubmit={(e) => submitHandler(e)}
+            className="flex justify-between gap-48 mt-1"
           >
             <input
               type="email"
@@ -73,10 +71,9 @@ const Email = ({
               }}
               className="outline-none bg-dark-lighten rounded-md py-1 px-2 w-full"
             />
-              <button className="hover:text-primary transition duration-300">
-                <BiSend size={25} />
-              </button>
-            
+            <button className="hover:text-primary transition duration-300">
+              <BiSend size={25} />
+            </button>
           </form>
           <p>Press Esc to cancel</p>
         </>
