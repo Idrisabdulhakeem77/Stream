@@ -17,6 +17,8 @@ const Profile: FC<ProfileProps> = () => {
   const [isUpdatingEmail , setIsUpdatingEmail] = useState(false)
   const [isShowPromptReAuthFor , setIsShowPromptReAuthFor] = useState<string | undefined>()
   const emailValueRef = useRef<HTMLInputElement>(null!)
+  const nameValueRef = useRef<HTMLInputElement>(null!)
+  const [isUpdatingName , setIsUpdatingName] = useState(false)
   return (
     <>
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
@@ -56,8 +58,10 @@ const Profile: FC<ProfileProps> = () => {
                  emailValueRef={emailValueRef}
                  setIsShowPromptReAuthFor={setIsShowPromptReAuthFor}
                 />
+{/* 
+                <Name  setIsUpdatingName={setIsUpdatingName} isUpdatingName={isUpdatingNametingName}> */}
 
-                <Name  setIsUpdating={setIsUpdating}/>
+                <Name isUpdatingName={isUpdatingName} setIsUpdatingName={setIsUpdatingName} nameValueRef={nameValueRef}/>
             </div>
           </div>
         </div>
