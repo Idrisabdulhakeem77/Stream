@@ -26,11 +26,14 @@ const Profile: FC<ProfileProps> = () => {
         </button>
       </div>
 
-        <div className="flex item-start">
+        <div className="flex  md:flex-row flex-col-reverse item-start gap-4">
            {!isMobile ? <MiniSidebar/> : null }
            { isMobile ? <Sidebar isSidebarOpen={isSidebarActive} setIsSidebarOpen={setIsSidebarActive}/> : null} 
            <ProfileImage/>
-
+         
+          <div className="flex-gow">
+            <p> User Info </p>
+          </div>
            
           </div> 
       </>
