@@ -169,6 +169,10 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                        All
                    </button>
                    <button
+                         className={`${
+                          currentTab === "movie" &&
+                          "text-white font-medium after:absolute after:bottom-0 after:left-[30%] after:bg-white after:h-[3px] after:w-5"
+                        } transition duration-300 hover:text-white`}
                       onClick={() => {
                         setCurrentTab("movie")
                         localStorage.setItem("bookmarkCurrentTab" , "movie")
@@ -178,6 +182,10 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                    </button>
 
                    <button
+                        className={`${
+                          currentTab === "tv" &&
+                          "text-white font-medium after:absolute after:bottom-0 after:left-[57%] after:bg-white after:h-[3px] after:w-5"
+                        } transition duration-300 hover:text-white`}
                       onClick={() => {
                         setCurrentTab("tv")
                         localStorage.setItem("bookmarkCurrentTab" , "tv")
@@ -187,6 +195,10 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                    </button>
 
                    <button
+                        className={`${
+                          currentTab === "anime" &&
+                          "text-white font-medium after:absolute after:bottom-0 after:left-[83%] after:bg-white after:h-[3px] after:w-5"
+                        } transition duration-300 hover:text-white`}
                       onClick={() => {
                         setCurrentTab("anime")
                         localStorage.setItem("bookmarkCurrentTab" , "anime")
