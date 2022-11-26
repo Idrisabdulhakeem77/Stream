@@ -19,6 +19,7 @@ import Search from "./pages/Search";
 import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
 import Bookmark from "./pages/Bookmarked";
+import Recent from "./pages/Recent";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(
@@ -83,6 +84,7 @@ function App() {
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
         <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
+        <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Recent/>  </Protected>}/>
       </Routes> 
     </div>
   );
