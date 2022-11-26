@@ -15,7 +15,6 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
         alt="profile-image"
         className="h-[130px]  w-[130px] object-cover rounded-full mx-auto"
       />
-      {/* */}
 
       <label
         htmlFor="upload-image"

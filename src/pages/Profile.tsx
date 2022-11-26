@@ -36,14 +36,15 @@ const Profile: FC<ProfileProps> = () => {
         <ProfileImage />
 
         <div className="flex-grow">
-          <p> User Info </p>
-          <p>Here you can edit public information about yourself.</p>
-        <p>
-          If you signed in with Google or Facebook, you can't change your email
-          and password.
-        </p>
+          <div id="test" className="bg-white rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%] mt-10 ml-10 ">
+            <p> User Info </p>
+            <p>Here you can edit public information about yourself.</p>
+            <p>
+              If you signed in with Google or Facebook, you can't change your
+              email and password.
+            </p>
+          </div>
         </div>
-        
       </div>
     </>
   );
