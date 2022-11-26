@@ -1,4 +1,6 @@
 import { FunctionComponent , useEffect , useState } from "react";
+import Footer from "../components/Common/Footer";
+import Title from "../components/Common/Title";
 
 interface BookmarkProps {}
 
@@ -6,7 +8,9 @@ interface BookmarkProps {}
 const Bookmark : FunctionComponent<BookmarkProps> = () => {
      return (
         <div>
-          Bookmark
+           <Title value="Bookmark | Stream"/>
+
+           <Footer/>
         </div>
          
      )
