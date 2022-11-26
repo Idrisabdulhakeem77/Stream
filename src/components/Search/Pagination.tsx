@@ -3,12 +3,12 @@ import { FunctionComponent } from "react";
 
 interface PaginationProps {
     currentPage : number ,
-    onPageChaneg : ( page : number) => string
+    onPageChange : ( page : number) => string
     maxPage : number
 }
 
 
-const Pagination : FunctionComponent<PaginationProps> = ({ currentPage , maxPage , onPageChaneg}) => {
+const Pagination : FunctionComponent<PaginationProps> = ({ currentPage , maxPage , onPageChange}) => {
       return (
          <div>
              

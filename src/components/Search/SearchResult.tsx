@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getSearchResult } from "../../services/search";
 import { ItemsPage } from "../../shared/types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Pagination from "./Pagination";
 
 interface SearchResultsProps {
   currentTab: string;
@@ -45,6 +46,9 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({
            <p> There is no such film </p>
                </div>
       )}
+
+
+       { data && <Pagination currentPage={data.page} maxPage={data.total_pages} onPageChange={changePageHandler}/>}
     </div>
   );
 };
