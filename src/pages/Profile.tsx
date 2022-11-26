@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import MiniSidebar from "../components/Common/MiniSidebar";
 import ProfileImage from "../components/Profile/ProfileImage";
+import Email from '../components/Profile/Email'
 
 interface ProfileProps {}
 
@@ -37,12 +38,15 @@ const Profile: FC<ProfileProps> = () => {
 
         <div className="flex-grow">
           <div id="test" className="bg-white rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%] mt-10 ml-10 ">
-            <p> User Info </p>
+            <p className="text-lg font-bold pb-4"> User Info </p>
             <p>Here you can edit public information about yourself.</p>
             <p>
               If you signed in with Google or Facebook, you can't change your
               email and password.
             </p>
+            <div className="mt-7 max-w-[600px] w-full flex flex-col gap-3">
+               <Email/>
+            </div>
           </div>
         </div>
       </div>
