@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState , useRef  } from "react";
 import Sidebar from "../components/Common/Sidebar";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import { Link } from "react-router-dom";
@@ -12,6 +12,10 @@ interface ProfileProps {}
 const Profile: FC<ProfileProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const [isUpdating , setIsUpdating] = useState(false)
+  const [isUpdatingEmail , setIsUpdatingEmail] = useState(false)
+  const [isShowPromptReAuthFor , setIsShowPromptReAuthFor] = useState<string | undefined>()
+  const emailValueRef = useRef<HTMLInputElement>(null!)
   return (
     <>
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
@@ -45,7 +49,12 @@ const Profile: FC<ProfileProps> = () => {
               email and password.
             </p>
             <div className="mt-7 max-w-[600px] w-full flex flex-col gap-3">
-               <Email/>
+               <Email
+                 isUpdatingEmail={isUpdatingEmail}
+                 setIsUpdatingEmail={setIsUpdatingEmail}
+                 emailValueRef={emailValueRef}
+                 isShowPromptReAuthFor={isShowPromptReAuthFor}
+                />
             </div>
           </div>
         </div>
