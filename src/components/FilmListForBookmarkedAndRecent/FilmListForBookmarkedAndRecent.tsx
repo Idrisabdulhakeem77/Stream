@@ -7,7 +7,7 @@ import Skeleton from "../Common/Skeleton";
 import { updateDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { db } from "../../shared/firebase";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -25,6 +25,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
   const [selections, setSelections] = useState<number[]>([]);
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const [currentTab , setCurrentTab] = useState(localStorage.getItem("bookmarkCurrentTab" ) || "all") 
+  const [isEditting , setIsEditting] = useState(false)
   const [isSelectAll , setIsSelectAll] = useState(false)
 
   const [parent] = useAutoAnimate();
@@ -165,6 +166,16 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                        Anime
                    </button>
                </div>
+
+              { !isEditting && (
+                  <button
+                    onClick={() => setIsEditting(true)}
+                    className="self-end text-lg hover:text-primary transition duration-300 flex gap-2 items-center"
+                  >
+                     <AiOutlineEdit size={25}/>
+                     <p>Edit</p>
+                  </button>
+              )}
                
             </div>
           </div>
