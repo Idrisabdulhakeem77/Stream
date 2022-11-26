@@ -10,6 +10,8 @@ import { db } from "../../shared/firebase";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {MdOutlineCancel} from 'react-icons/md'
+import {BiSelectMultiple} from 'react-icons/bi'
 
 interface FilmListForBookmarkedAndRecentProps {
   films: Items[];
@@ -31,6 +33,31 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
   const [parent] = useAutoAnimate();
   const [show] = useAutoAnimate();
   const [action] = useAutoAnimate();
+
+
+  const selectAllHandler = () => {
+    if (isSelectAll) {
+      setSelections([]);
+      setIsSelectAll(false);
+      return;
+    }
+
+    setIsSelectAll(true);
+
+    if (currentTab === "all") {
+      setSelections(films.map((film) => film.id));
+    } else if (currentTab === "tv") {
+      setSelections(
+        films.filter((film) => film.media_type === "tv").map((film) => film.id)
+      );
+    } else if (currentTab === "movie") {
+      setSelections(
+        films
+          .filter((film) => film.media_type === "movie")
+          .map((film) => film.id)
+      );
+    }
+  };
 
    const clearSelection = () => {
        if(!user) return
@@ -123,9 +150,10 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
             <div
               // @ts-ignore
               ref={parent}
-              className="flex flex-col md:flex-row items-start md:items-end gap-5 md:justify-between m mb-8"
+              className="flex flex-col md:flex-row  items-start md:items-center gap-5 md:justify-between mb-8"
+              id="test"
             > 
-               <div className="inline-flex gap-[30px] pb-[14px] border-b border-gray-darken relative">
+               <div className="inline-flex gap-[30px] pb-[12px] border-b border-gray-darken relative">
                    <button
                       onClick={() => {
                         setCurrentTab("all")
@@ -170,12 +198,35 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               { !isEditting && (
                   <button
                     onClick={() => setIsEditting(true)}
-                    className="self-end text-lg hover:text-primary transition duration-300 flex gap-2 items-center"
+                    className="self-end text-lg hover:text-primary transition duration-300 flex gap-2 items-center "
                   >
                      <AiOutlineEdit size={25}/>
                      <p>Edit</p>
                   </button>
               )}
+
+
+               { isEditting && (
+                  <div className="flex gap-2  ">
+                      <button className={`flex gap-2 items-center  hover:text-primary transition duration-300  ${isSelectAll ? "text-primary" : "!text-gray-lighten"} ` }>
+                         <BiSelectMultiple size={25}/>
+                         <p> Select All</p>
+                      </button>
+                      <button 
+                       disabled={selections.length === 0}
+                       onClick={() => setIsShowPrompt(true)}
+                      className=" disabled:text-gray flex gap-2 items-center  hover:text-primary transition duration-300 "  >
+                          <AiOutlineDelete size={25}/>
+                         <p> Delete</p>
+                      </button>
+                      <button 
+                       onClick={() => setIsEditting(false)}
+                      className="flex gap-2 items-center hover:text-primary transition duration-300">
+                         <MdOutlineCancel size={25}/>
+                         <p>Cancel</p>
+                      </button>
+                  </div>
+               )}
                
             </div>
           </div>

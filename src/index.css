@@ -50,11 +50,6 @@ body {
 }
 
 
-#image-container {
-   border: solid 2px white;
-}
-
-
-#parent {
-   border: solid  2px black
+#test { 
+   border: solid 1px black;
 }
