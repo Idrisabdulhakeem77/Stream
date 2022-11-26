@@ -53,3 +53,7 @@ body {
 #test { 
    border: solid 1px black;
 }
+
+.tw-absolute-center-horizontal {
+  @apply absolute left-1/2 -translate-x-1/2;
+}
