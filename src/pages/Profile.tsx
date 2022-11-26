@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 import MiniSidebar from "../components/Common/MiniSidebar";
 import ProfileImage from "../components/Profile/ProfileImage";
 import Email from '../components/Profile/Email'
+import Name from '../components/Profile/Name'
 
 interface ProfileProps {}
 
@@ -55,6 +56,8 @@ const Profile: FC<ProfileProps> = () => {
                  emailValueRef={emailValueRef}
                  setIsShowPromptReAuthFor={setIsShowPromptReAuthFor}
                 />
+
+                <Name  setIsUpdating={setIsUpdating}/>
             </div>
           </div>
         </div>
