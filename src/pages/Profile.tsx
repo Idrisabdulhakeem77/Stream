@@ -9,6 +9,7 @@ import Email from "../components/Profile/Email";
 import Name from "../components/Profile/Name";
 import EmailVerication from "../components/Profile/EmailVerification";
 import Password from "../components/Profile/Password";
+import Delete from "../components/Profile/Delete";
 
 interface ProfileProps {}
 
@@ -111,6 +112,8 @@ const Profile: FC<ProfileProps> = () => {
               setUpdatedPassword={setUpdatedPassword}
               newPasswordRef={newPasswordRef}
             />
+
+            <Delete setIsShowPromptReAuthFor={setIsShowPromptReAuthFor}/>
           </div>
         </div>
       </div>
