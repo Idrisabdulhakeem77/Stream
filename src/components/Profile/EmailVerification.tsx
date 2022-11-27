@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { auth } from "../../shared/firebase";
 import {convertErrorCodeToMessage} from '../../shared/utils'
+import {sendEmailVerification} from 'firebase/auth'
 
 interface EmailVerificationProps {
   setIsUpdating: any;
