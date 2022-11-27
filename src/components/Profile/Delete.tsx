@@ -22,6 +22,23 @@ const Delete = ({ setIsShowPromptReAuthFor }: DeleteProps) => {
               This will remove your account and cannot recover
             </p>
             <p className="text-center ">Are you sure?</p>
+            <div className="flex mt-8 justify-end">
+              <button
+                onClick={() => setIsShowPrompt(false)}
+                className="px-6 py-1 rounded-md text-white hover:brightness-75 transition duration-300"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setIsShowPromptReAuthFor("delete");
+                  setIsShowPrompt(false);
+                }}
+                className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300"
+              >
+                Yes
+              </button>
+            </div>
           </div>
 
           <div
@@ -32,6 +49,15 @@ const Delete = ({ setIsShowPromptReAuthFor }: DeleteProps) => {
           </div>
         </>
       )}
+
+      <div className="flex justify-center mt-12 mb-6">
+        <button
+          onClick={() => setIsShowPrompt(true)}
+          className="px-5 py-2  border rounded-full text-red-500 border-dark-lighten-2 bg-dark-lighten hover:bg-red-500 hover:text-white transition duration-300"
+        >
+          Delete account
+        </button>
+      </div>
     </>
   );
 };
