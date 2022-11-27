@@ -7,7 +7,7 @@ import MiniSidebar from "../components/Common/MiniSidebar";
 import ProfileImage from "../components/Profile/ProfileImage";
 import Email from "../components/Profile/Email";
 import Name from "../components/Profile/Name";
-import EmailVerication from "../components/Profile/EmailVeridication";
+import EmailVerication from "../components/Profile/EmailVerification";
 
 interface ProfileProps {}
 
