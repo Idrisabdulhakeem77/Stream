@@ -20,13 +20,13 @@ const Profile: FC<ProfileProps> = () => {
   const [isShowPromptReAuthFor, setIsShowPromptReAuthFor] = useState<
     string | undefined
   >();
-  const [isUpdatingPassword , setIsUpdatingPassword] = useState(false)
-  const [updatedPassword , setUpdatedPassword ] = useState(false)
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [updatedPassword, setUpdatedPassword] = useState(false);
 
   const emailValueRef = useRef<HTMLInputElement>(null!);
   const oldPasswordRef = useRef<HTMLInputElement>(null!);
   const nameValueRef = useRef<HTMLInputElement>(null!);
-  const newPasswordRef = useRef<HTMLInputElement>(null!)
+  const newPasswordRef = useRef<HTMLInputElement>(null!);
   const [isUpdatingName, setIsUpdatingName] = useState(false);
   return (
     <>
@@ -67,7 +67,7 @@ const Profile: FC<ProfileProps> = () => {
         </>
       )}
 
-      <div className="flex  md:flex-row flex-col-reverse item-start gap-4">
+      <div className="flex  md:flex-row flex-col-reverse item-start gap-4 mr-4">
         {!isMobile ? <MiniSidebar /> : null}
         {isMobile ? (
           <Sidebar
@@ -102,13 +102,15 @@ const Profile: FC<ProfileProps> = () => {
                 nameValueRef={nameValueRef}
               />
             </div>
-              
-             <EmailVerication setIsUpdating={setIsUpdating}/> 
 
-             <Password setIsUpdatingPassword={setIsUpdatingPassword} isUpdatingPassword={isUpdatingPassword} 
-               setUpdatedPassword={setUpdatedPassword}
-              newPasswordRef={newPasswordRef}/>
+            <EmailVerication setIsUpdating={setIsUpdating} />
 
+            <Password
+              setIsUpdatingPassword={setIsUpdatingPassword}
+              isUpdatingPassword={isUpdatingPassword}
+              setUpdatedPassword={setUpdatedPassword}
+              newPasswordRef={newPasswordRef}
+            />
           </div>
         </div>
       </div>

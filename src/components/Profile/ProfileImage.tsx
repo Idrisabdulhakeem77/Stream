@@ -18,7 +18,7 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
 
       <label
         htmlFor="upload-image"
-        className="flex items-center gap-2 px-5 py-3 mt-4 mb-4 place-items-center w-[80%] mx-auto transition duration-300  bg-green-400 rounded-full"
+        className="flex items-center gap-2 px-4 py-3 mt-4 mb-4 place-items-center w-[70%] mx-auto transition duration-300  bg-green-400 rounded-full"
       >
         <HiOutlineUpload size={25} />
         <p> Upload a New Image </p>{" "}
