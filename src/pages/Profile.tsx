@@ -22,6 +22,7 @@ const Profile: FC<ProfileProps> = () => {
   const emailValueRef = useRef<HTMLInputElement>(null!);
   const oldPasswordRef = useRef<HTMLInputElement>(null!);
   const nameValueRef = useRef<HTMLInputElement>(null!);
+  const newPasswordRef = useRef<HTMLInputElement>(null!)
   const [isUpdatingName, setIsUpdatingName] = useState(false);
   return (
     <>
