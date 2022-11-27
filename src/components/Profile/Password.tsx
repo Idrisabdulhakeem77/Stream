@@ -2,6 +2,9 @@
 
 interface PasswordProps {
       setIsUpdatingPassword : any ;
+      isUpdatingPassword : boolean 
+      newPasswordRef : any
+      setUpdatedPassword : any
 
 }
 

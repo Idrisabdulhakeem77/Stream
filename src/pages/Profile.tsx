@@ -8,6 +8,7 @@ import ProfileImage from "../components/Profile/ProfileImage";
 import Email from "../components/Profile/Email";
 import Name from "../components/Profile/Name";
 import EmailVerication from "../components/Profile/EmailVerification";
+import Password from "../components/Profile/Password";
 
 interface ProfileProps {}
 
@@ -19,6 +20,9 @@ const Profile: FC<ProfileProps> = () => {
   const [isShowPromptReAuthFor, setIsShowPromptReAuthFor] = useState<
     string | undefined
   >();
+  const [isUpdatingPassword , setIsUpdatingPassword] = useState(false)
+  const [updatedPassword , setUpdatedPassword ] = useState(false)
+
   const emailValueRef = useRef<HTMLInputElement>(null!);
   const oldPasswordRef = useRef<HTMLInputElement>(null!);
   const nameValueRef = useRef<HTMLInputElement>(null!);
@@ -100,6 +104,10 @@ const Profile: FC<ProfileProps> = () => {
             </div>
               
              <EmailVerication setIsUpdating={setIsUpdating}/> 
+
+             <Password setIsUpdatingPassword={setIsUpdatingPassword} isUpdatingPassword={isUpdatingPassword} 
+               setUpdatedPassword={setUpdatedPassword}
+              newPasswordRef={newPasswordRef}/>
 
           </div>
         </div>
