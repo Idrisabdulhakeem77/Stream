@@ -6,7 +6,7 @@ interface DeleteProps {
 }
 
 const Delete = ({ setIsShowPromptReAuthFor }: DeleteProps) => {
-  const [isShowPrompt, setIsShowPrompt] = useState(true);
+  const [isShowPrompt, setIsShowPrompt] = useState(false);
   return (
     <>
       {isShowPrompt && (
