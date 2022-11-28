@@ -9,9 +9,12 @@ import Email from "../components/Profile/Email";
 import Name from "../components/Profile/Name";
 import EmailVerication from "../components/Profile/EmailVerification";
 import Password from "../components/Profile/Password";
+import { auth } from "../shared/firebase";
 import Delete from "../components/Profile/Delete";
 
-import {toast , ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from "react-toastify";
+import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
+import {convertErrorCodeToMessage} from "../shared/utils"
 
 interface ProfileProps {}
 
@@ -32,27 +35,66 @@ const Profile: FC<ProfileProps> = () => {
   const newPasswordRef = useRef<HTMLInputElement>(null!);
   const [isUpdatingName, setIsUpdatingName] = useState(false);
 
-  const reAuthenticateUser  = ( type : string) => {
-      const oldPassword = oldPasswordRef.current.value
+  const firebaseUser = auth.currentUser;
 
-      if(!oldPassword.trim().length) {
-           toast("You have to type old password" , {
-              draggable: true ,
-              autoClose: 3000 ,
-              position :"top-right",
-              pauseOnHover : true ,
-              hideProgressBar : false ,
-              closeOnClick: true
-               
-           })
+  const reAuthenticateUser = (type: string) => {
+    const oldPassword = oldPasswordRef.current.value;
 
-           return
-      }
-  }
-    
+    if (!oldPassword.trim().length) {
+      toast("You have to type old password", {
+        draggable: true,
+        autoClose: 3000,
+        position: "top-right",
+        pauseOnHover: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+
+      return;
+    }
+
+    const credential = EmailAuthProvider.credential(
+      // @ts-ignore
+      firebaseUser?.email,
+      oldPassword
+    );
+
+    reauthenticateWithCredential(
+      // @ts-ignore
+      firebaseUser,
+      credential
+    )
+      .then(() => {
+        if (type === "password") {
+          changePassword();
+        } else if (type === "email") {
+          changeEmail();
+        } else {
+          deleteAccount();
+        }
+      })
+      .catch((err) => {
+        toast.error(convertErrorCodeToMessage(err.code), {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
+
+  const changePassword = () => {};
+
+  const changeEmail = () => {};
+
+  const deleteAccount = () => {};
+
   return (
     <>
-      <ToastContainer/>
+      <ToastContainer />
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
@@ -68,7 +110,12 @@ const Profile: FC<ProfileProps> = () => {
 
       {isShowPromptReAuthFor && (
         <>
-          <form className="z-10 fixed md:w-[500px] md:min-h-[200px] min-h-[230px] top-[40%] md:left-[35%] left-[5%] right-[5%] bg-dark-lighten rounded-md px-3 py-2">
+          <form 
+           onClick={(e) => {
+             e.preventDefault()
+             reAuthenticateUser(isShowPromptReAuthFor)
+           }}
+           className="z-10 fixed md:w-[500px] md:min-h-[200px] min-h-[230px] top-[40%] md:left-[35%] left-[5%] right-[5%] bg-dark-lighten rounded-md px-3 py-2">
             <p className="text-lg font-medium text-center mb-2">
               {" "}
               Type Your password to reauthentificate
@@ -136,7 +183,7 @@ const Profile: FC<ProfileProps> = () => {
               newPasswordRef={newPasswordRef}
             />
 
-            <Delete setIsShowPromptReAuthFor={setIsShowPromptReAuthFor}/>
+            <Delete setIsShowPromptReAuthFor={setIsShowPromptReAuthFor} />
           </div>
         </div>
       </div>
