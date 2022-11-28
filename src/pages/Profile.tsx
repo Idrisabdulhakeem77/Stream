@@ -14,6 +14,7 @@ import Delete from "../components/Profile/Delete";
 
 import { toast, ToastContainer } from "react-toastify";
 import {
+  deleteUser,
   EmailAuthProvider,
   reauthenticateWithCredential,
   updateEmail,
@@ -151,17 +152,17 @@ const Profile: FC<ProfileProps> = () => {
       });
       return;
     }
-  
-     setIsUpdating(true)
 
-     //@ts-ignore
+    setIsUpdating(true);
 
-     updateEmail(firebaseUser , email)
+    //@ts-ignore
+
+    updateEmail(firebaseUser, email)
       .then(() => {
         setIsUpdatingEmail(false);
         window.location.reload();
       })
-      .catch((err) => { 
+      .catch((err) => {
         toast.error(convertErrorCodeToMessage(err.code), {
           position: "top-right",
           autoClose: 2000,
@@ -172,11 +173,24 @@ const Profile: FC<ProfileProps> = () => {
           progress: undefined,
         });
       })
-      .finally(() => setIsUpdating(false))
-
+      .finally(() => setIsUpdating(false));
   };
 
-  const deleteAccount = () => {};
+  const deleteAccount = () => {
+    setIsUpdating(true);
+    //@ts-ignore
+    deleteUser(firebaseUser).then(() =>
+      toast.success("Successfully Deleted Account", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    );
+  };
 
   return (
     <>
