@@ -1,27 +1,61 @@
-import { FunctionComponent, useState } from "react";
+import { ChangeEvent, FunctionComponent, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useAppSelector } from "../../store/hooks";
 import { HiOutlineUpload } from "react-icons/hi";
+import axios from 'axios'
+import { updateDoc , doc } from "firebase/firestore";
+import { db } from "../../shared/firebase";
+
 
 interface ProfileImageProps {}
 
 const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
   const [isUpdatingImage , setIsUpdatingImage] = useState(false)
-  const currentUser = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((state) => state.user.user);
   
-  const updateProfileImage = () => {
-      try {
-         setIsUpdatingImage(true)
+  const updateProfileImage =  async( e : ChangeEvent<HTMLInputElement>) => {
+      
+     console.log("working")
 
-      } catch(err) {}
+    try {
+      setIsUpdatingImage(true)
+
+      if(!user) return 
+
+      const form = new FormData()
+       //@ts-ignore
+      form.append("image" , e.target.files[0])
+
+      const res = await axios({
+       method : "post" ,
+       url :" https://api.imgbb.com/1/upload?key=18f5699601f1c15023f6005cf0972bf2 " ,
+       data : form ,
+       headers  :{
+         "content-type": "multipart/form-data",
+       }
+      })
+
+      console.log(res)
+
+      updateDoc(doc(db , "users" , user.uid) , {
+       photoUrl : res.data.data.display_url
+      })
+      .finally(() => setIsUpdatingImage(false))
+
+
+   } catch(err) {
+    console.log(err)
+   }
   }
 
+  
+ 
 
   return (
     <div  className="bg-white rounded-md   md:h-[50vh] p-[40px]  w-[100%] md:w-[30vw] mt-10 ml-10 ">
-      <h1 className="text-3xl font-semibold pb-6 text-center"> {currentUser?.displayName}</h1>
+      <h1 className="text-3xl font-semibold pb-6 text-center"> {user?.displayName}</h1>
       <LazyLoadImage
-        src="/Images/user.svg"
+        src={ (user?.photoURL as string) || "/Images/user.svg"}
         alt="profile-image"
         className="h-[130px]  w-[130px] object-cover rounded-full mx-auto"
       />
@@ -39,6 +73,8 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
         accept="image/*"
         id="upload-image"
         className="hidden"
+
+        onChange={updateProfileImage}
       />
     </div>
   );
