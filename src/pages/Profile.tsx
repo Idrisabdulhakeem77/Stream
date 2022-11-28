@@ -207,6 +207,14 @@ const Profile: FC<ProfileProps> = () => {
           <FaBars size={25} />
         </button>
       </div>
+      
+      {isUpdating && (
+        <>
+          <div className="border-[8px] border-primary border-t-transparent h-32 w-32 rounded-full animate-spin fixed top-[40%] left-[40%] z-10"></div>
+          <div className="fixed top-0 left-0 w-full h-full z-[5]"></div>
+        </>
+      )}
+
 
       {isShowPromptReAuthFor && (
         <>

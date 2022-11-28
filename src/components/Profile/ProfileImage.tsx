@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useAppSelector } from "../../store/hooks";
 import { HiOutlineUpload } from "react-icons/hi";
@@ -6,7 +6,17 @@ import { HiOutlineUpload } from "react-icons/hi";
 interface ProfileImageProps {}
 
 const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
+  const [isUpdatingImage , setIsUpdatingImage] = useState(false)
   const currentUser = useAppSelector((state) => state.user.user);
+  
+  const updateProfileImage = () => {
+      try {
+         setIsUpdatingImage(true)
+
+      } catch(err) {}
+  }
+
+
   return (
     <div  className="bg-white rounded-md   md:h-[50vh] p-[40px]  w-[100%] md:w-[30vw] mt-10 ml-10 ">
       <h1 className="text-3xl font-semibold pb-6 text-center"> {currentUser?.displayName}</h1>
