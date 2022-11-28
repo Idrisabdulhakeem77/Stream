@@ -11,6 +11,8 @@ import EmailVerication from "../components/Profile/EmailVerification";
 import Password from "../components/Profile/Password";
 import Delete from "../components/Profile/Delete";
 
+import {toast , ToastContainer} from 'react-toastify'
+
 interface ProfileProps {}
 
 const Profile: FC<ProfileProps> = () => {
@@ -29,8 +31,29 @@ const Profile: FC<ProfileProps> = () => {
   const nameValueRef = useRef<HTMLInputElement>(null!);
   const newPasswordRef = useRef<HTMLInputElement>(null!);
   const [isUpdatingName, setIsUpdatingName] = useState(false);
+
+  const reAuthenticateUser  = ( type : string) => {
+      const oldPassword = oldPasswordRef.current.value
+
+      if(!oldPassword.trim().length) {
+           toast("You have to type old password" , {
+              draggable: true ,
+              autoClose: 3000 ,
+              position :"top-right",
+              pauseOnHover : true ,
+              hideProgressBar : false ,
+              closeOnClick: true
+               
+           })
+
+           return
+      }
+  }
+    
   return (
     <>
+      <ToastContainer/>
+
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest">
