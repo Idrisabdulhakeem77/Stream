@@ -13,8 +13,13 @@ import { auth } from "../shared/firebase";
 import Delete from "../components/Profile/Delete";
 
 import { toast, ToastContainer } from "react-toastify";
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
-import {convertErrorCodeToMessage} from "../shared/utils"
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updateEmail,
+  updatePassword,
+} from "firebase/auth";
+import { convertErrorCodeToMessage } from "../shared/utils";
 
 interface ProfileProps {}
 
@@ -88,9 +93,9 @@ const Profile: FC<ProfileProps> = () => {
   };
 
   const changePassword = () => {
-     const newPassword = newPasswordRef.current.value
+    const newPassword = newPasswordRef.current.value;
 
-     if(!newPassword.trim().length) {
+    if (!newPassword.trim().length) {
       toast("You have to type new password", {
         draggable: true,
         autoClose: 3000,
@@ -99,24 +104,24 @@ const Profile: FC<ProfileProps> = () => {
         hideProgressBar: false,
         closeOnClick: true,
       });
-        return 
-     } 
-     
-      setIsUpdating(true)
-      // @ts-ignore
-     updatePassword(firebaseUser , newPassword)
+      return;
+    }
+
+    setIsUpdating(true);
+    // @ts-ignore
+    updatePassword(firebaseUser, newPassword)
       .then(() => {
         setUpdatedPassword(true);
-        newPasswordRef.current.value = ""
+        newPasswordRef.current.value = "";
 
-        toast.success("Successfully changed Password" , {
+        toast.success("Successfully changed Password", {
           draggable: true,
           autoClose: 2000,
           position: "top-right",
           pauseOnHover: true,
           hideProgressBar: false,
-          closeOnClick: true,  
-        })
+          closeOnClick: true,
+        });
       })
       .catch((err) => {
         toast.error(convertErrorCodeToMessage(err.code), {
@@ -129,17 +134,46 @@ const Profile: FC<ProfileProps> = () => {
           progress: undefined,
         });
       })
-      .finally(() => setIsUpdating(false))
-
- 
+      .finally(() => setIsUpdating(false));
   };
 
   const changeEmail = () => {
-    const email = emailValueRef.current.value 
+    const email = emailValueRef.current.value;
 
-    if(!email.trim().length) {
-
+    if (!email.trim().length) {
+      toast("You have to type Email address", {
+        draggable: true,
+        autoClose: 3000,
+        position: "top-right",
+        pauseOnHover: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+      return;
     }
+  
+     setIsUpdating(true)
+
+     //@ts-ignore
+
+     updateEmail(firebaseUser , email)
+      .then(() => {
+        setIsUpdatingEmail(false);
+        window.location.reload();
+      })
+      .catch((err) => { 
+        toast.error(convertErrorCodeToMessage(err.code), {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .finally(() => setIsUpdating(false))
+
   };
 
   const deleteAccount = () => {};
@@ -162,12 +196,13 @@ const Profile: FC<ProfileProps> = () => {
 
       {isShowPromptReAuthFor && (
         <>
-          <form 
-           onClick={(e) => {
-             e.preventDefault()
-             reAuthenticateUser(isShowPromptReAuthFor)
-           }}
-           className="z-10 fixed md:w-[500px] md:min-h-[200px] min-h-[230px] top-[40%] md:left-[35%] left-[5%] right-[5%] bg-dark-lighten rounded-md px-3 py-2">
+          <form
+            onClick={(e) => {
+              e.preventDefault();
+              reAuthenticateUser(isShowPromptReAuthFor);
+            }}
+            className="z-10 fixed md:w-[500px] md:min-h-[200px] min-h-[230px] top-[40%] md:left-[35%] left-[5%] right-[5%] bg-dark-lighten rounded-md px-3 py-2"
+          >
             <p className="text-lg font-medium text-center mb-2">
               {" "}
               Type Your password to reauthentificate
