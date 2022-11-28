@@ -13,7 +13,7 @@ import { auth } from "../shared/firebase";
 import Delete from "../components/Profile/Delete";
 
 import { toast, ToastContainer } from "react-toastify";
-import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
 import {convertErrorCodeToMessage} from "../shared/utils"
 
 interface ProfileProps {}
@@ -33,6 +33,7 @@ const Profile: FC<ProfileProps> = () => {
   const oldPasswordRef = useRef<HTMLInputElement>(null!);
   const nameValueRef = useRef<HTMLInputElement>(null!);
   const newPasswordRef = useRef<HTMLInputElement>(null!);
+
   const [isUpdatingName, setIsUpdatingName] = useState(false);
 
   const firebaseUser = auth.currentUser;
@@ -86,9 +87,60 @@ const Profile: FC<ProfileProps> = () => {
       });
   };
 
-  const changePassword = () => {};
+  const changePassword = () => {
+     const newPassword = newPasswordRef.current.value
 
-  const changeEmail = () => {};
+     if(!newPassword.trim().length) {
+      toast("You have to type new password", {
+        draggable: true,
+        autoClose: 3000,
+        position: "top-right",
+        pauseOnHover: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+        return 
+     } 
+     
+      setIsUpdating(true)
+      // @ts-ignore
+     updatePassword(firebaseUser , newPassword)
+      .then(() => {
+        setUpdatedPassword(true);
+        newPasswordRef.current.value = ""
+
+        toast.success("Successfully changed Password" , {
+          draggable: true,
+          autoClose: 2000,
+          position: "top-right",
+          pauseOnHover: true,
+          hideProgressBar: false,
+          closeOnClick: true,  
+        })
+      })
+      .catch((err) => {
+        toast.error(convertErrorCodeToMessage(err.code), {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .finally(() => setIsUpdating(false))
+
+ 
+  };
+
+  const changeEmail = () => {
+    const email = emailValueRef.current.value 
+
+    if(!email.trim().length) {
+
+    }
+  };
 
   const deleteAccount = () => {};
 
