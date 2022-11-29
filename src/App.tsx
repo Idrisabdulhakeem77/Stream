@@ -47,14 +47,12 @@ function App() {
 
       if (user.providerData[0].providerId === "google.com") {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-       
-           console.log(doc.data()?.photoUrl)
 
           dispatch(
             setCurrentUser({
               email: user.email,
               displayName: user.displayName,
-              emailVerified: doc.data()?.emailVerified,
+              emailVerified: user.emailVerified,
               photoURL: doc.data()?.photoUrl,
               uid: user.uid,
             })

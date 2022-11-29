@@ -1,7 +1,5 @@
 import {
-  FacebookAuthProvider,
   signInWithPopup,
-  TwitterAuthProvider,
 } from "firebase/auth";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { auth, db } from "../../shared/firebase";

@@ -57,6 +57,10 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
         className="h-[130px]  w-[130px] object-cover rounded-full mx-auto"
       />
 
+      {isUpdatingImage && (
+         <div className="border-[4px] border-dark border-t-transparent h-12 w-12 rounded-full animate-spin absolute top-[40%] left-[40%] z-10"></div>
+      )}
+
       <label
         htmlFor="upload-image"
         className="flex items-center gap-2 px-4 py-3 mt-4 mb-4 place-items-center w-[70%] mx-auto transition duration-300  bg-green-400 rounded-full"
