@@ -42,15 +42,10 @@ const SignIn: FunctionComponent<SignUpProps> = ({
     const password = passwordRef.current.value
      if(!email.trim() || !password.trim()) return 
 
-     console.log(email , password)
-
-
-    //    console.log(email , password )
-
-    //  setisLoading(true)
-    //  signInWithEmailAndPassword( auth , email , password )
-    //    .catch( (err)  => {})
-    //    .finally(() => setisLoading(false)) 
+     setisLoading(true)
+     signInWithEmailAndPassword( auth , email , password )
+       .catch( (err)  => {})
+       .finally(() => setisLoading(false)) 
 
 
   }
