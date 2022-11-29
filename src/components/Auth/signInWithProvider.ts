@@ -9,7 +9,6 @@ import { auth, db } from "../../shared/firebase";
 export const SignInWithProvder = (provider: any, type: string) => {
   signInWithPopup(auth, provider).then(async (result) => {
     const user = result.user;
-
     let isStored = false;
 
     const querySnapshot = await getDocs(collection(db, "users"));

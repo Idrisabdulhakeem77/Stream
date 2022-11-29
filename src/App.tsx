@@ -4,7 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { useAppDispatch } from "./store/hooks";
+import { useAppDispatch , useAppSelector } from "./store/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./shared/firebase";
 import { setCurrentUser } from "./store/slice/userSlice";
@@ -22,6 +22,8 @@ import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
 
 function App() {
+   const user = useAppSelector(state => state.user.user)
+
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
   );
@@ -29,7 +31,7 @@ function App() {
   const location = useLocation();
  
   
-  
+   console.log(user)
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -45,12 +47,15 @@ function App() {
 
       if (user.providerData[0].providerId === "google.com") {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
+       
+           console.log(doc.data()?.photoUrl)
+
           dispatch(
             setCurrentUser({
               email: user.email,
               displayName: user.displayName,
               emailVerified: doc.data()?.emailVerified,
-              photoURL: doc.data()?.photoURL,
+              photoURL: doc.data()?.photoUrl,
               uid: user.uid,
             })
           );
