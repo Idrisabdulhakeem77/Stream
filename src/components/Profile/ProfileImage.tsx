@@ -14,10 +14,8 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
   const user = useAppSelector((state) => state.user.user);
   
   const updateProfileImage =  async( e : ChangeEvent<HTMLInputElement>) => {
-      
-     console.log("working")
-
-    try {
+    
+   try {
       setIsUpdatingImage(true)
 
       if(!user) return 
@@ -35,7 +33,6 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
        }
       })
 
-      console.log(res)
 
       updateDoc(doc(db , "users" , user.uid) , {
        photoUrl : res.data.data.display_url
