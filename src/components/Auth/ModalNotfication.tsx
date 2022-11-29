@@ -43,7 +43,7 @@ const ModalNotification: FunctionComponent<ModalNotificationProps> = ({
     if (type === "success") {
       navigate(`${searchParams.get("redirect") || "/"}`);
     } else {
-      setError("");
+      // setError("");
     }
   };
 

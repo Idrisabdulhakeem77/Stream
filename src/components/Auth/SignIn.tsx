@@ -36,14 +36,21 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   const signInHandler = (e : FormEvent) => {
      e.preventDefault()
 
+
+      
      const email = emailRef.current.value
     const password = passwordRef.current.value
      if(!email.trim() || !password.trim()) return 
 
-     setisLoading(true)
-     signInWithEmailAndPassword( auth , email , password )
-       .catch( (err)  => {})
-       .finally(() => setisLoading(false)) 
+     console.log(email , password)
+
+
+    //    console.log(email , password )
+
+    //  setisLoading(true)
+    //  signInWithEmailAndPassword( auth , email , password )
+    //    .catch( (err)  => {})
+    //    .finally(() => setisLoading(false)) 
 
 
   }
@@ -78,27 +85,12 @@ const SignIn: FunctionComponent<SignUpProps> = ({
           <div className="text-lg"> or use your email to Login:</div>
         </div>
 
-        <Formik
-          initialValues={{
-            fullname: "",
-            email: "",
-            password: "",
-          }}
-          validationSchema={Yup.object({
-            fullname: Yup.string()
-              .required("Required")
-              .max(30, "Must be a 30 or less"),
-            email: Yup.string().required("Required"),
-            password: Yup.string()
-              .required("No password provided.")
-              .min(6, "Password is too short - should be 6 chars minimum."),
-          })}
-          onSubmit={() => console.log("Submitted")}
-        >
-          <Form onSubmit={signInHandler}>
+        
+          <form onSubmit={signInHandler}>
             <div className="px-2 py-3">
               <div className="relative mb-3">
-                <Field
+                <input
+                  ref={emailRef}
                   name="email"
                   type="email"
                   placeholder="Email Address"
@@ -119,7 +111,8 @@ const SignIn: FunctionComponent<SignUpProps> = ({
               </div>
 
               <div className="relative mb-3">
-                <Field
+                <input 
+                  ref={passwordRef}
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
@@ -156,8 +149,8 @@ const SignIn: FunctionComponent<SignUpProps> = ({
                 Sign in{" "}
               </button>
             </div>
-          </Form>
-        </Formik>
+          </form>
+  
         <p className="text-xl flex gap-2 mt-32 justify-center">
           <span>Not a member yet?</span>
           <button

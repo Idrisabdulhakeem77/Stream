@@ -32,9 +32,13 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   const [error, setError] = useState("");
 
   const SignUpHandler = async (values: { [key: string]: string }) => {
+      
+     console.log('Function ran')
      try {
        setLoading(true)
       const user = ( await createUserWithEmailAndPassword(auth, values.email, values.password)).user
+
+      console.log(user)
       
       setDoc(doc(db , "users" , user.uid) , { 
          fullname : values.fullname ,
@@ -60,9 +64,9 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   return (
     <>
 
-     { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓"/>}
+     { currentUser && <ModalNotification type="success" message="Signed Up successfully 🤓" />}
       { loading && <div>Loading</div>}
-      { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later" />}
+  { error &&  <ModalNotification type="error" message="Something went Wrong 😵 try again later"  />}
     <div
       id="form"
       className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
@@ -77,14 +81,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
           >
             <FaGoogle size={30} />
           </button>
-          {/* <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300"
-            onClick={() => SignInWithProvder(new FacebookAuthProvider() , "facebook")}
-           >
-            <FaFacebook size={30} />
-          </button>
-          <button className="h-10 w-10 rounded-full tw-flex-center hover:brightness-75 transition duration-300">
-            <FaTwitter size={30} />
-          </button> */}
         </div>
 
         <div className="text-lg"> or use your email for Registration</div>
