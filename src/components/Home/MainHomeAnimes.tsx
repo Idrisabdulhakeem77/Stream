@@ -1,9 +1,14 @@
 
 
-interface MainHomeAnimesProp {}
+interface MainHomeAnimesProp {
+    isLoading : boolean,
+    animeData : any
+}
 
 
-const MainHomeAnimes = () => {
+const MainHomeAnimes = ( {animeData , isLoading} : MainHomeAnimesProp ) => {
+    console.log(animeData)
+     
      return (
          <div>
              Home Animes

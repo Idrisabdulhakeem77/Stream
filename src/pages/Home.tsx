@@ -19,10 +19,10 @@ import PopularThisWeek from "../components/Home/PopularThisWeek";
 import { useAppSelector } from "../store/hooks";
 import AnimeRecommendedGenre from "../components/Home/AnimeRecommendedGenre";
 import MainHomeAnimes from "../components/Home/MainHomeAnimes";
-import {getHomeAnimes} from '../services/anime'
+import { getHomeAnimes } from "../services/anime";
 
 const Home: FC = () => {
-   const currentUser = useAppSelector(state => state.user.user)
+  const currentUser = useAppSelector((state) => state.user.user);
   const {
     data: dataMovie,
     isLoading: isLoadingMovie,
@@ -59,8 +59,14 @@ const Home: FC = () => {
     { enabled: !!dataTV?.Trending }
   );
 
-  const { data , isLoading , isError , error} = useQuery<any , Error>(["home-animes"] , )
+  const {
+    data: AnimeData,
+    isLoading : isAnimeLoading,
+    isError : isAnimeError,
+    error : errorAnime,
+  } = useQuery<any, Error>(["home-animes"], getHomeAnimes);
 
+  
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(
@@ -72,8 +78,8 @@ const Home: FC = () => {
 
   if (isTvErrorDetail) return <div>ERR : {errorTvDetail.message} </div>;
   if (isTvError) return <div> ERR : {tvError.message} </div>;
-  
-  
+  if(isAnimeError) return <div>ERR : {errorAnime.message}</div>
+
   return (
     <>
       <Title value="Anime Stream" />
@@ -140,9 +146,13 @@ const Home: FC = () => {
             </div>
 
             <div className="flex items-center md:hidden gap-4">
-              <p> { currentUser ? currentUser.displayName : "Unknown" }</p>
+              <p> {currentUser ? currentUser.displayName : "Unknown"}</p>
               <img
-                src={ currentUser ? (currentUser.photoURL as string) : "/Images/user.svg"}
+                src={
+                  currentUser
+                    ? (currentUser.photoURL as string)
+                    : "/Images/user.svg"
+                }
                 alt="user"
                 className="w-7 h-7 rounded-full object-cover"
               />
@@ -168,20 +178,21 @@ const Home: FC = () => {
             />
           )}
 
-         { currentTab === "anime" && (
-               <MainHomeAnimes/>
-               
-              )}
-        </div> 
+          {currentTab === "anime" && <MainHomeAnimes isLoading={isAnimeLoading} animeData={AnimeData} />}
+        </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
           <User />
           <SearchBox />
 
           {/* CurrentTab set to movie dont foeget to make it dynamic */}
-          { currentTab === "movie" && <RecommendedGenres currentTab={ currentTab} /> }  
-          { currentTab === "tv" && <RecommendedGenres currentTab={ currentTab} /> }  
-          { currentTab === "anime" && <AnimeRecommendedGenre currentTab={ currentTab} /> }  
+          {currentTab === "movie" && (
+            <RecommendedGenres currentTab={currentTab} />
+          )}
+          {currentTab === "tv" && <RecommendedGenres currentTab={currentTab} />}
+          {currentTab === "anime" && (
+            <AnimeRecommendedGenre currentTab={currentTab} />
+          )}
           <PopularThisWeek />
         </div>
       </div>

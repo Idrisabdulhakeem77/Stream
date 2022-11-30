@@ -16,9 +16,9 @@ export const getAnime = async ( page : number ): Promise< AnimeItempage> => {
 export const getHomeAnimes = async()  :Promise<Animes> => {
    const response = (await axios.get("https://api.jikan.moe/v4/top/anime")).data
    
-   console.log(response)
+   const {data} = response
+   
 
-    return {
-       ...response
-    }
+   return data
+    
 }   

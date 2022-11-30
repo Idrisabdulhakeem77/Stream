@@ -77,12 +77,6 @@ function App() {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-     const response = axios.get("https://api.jikan.moe/v4/genres/anime")
-      .then(result => console.log(result))
-       
-      
-  } , [])
  
   return (
     <div className="App">
