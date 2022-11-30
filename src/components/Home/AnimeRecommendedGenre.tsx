@@ -1,11 +1,19 @@
 import { useQuery} from '@tanstack/react-query'
 
 
-interface AnimeRecommendedGenreProps {}
+interface AnimeRecommendedGenreProps {
+     currentTab : "anime" | null
+}
 
 
-const AnimeRecommendedGenre = () =>  {
-
+const AnimeRecommendedGenre = ( {currentTab } : AnimeRecommendedGenreProps) =>  {
+      return (
+         <>
+           <div>
+             Anime Recommended Genre Component Bitches
+           </div>
+          </>
+      )
 }
 
 export default AnimeRecommendedGenre

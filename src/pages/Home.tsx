@@ -17,6 +17,7 @@ import {
 import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 import { useAppSelector } from "../store/hooks";
+import AnimeRecommendedGenre from "../components/Home/AnimeRecommendedGenre";
 
 const Home: FC = () => {
    const currentUser = useAppSelector(state => state.user.user)
@@ -175,7 +176,9 @@ const Home: FC = () => {
           <SearchBox />
 
           {/* CurrentTab set to movie dont foeget to make it dynamic */}
-          <RecommendedGenres currentTab={ currentTab} />
+          { currentTab === "movie" && <RecommendedGenres currentTab={ currentTab} /> }  
+          { currentTab === "tv" && <RecommendedGenres currentTab={ currentTab} /> }  
+          { currentTab === "anime" && <AnimeRecommendedGenre currentTab={ currentTab} /> }  
           <PopularThisWeek />
         </div>
       </div>
