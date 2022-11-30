@@ -42,10 +42,10 @@ const SignIn: FunctionComponent<SignUpProps> = ({
 
      setisLoading(true)
      signInWithEmailAndPassword( auth , email , password )
-       .catch( (err)  => {})
+       .catch( (err)  => {
+          console.log(err)
+       })
        .finally(() => setisLoading(false)) 
-
-
   }
 
   return (

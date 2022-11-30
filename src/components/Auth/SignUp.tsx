@@ -35,9 +35,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   const [error, setError] = useState("");
 
   const SignUpHandler = async (values: { [key: string]: string }) => {
-    console.log("Function ran");
-
-    console.log(values);
 
     try {
       setLoading(true);
@@ -58,7 +55,9 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         bookmarks: [],
         recentlyWatch: [],
       });
-    } catch (err) {}
+    } catch (err) {
+       console.log(err)
+    }
 
   };
 

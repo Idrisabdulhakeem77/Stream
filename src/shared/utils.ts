@@ -58,7 +58,6 @@ export const convertErrorCodeToMessage = (errorCode: string) => {
 export const getRandomAvatar = (): string => {
   const avatars = [
     "https://i.ibb.co/zrXfKsJ/catface-7.jpg",
-    "https://i.ibb.co/CJqGvY6/satthudatinh.jpg",
     "https://i.ibb.co/rd3PGq5/catface-9.png",
     "https://i.ibb.co/Htq4LWJ/catface-8.png",
     "https://i.ibb.co/9mPr2ds/catface-3.jpg",
