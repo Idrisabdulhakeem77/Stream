@@ -20,9 +20,10 @@ import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
 import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
+import { getRandomAvatar } from "./shared/utils";
 
 function App() {
-   const user = useAppSelector(state => state.user.user)
+  //  const user = useAppSelector(state => state.user.user)
 
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
@@ -31,7 +32,7 @@ function App() {
   const location = useLocation();
  
   
-   console.log(user)
+ 
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -60,13 +61,13 @@ function App() {
         });
       } else {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-          console.log(doc.data());
+            console.log( doc.data())
           dispatch(
             setCurrentUser({
               email: user.email,
-              displayName: user.displayName,
-              emailVerified: doc.data()?.emailVerified,
-              photoURL: doc.data()?.photoURL,
+              displayName: doc.data()?.displayName,
+              emailVerified:  user.emailVerified,
+              photoURL: doc.data()?.photoUrl,
               uid: user.uid,
             })
           );

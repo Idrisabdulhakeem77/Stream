@@ -47,6 +47,7 @@ export interface User {
   emailVerified: boolean;
   photoURL: string | null;
   uid: string;
+  fullname ?: string | null
 }
 
 export interface Animes {

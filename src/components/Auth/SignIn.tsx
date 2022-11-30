@@ -35,8 +35,6 @@ const SignIn: FunctionComponent<SignUpProps> = ({
 
   const signInHandler = (e : FormEvent) => {
      e.preventDefault()
-
-
       
      const email = emailRef.current.value
     const password = passwordRef.current.value
