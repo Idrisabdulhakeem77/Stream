@@ -163,10 +163,11 @@ const Home: FC = () => {
             />
           )}
 
-         {/* { currentTab === "anime" && (
-            <Anime data={animes}
-            isSectionLoading={isAnimeLoading}/>
-         )} */}
+         { currentTab === "anime" && (
+              <>
+                Anime Tab Explore
+               </>
+            )}
         </div>
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">

@@ -21,6 +21,7 @@ import MovieDetail from "./pages/Movies/MovieDetail";
 import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
 import { getRandomAvatar } from "./shared/utils";
+import axios from "axios";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -75,6 +76,13 @@ function App() {
       }
     });
   }, [dispatch]);
+
+  useEffect(() => {
+     const response = axios.get("https://api.jikan.moe/v4/genres/anime")
+      .then(result => console.log(result))
+       
+      
+  } , [])
  
   return (
     <div className="App">
