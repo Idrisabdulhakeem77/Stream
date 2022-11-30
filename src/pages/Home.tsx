@@ -18,6 +18,8 @@ import RecommendedGenres from "../components/Home/RecommendedGenre";
 import PopularThisWeek from "../components/Home/PopularThisWeek";
 import { useAppSelector } from "../store/hooks";
 import AnimeRecommendedGenre from "../components/Home/AnimeRecommendedGenre";
+import MainHomeAnimes from "../components/Home/MainHomeAnimes";
+import {getHomeAnimes} from '../services/anime'
 
 const Home: FC = () => {
    const currentUser = useAppSelector(state => state.user.user)
@@ -56,6 +58,8 @@ const Home: FC = () => {
     () => getTvBanner(dataTV?.Trending as Items[]),
     { enabled: !!dataTV?.Trending }
   );
+
+  const { data , isLoading , isError , error} = useQuery<any , Error>(["home-animes"] , )
 
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -165,11 +169,10 @@ const Home: FC = () => {
           )}
 
          { currentTab === "anime" && (
-              <>
-                Anime Tab Explore
-               </>
-            )}
-        </div>
+               <MainHomeAnimes/>
+               
+              )}
+        </div> 
 
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
           <User />
