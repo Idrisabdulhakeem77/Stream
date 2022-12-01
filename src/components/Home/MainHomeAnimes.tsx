@@ -7,7 +7,6 @@ interface MainHomeAnimesProp {
 }
 
 const MainHomeAnimes = ({ animeData, isLoading }: MainHomeAnimesProp) => {
-  console.log(animeData);
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { useQuery} from '@tanstack/react-query'
+import {getAnimeRecommendedGenres} from '../../services/anime'
 
 
 interface AnimeRecommendedGenreProps {
@@ -7,6 +8,8 @@ interface AnimeRecommendedGenreProps {
 
 
 const AnimeRecommendedGenre = ( {currentTab } : AnimeRecommendedGenreProps) =>  {
+  const { data , error , isError  , isLoading} = useQuery(["genres"] , getAnimeRecommendedGenres) 
+
       return (
          <>
            <div>

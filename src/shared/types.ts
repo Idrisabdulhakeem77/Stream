@@ -47,7 +47,7 @@ export interface User {
   emailVerified: boolean;
   photoURL: string | null;
   uid: string;
-  fullname ?: string | null
+  fullname?: string | null
 }
 
 export interface Animes {
@@ -284,4 +284,14 @@ export interface FilmInfo {
   videos?: Video[] | undefined;
   detail?: DetailMovie | DetailTV | undefined;
   credits?: Cast[] | undefined;
+}
+
+export interface getRecommendedAnimeGenreType {
+  data: {
+    mal_id  : number ;
+    name : string ;
+    url : string
+ 
+   
+  }[]
 }
