@@ -11,14 +11,14 @@ const MainHomeAnimes = ({ animeData, isLoading }: MainHomeAnimesProp) => {
 
   return (
     <>
+    <ul className="grid  gap-x-8 gap-y-10 pt-2 grid-cols-sm lg:grid-cols-lg">
       {animeData?.map((anime) => (
-        // grid-cols-sm lg:grid-cols-lg
-        <ul className="grid  gap-x-8 gap-y-10 pt-2">
-          <li key={anime.mal_id}>
+        <li key={anime.mal_id}>
             <AnimeItem key={anime.mal_id} item={anime} />
           </li>
-        </ul>
+        
       ))}
+      </ul>
     </>
   );
 };
