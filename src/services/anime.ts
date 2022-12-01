@@ -1,5 +1,5 @@
 import axios from "axios";
-import {    AnimeItempage , Animes} from "../shared/types";
+import {    AnimeItempage , Animes , getRecommendedGenreType} from "../shared/types";
 
 
 export const getAnime = async ( page : number ): Promise< AnimeItempage> => {
@@ -25,9 +25,13 @@ export const getHomeAnimes = async()  :Promise<Animes> => {
 
 
 
-export const getAnimeRecommendedGenres = async () => {
+export const getAnimeRecommendedGenres = async () : Promise<getRecommendedGenreType> => {
     const response = (await axios.get("https://api.jikan.moe/v4/genres/anime")).data
+  
+     const {data} = response
+     
+     const genres = data.slice(0 ,7)
 
-
-    return {...response}
+    
+    return genres
 }
