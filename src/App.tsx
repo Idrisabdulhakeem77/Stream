@@ -28,14 +28,37 @@ import TvDetails from "./pages/Tv/TvDetails";
 function App() {
   //  const user = useAppSelector(state => state.user.user)
 
+  const getStorageTheme = () => {
+      let theme = "light-theme"
+
+      if(localStorage.getItem("theme")) {
+          theme = String(localStorage.getItem("theme"))
+      } 
+
+      return theme 
+  }
+
+  const [theme , setTheme] = useState(getStorageTheme())
+
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
   );
   const dispatch = useAppDispatch();
   const location = useLocation();
+
+  const toggleTheme = () => {
+    if (theme === 'light-theme') {
+      setTheme('dark-theme');
+    } else {
+      setTheme('light-theme');
+    }
+  };
  
   
- 
+  useEffect(() => {
+      document.documentElement.className = theme 
+      localStorage.setItem("theme" , theme)
+  } , [theme])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -82,6 +105,7 @@ function App() {
  
   return (
     <div className="App">
+       <button onClick={toggleTheme}> Toggle  </button>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />

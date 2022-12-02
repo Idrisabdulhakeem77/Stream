@@ -1,14 +1,16 @@
 
 
-interface ToggleButtonProps {} 
+interface ToggleButtonProps {
+     toggleButton : any
+} 
 
 
 
-const ToggleButton = () => {
+const ToggleButton = ( {toggleButton} : ToggleButtonProps) => {
      return (
-         <div>
-             Toggle Button
-         </div>
+          <button onClick={toggleButton}>
+              CLick me to toggle themes
+          </button>
      )
 }
 
