@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent } from "react";
+import  { useState, FunctionComponent } from "react";
 
 import {  FaGoogle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
