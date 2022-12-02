@@ -22,6 +22,7 @@ import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
 import { getRandomAvatar } from "./shared/utils";
 import axios from "axios";
+import AnimeDetails from "./pages/Anime/AnimeDetails";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -86,6 +87,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetail/>}/>
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
+        <Route path="/anime/:id" element={<AnimeDetails/>}/>
         <Route path="movies" element={<Movies />} />
         <Route path="tv" element={<TvShows/>}/>
         <Route path="search" element={<Search/>}/>
