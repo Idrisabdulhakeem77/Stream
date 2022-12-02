@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from "react";
 
-import { FaFacebook, FaTwitter, FaGoogle } from "react-icons/fa";
+import {  FaGoogle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
