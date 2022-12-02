@@ -5,6 +5,7 @@ import {  FaGoogle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SignInWithProvder } from "./signInWithProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import {toast , ToastContainer} from "react-toastify"
 
 import {
   GoogleAuthProvider
@@ -36,7 +37,14 @@ const SignIn: FunctionComponent<SignUpProps> = ({
       
      const email = emailRef.current.value
     const password = passwordRef.current.value
-     if(!email.trim() || !password.trim()) return 
+     if(!email.trim() || !password.trim()) {
+          toast.error("Input Valid Details" , {
+             autoClose : 3000,
+             pauseOnHover : true,
+             closeOnClick : true,
+             
+          })
+     } 
 
      setisLoading(true)
      signInWithEmailAndPassword( auth , email , password )
@@ -48,7 +56,11 @@ const SignIn: FunctionComponent<SignUpProps> = ({
 
   return (
     <>
+   
+      <ToastContainer/>
       {currentUser && <ModalNotification message="Sign In succesfully" type="success" />}
+
+       {/* Add Loader to App */}
       { Loading &&  <div>Loading.....</div>}
        { error && (
          <ModalNotification message="Couldnt Sign in" type="error" setError={setError}/>
