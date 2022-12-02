@@ -82,11 +82,10 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         />
       )}
       <div
-        id="form"
         className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
       >
         <div className="flex flex-col items-center mb-6 mt-12">
-          <div className="leading-none mb-4 text-[40px] font-extralight">
+          <div className="leading-none mb-4 text-[40px] font-light text-primary">
             Create An Account For Free
           </div>
           <div className="flex gap-3 mb-4">
@@ -194,10 +193,10 @@ const SignUp: FunctionComponent<SignUpProps> = ({
               </div>
               <button
                 type="submit"
-                className="px-12 py-3  rounded-full text-xl font-medium hover:bg-dark-lighten transition duration-300  absolute left-1/2 -translate-x-1/2 mt-4 border-2 white"
+                className="px-12 py-3  rounded-full text-xl font-medium hover:bg-primary transition duration-300  absolute left-1/2 -translate-x-1/2 mt-3 border-2 white"
               >
-                {" "}
-                Sign Up{" "}
+                
+                Sign Up
               </button>
             </div>
           </Form>

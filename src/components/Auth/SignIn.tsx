@@ -31,6 +31,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
   const passwordRef = useRef<HTMLInputElement>(null!);
   const currentUser = useAppSelector((state) => state.user.user);
   const [error, setError] = useState("");
+
  
 
   const signInHandler = (e : FormEvent) => {
@@ -60,7 +61,7 @@ const SignIn: FunctionComponent<SignUpProps> = ({
         className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
       >
         <div className="flex flex-col items-center mb-6 mt-12">
-          <div className="leading-none mb-4 text-[40px] font-extralight">
+          <div className="leading-none mb-4 text-[40px] font-extralight text-primary">
             Login to Anime Stream
           </div>
           <div className="flex gap-3 mb-4">
