@@ -26,8 +26,8 @@ export const links = [
     icon: <BiSearch size={25} />,
   },
   {
-    name: "bookmarked",
-    url: "/bookmarked",
+    name: "bookmarks",
+    url: "/bookmarks",
     icon: <BsBookmarkHeart size={25} />,
   },
   {

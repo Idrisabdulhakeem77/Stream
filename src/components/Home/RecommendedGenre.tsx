@@ -33,7 +33,7 @@ const RecommendedGenres: FC<RecommendedGenresProps>  = ( { currentTab  }) => {
       return (
          <ul className='mt-24 flex gap-3 flex-wrap  '>
               { randomGenres.map( (genre , index) => (
-                 <li key={index} className="mb-1  bg-gray-600 text-black rounded-full p-2">
+                 <li key={index} className="mb-1  bg-slate-300 text-black rounded-full border-solid p-2">
                      <Link to="/">
                          { genre?.name}
                      </Link>
