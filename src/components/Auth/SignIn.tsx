@@ -1,14 +1,11 @@
 import React, { useState, FunctionComponent, useRef, FormEvent } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { FaFacebook, FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
+import {  FaGoogle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SignInWithProvder } from "./signInWithProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Field, Form, Formik } from "formik";
-
-import * as Yup from "yup";
 import {
   GoogleAuthProvider
 } from "firebase/auth";
