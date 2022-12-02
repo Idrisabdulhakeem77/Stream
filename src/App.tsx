@@ -23,6 +23,7 @@ import Recent from "./pages/Recent";
 import { getRandomAvatar } from "./shared/utils";
 import axios from "axios";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
+import TvDetails from "./pages/Tv/TvDetails";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -90,6 +91,7 @@ function App() {
         <Route path="/anime/:id" element={<AnimeDetails/>}/>
         <Route path="movies" element={<Movies />} />
         <Route path="tv" element={<TvShows/>}/>
+        <Route path="/tv/:id" element={<TvDetails/>}/>
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
         <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
