@@ -28,7 +28,7 @@ const RecommendedGenres: FC<RecommendedGenresProps>  = ( { currentTab  }) => {
     if(isLoading) return <div>Loading</div>
        
     const randomGenres = getRandomGenres(
-      currentTab === "movie" ? data.movieGenres : data.tvGenres
+      currentTab === "movie" ? data?.movieGenres : data?.tvGenres
     );
       return (
          <ul className='mt-24 flex gap-3 flex-wrap  '>

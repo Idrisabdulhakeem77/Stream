@@ -114,7 +114,7 @@ const Home: FC = () => {
                 }}
                 className={`${
                   currentTab === "movie" &&
-                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[5%] after:bg-black"
                 }`}
               >
                 Movie
@@ -138,7 +138,7 @@ const Home: FC = () => {
                 }}
                 className={`${
                   currentTab === "anime" &&
-                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[80%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[85%] after:bg-black"
                 }`}
               >
                 Anime
@@ -184,15 +184,19 @@ const Home: FC = () => {
         <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky ">
           <User />
           <SearchBox />
+         
 
+          {/* {currentTab === "anime" && (
+            <AnimeRecommendedGenre currentTab={currentTab} />
+          )} */}
+                 
+          <RecommendedGenres currentTab={currentTab} />
           {/* CurrentTab set to movie dont foeget to make it dynamic */}
-          {currentTab === "movie" && (
+          {/* {currentTab === "movie" && (
             <RecommendedGenres currentTab={currentTab} />
           )}
-          {currentTab === "tv" && <RecommendedGenres currentTab={currentTab} />}
-          {currentTab === "anime" && (
-            <AnimeRecommendedGenre currentTab={currentTab} />
-          )}
+          {currentTab === "tv" && <RecommendedGenres currentTab={currentTab} />} */}
+         
           <PopularThisWeek />
         </div>
       </div>

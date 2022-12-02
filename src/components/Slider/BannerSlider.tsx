@@ -38,7 +38,7 @@ const BannerSlider: FC<BannerSliderProps> = ({
             slidesPerView={1}
             className="!absolute !top-0 !left-0 w-full h-[300px] !rounded-lg"
           >
-            {(films as Items[]).map((film, index) => (
+            {(films as Items[])?.map((film, index) => (
               <SwiperSlide key={film.id}>
                 <Link
                   to={
