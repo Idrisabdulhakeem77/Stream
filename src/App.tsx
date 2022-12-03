@@ -106,7 +106,7 @@ function App() {
  
   return (
     <div className="App">
-        <ToggleButton toggleTheme={toggleTheme}/>
+        <ToggleButton toggleTheme={toggleTheme} theme={theme}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />

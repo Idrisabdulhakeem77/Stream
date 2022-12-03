@@ -1,18 +1,28 @@
-
+import { FiMoon, FiSun } from "react-icons/fi";
 
 interface ToggleButtonProps {
-    toggleTheme : any
-} 
-
-
-
-const ToggleButton = ( {toggleTheme} : ToggleButtonProps) => {
-     return (
-          <button onClick={toggleTheme}>
-              CLick me to toggle themes
-          </button>
-     )
+  toggleTheme: any;
+  theme: string;
 }
 
+const ToggleButton = ({ toggleTheme, theme }: ToggleButtonProps) => {
+  console.log(theme);
+  return (
+    <>
+        {theme === "light-theme" ? (
+          <button onClick={toggleTheme} className="fixed bottom-0 right-0 z-50">
+            {" "}
+            <FiSun  size={40} />
+          </button>
+        ) : (
+          <button onClick={toggleTheme} className="fixed bottom-0 right-0 z-50">
+            <FiMoon size={40} />
+          </button>
+        )}
 
-export default ToggleButton
+      
+    </>
+  );
+};
+
+export default ToggleButton;
