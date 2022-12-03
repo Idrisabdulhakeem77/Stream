@@ -10,7 +10,7 @@ import Sidebar from "../components/Common/Sidebar";
 import SearchBox from "../components/Common/SearchBox";
 import ExploreResult from "../components/Explore/ExploreResult";
 import { ConfigType } from "../shared/types";
-import ExploreFilter from '../components/Explore/ExploreFilter'
+import ExploreFilter from "../components/Explore/ExploreFilter";
 
 interface ExploreProps {}
 
@@ -75,8 +75,6 @@ const Explore: FC<ExploreProps> = () => {
     // eslint-disable-next-line
   }, [location.search]);
 
-
-  
   const { isMobile } = useCurrentViewPort();
   return (
     <>
@@ -124,7 +122,7 @@ const Explore: FC<ExploreProps> = () => {
                 Find Movies , Tv Shows or Anime that Interest You{" "}
               </h2>
               <div className="relative max-w-[350px] w-full -mt-20 -mr-7">
-                <SearchBox />
+                { ( currentTab === "movie" || currentTab === "tv") && <SearchBox />}
               </div>
             </div>
           )}
@@ -171,11 +169,11 @@ const Explore: FC<ExploreProps> = () => {
             </div>
           </div>
           <ExploreResult currentTab={currentTab} config={config} />
-
-
         </div>
         <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
-            <ExploreFilter currentTab={currentTab}/>
+          {(currentTab === "movie" || currentTab === "tv") && (
+            <ExploreFilter currentTab={currentTab} />
+          )}
         </div>
       </div>
     </>
