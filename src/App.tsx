@@ -24,6 +24,7 @@ import { getRandomAvatar } from "./shared/utils";
 import axios from "axios";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
 import TvDetails from "./pages/Tv/TvDetails";
+import ToggleButton from "./components/Common/ToggleButton"
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -105,7 +106,7 @@ function App() {
  
   return (
     <div className="App">
-       <button onClick={toggleTheme}> Toggle  </button>
+        <ToggleButton toggleTheme={toggleTheme}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
