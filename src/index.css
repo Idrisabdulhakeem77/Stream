@@ -6,6 +6,8 @@
 
 body {
   @apply bg-gray-200 text-black  overflow-x-hidden md:overflow-x-visible;
+  /* background-color: #F0f2f5 ;
+  color: #050505 */
 }
 
 .tw-flex-center {
