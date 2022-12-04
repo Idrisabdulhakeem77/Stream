@@ -27,9 +27,5 @@ export const getHomeAnimes = async()  :Promise<Animes> => {
 
 export const getAnimeRecommendedGenres = async () : Promise<getRecommendedAnimeGenreType> => {
     const response = (await axios.get("https://api.jikan.moe/v4/genres/anime")).data
-     
-    const  {data}   = response
-
-
     return response
 }

@@ -6,7 +6,7 @@ interface ToggleButtonProps {
 }
 
 const ToggleButton = ({ toggleTheme, theme }: ToggleButtonProps) => {
-  console.log(theme);
+
   return (
     <>
         {theme === "light-theme" ? (
