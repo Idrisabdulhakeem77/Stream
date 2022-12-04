@@ -174,7 +174,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       currentTab === "all" && "bg-dark-lighten-2"
                     }`}
                   >
-                    <span> all</span>
+                    <span> All</span>
                   </button>
                   <button
                     onClick={() => {
@@ -185,7 +185,7 @@ const Search: FunctionComponent<SearchProps> = () => {
                       currentTab === "movie" && "bg-dark-lighten-2"
                     }`}
                   >
-                    <span> movies</span>
+                    <span> Movies</span>
                   </button>
                   <button
                     onClick={() => {

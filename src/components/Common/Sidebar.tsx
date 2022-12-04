@@ -94,11 +94,14 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <FaTimes size={25} />
           </button>
         </div>
-        {/* <div className="hidden   text-black text-xs text-center sm:hidden">MENU</div> */}
+        {/* "flex gap-3 items-center hover:text-gray-700 transition duration-300" */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
             to="/"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <AiOutlineHome size={25} />
             <p>Home</p>
@@ -106,7 +109,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/explore"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+             className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <MdOutlineExplore size={25} />
             <p>Discover</p>
@@ -114,18 +117,23 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/search"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/search" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <BiSearch size={25} />
             <p>Search</p>
           </Link>
         </div>
 
-        {/* <div className="text-black text-lg text-center mt-2">LIBRARY</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button
             onClick={() => privateUrlhandler("/bookmarks")}
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/bookmarks" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <BsBookmarkHeart size={25} />
             <p>Bookmarked</p>
@@ -133,28 +141,33 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <button
             onClick={() => privateUrlhandler("/recent")}
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/recent" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <AiOutlineHistory size={25} />
             <p>Recent</p>
           </button>
 
           <Link
-            to="/top-rated"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            to="/top"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/top" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <AiOutlineStar size={25} />
             <p>Top Rated</p>
           </Link>
         </div>
-        {/* 
-        <div className="text-black text-lg font-medium mt-4 text-center">
-          Categories
-        </div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
             to="tv"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/tv" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <RiSlideshow4Line size={25} />
             <p>Tv Shows</p>
@@ -162,7 +175,10 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="movies"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/movies" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <BsCameraVideo size={25} />
             <p>Movies</p>
@@ -170,14 +186,16 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/anime"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/anime" &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
           >
             <FiAnchor size={25} />
             <p>Anime</p>
           </Link>
         </div>
 
-        {/* <div className="text-black ttext-lg font-medium text-center mt-2">GENERAL</div> */}
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button
             onClick={() => privateUrlhandler("/profile")}
