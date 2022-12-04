@@ -13,6 +13,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeItem from "../components/Common/AnimeItem";
 import Skeleton from "../components/Common/Skeleton";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
+import AnimeExplore from "../components/AnimeExplore/AnimeExploreFilter";
 
 interface AnimeProps {}
 
@@ -140,7 +141,7 @@ const Anime: FC<AnimeProps> = () => {
         </div>
   
           <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky">
-             Last Column
+            <AnimeExplore/>
           </div>
 
       </div>
