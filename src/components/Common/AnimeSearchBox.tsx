@@ -14,7 +14,6 @@ const AnimeSearchBox = () => {
       } `}
     >
       <form>
-        {/* <button className="absolute  translate-x-4 -translate-y-1/4 left-5 text-light-gray"> */}
         <button className="absolute translate-x-4 translate-y-4 text-light-gray ">
           <FaSearch size={25} />
         </button>
