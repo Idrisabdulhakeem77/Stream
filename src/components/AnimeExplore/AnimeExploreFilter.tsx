@@ -1,3 +1,4 @@
+import AnimeSortBy from "./AnimeSortBy"
 
 
 
@@ -7,7 +8,7 @@ interface AnimeExploreProps {}
 const AnimeExplore = () => {
       return (
          <>
-          Anime Explore
+          <AnimeSortBy/>
          </>
       )
 }

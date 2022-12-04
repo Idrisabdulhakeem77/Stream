@@ -140,7 +140,7 @@ const Anime: FC<AnimeProps> = () => {
           )}
         </div>
   
-          <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky">
+          <div className="shrink-0 max-w-[310px] w-full hidden lg:block px-6 top-0 sticky">
             <AnimeExplore/>
           </div>
 

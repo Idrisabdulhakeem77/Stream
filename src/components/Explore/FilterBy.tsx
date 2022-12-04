@@ -11,7 +11,7 @@ interface FilterByProps {
 
 const FilterBy: FunctionComponent<FilterByProps> = ({ currentTab }) => {
   const [filter] = useAutoAnimate();
-  const [openFilter , setOpenFilter] = useState(true)
+  const [openFilter , setOpenFilter] = useState(false)
 
   return (
     <div
