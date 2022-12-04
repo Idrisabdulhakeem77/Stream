@@ -12,6 +12,7 @@ import { getAnime } from "../services/anime";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeItem from "../components/Common/AnimeItem";
 import Skeleton from "../components/Common/Skeleton";
+import AnimeSearchBox from "../components/Common/AnimeSearchBox";
 
 interface AnimeProps {}
 
@@ -101,6 +102,9 @@ const Anime: FC<AnimeProps> = () => {
     
 
         <div className="flex-grow px-[2vw] pt-6">
+
+            <AnimeSearchBox/>
+
           {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
             [] as any
@@ -134,6 +138,11 @@ const Anime: FC<AnimeProps> = () => {
             </InfiniteScroll>
           )}
         </div>
+  
+          {/* <div className="shrink-0 max-w-[300px] w-full hidden lg:block px-6 top-0 sticky">
+             Last Column
+          </div> */}
+
       </div>
     </>
   );

@@ -4,16 +4,28 @@ import { FaSearch } from "react-icons/fa";
 interface AnimeSerachBoxProps {}
 
 const AnimeSearchBox = () => {
+  const [suggestion, setSuggestion] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
   return (
-    <div>
+    <div
+      className={`  rounded-full  mt-5 bg-slate-300 ${
+        suggestion.length > 0 && "!rounded-3xl"
+      } `}
+    >
       <form>
-        <button className="absolute top-1/2 -translate-y-1/2 left-5 text-light-gray">
-          <FaSearch size={25} className="" />
+        {/* <button className="absolute  translate-x-4 -translate-y-1/4 left-5 text-light-gray"> */}
+        <button className="absolute translate-x-4 translate-y-4 text-light-gray ">
+          <FaSearch size={25} />
         </button>
 
-        <input type="text" placeholder="Search..." value={searchInput}  onChange={(e) => setSearchInput(e.target.value)}/>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-dark-lighten py-4 text-black "
+        />
       </form>
     </div>
   );
