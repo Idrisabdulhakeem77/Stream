@@ -172,11 +172,6 @@ const Explore: FC<ExploreProps> = () => {
           </div>
           <ExploreResult currentTab={currentTab} config={config} />
         </div>
-        {/* <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
-          {(currentTab === "movie" || currentTab === "tv") && (
-            <ExploreFilter currentTab={currentTab} />
-          )}
-        </div> */}
 
         {(currentTab === "movie" || currentTab === "tv") && (
           <>
