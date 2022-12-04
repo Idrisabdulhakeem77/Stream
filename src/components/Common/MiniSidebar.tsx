@@ -1,12 +1,13 @@
 import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { Link ,  useLocation } from "react-router-dom";
 import { BsFillEyeFill } from "react-icons/bs";
 import { links } from "./data";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 // ADD REACT TOASTIFY LIBRARY
 
-const MiniSidebar: FunctionComponent = () => {
+const MiniSidebar: FunctionComponent = () => { 
+   const location = useLocation()
   return (
     <div className="shrink-0 py-8 max-w-[80px] flex flex-col items-center justify-between h-screen sticky top-0">
       <Link to="/">
@@ -16,8 +17,8 @@ const MiniSidebar: FunctionComponent = () => {
         {(links as []).map((link, index) => {
           const { url, icon } = link;
           return (
-            <Link key={index} to={url}>
-              {" "}
+            <Link key={index} to={url} className={` ${location.pathname === url  &&
+              "!text-primary  font-medium"}`}>
               {icon}
             </Link>
           );
