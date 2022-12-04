@@ -1,6 +1,7 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
+import AnimeFilterByDate from "./AnimeFilterByDate";
 import AnimeFilterByGenre from "./AnimeFilterByGenre";
 import AnimeFilterByRating from "./AnimeFilterByRating";
 
@@ -33,7 +34,7 @@ const AnimeFilterBy = () => {
           <AnimeFilterByRating />
 
           <p className="text-lg mb-4 mt-4 text-white/80"> Realease Dates </p>
-          {/* <FilterByDate/> */}
+           <AnimeFilterByDate/>
         </div>
       )}
     </div>
