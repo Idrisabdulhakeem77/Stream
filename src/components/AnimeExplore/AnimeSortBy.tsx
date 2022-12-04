@@ -6,7 +6,7 @@ import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 interface AnimeSortByProps {}
 
 const AnimeSortBy = () => {
-  const [openSort, setOPenSort] = useState(true);
+  const [openSort, setOpenSort] = useState(true);
   const [parent] = useAutoAnimate();
 
   const options = [
@@ -45,7 +45,7 @@ const AnimeSortBy = () => {
     >
       <div className="flex justify-between items-center pb-4">
         <p className="text-lg text-white"> Sort</p>
-        <button onClick={() => setOPenSort((prevState) => !prevState)}>
+        <button onClick={() => setOpenSort((prevState) => !prevState)}>
           {openSort && <FiChevronDown size={20} />}
           {!openSort && <FiChevronRight size={20} />}
         </button>

@@ -1,3 +1,4 @@
+import AnimeFilterBy from "./AnimeFilterBy"
 import AnimeSortBy from "./AnimeSortBy"
 
 
@@ -9,6 +10,7 @@ const AnimeExplore = () => {
       return (
          <>
           <AnimeSortBy/>
+          <AnimeFilterBy/>
          </>
       )
 }
