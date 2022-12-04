@@ -92,7 +92,11 @@ const FilterByRating: FunctionComponent<FilterByRatingProps> = () => {
             <span className="text-sm">min</span>
           </p>
         </div>
+
       </div>
+
+
+      
       <div className="relative h-[5px] bg-dark-darken rounded-md">
         <div
           ref={sliderRangeRef}

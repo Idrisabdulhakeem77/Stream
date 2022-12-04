@@ -1,7 +1,8 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import AnimeFilterByGenre from './AnimeFilterByGenre'
+import AnimeFilterByGenre from "./AnimeFilterByGenre";
+import AnimeFilterByRating from "./AnimeFilterByRating";
 
 interface AnimeFilterByProps {}
 
@@ -22,17 +23,18 @@ const AnimeFilterBy = () => {
         </button>
       </div>
 
-      { openFilter && (
-          <div className="py-3 border-t border-dark-darken"> 
-             <p className="text-lg mb-4 text-white/80"> Genres  </p>
-             <AnimeFilterByGenre/>
+      {openFilter && (
+        <div className="py-3 border-t border-dark-darken">
+          <p className="text-lg mb-4 text-white/80"> Genres </p>
+          <AnimeFilterByGenre />
 
-            <p className="text-lg mb-4 mt-4 text-white/80"> Runtime  </p>
-            {/* <FilterByRating/> */}
+          <p className="text-lg mb-4 mt-4 text-white/80"> Runtime </p>
 
-            <p className="text-lg mb-4 mt-4 text-white/80"> Realease Dates  </p>
-            {/* <FilterByDate/> */}
-            </div>
+          <AnimeFilterByRating />
+
+          <p className="text-lg mb-4 mt-4 text-white/80"> Realease Dates </p>
+          {/* <FilterByDate/> */}
+        </div>
       )}
     </div>
   );
