@@ -122,7 +122,9 @@ const Explore: FC<ExploreProps> = () => {
                 Find Movies , Tv Shows or Anime that Interest You{" "}
               </h2>
               <div className="relative max-w-[350px] w-full -mt-20 -mr-7">
-                { ( currentTab === "movie" || currentTab === "tv") && <SearchBox />}
+                {(currentTab === "movie" || currentTab === "tv") && (
+                  <SearchBox />
+                )}
               </div>
             </div>
           )}
@@ -170,11 +172,19 @@ const Explore: FC<ExploreProps> = () => {
           </div>
           <ExploreResult currentTab={currentTab} config={config} />
         </div>
-        <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
+        {/* <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
           {(currentTab === "movie" || currentTab === "tv") && (
             <ExploreFilter currentTab={currentTab} />
           )}
-        </div>
+        </div> */}
+
+        {(currentTab === "movie" || currentTab === "tv") && (
+          <>
+            <div className="shrink-0 md:max-w-[310px] w-full md:py-12 pt-4 px-3">
+              <ExploreFilter currentTab={currentTab} />
+            </div>
+          </>
+        )}
       </div>
     </>
   );
