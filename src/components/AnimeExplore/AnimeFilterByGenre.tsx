@@ -10,7 +10,9 @@ const AnimeFilterByGenre = () => {
     getRecommendedAnimeGenreType,
     Error
   >(["genres"], getAnimeRecommendedGenres);
+   
 
+  // Reduced the amount of incoming genres to 15 
   const usedGenres = data?.data.slice(0, 15);
 
   console.log(usedGenres);
