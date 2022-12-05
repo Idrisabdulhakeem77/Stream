@@ -8,6 +8,7 @@ import Sidebar from "../Common/Sidebar";
 import Skeleton from "../Common/Skeleton";
 import { resizeImage } from "../../shared/utils";
 import { BsPlay } from "react-icons/bs";
+import MiniSidebar from "../Common/MiniSidebar";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -42,13 +43,12 @@ const FilmDetail: FC<FilmInfo> = ({
       </div>
 
       <div className="flex items-start">
-        <Sidebar
-          isSidebarOpen={isSidebarActive}
-          setIsSidebarOpen={setIsSidebarActive}
+        <MiniSidebar
+      
         />
         <div className="flex-grow ">
           {!detail ? <Skeleton className="h-[400px] rounded-bl-2xl>" /> : null}
-          {/* {detail ? (
+          {detail ? (
             <div
               style={{
                 backgroundImage: `url(${resizeImage(detail.backdrop_path)})`,
@@ -92,7 +92,7 @@ const FilmDetail: FC<FilmInfo> = ({
                 </div>
               </div>
             </div>
-          ) : null} */}
+          ) : null}
         </div>
       </div>
     </>
