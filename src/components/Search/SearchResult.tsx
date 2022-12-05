@@ -6,9 +6,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Pagination from "./Pagination";
 
 interface SearchResultsProps {
+ 
   currentTab: string;
-  page: number;
   query: string;
+  page: number;
 }
 
 const SearchResults: FunctionComponent<SearchResultsProps> = ({
@@ -16,13 +17,22 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({
   page,
   query,
 }) => {
-  const { data, error, isError, isPreviousData } = useQuery<ItemsPage, Error>(
-    ["search-query", currentTab, page, query],
+  // const { data, error, isError, isPreviousData } = useQuery<ItemsPage, Error>(
+  //   ["search-query", currentTab, page, query],
+  //   () => getSearchResult(page, query, currentTab),
+  //   { keepPreviousData: true }
+  // );
+  const { data, error, isPreviousData } = useQuery<ItemsPage, Error>(
+    ["search-result", page, query, currentTab],
     () => getSearchResult(page, query, currentTab),
-    { keepPreviousData: true }
+    {
+      keepPreviousData: true,
+    }
   );
+   
+   console.log(data)
 
-  if (isError) return <div> Error : {error.message} </div>;
+  // if (isError) return <div> Error : {error.message} </div>;
 
   const changePageHandler = (page: number): string => {
     if (isPreviousData) return "";
