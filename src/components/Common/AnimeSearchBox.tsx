@@ -6,13 +6,11 @@ interface AnimeSerachBoxProps {}
 
 const AnimeSearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
+
 
   return (
     <div className="rounded-full  mt-5 bg-slate-300">
-      <form onSubmit={handleSubmit}>
+      <form>
         <button className="absolute translate-x-4 translate-y-4 text-light-gray ">
           <FaSearch size={25} />
         </button>
