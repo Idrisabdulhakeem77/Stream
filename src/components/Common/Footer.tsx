@@ -6,7 +6,7 @@ interface FooterProps {}
 const Footer: FunctionComponent<FooterProps> = () => {
   return (
     <>
-      <div className="bg-dark-lighten text-white flex justify-between items-center py-5 px-4 shadow-md mt-3 absolute bottom-0 w-full">
+      <div className="bg-dark-lighten text-white flex justify-between items-center py-5 px-4 shadow-md mt-3 fixed bottom-0 w-full">
         <p>
           <span>Copyright@2022 Design by:Idris Abdulhakeem</span>
         </p>

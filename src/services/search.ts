@@ -26,27 +26,28 @@ export const getSearchKeyWord = async (query: string): Promise<string[]> => {
 };
 
 export const getSearchResult: (
-  page : number,
-  search : string,
-  query : string
-) =>  Promise<ItemsPage>  = async (page, search, query) => {
+  typeSearch: string,
+  query: string,
+  page: number
+) => Promise<ItemsPage> = async (typeSearch, query, page) => {
   const data = (
-    await axios.get(`/search/${search}`, {
+    await axios.get(`/search/${typeSearch}`, {
       params: {
-        page,
         query,
+        page,
       },
     })
   ).data;
 
-  const results = data.map((item : Items) => ({
+  const results = data.results
+    .map((item: Items) => ({
       ...item,
-      ...(search !== "All" && { media_type : search} )
-  }))
-   
+      ...(typeSearch !== "multi" && { media_type: typeSearch }),
+    }))
+    .filter((item: Items) => item.poster_path || item.profile_path);
 
   return {
-     ...data,
-     results
-  }
+    ...data,
+    results,
+  };
 };
