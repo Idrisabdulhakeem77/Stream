@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useSearchParams, useParams } from "react-router-dom";
 
 interface AnimeSerachBoxProps {}
 
 const AnimeSearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="rounded-full  mt-5 bg-slate-300">
-      <form>
+      <form onSubmit={handleSubmit}>
         <button className="absolute translate-x-4 translate-y-4 text-light-gray ">
           <FaSearch size={25} />
         </button>

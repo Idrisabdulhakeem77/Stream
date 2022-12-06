@@ -14,6 +14,8 @@ import AnimeItem from "../components/Common/AnimeItem";
 import Skeleton from "../components/Common/Skeleton";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
 import AnimeExplore from "../components/Anime/AnimeExploreFilter";
+import { useSearchParams } from "react-router-dom"
+
 
 interface AnimeProps {}
 
@@ -21,6 +23,10 @@ const Anime: FC<AnimeProps> = () => {
   const [showScrollBtn, setShowStrollBtn] = useState(false);
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
+
+  // const [searchParams , setSearchParams] = useSearchParams()
+
+  // const params = 
 
   const {
     data: animes,
