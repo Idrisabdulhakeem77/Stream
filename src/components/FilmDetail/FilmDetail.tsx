@@ -12,6 +12,7 @@ import MiniSidebar from "../Common/MiniSidebar";
 import SearchBox from "../Common/SearchBox";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import RightbarFilms from "../Common/RightbarFilms";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -57,17 +58,63 @@ const FilmDetail: FC<FilmInfo> = ({
           />
         )}
         <div className="flex-grow ">
-          {!detail && (
-            <Skeleton className="h-[400px] rounded-bl-2xl" />
-          )}
+          {!detail && <Skeleton className="h-[400px] rounded-bl-2xl" />}
 
-           { detail && (
-              <div style={{ backgroundImage : `url(${resizeImage(detail.backdrop_path)})`}}
-                className="bg-no-repeat bg-center bg-cover"
-               >
+          {detail && (
+            <div
+              style={{
+                backgroundImage: `url(${resizeImage(detail.backdrop_path)})`,
+              }}
+              className="bg-no-repeat bg-center bg-cover md:h-[400px] h-[300px] rounded-md relative"
+            >
+              <div className="bg-gradient-to-br from-transparent to-black/80 h-full rounded-bl-2xl">
+                <div className="flex flex-col md:flex-row bottom-[-85%] md:bottom-[-20%]  items-start absolute left-1/2 -translate-x-1/2  w-full max-w-[1000px]">
 
+                  <div  className="flex gap-5 items-center">
+                    <div className="shrink-0 w-[185px] ml-3 md:ml-0">
+                      <LazyLoadImage
+                        effect="opacity"
+                        src={resizeImage(detail.backdrop_path, "w185")}
+                        alt="poster"
+                        className="w-full h-[400px] object-cover rounded-md"
+                      />
+                    </div>
+
+                    {isMobile && (
+                      <Link
+                        to="watch"
+                        className="flex gap-6 items-center pl-6 pr-12 py-3 rounded-full bg-primary text-white hover:bg-red-800 transition duration-300 mt-24 "
+                      >
+                        <BsPlay size={25} />
+                        <span className="text-lg font-medium">WATCH</span>
+                      </Link>
+                    )}
+                  </div>
+
+                  <div className="flex-grow md:ml-14 ml-6 mt-6 md:mt-0">
+                    <div className="md:h-28 flex items-end">
+                      <h1 className=" text-white text-[45px] font-bold leading-tight ">
+                        {(detail as DetailMovie).title ||
+                          (detail as DetailTV).name}
+                      </h1>
+                    </div>
+                    <ul className="flex gap-3 flex-wrap md:mt-7 mt-3">
+                      {detail.genres.slice(0, 3).map((genre) => (
+                        <li key={genre.id} className="mb-3">
+                          <Link
+                            to={`/explore?genre=${genre.id}`}
+                            className="md:px-5 px-3 md:py-2 py-1 rounded-full uppercase font-medium border border-gray-300 md:text-white hover:brightness-75 transition duration-300"
+                          >
+                            {genre.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-           )}
+            </div>
+          )}
         </div>
 
         <div className="shrink-0 md:max-w-[310px] w-full relative px-6">

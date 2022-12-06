@@ -36,11 +36,6 @@ export const links = [
     icon: <AiOutlineHistory size={25} />,
   },
   {
-    name: "Top rated",
-    url: "/top_rated",
-    icon: <AiOutlineStar size={25} />,
-  },
-  {
     name: "tv_shows",
     url: "/tv",
     icon: <RiSlideshow4Line size={25} />,

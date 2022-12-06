@@ -150,16 +150,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <p>Recent</p>
           </button>
 
-          <Link
-            to="/top"
-            className={`flex gap-6 items-center  ${
-              location.pathname === "/top" &&
-              "!text-primary border-r-4 border-primary font-medium"
-            } hover:text-white transition duration-300`}
-          >
-            <AiOutlineStar size={25} />
-            <p>Top Rated</p>
-          </Link>
         </div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
