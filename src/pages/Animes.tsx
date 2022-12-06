@@ -61,7 +61,7 @@ const Anime: FC<AnimeProps> = () => {
       behavior: "smooth",
     });
   };
-  if(error) return <div> Error : {error.message}</div>
+  if (error) return <div> Error : {error.message}</div>;
   return (
     <>
       <Title value="Anime" />
@@ -100,11 +100,8 @@ const Anime: FC<AnimeProps> = () => {
           />
         )}
 
-    
-
         <div className="flex-grow px-[2vw] pt-6">
-
-            <AnimeSearchBox/>
+          <AnimeSearchBox />
 
           {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
@@ -129,21 +126,17 @@ const Anime: FC<AnimeProps> = () => {
                           <AnimeItem item={d} key={d.mal_id} />
                         </li>
                       ))}
-                      
                     </ul>
                   );
                 })}
-
-                 
               </div>
             </InfiniteScroll>
           )}
         </div>
-  
-          <div className="shrink-0 max-w-[310px] w-full hidden lg:block px-6 top-0 sticky">
-            <AnimeExplore/>
-          </div>
 
+        <div className="shrink-0 max-w-[310px] w-full hidden lg:block px-6 top-0 sticky">
+          <AnimeExplore />
+        </div>
       </div>
     </>
   );
