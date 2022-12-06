@@ -13,7 +13,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeItem from "../components/Common/AnimeItem";
 import Skeleton from "../components/Common/Skeleton";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
-import AnimeExplore from "../components/AnimeExplore/AnimeExploreFilter";
+import AnimeExplore from "../components/Anime/AnimeExploreFilter";
 
 interface AnimeProps {}
 

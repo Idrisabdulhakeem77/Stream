@@ -42,7 +42,7 @@ export const getSearchResult: (
   const results = data.results
     .map((item: Items) => ({
       ...item,
-      ...(typeSearch !== "multi" && { media_type: typeSearch }),
+      ...(typeSearch !== "All" && { media_type: typeSearch }),
     }))
     .filter((item: Items) => item.poster_path || item.profile_path);
 

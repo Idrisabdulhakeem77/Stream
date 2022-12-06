@@ -25,6 +25,7 @@ import axios from "axios";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
 import TvDetails from "./pages/Tv/TvDetails";
 import ToggleButton from "./components/Common/ToggleButton"
+import { async } from "@firebase/util";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -60,6 +61,7 @@ function App() {
       document.documentElement.className = theme 
       localStorage.setItem("theme" , theme)
   } , [theme])
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
