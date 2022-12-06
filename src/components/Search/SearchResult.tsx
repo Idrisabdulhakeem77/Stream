@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSearchResult } from "../../services/search";
 import { ItemsPage } from "../../shared/types";
@@ -33,6 +33,10 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({
    console.log(data)
 
   // if (isError) return <div> Error : {error.message} </div>;
+
+  useEffect(() => {
+    
+  } , [])
 
   const changePageHandler = (page: number): string => {
     if (isPreviousData) return "";
