@@ -35,3 +35,5 @@ const Anime: FC<AnimeProps> = ({ data, isSectionLoading }) => {
 };
 
 export default Anime;
+
+
