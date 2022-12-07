@@ -4,7 +4,9 @@ import { useSearchParams, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface AnimeSerachBoxProps {}
+interface AnimeSerachBoxProps {
+   autoFocus ? :boolean
+}
 
 const AnimeSearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -38,7 +40,7 @@ const AnimeSearchBox = () => {
           ref={searhValue}
           placeholder="Search..."
           value={searchInput}
-          onChange={fetchAnime}
+          // onChange={fetchAnime}
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-dark-lighten py-4 text-black "
         />
       </form>
