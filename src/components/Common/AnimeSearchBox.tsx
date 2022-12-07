@@ -8,7 +8,7 @@ interface AnimeSerachBoxProps {
    autoFocus ? :boolean
 }
 
-const AnimeSearchBox = () => {
+const AnimeSearchBox = ( {autoFocus} : AnimeSerachBoxProps) => {
   const [searchInput, setSearchInput] = useState("");
   const searhValue = useRef<any>("");
 
@@ -41,6 +41,7 @@ const AnimeSearchBox = () => {
           placeholder="Search..."
           value={searchInput}
           // onChange={fetchAnime}
+          autoFocus={autoFocus}
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-dark-lighten py-4 text-black "
         />
       </form>

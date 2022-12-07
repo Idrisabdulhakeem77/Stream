@@ -108,7 +108,7 @@ const Anime: FC<AnimeProps> = () => {
         )}
 
         <div className="flex-grow px-[2vw] pt-6">
-          <AnimeSearchBox />
+          <AnimeSearchBox  autoFocus/>
 
           {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
