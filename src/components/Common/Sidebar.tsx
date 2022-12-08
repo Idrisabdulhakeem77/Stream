@@ -17,6 +17,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { setCurrentUser } from "../../store/slice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import ToggleButton from "./ToggleButton";
+import { toggleTheme } from "../../store/slice/themeSlice";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -110,7 +111,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           <Link
             to="/explore"
-             className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
           >
             <MdOutlineExplore size={25} />
             <p>Discover</p>
@@ -150,7 +151,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <AiOutlineHistory size={25} />
             <p>Recent</p>
           </button>
-
         </div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
@@ -232,7 +232,13 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </Link>
           )}
 
-          <ToggleButton theme="light-theme" toggleTheme={""}/>
+          {/* <ToggleButton theme="light-theme" toggleTheme={""/> */}
+
+          <button
+            onClick={() =>  dispatch(toggleTheme())}
+          >
+            Click Me to switch Theme
+          </button>
         </div>
       </div>
     </>
