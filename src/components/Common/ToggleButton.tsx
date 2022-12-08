@@ -6,21 +6,19 @@ interface ToggleButtonProps {
 }
 
 const ToggleButton = ({ toggleTheme, theme }: ToggleButtonProps) => {
-
   return (
     <>
-        {theme === "light-theme" ? (
-          <button onClick={toggleTheme} className="fixed bottom-0 right-0 z-50">
-            {" "}
-            <FiSun  size={40} />
-          </button>
-        ) : (
-          <button onClick={toggleTheme} className="fixed bottom-0 right-0 z-50">
-            <FiMoon size={40} />
-          </button>
-        )}
-
-      
+      {theme === "light-theme" ? (
+        <button onClick={toggleTheme} className="">
+          <FiSun />
+          <span> Light Mode</span>
+        </button>
+      ) : (
+        <button onClick={toggleTheme} className="">
+          <FiMoon size={40} />
+          <span>Dark Mode </span>
+        </button>
+      )}
     </>
   );
 };

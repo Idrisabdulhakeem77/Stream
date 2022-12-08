@@ -16,6 +16,7 @@ import { auth } from "../../shared/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import { setCurrentUser } from "../../store/slice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
+import ToggleButton from "./ToggleButton";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -230,6 +231,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
               <p> Login</p>
             </Link>
           )}
+
+          <ToggleButton theme="light-theme" toggleTheme={""}/>
         </div>
       </div>
     </>
