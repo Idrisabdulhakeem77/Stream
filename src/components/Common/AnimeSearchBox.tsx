@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { useSearchParams, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import {Animes} from '../../shared/types'
 
 interface AnimeSerachBoxProps {
    autoFocus ? :boolean
@@ -11,15 +12,19 @@ interface AnimeSerachBoxProps {
 const AnimeSearchBox = ( {autoFocus} : AnimeSerachBoxProps) => {
   const [searchInput, setSearchInput] = useState("");
   const searhValue = useRef<any>("");
+  const [searchResult , setSearhResult ] = useState([])
 
   const fetchAnime = useCallback(
-    async (e: React.ChangeEvent<HTMLFormElement>) => {
+    async (e: FormEvent) => {
       e.preventDefault();
+       
+       setSearchInput(searhValue.current.value)
       const data = await axios.get(
         `https://api.jikan.moe/v4/anime?q=${searchInput}`
       );
-
-      console.log(data);
+            
+       console.log(data)
+      //  setSearhResult(data)
     },
     [searchInput]
   );
@@ -40,7 +45,7 @@ const AnimeSearchBox = ( {autoFocus} : AnimeSerachBoxProps) => {
           ref={searhValue}
           placeholder="Search..."
           value={searchInput}
-          // onChange={fetchAnime}
+          onChange={fetchAnime}
           autoFocus={autoFocus}
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-dark-lighten py-4 text-black "
         />
