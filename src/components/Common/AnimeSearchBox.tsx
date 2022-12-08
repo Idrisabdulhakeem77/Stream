@@ -12,19 +12,19 @@ interface AnimeSerachBoxProps {
 const AnimeSearchBox = ( {autoFocus} : AnimeSerachBoxProps) => {
   const [searchInput, setSearchInput] = useState("");
   const searhValue = useRef<any>("");
-  const [searchResult , setSearhResult ] = useState([])
+  const [searchResult , setSearhResult ] = useState<Animes | any>([])
 
   const fetchAnime = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
        
        setSearchInput(searhValue.current.value)
-      const data = await axios.get(
+      const data = (await axios.get(
         `https://api.jikan.moe/v4/anime?q=${searchInput}`
-      );
+      )).data;
             
-       console.log(data)
-      //  setSearhResult(data)
+       
+       setSearhResult(data)
     },
     [searchInput]
   );

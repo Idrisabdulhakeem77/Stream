@@ -24,10 +24,6 @@ const Anime: FC<AnimeProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [isSiderBarActive, setIsSidebarActive] = useState(false);
 
-  const [searchParams , setSearchParams] = useSearchParams()
-   
-
-  console.log(searchParams)
 
   const {
     data: animes,
