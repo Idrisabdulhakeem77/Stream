@@ -56,6 +56,8 @@ function App() {
     }
   };
  
+
+  // Propagate toggle theme 
   
   useEffect(() => {
       document.documentElement.className = theme 

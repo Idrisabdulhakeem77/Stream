@@ -234,10 +234,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           {/* <ToggleButton theme="light-theme" toggleTheme={""/> */}
 
-          <button
-            onClick={() =>  dispatch(toggleTheme())}
-          >
-            Click Me to switch Theme
+          <button>
+             
           </button>
         </div>
       </div>

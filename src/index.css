@@ -59,3 +59,9 @@ body {
 .tw-absolute-center-horizontal {
   @apply absolute left-1/2 -translate-x-1/2;
 }
+
+
+.dark-theme {
+    color: #fff;
+    background-color: black;
+}
