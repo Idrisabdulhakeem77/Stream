@@ -25,7 +25,9 @@ const SearchResult: FunctionComponent<SearchResultProps> = ({
     {
       keepPreviousData: true,
     }
-  );
+  ); 
+
+  console.log(data)
 
   if (error) return <div>ERROR: ${error.message}</div>;
 
@@ -36,7 +38,7 @@ const SearchResult: FunctionComponent<SearchResultProps> = ({
 
   return (
     <div className="md:mt-32 mt-7 px-[2vw]">
-      <p className="text-white md:text-xl text-lg mb-6">
+      <p className="text-black md:text-xl text-lg mb-6">
         Search results for "{query}" ({data?.total_results} results found)
       </p>
       {data && data.results.length === 0 && (
@@ -64,13 +66,13 @@ const SearchResult: FunctionComponent<SearchResultProps> = ({
             </li>
           ))}
       </ul>
-      {data && (
+      {/* {data && (
         <Pagination
           maxPage={data.total_pages}
           currentPage={data.page}
           onPageChange={changePageHandler}
         />
-      )}
+      )} */}
     </div>
   );
 };

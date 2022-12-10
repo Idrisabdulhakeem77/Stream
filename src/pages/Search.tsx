@@ -20,7 +20,7 @@ const Search: FunctionComponent<SearchProps> = () => {
   const { isMobile } = useCurrentViewPort();
   const [parent] = useAutoAnimate();
   const [openSearchFilter, setOpenSearchFilter] = useState(true);
-  const [currentTab, setCurrentTab] = useState("all");
+  const [currentTab, setCurrentTab] = useState("multi");
 
   const query = searchParams.get("query");
   const page = searchParams.get("page") || 1;
@@ -46,7 +46,7 @@ const Search: FunctionComponent<SearchProps> = () => {
           setIsSidebarOpen={setIsSidebarActive}
         />
 
-        <div className="flex-grow" >
+        <div className="flex-grow">
           <div
             className={`relative z-30 md:max-w-[50vw] w-full mx-auto  transition duration-300 text-xl ${
               query && "!translate-y-0"
@@ -88,13 +88,13 @@ const Search: FunctionComponent<SearchProps> = () => {
                     <button
                       onClick={() => {
                         setSearchParams({ query: query || "", page: "1" });
-                        setCurrentTab("all");
+                        setCurrentTab("multi");
                       }}
                       className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                        currentTab === "all" && "bg-dark-lighten-2"
+                        currentTab === "multi" && "bg-dark-lighten-2"
                       }`}
                     >
-                      <span>all</span>
+                      <span>All</span>
                     </button>
                     <button
                       onClick={() => {
@@ -168,10 +168,10 @@ const Search: FunctionComponent<SearchProps> = () => {
                   <button
                     onClick={() => {
                       setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("all");
+                      setCurrentTab("multi");
                     }}
                     className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "all" && "bg-dark-lighten-2"
+                      currentTab === "multi" && "bg-dark-lighten-2"
                     }`}
                   >
                     <span> All</span>
