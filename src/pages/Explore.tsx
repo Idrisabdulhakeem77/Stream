@@ -128,9 +128,9 @@ const Explore: FC<ExploreProps> = () => {
                   <SearchBox />
                 )} 
 
-                { currentTab === "anime" && (
+                {/* { currentTab === "anime" && (
                    <AnimeSearchBox/>
-                )}
+                )} */}
 
               </div>
             </div>
