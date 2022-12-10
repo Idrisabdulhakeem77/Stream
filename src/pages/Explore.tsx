@@ -126,6 +126,10 @@ const Explore: FC<ExploreProps> = () => {
               <div className="relative max-w-[350px] w-full -mt-20 -mr-7">
                 {(currentTab === "movie" || currentTab === "tv") && (
                   <SearchBox />
+                )} 
+
+                { currentTab === "anime" && (
+                   <AnimeSearchBox/>
                 )}
 
               </div>

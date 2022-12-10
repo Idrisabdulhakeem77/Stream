@@ -65,6 +65,9 @@ const Anime: FC<AnimeProps> = () => {
     });
   };
   if (error) return <div> Error : {error.message}</div>;
+
+
+  
   return (
     <>
       <Title value="Anime" />
@@ -105,8 +108,8 @@ const Anime: FC<AnimeProps> = () => {
 
         <div className="flex-grow px-[2vw] pt-6">
           <AnimeSearchBox  autoFocus/>
-
-          {animes?.pages.reduce(
+         
+           <div>          {animes?.pages.reduce(
             (acc, current) => [...acc, current.data],
             [] as any
           ).length === 0 ? (
@@ -135,6 +138,8 @@ const Anime: FC<AnimeProps> = () => {
               </div>
             </InfiniteScroll>
           )}
+          </div>
+
         </div>
 
         <div className="shrink-0 max-w-[310px] w-full hidden lg:block px-6 top-0 sticky">
