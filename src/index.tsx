@@ -14,7 +14,6 @@ import "swiper/css/navigation";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { AppProvider } from "./context";
 
 const queryClient = new QueryClient();
 

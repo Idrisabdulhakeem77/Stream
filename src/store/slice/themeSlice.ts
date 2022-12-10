@@ -13,7 +13,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //   };
 
 const initialState = {
-    theme: "dark-mode"
+    theme: ""
 }
 
 
@@ -22,8 +22,7 @@ const themeSlice = createSlice({
     name: "theme",
     initialState,
     reducers: {
-        toggleTheme: (state) => {
-             
+        toggleTheme: (state, action) => {
         }
     }
 })

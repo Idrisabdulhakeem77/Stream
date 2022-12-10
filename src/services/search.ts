@@ -38,7 +38,9 @@ export const getSearchResult: (
       },
     })
   ).data;
-
+ 
+   console.log(data)
+   
   const results = data.results
     .map((item: Items) => ({
       ...item,
