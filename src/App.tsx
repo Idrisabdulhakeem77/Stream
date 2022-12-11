@@ -92,7 +92,7 @@ function App() {
         });
       } else {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-            console.log( doc.data())
+          
           dispatch(
             setCurrentUser({
               email: user.email,

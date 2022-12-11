@@ -47,7 +47,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         )
       ).user;
 
-      console.log(user);
+     
 
       setDoc(doc(db, "users", user.uid), {
         displayName: values.fullname,

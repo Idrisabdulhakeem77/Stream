@@ -27,7 +27,7 @@ const SearchResult: FunctionComponent<SearchResultProps> = ({
     }
   ); 
 
-  console.log(data)
+ 
 
   if (error) return <div>ERROR: ${error.message}</div>;
 

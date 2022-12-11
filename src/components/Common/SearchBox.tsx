@@ -41,7 +41,7 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
       
 
        setSuggestion(keywords);
-       console.log(suggestion)
+      
 
        if (initialState) {
         initialState = false;
