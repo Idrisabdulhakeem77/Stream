@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { DetailMovie, DetailTV, FilmInfo } from "../../shared/types";
 import { useAppSelector } from "../../store/hooks";
 import Title from "../Common/Title";
@@ -13,6 +13,10 @@ import SearchBox from "../Common/SearchBox";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
 import RightbarFilms from "../Common/RightbarFilms";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { onSnapshot } from "firebase/firestore";
+import { doc, arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
+import { toast, ToastContainer } from "react-toastify";
+import { db } from "../../shared/firebase";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -27,8 +31,78 @@ const FilmDetail: FC<FilmInfo> = ({
 
   const { isMobile } = useCurrentViewPort();
 
+  useEffect(() => {
+    if (!currentUser) {
+      return;
+    }
+
+    const unsubDoc = onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
+      setIsBookMarked(
+        doc.data()?.bookmarks.some((item: any) => item.id === detail?.id)
+      );
+    });
+
+    return () => unsubDoc();
+  }, [currentUser, detail?.id]);
+
+  const bookmarkedHandler = async () => {
+    if (!detail) return;
+
+    if (!currentUser) {
+      toast.error("You need to sign in to bookmark films", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return;
+    }
+
+    await updateDoc(doc(db, "users", currentUser.uid), {
+      bookmarks: !isBookMarked
+        ? arrayUnion({
+            poster_path: detail?.poster_path,
+            id: detail?.id,
+            vote_average: detail?.vote_average,
+            media_type: detail?.media_type,
+            ...(detail?.media_type === "movie" && { title: detail?.title }),
+            ...(detail?.media_type === "tv" && { name: detail?.name }),
+          })
+        : arrayRemove({
+            poster_path: detail?.poster_path,
+            id: detail?.id,
+            vote_average: detail?.vote_average,
+            media_type: detail?.media_type,
+            ...(detail?.media_type === "movie" && { title: detail?.title }),
+            ...(detail?.media_type === "tv" && { name: detail?.name }),
+          }),
+    });
+
+    toast.success(
+      `${
+        !isBookMarked
+          ? "This film is now bookmarked"
+          : "This film is removed from your bookmarks"
+      }`,
+      {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   return (
     <>
+      <ToastContainer />
       {detail ? (
         <Title
           value={`${
@@ -69,8 +143,7 @@ const FilmDetail: FC<FilmInfo> = ({
             >
               <div className="bg-gradient-to-br from-transparent to-black/80 h-full rounded-bl-2xl">
                 <div className="flex flex-col md:flex-row bottom-[-85%] md:bottom-[-20%]  items-start absolute left-1/2 -translate-x-1/2  w-full max-w-[1000px]">
-
-                  <div  className="flex gap-5 items-center">
+                  <div className="flex gap-5 items-center">
                     <div className="shrink-0 w-[185px] ml-3 md:ml-0">
                       <LazyLoadImage
                         effect="opacity"
