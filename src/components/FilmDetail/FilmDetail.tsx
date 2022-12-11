@@ -7,7 +7,8 @@ import { FaBars } from "react-icons/fa";
 import Sidebar from "../Common/Sidebar";
 import Skeleton from "../Common/Skeleton";
 import { resizeImage } from "../../shared/utils";
-import { BsPlay } from "react-icons/bs";
+import { BsPlay , BsThreeDots , BsShareFill , } from "react-icons/bs";
+import {AiFillHeart} from "react-icons/ai"
 import MiniSidebar from "../Common/MiniSidebar";
 import SearchBox from "../Common/SearchBox";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
@@ -184,6 +185,48 @@ const FilmDetail: FC<FilmInfo> = ({
                       ))}
                     </ul>
                   </div>
+
+                  {!isMobile && (
+                    <Link
+                      to="watch"
+                      className="flex gap-6 items-center pl-6 pr-12 py-3 rounded-full bg-primary text-white hover:bg-red-600 transition duration-300 mt-24 "
+                    >
+                      <BsPlay size={25} />
+                      <span className="text-lg font-medium">WATCH</span>
+                    </Link>
+                  )}
+                </div>
+                
+                <div className="flex gap-3 absolute top-[5%] right-[3%]">
+                  <button
+                    onClick={bookmarkedHandler}
+                    className={`tw-flex-center h-12 w-12 rounded-full border-[3px] border-white shadow-lg hover:border-primary transition duration-300 group ${
+                      isBookMarked && "!border-primary"
+                    }`}
+                  >
+                    <AiFillHeart
+                      size={20}
+                      className={`text-white group-hover:text-primary transition duration-300 ${
+                        isBookMarked && "!text-primary"
+                      }`}
+                    />
+                  </button>
+                  {!isMobile && (
+                    <>
+                      <button className="tw-flex-center h-12 w-12 rounded-full border-[3px] border-white shadow-lg hover:border-primary transition duration-300 group">
+                        <BsShareFill
+                          size={20}
+                          className="text-white group-hover:text-primary transition duration-300"
+                        />
+                      </button>
+                      <button className="tw-flex-center h-12 w-12 rounded-full border-[3px] border-white shadow-lg hover:border-primary transition duration-300 group">
+                        <BsThreeDots
+                          size={20}
+                          className="text-white group-hover:text-primary transition duration-300"
+                        />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
