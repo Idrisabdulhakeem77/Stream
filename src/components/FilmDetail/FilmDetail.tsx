@@ -18,6 +18,7 @@ import { onSnapshot } from "firebase/firestore";
 import { doc, arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import { db } from "../../shared/firebase";
+import {buildStyles , CircularProgressbar} from 'react-circular-progressbar'
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -236,7 +237,7 @@ const FilmDetail: FC<FilmInfo> = ({
 
            <div  className="flex z-20 relative flex-col md:flex-row mt-32 md:mt-0
            ">
-             
+            
            </div>
         </div>
 

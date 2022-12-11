@@ -295,3 +295,9 @@ export interface getRecommendedAnimeGenreType {
    
   }[]
 }
+
+export interface getWatchReturnedType {
+  detail?: DetailTV | DetailMovie | undefined;
+  recommendations?: Items[] | undefined;
+  detailSeasons?: DetailSeason[] | undefined;
+}
