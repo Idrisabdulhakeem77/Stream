@@ -25,6 +25,10 @@ export interface HomeFilms {
   [key: string]: Items[];
 }
 
+export interface HomeAnimes {
+  [ key : string] : Animes[]
+} 
+
 export interface getRecommendedGenreType {
   movieGenres: { id: number; name: string }[];
   tvGenres: { id: number; name: string }[];

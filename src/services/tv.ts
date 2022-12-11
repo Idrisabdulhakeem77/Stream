@@ -16,8 +16,12 @@ export const getTVFullDetail = async (id: number): Promise<FilmInfo> => {
     axios.get(`/tv/${id}/similar`),
     axios.get(`/tv/${id}/videos`),
   ]);
+  
+
+   console.log(response)
 
   const tvInfo = response.reduce((final, current, index) => {
+
     switch (index) {
       case 0:
         final.detail = { ...current.data, media_type: "tv" };
