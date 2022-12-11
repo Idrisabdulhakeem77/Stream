@@ -196,7 +196,7 @@ const FilmDetail: FC<FilmInfo> = ({
                     </Link>
                   )}
                 </div>
-                
+
                 <div className="flex gap-3 absolute top-[5%] right-[3%]">
                   <button
                     onClick={bookmarkedHandler}
@@ -227,10 +227,17 @@ const FilmDetail: FC<FilmInfo> = ({
                       </button>
                     </>
                   )}
+
+
                 </div>
               </div>
             </div>
           )}
+
+           <div  className="flex z-20 relative flex-col md:flex-row mt-32 md:mt-0
+           ">
+             
+           </div>
         </div>
 
         <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
