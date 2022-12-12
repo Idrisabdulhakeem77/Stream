@@ -4,6 +4,7 @@ import {LazyLoadImage} from "react-lazy-load-image-component"
 import Skeleton from "../Common/Skeleton";
 import ReadMore from "../Common/ReadMore";
 import {resizeImage} from "../../shared/utils"
+import ReviewTab from "../Common/ReviewTab";
 
 interface FilmTabInfoProps {
   detail?: DetailMovie | DetailTV | undefined;
@@ -43,17 +44,7 @@ const FilmTabInfo = ({ detail , credits , reviews }: FilmTabInfoProps) => {
         >
           Reviews
         </button>
-        {detail && detail.media_type === "tv" && (
-          <button
-            className={`hover:text-white transition duration-300 pb-1 ${
-              currentTab === "seasons" &&
-              "font-medium -translate-y-2 border-b-2 border-primary text-white"
-            }`}
-            onClick={() => setCurrentTab("seasons")}
-          >
-            Seasons
-          </button>
-        )}
+        
       </div>
 
       <div className="mt-10 text-lg">
@@ -129,6 +120,8 @@ const FilmTabInfo = ({ detail , credits , reviews }: FilmTabInfoProps) => {
                ))}
            </ul>
          )}
+         
+         { currentTab === "reviews" && <ReviewTab reviews={reviews}/>}
       </div>
     </>
   );
