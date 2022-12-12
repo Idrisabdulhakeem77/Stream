@@ -15,7 +15,6 @@ const MovieDetail : FC<MovieDetailProps> = () => {
     
     const {data  , isError} = useQuery<FilmInfo | undefined>( ['movie-info' , id] ,  () => getFullMovieDetails(Number(id as string)))  
 
-     console.log(data)
     if(isError) return <div> Error </div>
      
 

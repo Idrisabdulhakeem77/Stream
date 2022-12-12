@@ -10,8 +10,8 @@ import { db } from "../../shared/firebase";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import {MdOutlineCancel} from 'react-icons/md'
-import {BiSelectMultiple} from 'react-icons/bi'
+import { MdOutlineCancel } from "react-icons/md";
+import { BiSelectMultiple } from "react-icons/bi";
 import BookmarkResults from "../Bookmark/BookmarkResults";
 
 interface FilmListForBookmarkedAndRecentProps {
@@ -27,14 +27,15 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
   const [isShowPrompt, setIsShowPrompt] = useState(false);
   const [selections, setSelections] = useState<number[]>([]);
   const [isSidebarActive, setIsSidebarActive] = useState(false);
-  const [currentTab , setCurrentTab] = useState(localStorage.getItem("bookmarkCurrentTab" ) || "all") 
-  const [isEditting , setIsEditting] = useState(false)
-  const [isSelectAll , setIsSelectAll] = useState(false)
+  const [currentTab, setCurrentTab] = useState(
+    localStorage.getItem("bookmarkCurrentTab") || "all"
+  );
+  const [isEditting, setIsEditting] = useState(false);
+  const [isSelectAll, setIsSelectAll] = useState(false);
 
   const [parent] = useAutoAnimate();
   const [show] = useAutoAnimate();
   const [action] = useAutoAnimate();
-
 
   const selectAllHandler = () => {
     if (isSelectAll) {
@@ -57,26 +58,28 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
           .filter((film) => film.media_type === "movie")
           .map((film) => film.id)
       );
+    } else if (currentTab === "anime") {
+      //  setSelections( films.map((film) => film.media_type === "anime"))
     }
   };
 
-   const clearSelection = () => {
-       if(!user) return
+  const clearSelection = () => {
+    if (!user) return;
 
-       const editedFilms = films.filter(
-        (film) => selections.indexOf(film.id) === -1
-      );
+    const editedFilms = films.filter(
+      (film) => selections.indexOf(film.id) === -1
+    );
 
-      updateDoc(doc(db, "users", user?.uid), {
-        ...(pageType === "bookmark" && { bookmarks: editedFilms.reverse() }),
-        ...(pageType === "recent" && { recentlyWatch: editedFilms.reverse() }),
-      });
+    updateDoc(doc(db, "users", user?.uid), {
+      ...(pageType === "bookmark" && { bookmarks: editedFilms.reverse() }),
+      ...(pageType === "recent" && { recentlyWatch: editedFilms.reverse() }),
+    });
 
-      setSelections([]);
-      setIsSelectAll(false);
-      setIsShowPrompt(false);
-   }
-   
+    setSelections([]);
+    setIsSelectAll(false);
+    setIsShowPrompt(false);
+  };
+
   return (
     <>
       <div
@@ -103,9 +106,10 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               >
                 Cancel
               </button>
-              <button 
-               onClick={clearSelection}
-              className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300">
+              <button
+                onClick={clearSelection}
+                className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300"
+              >
                 Yes
               </button>
             </div>
@@ -153,127 +157,147 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               ref={action}
               className="flex flex-col md:flex-row  items-start md:items-center gap-5 md:justify-between mb-8"
               id="test"
-            > 
-               <div className="inline-flex gap-[30px] pb-[12px] border-b border-gray-darken relative">
-                   <button
-                      onClick={() => {
-                        setCurrentTab("all")
-                        localStorage.setItem("bookmarkCurrentTab" , "all")
-                      }}
+            >
+              <div className="inline-flex gap-[30px] pb-[12px] border-b border-gray-darken relative">
+                <button
+                  onClick={() => {
+                    setCurrentTab("all");
+                    localStorage.setItem("bookmarkCurrentTab", "all");
+                  }}
+                  className={`${
+                    currentTab === "all" &&
+                    "text-white font-medium after:absolute after:bottom-0 after:left-[0%] after:bg-white after:h-[3px] after:w-5"
+                  } transition duration-300 hover:text-white`}
+                >
+                  All
+                </button>
+                <button
+                  className={`${
+                    currentTab === "movie" &&
+                    "text-white font-medium after:absolute after:bottom-0 after:left-[30%] after:bg-white after:h-[3px] after:w-5"
+                  } transition duration-300 hover:text-white`}
+                  onClick={() => {
+                    setCurrentTab("movie");
+                    localStorage.setItem("bookmarkCurrentTab", "movie");
+                  }}
+                >
+                  Movie
+                </button>
 
-                      className={`${
-                        currentTab === "all" &&
-                        "text-white font-medium after:absolute after:bottom-0 after:left-[0%] after:bg-white after:h-[3px] after:w-5"
-                      } transition duration-300 hover:text-white`}
-                    >
-                       All
-                   </button>
-                   <button
-                         className={`${
-                          currentTab === "movie" &&
-                          "text-white font-medium after:absolute after:bottom-0 after:left-[30%] after:bg-white after:h-[3px] after:w-5"
-                        } transition duration-300 hover:text-white`}
-                      onClick={() => {
-                        setCurrentTab("movie")
-                        localStorage.setItem("bookmarkCurrentTab" , "movie")
-                      }}
-                    >
-                       Movie
-                   </button>
+                <button
+                  className={`${
+                    currentTab === "tv" &&
+                    "text-white font-medium after:absolute after:bottom-0 after:left-[57%] after:bg-white after:h-[3px] after:w-5"
+                  } transition duration-300 hover:text-white`}
+                  onClick={() => {
+                    setCurrentTab("tv");
+                    localStorage.setItem("bookmarkCurrentTab", "tv");
+                  }}
+                >
+                  Tv
+                </button>
 
-                   <button
-                        className={`${
-                          currentTab === "tv" &&
-                          "text-white font-medium after:absolute after:bottom-0 after:left-[57%] after:bg-white after:h-[3px] after:w-5"
-                        } transition duration-300 hover:text-white`}
-                      onClick={() => {
-                        setCurrentTab("tv")
-                        localStorage.setItem("bookmarkCurrentTab" , "tv")
-                      }}
-                    >
-                       Tv
-                   </button>
+                <button
+                  className={`${
+                    currentTab === "anime" &&
+                    "text-white font-medium after:absolute after:bottom-0 after:left-[83%] after:bg-white after:h-[3px] after:w-5"
+                  } transition duration-300 hover:text-white`}
+                  onClick={() => {
+                    setCurrentTab("anime");
+                    localStorage.setItem("bookmarkCurrentTab", "anime");
+                  }}
+                >
+                  Anime
+                </button>
+              </div>
 
-                   <button
-                        className={`${
-                          currentTab === "anime" &&
-                          "text-white font-medium after:absolute after:bottom-0 after:left-[83%] after:bg-white after:h-[3px] after:w-5"
-                        } transition duration-300 hover:text-white`}
-                      onClick={() => {
-                        setCurrentTab("anime")
-                        localStorage.setItem("bookmarkCurrentTab" , "anime")
-                      }}
-                    >
-                       Anime
-                   </button>
-               </div>
-
-              { !isEditting && (
-                  <button
-                    onClick={() => setIsEditting(true)}
-                    className="self-end text-lg hover:text-primary transition duration-300 flex gap-2 items-center "
-                  >
-                     <AiOutlineEdit size={25}/>
-                     <p>Edit</p>
-                  </button>
+              {!isEditting && (
+                <button
+                  onClick={() => setIsEditting(true)}
+                  className="self-end text-lg hover:text-primary transition duration-300 flex gap-2 items-center "
+                >
+                  <AiOutlineEdit size={25} />
+                  <p>Edit</p>
+                </button>
               )}
 
-
-               { isEditting && (
-                  <div className="flex gap-2  ">
-                      <button 
-                       onClick={selectAllHandler}
-                      className={`flex gap-2 items-center  hover:text-primary transition duration-300  ${isSelectAll ? "text-primary" : "!text-gray-lighten"} ` }>
-                         <BiSelectMultiple size={25}/>
-                         <p> Select All</p>
-                      </button>
-                      <button 
-                       disabled={selections.length === 0}
-                       onClick={() => setIsShowPrompt(true)}
-                      className="disabled:text-red flex gap-2 items-center  hover:text-primary transition duration-300 "  >
-                          <AiOutlineDelete size={25}/>
-                         <p> Delete</p>
-                      </button>
-                      <button 
-                       onClick={() => setIsEditting(false)}
-                      className="flex gap-2 items-center hover:text-primary transition duration-300">
-                         <MdOutlineCancel size={25}/>
-                         <p>Cancel</p>
-                      </button>
-                  </div>
-               )}
-               
+              {isEditting && (
+                <div className="flex gap-2  ">
+                  <button
+                    onClick={selectAllHandler}
+                    className={`flex gap-2 items-center  hover:text-primary transition duration-300  ${
+                      isSelectAll ? "text-primary" : "!text-gray-lighten"
+                    } `}
+                  >
+                    <BiSelectMultiple size={25} />
+                    <p> Select All</p>
+                  </button>
+                  <button
+                    disabled={selections.length === 0}
+                    onClick={() => setIsShowPrompt(true)}
+                    className="disabled:text-red flex gap-2 items-center  hover:text-primary transition duration-300 "
+                  >
+                    <AiOutlineDelete size={25} />
+                    <p> Delete</p>
+                  </button>
+                  <button
+                    onClick={() => setIsEditting(false)}
+                    className="flex gap-2 items-center hover:text-primary transition duration-300"
+                  >
+                    <MdOutlineCancel size={25} />
+                    <p>Cancel</p>
+                  </button>
+                </div>
+              )}
             </div>
-            
+
             <ul
-             // @ts-ignore
-             ref={parent}
+              // @ts-ignore
+              ref={parent}
               className={`grid grid-cols-sm md:grid-cols-lg gap-x-8 gap-y-10 ${
                 isEditting && "!gap-y-16"
               }`}
             >
-              { loading && 
-                [...new Array(6)].map((_ , index) => (
-                   <li key={index}>
-                     <Skeleton classID="h-0 pb-[160%]"/>
-                   </li>
-                ))   
-              }
+              {loading &&
+                [...new Array(6)].map((_, index) => (
+                  <li key={index}>
+                    <Skeleton classID="h-0 pb-[160%]" />
+                  </li>
+                ))}
 
-               { currentTab === "All" && (
-                 <BookmarkResults
-                 films={films}
-                 isEditting={isEditting}
-                 isLoading={loading}
-                 pageType={pageType}
-                 selections={selections}
-                 setSelection={setSelections}
-                  
-                  />
-               )}
-               
+              {currentTab === "all" && (
+                <BookmarkResults
+                  films={films}
+                  isEditting={isEditting}
+                  isLoading={loading}
+                  pageType={pageType}
+                  selections={selections}
+                  setSelection={setSelections}
+                />
+              )}
+
+              {currentTab === "tv" && (
+                <BookmarkResults
+                  films={films.filter((film) => film.media_type === "tv")}
+                  isEditting={isEditting}
+                  selections={selections}
+                  setSelection={setSelections}
+                  isLoading={loading}
+                  pageType={pageType}
+                />
+              )}
+
+              {currentTab === "movie" && (
+                <BookmarkResults
+                  films={films.filter((film) => film.media_type === "movie")}
+                  isEditting={isEditting}
+                  selections={selections}
+                  setSelection={setSelections}
+                  isLoading={loading}
+                  pageType={pageType}
+                />
+              )}
             </ul>
-             
           </div>
         </div>
       </div>

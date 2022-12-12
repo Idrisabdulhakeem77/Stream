@@ -37,6 +37,8 @@ const Bookmark : FunctionComponent<BookmarkProps> = () => {
       return () => unSubscribe()
     } , [user])
 
+    console.log(bookmarkFilms)
+
     if(error) return <div>Error : {error} </div>
      return (
         <>

@@ -21,6 +21,7 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
   selections,
   setSelection,
 }) => {
+   console.log(films)
   return (
     <>
       {films.length === 0 && !isLoading && (
