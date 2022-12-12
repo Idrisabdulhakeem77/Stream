@@ -6,11 +6,11 @@
 
 body {
  
- @apply bg-gray-200 text-black  overflow-x-hidden md:overflow-x-visible; 
+ /* @apply bg-gray-200 text-black  overflow-x-hidden md:overflow-x-visible;  */
   /* background-color: #F0f2f5 ;
-  color: #050505
-  /* background-color: #121212;
-  color: white */
+  color: #050505 */
+   background-color: #121212;
+  color: white 
 }
 
 .tw-flex-center {

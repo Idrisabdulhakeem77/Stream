@@ -7,8 +7,8 @@ import { FaBars } from "react-icons/fa";
 import Sidebar from "../Common/Sidebar";
 import Skeleton from "../Common/Skeleton";
 import { resizeImage } from "../../shared/utils";
-import { BsPlay , BsThreeDots , BsShareFill , } from "react-icons/bs";
-import {AiFillHeart} from "react-icons/ai"
+import { BsPlay, BsThreeDots, BsShareFill } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
 import MiniSidebar from "../Common/MiniSidebar";
 import SearchBox from "../Common/SearchBox";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
@@ -18,7 +18,7 @@ import { onSnapshot } from "firebase/firestore";
 import { doc, arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import { db } from "../../shared/firebase";
-import {buildStyles , CircularProgressbar} from 'react-circular-progressbar'
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -148,13 +148,12 @@ const FilmDetail: FC<FilmInfo> = ({
                   <div className="flex gap-5 items-center">
                     <div className="shrink-0 w-[185px] ml-3 md:ml-0">
                       <LazyLoadImage
+                        src={resizeImage(detail.poster_path, "w185")}
                         effect="opacity"
-                        src={resizeImage(detail.backdrop_path, "w185")}
-                        alt="poster"
-                        className="w-full h-[400px] object-cover rounded-md"
+                        className="w-full h-full object-cover rounded-md"
+                        alt="Poster"
                       />
                     </div>
-
                     {isMobile && (
                       <Link
                         to="watch"
@@ -228,17 +227,83 @@ const FilmDetail: FC<FilmInfo> = ({
                       </button>
                     </>
                   )}
-
-
                 </div>
               </div>
             </div>
           )}
 
-           <div  className="flex z-20 relative flex-col md:flex-row mt-32 md:mt-0
-           ">
-            
-           </div>
+          <div
+            className="flex z-20 relative flex-col md:flex-row mt-32 md:mt-0
+           "
+          >
+            {!isMobile && (
+              <div className="shrink-0 md:max-w-[150px] w-full flex items-center md:flex-col justify-center flex-row gap-20 mt-20 md:border-r border-dark-lighten pt-16">
+                <div className="flex flex-col gap-6 items-center">
+                  <p className="text-white font-medium text-lg">RATING</p>
+                  {!isMobile && (
+                    <div className="w-16">
+                      {detail && (
+                        <CircularProgressbar
+                          value={detail.vote_average}
+                          maxValue={10}
+                          text={`${detail.vote_average.toFixed(1)}`}
+                          styles={buildStyles({
+                            textSize: "25px",
+                            pathColor: `rgba(255, 255, 255, ${
+                              (detail.vote_average * 10) / 100
+                            })`,
+                            textColor: "#fff",
+                            trailColor: "transparent",
+                            backgroundColor: "#5179ff",
+                          })}
+                        />
+                      )}
+                      {!detail && (
+                        <Skeleton className="w-16 h-16 rounded-full" />
+                      )}
+                    </div>
+                  )}
+                  {isMobile && detail && (
+                    <p className="text-2xl -mt-3">
+                      {detail.vote_average.toFixed(1)}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-3 items-center">
+                  {detail && (
+                    <>
+                      <p className="text-white font-medium text-lg">
+                        {detail.media_type === "movie"
+                          ? "RUNTIME"
+                          : "EP LENGTH"}
+                      </p>
+                      <div className="flex gap-2 items-center">
+                        {detail.media_type === "movie" && (
+                          <p className="text-2xl">
+                            {(detail as DetailMovie).runtime}
+                          </p>
+                        )}
+                        {detail.media_type === "tv" && (
+                          <p className="text-2xl">
+                            {(detail as DetailTV).episode_run_time[0]}
+                          </p>
+                        )}
+                        <span>min</span>
+                      </div>
+                    </>
+                  )}
+                  {!detail && (
+                    <>
+                      <p className="text-white font-medium text-lg">RUNTIME</p>
+                      <Skeleton className="w-14 h-6" />
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+
+          </div>
         </div>
 
         <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
