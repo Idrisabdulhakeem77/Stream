@@ -1,12 +1,13 @@
 import { Reviews } from "../../shared/types";
 import { useState } from "react";
-import {} from "react-select";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { SortReview } from "../FilmDetail/SortReview";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import StarRating from '../FilmDetail/StarRating'
+import ReadMore from "./ReadMore"
+import { calculateTimePassed} from "../../shared/utils"
 interface ReviewTabProps {
-  reviews?: Reviews[];
+  reviews: Reviews[];
 }
 
 interface ReviewContentProps {
@@ -23,17 +24,28 @@ const ReviewContent = ({ reviews, type }: ReviewContentProps) => {
     >
       {SortReview(reviews, type).map((review) => (
         <li key={review.id} className="flex gap-7">
-          <div className="shrink-0 max-w-[60px] w-full h-[60px]">
-            <LazyLoadImage
-              src="/Images/user.svg"
-              alt="reviewer"
-              effect="opacity"
-              className="w-[60px] h-[60px] rounded-full object-cover"
+        <div className="shrink-0 max-w-[60px] w-full h-[60px]">
+          <LazyLoadImage
+            src="/Images/user.svg"
+            alt="reviewer"
+            effect="opacity"
+            className="w-[60px] h-[60px] rounded-full object-cover"
+          />
+        </div>
+        <div className="flex-grow">
+          <div className="flex justify-between">
+            <p className="text-white">{review.author}</p>
+            <StarRating
+              star={Math.round(review.author_details.rating / 2)}
+              maxStar={5}
             />
           </div>
-
-          
-        </li>
+          <ReadMore limitTextNumber={150}>{review.content}</ReadMore>
+          <p className="text-right text-base">
+            {calculateTimePassed(new Date(review.created_at).getTime())}
+          </p>
+        </div>
+      </li>
       ))}
     </ul>
   );
@@ -64,9 +76,15 @@ const ReviewTab = ({ reviews }: ReviewTabProps) => {
             There is no reviews yet.
           </p>
         )}
-        {/* {reviews?.length > 0 && (
-          <ReviewContent reviews={reviews} type={reviewSortType} />
-        )} */}
+        {reviews.length  > 0 && (
+            <div>
+               Reviews
+              </div>
+        )}
+
+        { reviews.length <  0 && (
+           <ReviewContent reviews={reviews} type={reviewSortType} />
+        )}
       </div>
     </>
   );

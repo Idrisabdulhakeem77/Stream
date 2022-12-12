@@ -9,7 +9,7 @@ import ReviewTab from "../Common/ReviewTab";
 interface FilmTabInfoProps {
   detail?: DetailMovie | DetailTV | undefined;
   credits?: Cast[] | undefined;
-  reviews?: Reviews[] | undefined;
+  reviews ?: Reviews[] | undefined
 }
 
 const FilmTabInfo = ({ detail , credits , reviews }: FilmTabInfoProps) => {
@@ -121,7 +121,7 @@ const FilmTabInfo = ({ detail , credits , reviews }: FilmTabInfoProps) => {
            </ul>
          )}
          
-         { currentTab === "reviews" && <ReviewTab reviews={reviews}/>}
+         { currentTab === "reviews" &&  reviews && <ReviewTab reviews={reviews}/>}
       </div>
     </>
   );

@@ -10,6 +10,8 @@ import Sidebar from "../Common/Sidebar";
 import AnimeSearchBox from "../Common/AnimeSearchBox";
 import AnimeRightBar from "../Common/AnimeRightBarFilms";
 import AnimeRightBarFilms from "../Common/AnimeRightBarFilms";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import AnimeTabInfo from "./AnimeTabInfo";
 
 interface AnimeDetailProps {
   characters: any;
@@ -24,7 +26,6 @@ const AnimeDetail = ({
   recommendations,
   reviews,
 }: AnimeDetailProps) => {
-  
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   const { isMobile } = useCurrentViewPort();
@@ -47,8 +48,8 @@ const AnimeDetail = ({
         </button>
       </div>
 
-      <div  className="flex items-start">
-         { !isMobile  && <MiniSidebar />}
+      <div className="flex items-start">
+        {!isMobile && <MiniSidebar />}
         {isMobile && (
           <Sidebar
             isSidebarOpen={isSidebarActive}
@@ -56,20 +57,33 @@ const AnimeDetail = ({
           />
         )}
 
-         <div className="flex-grow"> 
+        <div className="flex-grow">
+          <div className="flex gap-10 mx-6 flex-col md:flex-row">
+            <div className="mt-4">
+              <LazyLoadImage
+                src={`${detail?.images?.jpg?.image_url}`}
+                alt="Poster"
+                className="h-full w-full "
+                effect="blur"
+              />
+            </div>
 
-         </div>
+            <div>
+              <AnimeTabInfo detail={detail} />
+            </div>
+          </div>
+        </div>
 
-         <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
-             { !isMobile &&  <AnimeSearchBox/>}
-             {/* <AnimeRightBarFilms
+        <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
+          {!isMobile && <AnimeSearchBox />}
+          {/* <AnimeRightBarFilms
                 name="Similar"
                 className="md:mt-20 mt-12"
                 isLoading={!recommendations}
                 films={recommendations?.filter((item : any) => item.id !== detail?.mal_id)}
                 limit={4}
              /> */}
-         </div>
+        </div>
       </div>
     </>
   );
