@@ -14,18 +14,17 @@ import AnimeRightBarFilms from "../Common/AnimeRightBarFilms";
 interface AnimeDetailProps {
   characters: any;
   detail: Animes;
-  recommendation: any;
+  recommendations: any;
   reviews: any;
 }
 
 const AnimeDetail = ({
   characters,
   detail,
-  recommendation,
+  recommendations,
   reviews,
 }: AnimeDetailProps) => {
-  console.log(detail);
-
+  
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   const { isMobile } = useCurrentViewPort();
@@ -65,9 +64,9 @@ const AnimeDetail = ({
              { !isMobile &&  <AnimeSearchBox/>}
              <AnimeRightBarFilms
                 name="Similar"
-                className="md:mt-32 mt-12"
-                isLoading={!recommendation}
-                films={recommendation?.filter((item : any) => item.id !== detail?.mal_id)}
+                className="md:mt-20 mt-12"
+                isLoading={!recommendations}
+                films={recommendations?.filter((item : any) => item.id !== detail?.mal_id)}
                 limit={4}
              />
          </div>

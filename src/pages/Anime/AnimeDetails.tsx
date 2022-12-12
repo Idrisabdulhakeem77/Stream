@@ -11,6 +11,8 @@ const AnimeDetails = () => {
     getAnimeFullDetails(Number(id as string))
   );
 
+
+   console.log(data)
  
    if(isError) return <div> Error  </div>
 

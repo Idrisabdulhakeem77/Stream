@@ -23,8 +23,6 @@ const BannerSlider: FC<BannerSliderProps> = ({
   dataDetails,
 }) => {
   const { isMobile } = useCurrentViewPort();
-  
-   console.log(films?.map((film) => console.log(film.media_type)))
 
   return (
     <>
@@ -43,7 +41,6 @@ const BannerSlider: FC<BannerSliderProps> = ({
           >
             {(films as Items[])?.map((film, index) => (
               <SwiperSlide key={film.id}>
-              
                 <Link
                   to={
                     film.media_type === "movie"

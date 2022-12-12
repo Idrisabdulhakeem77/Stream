@@ -115,9 +115,9 @@ export const getTvBanner = async (movies: Items[]): Promise<any> => {
     movies.map((movie) => axios.get(`/tv/${movie.id}`))
   );
 
-  const translationRes = await Promise.all(
-    movies.map((movie) => axios.get(`/tv/${movie.id}/translations`))
-  );
+  // const translationRes = await Promise.all(
+  //   movies.map((movie) => axios.get(`/tv/${movie.id}/translations`))
+  // );
 
   // const translations = translationRes.map((item: any) =>
   //   item.data.translations
