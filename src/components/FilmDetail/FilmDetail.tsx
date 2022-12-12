@@ -19,6 +19,7 @@ import { doc, arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import { db } from "../../shared/firebase";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import FilmTabInfo from "./FilmTabInfo";
 
 const FilmDetail: FC<FilmInfo> = ({
   similar,
@@ -299,11 +300,14 @@ const FilmDetail: FC<FilmInfo> = ({
                       <Skeleton className="w-14 h-6" />
                     </>
                   )}
-                  
                 </div>
               </div>
             )}
 
+            <div className="flex-grow min-h-[500px] md:border-r border-dark-lighten md:px-16 px-5 md:py-7 pt-40">
+                  
+              <FilmTabInfo detail={detail} credits={credits} reviews={reviews} />
+            </div>
           </div>
         </div>
 
