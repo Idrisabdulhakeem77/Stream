@@ -96,7 +96,7 @@ export const getHomeTV = async (): Promise<HomeFilms> => {
     final[Object.entries(endpoints)[index][0]] = current.data.results.map(
       (item: Items) => ({
         ...item,
-        media_type: "movie",
+        media_type: "tv",
       })
     );
      

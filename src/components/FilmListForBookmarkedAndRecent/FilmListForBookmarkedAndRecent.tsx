@@ -232,14 +232,14 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                     <BiSelectMultiple size={25} />
                     <p> Select All</p>
                   </button>
-                  <button
+                  {/* <button
                     disabled={selections.length === 0}
                     onClick={() => setIsShowPrompt(true)}
                     className="disabled:text-red flex gap-2 items-center  hover:text-primary transition duration-300 "
                   >
                     <AiOutlineDelete size={25} />
                     <p> Delete</p>
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => setIsEditting(false)}
                     className="flex gap-2 items-center hover:text-primary transition duration-300"
