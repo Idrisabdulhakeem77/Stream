@@ -62,13 +62,13 @@ const AnimeDetail = ({
 
          <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
              { !isMobile &&  <AnimeSearchBox/>}
-             <AnimeRightBarFilms
+             {/* <AnimeRightBarFilms
                 name="Similar"
                 className="md:mt-20 mt-12"
                 isLoading={!recommendations}
                 films={recommendations?.filter((item : any) => item.id !== detail?.mal_id)}
                 limit={4}
-             />
+             /> */}
          </div>
       </div>
     </>

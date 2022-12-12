@@ -44,9 +44,21 @@ const AnimeRightBarFilms = ({
                   <div >
                      <LazyLoadImage
                        src={film.images?.jpg?.image_url}
-                       className="w-full h-full object-cover rounded-md"
-                       effect="blur"
+                      //  className="w-full h-full object-cover rounded-md"
+                      //  effect="blur"
                       />
+                  </div>
+                  <div className="flex-grow">
+                    <p className=" mb-3 text-lg">
+                       {film?.title}
+                    </p>
+                    <p className="mb-8">
+                      
+                    </p>
+                    <div className="inline-flex gap-2 items-center px-3 py-[2px] rounded-full text-primary border border-primary text-sm">
+                      <span>{film.score?.toFixed(1)}</span>
+                      <AiFillStar size={15} />
+                    </div>
                   </div>
                </Link>  
               ))  
