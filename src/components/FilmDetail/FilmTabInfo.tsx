@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Cast, DetailMovie, DetailTV, Reviews } from "../../shared/types";
+import {LazyLoadImage} from "react-lazy-load-image-component"
 import Skeleton from "../Common/Skeleton";
 import ReadMore from "../Common/ReadMore";
+import {resizeImage} from "../../shared/utils"
 
 interface FilmTabInfoProps {
   detail?: DetailMovie | DetailTV | undefined;
@@ -9,7 +11,7 @@ interface FilmTabInfoProps {
   reviews?: Reviews[] | undefined;
 }
 
-const FilmTabInfo = ({ detail }: FilmTabInfoProps) => {
+const FilmTabInfo = ({ detail , credits , reviews }: FilmTabInfoProps) => {
   const [currentTab, setCurrentTab] = useState("overall");
   return (
     <>
@@ -100,6 +102,33 @@ const FilmTabInfo = ({ detail }: FilmTabInfoProps) => {
             )}
           </>
         )}
+
+
+         { currentTab === "cast" && (
+             <ul className="grid grid-cols-2 gap-x-20 gap-y-8">
+             {credits &&
+               credits.map((cast) => (
+                 <li key={cast.id} className="flex gap-3 items-center">
+                   <div className="shrink-0 max-w-[65px] w-full h-[65px]">
+                     <LazyLoadImage
+                       src={resizeImage(cast.profile_path, "w185")}
+                       alt=""
+                       effect="opacity"
+                       className="object-cover rounded-full h-[65px] w-[65px]"
+                     />
+                   </div>
+                   <div className="flex-grow">
+                     <p className="text-primary text-lg font-medium">
+                       {cast.name}
+                     </p>
+                     <p className="text-white text-base">
+                       <span className="italic">as</span> {cast.character}
+                     </p>
+                   </div>
+                 </li>
+               ))}
+           </ul>
+         )}
       </div>
     </>
   );
