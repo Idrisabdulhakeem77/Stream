@@ -299,6 +299,7 @@ const FilmDetail: FC<FilmInfo> = ({
                       <Skeleton className="w-14 h-6" />
                     </>
                   )}
+                  
                 </div>
               </div>
             )}
