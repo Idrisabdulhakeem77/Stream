@@ -135,7 +135,6 @@ const Comment = ({ media_type, id }: CommentProps) => {
           isLoading={isLoading}
           isError={isError}
           sortType={sortType}
-          // @ts-ignore
           commentData={commentData}
           commentLimit={commentLimit}
           media_type={media_type}
