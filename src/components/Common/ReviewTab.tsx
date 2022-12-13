@@ -76,11 +76,6 @@ const ReviewTab = ({ reviews }: ReviewTabProps) => {
             There is no reviews yet.
           </p>
         )}
-        {reviews.length  > 0 && (
-            <div>
-               Reviews
-              </div>
-        )}
 
         { reviews.length <  0 && (
            <ReviewContent reviews={reviews} type={reviewSortType} />
