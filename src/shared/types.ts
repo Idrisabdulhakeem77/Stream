@@ -56,6 +56,10 @@ export interface User {
 
 export interface Animes {
   score: number;
+   aired : {
+       string : string
+   }
+   status : string ;
   mal_id: number;
   title: string;
   synopsis: string;

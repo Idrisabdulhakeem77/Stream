@@ -2,7 +2,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Title from "../Common/Title";
 import { Animes } from "../../shared/types";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import MiniSidebar from "../Common/MiniSidebar";
 import { useCurrentViewPort } from "../hooks/useCurrentViewPort";
@@ -12,6 +12,18 @@ import AnimeRightBar from "../Common/AnimeRightBarFilms";
 import AnimeRightBarFilms from "../Common/AnimeRightBarFilms";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import AnimeTabInfo from "./AnimeTabInfo";
+import { BsPlay, BsShareFill } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
+import { useAppSelector } from "../../store/hooks";
+import {
+  onSnapshot,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
+import { db } from "../../shared/firebase";
+import { idText } from "typescript";
 
 interface AnimeDetailProps {
   characters: any;
@@ -27,8 +39,78 @@ const AnimeDetail = ({
   reviews,
 }: AnimeDetailProps) => {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
-
+  const [isBookMarked, setIsBookMarked] = useState(false);
   const { isMobile } = useCurrentViewPort();
+
+  const currentUser = useAppSelector((state) => state.user.user);
+
+  useEffect(() => {
+    if (!currentUser) return;
+
+    const unSubscribeDoc = onSnapshot(
+      doc(db, "users", currentUser.uid),
+      (doc) => {
+        setIsBookMarked(
+          doc
+            .data()
+            ?.bookmarks.some((item: any) => item.mal_id === detail?.mal_id)
+        );
+      }
+    );
+
+    return () => unSubscribeDoc();
+  }, [currentUser, detail?.mal_id]);
+
+  const bookmarkedHandler = async () => {
+    if (!detail) return;
+    if (!currentUser) {
+      toast.error("You need to sign in to bookmark films", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return;
+    }
+
+    await updateDoc(doc(db, "users", currentUser.uid), {
+      bookmarks: !isBookMarked
+        ? arrayUnion({
+          poster_path: detail?.images?.jpg.image_url,
+            id: detail?.mal_id,
+            vote_average: detail?.score,
+            title: detail?.title,
+            media_type: "anime",
+          })
+        : arrayRemove({
+          poster_path: detail?.images?.jpg.image_url,
+            mal_id: detail?.mal_id,
+            score: detail?.score,
+            title: detail?.title,
+            media_type: "anime",
+          }),
+    });
+    toast.success(
+      `${
+        !isBookMarked
+          ? "This film is now bookmarked"
+          : "This film is removed from your bookmarks"
+      }`,
+      {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
 
   return (
     <>
@@ -59,7 +141,7 @@ const AnimeDetail = ({
 
         <div className="flex-grow">
           <div className="flex gap-10 mx-6 flex-col md:flex-row">
-            <div className="mt-4">
+            <div className="mt-4 w-[250px] h-[350px]">
               <LazyLoadImage
                 src={`${detail?.images?.jpg?.image_url}`}
                 alt="Poster"
@@ -68,7 +150,45 @@ const AnimeDetail = ({
               />
             </div>
 
-            <div>
+            <div className="mt-8 md:mt-4">
+              <div>
+                <h1 className="text-2xl "> {detail?.title} </h1>
+                <div className="flex gap-3 items-center">
+                  {!isMobile && (
+                    <Link
+                      to="watch"
+                      className="flex gap-6 items-center pl-6 pr-12 py-3 rounded-full bg-primary text-white hover:bg-red-800 transition duration-300 mt-4 mb-4 "
+                    >
+                      <BsPlay size={25} />
+                      <span className="text-lg font-medium">WATCH</span>
+                    </Link>
+                  )}
+
+                  <button
+                    onClick={bookmarkedHandler}
+                    className={`tw-flex-center h-12 w-12 rounded-full border-[3px] border-white shadow-lg hover:border-primary transition duration-300 group ${
+                      isBookMarked && "!border-primary"
+                    }`}
+                  >
+                    <AiFillHeart
+                      size={20}
+                      className={`text-white group-hover:text-primary transition duration-300 ${
+                        isBookMarked && "!text-primary"
+                      }`}
+                    />
+                  </button>
+                  {!isMobile && (
+                    <>
+                      <button className="tw-flex-center h-12 w-12 rounded-full border-[3px] border-white shadow-lg hover:border-primary transition duration-300 group">
+                        <BsShareFill
+                          size={20}
+                          className="text-white group-hover:text-primary transition duration-300"
+                        />
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
               <AnimeTabInfo detail={detail} />
             </div>
           </div>

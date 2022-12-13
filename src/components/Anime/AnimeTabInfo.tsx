@@ -1,6 +1,8 @@
 import { Animes } from "../../shared/types";
 import { useState } from "react";
 import Skeleton from "../Common/Skeleton";
+import ReadMore from "../Common/ReadMore";
+
 
 interface AnimeTabInfoProps {
   detail: Animes;
@@ -9,11 +11,11 @@ interface AnimeTabInfoProps {
 const AnimeTabInfo = ({ detail }: AnimeTabInfoProps) => {
   const [currentTab, setCurrentTab] = useState("overall");
 
-  console.log(detail?.synopsis);
+//   console.log(detail.aired.string);
 
   return (
     <>
-      <div className="mt-4">
+      <div className="mt-4 w-[500px]">
         <div className="flex gap-8 text-gray-400 text-lg">
           <button
             className={`hover:text-white transition duration-300 pb-1  ${
@@ -42,19 +44,32 @@ const AnimeTabInfo = ({ detail }: AnimeTabInfoProps) => {
           >
             Reviews
           </button>
-        </div> 
+        </div>
 
-
-
-        { currentTab === "overall" && (
-           <>
-            { detail && (
-                <p className="text-white"> { detail?.syniosis} </p>
+        {currentTab === "overall" && (
+          <>
+            <p className="text-white mb-3 font-medium">STORY</p>
+            {detail && (
+              <ReadMore limitTextNumber={150}>{detail.synopsis}</ReadMore>
             )}
 
-            {!detail && <Skeleton className="h-6 w-[350px] mx-auto mb-8"/> }
-           </>
-        ) }
+            {!detail && <Skeleton className="h-6 w-[350px] mx-auto mb-8" />}
+
+            <p className="mt-8 text-white font-medium mb-3">DETAILS</p>
+            {!detail && (
+              <>
+                <Skeleton className="h-16 w-[40%]" />
+              </>
+            )}
+
+            { detail && (
+                <>
+                 <p>Status : {detail.status}</p>
+                 <p> Release Date : {detail.aired.string}</p>
+              </>
+            )}
+          </>
+        )}
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { HiCheck } from "react-icons/hi";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Items } from "../../shared/types";
+import AnimeItem from "../Common/AnimeItem";
 import FilmItem from "../Common/FilmItem";
 
 interface BookmarkResultsProps {
@@ -21,6 +22,8 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
   selections,
   setSelection,
 }) => {
+  console.log(films);
+
   return (
     <>
       {films.length === 0 && !isLoading && (
@@ -44,7 +47,9 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
       {films.length > 0 &&
         films.map((item) => (
           <li key={item.id}>
-            <FilmItem item={item} />
+            {(item.media_type === "movie" || item.media_type === "tv") && (
+              <FilmItem item={item} />
+            )}
 
             {isEditting && (
               <button
