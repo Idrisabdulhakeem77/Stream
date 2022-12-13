@@ -16,6 +16,7 @@ import MiniSidebar from "../Common/MiniSidebar";
 import { embedMovie, embedTV } from "../../shared/utils";
 import SearchBox from "../Common/SearchBox";
 import { AiTwotoneCalendar, AiFillStar } from "react-icons/ai";
+import Comment from "./comment/Comment";
 import Readmore from "../Common/ReadMore"
 
 interface FilmWatchProps {
@@ -199,6 +200,7 @@ const FilmWatch = ({
               </Readmore>
             )}
           </div>
+          <Comment media_type={media_type} id={detail?.id}/>
         </div>
 
         <div className="shrink-0 md:max-w-[400px] w-full relative px-6">
