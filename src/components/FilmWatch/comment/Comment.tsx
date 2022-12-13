@@ -13,7 +13,6 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../../shared/firebase";
-import {useCo } from "@tanstack/react-query"
 
 interface CommentProps {
   id?: number;
@@ -46,8 +45,6 @@ const Comment = ({ media_type, id }: CommentProps) => {
     setCommentValue("");
   };
 
-
-  const {data : commmentData } = useColl
 
   return (
     <div className="mb-16">
