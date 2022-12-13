@@ -4,6 +4,7 @@ import { useState, useRef, Fragment } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { CommentDataType } from "../../../shared/types";
 import { useAppSelector } from "../../../store/hooks";
+import ReactionInfo from "./ReactionInfo";
 
 interface CommentUserContentProps {
   commentData: QuerySnapshot<DocumentData> | null;
@@ -86,7 +87,14 @@ const CommentUserContent = ({
                         editingCommentFor === doc.id ? "block" : "inline-block"
                       }`}
                     >
-                        
+                      <ReactionInfo docData={docData} />
+                      <div className="flex justify-between items-center">
+                        <div className="flex gap-4 items-center">
+                          <p className="text-white font-medium">
+                            {docData.user.displayName}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </li>
