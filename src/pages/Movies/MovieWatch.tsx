@@ -1,12 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
+import { getWatchMovie } from "../../services/movie";
+import { useParams } from "react-router-dom";
+import { getWatchReturnedType } from "../../shared/types";
+
+
 interface MovieWatchProps {}
 
-
 const MovieWatch = () => {
-     return (
-         <div>
-             Watch 
-         </div>
-     )
-}
+  const { id } = useParams();
+  const { data, isError } = useQuery<getWatchReturnedType, Error>(
+    ["watch-movie", id],
+    () => getWatchMovie(Number(id as string))
+  );
 
-export default MovieWatch
+  
+  if(isError) return <div> Error  </div>
+
+  return <div>Watch</div>;
+};
+
+export default MovieWatch;
