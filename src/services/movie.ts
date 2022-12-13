@@ -1,4 +1,4 @@
-import {Reviews  , Items , FilmInfo , Video } from '../shared/types'
+import {Reviews  , Items , FilmInfo , Video , getWatchReturnedType } from '../shared/types'
 import axios from '../shared/axios'
 
 
@@ -51,3 +51,18 @@ export const getFullMovieDetails = async (  id : number )  => {
 
   return movieInfo;
 };
+
+
+export const getWatchMovie = async ( id : number) :  Promise<getWatchReturnedType> => {
+     const response = await Promise.all([ 
+         axios.get(`/movie/${id}`) ,
+         axios.get(`/movie/${id}/recommendations`),
+
+      ])
+
+
+      return {
+         detail : response[0].data , 
+         recommendations : response[1].data.filter((item : Items ) => item.poster_path)
+      }
+}
