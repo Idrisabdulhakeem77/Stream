@@ -55,11 +55,6 @@ export const links = [
     url: "/profile",
     icon: <BiUserCircle size={25} />,
   },
-  {
-    name: "demo_login",
-    url: "/demo_login",
-    icon: <HiOutlineLogin size={25} />,
-  },
 
   {
     name: "auth",
