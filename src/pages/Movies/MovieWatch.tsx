@@ -2,8 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getWatchMovie } from "../../services/movie";
 import { useParams } from "react-router-dom";
 import { getWatchReturnedType } from "../../shared/types";
-import from "../../components/FIlmWatch/FilmWatch"
-
+import FilmWatch from "../../components/FilmWatch/FilmWatch"
 
 interface MovieWatchProps {}
 
@@ -14,10 +13,9 @@ const MovieWatch = () => {
     () => getWatchMovie(Number(id as string))
   );
 
-  
-  if(isError) return <div> Error  </div>
 
-  return <div>Watch</div>;
+  if (isError) return <div> Error </div>;
+
+  return  <FilmWatch { ...data} media_type="movie" />;
 };
-
 export default MovieWatch;

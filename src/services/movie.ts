@@ -1,18 +1,18 @@
-import {Reviews  , Items , FilmInfo , Video , getWatchReturnedType } from '../shared/types'
+import { Reviews, Items, FilmInfo, Video, getWatchReturnedType } from '../shared/types'
 import axios from '../shared/axios'
 
 
 
-export const getFullMovieDetails = async (  id : number )  => { 
-    const response =  await Promise.all([
-        axios.get(`/movie/${id}`),
-        axios.get(`/movie/${id}/credits`),
-        axios.get(`/movie/${id}/reviews`),
-        axios.get(`/movie/${id}/similar`),
-        axios.get(`/movie/${id}/videos`),
-    ])
+export const getFullMovieDetails = async (id: number) => {
+  const response = await Promise.all([
+    axios.get(`/movie/${id}`),
+    axios.get(`/movie/${id}/credits`),
+    axios.get(`/movie/${id}/reviews`),
+    axios.get(`/movie/${id}/similar`),
+    axios.get(`/movie/${id}/videos`),
+  ])
 
-   
+
   const movieInfo = response.reduce((final, current, index) => {
     switch (index) {
       case 0:
@@ -53,16 +53,18 @@ export const getFullMovieDetails = async (  id : number )  => {
 };
 
 
-export const getWatchMovie = async ( id : number) :  Promise<getWatchReturnedType> => {
-     const response = await Promise.all([ 
-         axios.get(`/movie/${id}`) ,
-         axios.get(`/movie/${id}/recommendations`),
+export const getWatchMovie = async (id: number): Promise<getWatchReturnedType> => {
+  const response = await Promise.all([
+    axios.get(`/movie/${id}`),
+    axios.get(`/movie/${id}/recommendations`),
 
-      ])
+  ])
 
 
-      return {
-         detail : response[0].data , 
-         recommendations : response[1].data.filter((item : Items ) => item.poster_path)
-      }
+  return {
+    detail: response[0].data,
+    recommendations: response[1].data.results.filter(
+      (item: Items) => item.poster_path
+    ),
+  }
 }

@@ -1,9 +1,11 @@
 
 
-interface FilmWatchProps {}
+interface FilmWatchProps {
+     media_type : "tv" | "movie"
+}
 
 
-const FilmWatch = () => {
+const FilmWatch = ({media_type} : FilmWatchProps) => {
      return (
          <div>
              FilmWatch
