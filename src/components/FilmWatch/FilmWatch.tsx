@@ -15,7 +15,8 @@ import Sidebar from "../Common/Sidebar";
 import MiniSidebar from "../Common/MiniSidebar";
 import { embedMovie, embedTV } from "../../shared/utils";
 import SearchBox from "../Common/SearchBox";
-import {AiTwotoneCalendar , AiFillStar} from 'react-icons/ai'
+import { AiTwotoneCalendar, AiFillStar } from "react-icons/ai";
+import Readmore from "../Common/ReadMore"
 
 interface FilmWatchProps {
   media_type: "tv" | "movie";
@@ -29,7 +30,7 @@ const FilmWatch = ({
   detail,
   seasonId,
   episodeId,
-  currentEpisode
+  currentEpisode,
 }: FilmWatchProps & getWatchReturnedType) => {
   const currentUser = useAppSelector((state) => state.user.user);
   const { isMobile } = useCurrentViewPort();
@@ -141,8 +142,62 @@ const FilmWatch = ({
                     </div>
                   </div>
                 )}
+
+                {!detail && <Skeleton className="w-[100px] h-[23px] mt-2" />}
+                {!isMobile && detail && (
+                  <ul className="flex gap-2 flex-wrap mt-3">
+                    {detail.genres.map((genre) => (
+                      <li key={genre.id} className="mb-2">
+                        <Link
+                          to={`/explore?genre=${genre.id}`}
+                          className="px-3 py-1 bg-dark-lighten rounded-full hover:brightness-75 duration-300 transition"
+                        >
+                          {genre.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
+              {media_type === "tv" && currentEpisode && (
+                <div className="flex-1">
+                  <h2 className="md:text-xl italic uppercase text-gray-200 mt-2 text-right">
+                    {currentEpisode.name}
+                  </h2>
+                  <p className="text-right md:text-lg mt-2">
+                    Season {seasonId} &#8212; Episode {episodeId}
+                  </p>
+                </div>
+              )}
             </div>
+            {isMobile && detail && (
+              <ul className="flex gap-2 flex-wrap mt-3">
+                {detail.genres.map((genre) => (
+                  <li key={genre.id} className="mb-2">
+                    <Link
+                      to={`/explore?genre=${genre.id}`}
+                      className="px-3 py-1 bg-dark-lighten rounded-full hover:brightness-75 duration-300 transition"
+                    >
+                      {genre.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="md:text-xl text-lg font-medium text-white mt-5">
+              Overview:
+            </div>
+            {!detail && <Skeleton className="h-[84px] mt-2" />}
+            {detail && (
+              <Readmore
+                limitTextNumber={300}
+                className="md:text-lg text-base mt-1"
+              >
+                {media_type === "movie"
+                  ? detail.overview
+                  : currentEpisode?.overview}
+              </Readmore>
+            )}
           </div>
         </div>
 
