@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../shared/firebase";
 import { useCollectionQuery } from "../../hooks/useCollectionQuery";
+import CommentUserData from '../comment/CommentUserData'
 
 interface CommentProps {
   id?: number;
@@ -129,6 +130,18 @@ const Comment = ({ media_type, id }: CommentProps) => {
             </form>
           )}
         </div>
+
+        <CommentUserData
+          isLoading={isLoading}
+          isError={isError}
+          sortType={sortType}
+          // @ts-ignore
+          commentData={commentData}
+          commentLimit={commentLimit}
+          media_type={media_type}
+          id={id}
+          role="comment"
+        />
       </div>
     </div>
   );
