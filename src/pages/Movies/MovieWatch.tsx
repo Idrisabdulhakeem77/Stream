@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getWatchMovie } from "../../services/movie";
 import { useParams } from "react-router-dom";
 import { getWatchReturnedType } from "../../shared/types";
+import from "../../components/FIlmWatch/FilmWatch"
 
 
 interface MovieWatchProps {}
