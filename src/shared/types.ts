@@ -58,7 +58,7 @@ export interface Animes {
   score: number;
   mal_id: number;
   title: string;
-  syniosis: string;
+  synopsis: string;
   images: {
     jpg: {
       image_url: string;
