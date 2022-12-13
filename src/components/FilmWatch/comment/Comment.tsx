@@ -8,11 +8,13 @@ import {
   addDoc,
   updateDoc,
   doc,
-
   collection,
   serverTimestamp,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../../../shared/firebase";
+import { useCollectionQuery } from "../../hooks/useCollectionQuery";
 
 interface CommentProps {
   id?: number;
@@ -31,6 +33,8 @@ const Comment = ({ media_type, id }: CommentProps) => {
   const commentHandler = (e: FormEvent) => {
     e.preventDefault();
 
+    if (!commentValue) return;
+
     if (!currentUser) return;
     setIsSendingComment(true);
 
@@ -45,12 +49,42 @@ const Comment = ({ media_type, id }: CommentProps) => {
     setCommentValue("");
   };
 
+  const {
+    data: commentData,
+    isLoading,
+    isError,
+  } = useCollectionQuery(
+    id,
+    query(collection(db, `${media_type}-${id}`), orderBy("createdAt", "desc"))
+  );
 
   return (
     <div className="mb-16">
       <div className="flex justify-between items-center mb-6">
-        <div className="relative">
-          <p className=""></p>
+        <div className="relative w-[140px] flex  items-center gap-2">
+          {commentData && commentData.size && (
+            <p className="text-xl">{commentData.size}</p>
+          )}
+          <p>Comments</p>
+        </div>
+
+        <div>
+          <button
+            onClick={() => setSortType("latest")}
+            className={`border border-dark-lighten px-2 py-1 rounded-l-xl transition duration-300   hover:text-white ${
+              sortType === "latest" && "bg-dark-lighten-2 text-white"
+            }`}
+          >
+            Latest
+          </button>
+          <button
+            onClick={() => setSortType("popular")}
+            className={`border border-dark-lighten px-2 py-1 rounded-r-xl transition duration-300   hover:text-white ${
+              sortType === "popular" && "bg-dark-lighten-2 text-white"
+            }`}
+          >
+            Popular
+          </button>
         </div>
       </div>
 
