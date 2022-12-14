@@ -17,7 +17,9 @@ import { embedMovie, embedTV } from "../../shared/utils";
 import SearchBox from "../Common/SearchBox";
 import { AiTwotoneCalendar, AiFillStar } from "react-icons/ai";
 import Comment from "./comment/Comment";
-import Readmore from "../Common/ReadMore"
+import Readmore from "../Common/ReadMore";
+import Footer from "../Common/Footer";
+import RightbarFilms from "../Common/RightbarFilms";
 
 interface FilmWatchProps {
   media_type: "tv" | "movie";
@@ -32,6 +34,8 @@ const FilmWatch = ({
   seasonId,
   episodeId,
   currentEpisode,
+  detailSeasons,
+  recommendations,
 }: FilmWatchProps & getWatchReturnedType) => {
   const currentUser = useAppSelector((state) => state.user.user);
   const { isMobile } = useCurrentViewPort();
@@ -200,13 +204,24 @@ const FilmWatch = ({
               </Readmore>
             )}
           </div>
-          <Comment media_type={media_type} id={detail?.id}/>
+          <Comment media_type={media_type} id={detail?.id} />
         </div>
 
         <div className="shrink-0 md:max-w-[400px] w-full relative px-6">
           {!isMobile && <SearchBox />}
+          {media_type === "movie" && (
+            <RightbarFilms
+              films={recommendations?.filter((item) => item.id !== detail?.id)}
+              isLoading={!recommendations}
+              className="md:mt-36 mt-0"
+              name="Similar"
+              limitNumber={7}
+            />
+          )}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
