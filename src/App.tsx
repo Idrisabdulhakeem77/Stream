@@ -27,6 +27,7 @@ import TvDetails from "./pages/Tv/TvDetails";
 import ToggleButton from "./components/Common/ToggleButton"
 import { async } from "@firebase/util";
 import MovieWatch from "./pages/Movies/MovieWatch";
+import TvWatch from "./pages/Tv/TvWatch";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -122,6 +123,7 @@ function App() {
         <Route path="movies" element={<Movies />} />
         <Route path="tv" element={<TvShows/>}/>
         <Route path="/tv/:id" element={<TvDetails/>}/>
+        <Route path="tv/:id/watch" element={<TvWatch/>} />
         <Route path="search" element={<Search/>}/>
         <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
         <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
