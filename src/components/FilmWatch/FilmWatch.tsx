@@ -19,6 +19,7 @@ import { AiTwotoneCalendar, AiFillStar } from "react-icons/ai";
 import Comment from "./comment/Comment";
 import Readmore from "../Common/ReadMore";
 import Footer from "../Common/Footer";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import RightbarFilms from "../Common/RightbarFilms";
 
 interface FilmWatchProps {
@@ -217,6 +218,15 @@ const FilmWatch = ({
               name="Similar"
               limitNumber={7}
             />
+          )}
+
+          {media_type === "tv" && (
+            <div className="md:md-36 mt-0">
+              <p className="mb-6 text-xl font-medium flex justify-between items-center">
+                <span className="text-white">Seasons:</span>
+                <BsThreeDotsVertical size={20} />
+              </p>
+            </div>
           )}
         </div>
       </div>
