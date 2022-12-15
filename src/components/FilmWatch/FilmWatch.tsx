@@ -228,6 +228,11 @@ const FilmWatch = ({
                 <span className="text-white">Seasons:</span>
                 <BsThreeDotsVertical size={20} />
               </p>
+              <SeasonSelection
+              detailSeasons={detailSeasons}
+              episodeId={episodeId}
+              seasonId={seasonId}
+              />
             </div>
           )}
         </div>
