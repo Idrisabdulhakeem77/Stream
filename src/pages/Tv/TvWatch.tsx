@@ -5,18 +5,14 @@ import {getWatchReturnedType} from "../../shared/types"
 import FilmWatch from '../../components/FilmWatch/FilmWatch'
 
 
-interface TvWatchProps {}
 
-
-const TvWatch = ( {} : TvWatchProps) => {
+const TvWatch = () => {
      const {id} = useParams()
 
-    const { data , isLoading , isError} = useQuery<getWatchReturnedType , Error>(["watch-tv" ,  id ] , () => getWatchTV(Number(id as string)))
+    const { data  , isError} = useQuery<getWatchReturnedType , Error>(["watch-tv" ,  id ] , () => getWatchTV(Number(id as string)))
 
     const [queryParams] = useSearchParams()
  
- 
-     console.log(data)
 
   const seasonId = Number(queryParams.get("season")) || 1;
   const episodeId = Number(queryParams.get("episode")) || 1;
@@ -33,6 +29,8 @@ const TvWatch = ( {} : TvWatchProps) => {
   const currentEpisode = currentSeason?.episodes.find(
     (episode) => episode.episode_number === episodeId
   );
+
+  if(isError) return <div> Error :</div>
   
 
      return (

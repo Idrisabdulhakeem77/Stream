@@ -61,7 +61,7 @@ const Season = ({ season, episodeId, seasonId }: SeasonProps) => {
               season.season_number === seasonId && "text-white"
             }`}
           >
-            Episodes :{season.episodes.length}{" "}
+            Episodes : {season.episodes.length}{" "}
           </p>
         </div>
       </button>

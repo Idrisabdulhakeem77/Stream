@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Skeleton from "../Common/Skeleton";
 import {
   Episode,
   getWatchReturnedType,
   DetailMovie,
   DetailTV,
+  Items,
 } from "../../shared/types";
 import { useAppSelector } from "../../store/hooks";
 import Title from "../Common/Title";
@@ -21,8 +22,9 @@ import Readmore from "../Common/ReadMore";
 import Footer from "../Common/Footer";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import RightbarFilms from "../Common/RightbarFilms";
-import SeasonSelection from "./SeasonSelection"
-
+import SeasonSelection from "./SeasonSelection";
+import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { db } from "../../shared/firebase";
 
 interface FilmWatchProps {
   media_type: "tv" | "movie";
@@ -44,6 +46,52 @@ const FilmWatch = ({
   const { isMobile } = useCurrentViewPort();
 
   const [isSiebarActive, setIsSidebarActive] = useState(false);
+
+  useEffect(() => {
+    if (!currentUser) return;
+    if (!detail) return;
+
+    getDoc(doc(db, "users", currentUser.uid)).then((docSnap) => {
+      const isAlreadyStored = docSnap
+        .data()
+        ?.recentlyWatch.some((film: Items) => film.id === detail?.id);
+
+      console.log(isAlreadyStored);
+
+      if (!isAlreadyStored) {
+        updateDoc(doc(db, "users", currentUser.uid), {
+          recentlyWatched: arrayUnion({
+            poster_path: detail?.poster_path,
+            id: detail?.id,
+            vote_average: detail?.vote_average,
+            media_type: media_type,
+            ...(media_type === "movie" && {
+              title: (detail as DetailMovie)?.title,
+            }),
+            ...(media_type === "tv" && { name: (detail as DetailTV)?.name }),
+          }),
+        });
+      } else {
+        const updatedRecentlyWatch = docSnap
+          .data()
+          ?.recentlyWatch.filter((film: Items) => film.id !== detail?.id)
+          .concat({
+            poster_path: detail?.poster_path,
+            id: detail?.id,
+            vote_average: detail?.vote_average,
+            media_type: media_type,
+            ...(media_type === "movie" && {
+              title: (detail as DetailMovie)?.title,
+            }),
+            ...(media_type === "tv" && { name: (detail as DetailTV)?.name }),
+          });
+
+        updateDoc(doc(db, "users", currentUser.uid), {
+          recentlyWatch: updatedRecentlyWatch,
+        });
+      }
+    });
+  }, [currentUser, detail, media_type]);
 
   return (
     <>
@@ -229,9 +277,9 @@ const FilmWatch = ({
                 <BsThreeDotsVertical size={20} />
               </p>
               <SeasonSelection
-              detailSeasons={detailSeasons}
-              episodeId={episodeId}
-              seasonId={seasonId}
+                detailSeasons={detailSeasons}
+                episodeId={episodeId}
+                seasonId={seasonId}
               />
             </div>
           )}

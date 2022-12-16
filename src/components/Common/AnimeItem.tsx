@@ -18,7 +18,7 @@ const AnimeItem: FC<AnimeItemProps> = ({ item }) => {
           className="object-cover"
           effect="blur"
         />
-        <p className="whitespace-nowrap overflow-hidden text-ellipsis text-base text-black mt-1 text-center px-2 group-hover:text-black transition duration-300">
+        <p className="whitespace-nowrap overflow-hidden text-ellipsis text-base text-white mt-1 text-center px-2 group-hover:text-black transition duration-300">
           {item.title}
         </p>
         <div className="px-2 py-1 rounded-full absolute top-[5%] left-[8%] z-20 flex items-center gap-1 text-white text-xs">

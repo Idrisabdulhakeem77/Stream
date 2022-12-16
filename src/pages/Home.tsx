@@ -86,7 +86,7 @@ const Home: FC = () => {
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
-          <div className="uppercase font-medium text-lg tracking-widest">
+          <div className="uppercase font-medium text-lg tracking-widest text-white">
             {" "}
             AnimeStream{" "}
           </div>
@@ -106,7 +106,7 @@ const Home: FC = () => {
           {/* TAB */}
           <div className="flex justify-between items-center md:items-start">
             {/* Button Div */}
-            <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4  text-gray-600 ">
+            <div className="inline-flex  gap-[40px]  relative pb-3  mt-2 md:mt-4  text-gray-400 ">
               <button
                 onClick={() => {
                   setCurrentTab("movie");
@@ -114,7 +114,7 @@ const Home: FC = () => {
                 }}
                 className={`${
                   currentTab === "movie" &&
-                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[5%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-white   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[5%] after:bg-white"
                 }`}
               >
                 Movie
@@ -126,7 +126,7 @@ const Home: FC = () => {
                 }}
                 className={`${
                   currentTab === "tv" &&
-                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[45%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-white   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[45%] after:bg-white"
                 }`}
               >
                 Tv Shows
@@ -138,7 +138,7 @@ const Home: FC = () => {
                 }}
                 className={`${
                   currentTab === "anime" &&
-                  "font-medium  transition duration-200 hover:text-black   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[85%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-white   after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[85%] after:bg-white"
                 }`}
               >
                 Anime
@@ -185,7 +185,7 @@ const Home: FC = () => {
           <User />
           <SearchBox />
          
-
+        
           {/* {currentTab === "anime" && (
             <AnimeRecommendedGenre currentTab={currentTab} />
           )} */}
