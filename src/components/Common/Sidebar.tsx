@@ -75,7 +75,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
       <ToastContainer />
 
       <div
-        className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-slate-300  fixed  -translate-x-full transition duration-300 ${
+        className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-gray-800  fixed  -translate-x-full transition duration-300 ${
           isSidebarOpen && "translate-x-0"
         } top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none   z-50 `}
       >
@@ -101,7 +101,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/" &&
+              location.pathname === "/" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -120,7 +120,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/search"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/search" &&
+              location.pathname === "/search" && isMobile && 
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -133,7 +133,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <button
             onClick={() => privateUrlhandler("/bookmarks")}
             className={`flex gap-6 items-center  ${
-              location.pathname === "/bookmarks" &&
+              location.pathname === "/bookmarks" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -144,7 +144,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <button
             onClick={() => privateUrlhandler("/recent")}
             className={`flex gap-6 items-center  ${
-              location.pathname === "/recent" &&
+              location.pathname === "/recent" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -156,7 +156,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="tv"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/tv" &&
+              location.pathname === "/tv" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -167,7 +167,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="movies"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/movies" &&
+              location.pathname === "/movies" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -178,7 +178,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/anime"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/anime" &&
+              location.pathname === "/anime" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >

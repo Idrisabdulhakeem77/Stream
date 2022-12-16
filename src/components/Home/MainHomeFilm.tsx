@@ -17,6 +17,7 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
   dataDetails,
   isSectionLoading,
 }) => {
+    
   return (
     <>
       <BannerSlider
@@ -36,7 +37,7 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
             ))}
           </>
         ) : (
-          Object.entries(data as HomeFilms)
+          Object.entries(data as  HomeFilms)
             .filter((section) => section[0] !== "Trending")
             .map((section, index) => (
               <li key={index}>
@@ -49,6 +50,8 @@ const MainHomeFilms: FC<MainHomeFilmProps> = ({
             ))
         )}
       </ul>
+
+      
     </>
   );
 };
