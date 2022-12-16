@@ -80,14 +80,14 @@ const AnimeDetail = ({
     await updateDoc(doc(db, "users", currentUser.uid), {
       bookmarks: !isBookMarked
         ? arrayUnion({
-          poster_path: detail?.images?.jpg.image_url,
+            poster_path: detail?.images?.jpg.image_url,
             id: detail?.mal_id,
             vote_average: detail?.score,
             title: detail?.title,
             media_type: "anime",
           })
         : arrayRemove({
-          poster_path: detail?.images?.jpg.image_url,
+            poster_path: detail?.images?.jpg.image_url,
             mal_id: detail?.mal_id,
             score: detail?.score,
             title: detail?.title,
@@ -152,11 +152,21 @@ const AnimeDetail = ({
 
             <div className="mt-8 md:mt-4">
               <div>
-                <h1 className="text-2xl "> {detail?.title} </h1>
+                <h1 className="text-2xl  mb-4"> {detail?.title} </h1>
                 <div className="flex gap-3 items-center">
                   {!isMobile && (
                     <Link
-                      to="watch"
+                      to=""
+                      className="flex gap-6 items-center pl-6 pr-12 py-3 rounded-full bg-primary text-white hover:bg-red-800 transition duration-300 mt-4 mb-4 "
+                    >
+                      <BsPlay size={25} />
+                      <span className="text-lg font-medium">WATCH</span>
+                    </Link>
+                  )}
+
+                  {isMobile && (
+                    <Link
+                      to=""
                       className="flex gap-6 items-center pl-6 pr-12 py-3 rounded-full bg-primary text-white hover:bg-red-800 transition duration-300 mt-4 mb-4 "
                     >
                       <BsPlay size={25} />

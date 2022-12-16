@@ -14,8 +14,8 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   onPageChange,
 }) => {
   return (
-    <div>
-      <div></div>
+    <div className="flex justify-center mt-8">
+      <div className="flex gap-3 items-center">
       {currentPage > 1 && (
         <Link to={onPageChange(currentPage - 1)}>
           <MdArrowBackIos size={25} />
@@ -73,6 +73,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
           <MdArrowForwardIos size={25} />
         </Link>
       )}
+       </div>
     </div>
   );
 };

@@ -52,7 +52,7 @@ const Search: FunctionComponent<SearchProps> = () => {
               query && "!translate-y-0"
             }`}
           >
-            <h1 className="text-lg font-medium text-center">
+            <h1 className="text-lg font-medium text-cente">
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}
             </h1>

@@ -4,17 +4,17 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { useAppDispatch , useAppSelector } from "./store/hooks";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./shared/firebase";
 import { setCurrentUser } from "./store/slice/userSlice";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "./shared/firebase";
 import Anime from "./pages/Animes";
-import  Profile from "./pages/Profile"
+import Profile from "./pages/Profile";
 
 import Movies from "./pages/Movies";
-import TvShows from './pages/TvShows'
+import TvShows from "./pages/TvShows";
 import Search from "./pages/Search";
 import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
@@ -24,7 +24,7 @@ import { getRandomAvatar } from "./shared/utils";
 import axios from "axios";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
 import TvDetails from "./pages/Tv/TvDetails";
-import ToggleButton from "./components/Common/ToggleButton"
+import ToggleButton from "./components/Common/ToggleButton";
 import { async } from "@firebase/util";
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
@@ -33,16 +33,16 @@ function App() {
   //  const user = useAppSelector(state => state.user.user)
 
   const getStorageTheme = () => {
-      let theme = "light-theme"
+    let theme = "light-theme";
 
-      if(localStorage.getItem("theme")) {
-          theme = String(localStorage.getItem("theme"))
-      } 
+    if (localStorage.getItem("theme")) {
+      theme = String(localStorage.getItem("theme"));
+    }
 
-      return theme 
-  }
+    return theme;
+  };
 
-  const [theme , setTheme] = useState(getStorageTheme())
+  const [theme, setTheme] = useState(getStorageTheme());
 
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
@@ -51,21 +51,19 @@ function App() {
   const location = useLocation();
 
   const toggleTheme = () => {
-    if (theme === 'light-theme') {
-      setTheme('dark-theme');
+    if (theme === "light-theme") {
+      setTheme("dark-theme");
     } else {
-      setTheme('light-theme');
+      setTheme("light-theme");
     }
   };
- 
 
-  // Propagate toggle theme 
-  
+  // Propagate toggle theme
+
   useEffect(() => {
-      document.documentElement.className = theme 
-      localStorage.setItem("theme" , theme)
-  } , [theme])
-
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -81,7 +79,6 @@ function App() {
 
       if (user.providerData[0].providerId === "google.com") {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-
           dispatch(
             setCurrentUser({
               email: user.email,
@@ -94,12 +91,11 @@ function App() {
         });
       } else {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
-          
           dispatch(
             setCurrentUser({
               email: user.email,
               displayName: doc.data()?.displayName,
-              emailVerified:  user.emailVerified,
+              emailVerified: user.emailVerified,
               photoURL: doc.data()?.photoUrl,
               uid: user.uid,
             })
@@ -109,26 +105,59 @@ function App() {
     });
   }, [dispatch]);
 
- 
+  const fetchWatchAnime = async (url: string) => {
+    const { data } = await axios.get(url);
+
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchWatchAnime("https://api.jikan.moe/v4/watch/episodes/popular");
+  }, []);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
-        <Route path="/movie/:id" element={<MovieDetail/>}/>
-         <Route path="/movie/:id/watch" element={<MovieWatch/>}/>
+        <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/movie/:id/watch" element={<MovieWatch />} />
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
-        <Route path="/anime/:id" element={<AnimeDetails/>}/>
+        <Route path="/anime/:id" element={<AnimeDetails />} />
         <Route path="movies" element={<Movies />} />
-        <Route path="tv" element={<TvShows/>}/>
-        <Route path="/tv/:id" element={<TvDetails/>}/>
-        <Route path="tv/:id/watch" element={<TvWatch/>} />
-        <Route path="search" element={<Search/>}/>
-        <Route path="profile" element={<Protected isSignedIn={isSignedIn} > <Profile/> </Protected>}/>
-        <Route  path="bookmarks"  element={<Protected isSignedIn={isSignedIn}> <Bookmark/>  </Protected>}/>
-        <Route  path="recent"  element={<Protected isSignedIn={isSignedIn}> <Recent/>  </Protected>}/>
-      </Routes> 
+        <Route path="tv" element={<TvShows />} />
+        <Route path="/tv/:id" element={<TvDetails />} />
+        <Route path="tv/:id/watch" element={<TvWatch />} />
+        <Route path="search" element={<Search />} />
+        <Route
+          path="profile"
+          element={
+            <Protected isSignedIn={isSignedIn}>
+              {" "}
+              <Profile />{" "}
+            </Protected>
+          }
+        />
+        <Route
+          path="bookmarks"
+          element={
+            <Protected isSignedIn={isSignedIn}>
+              {" "}
+              <Bookmark />{" "}
+            </Protected>
+          }
+        />
+        <Route
+          path="recent"
+          element={
+            <Protected isSignedIn={isSignedIn}>
+              {" "}
+              <Recent />{" "}
+            </Protected>
+          }
+        />
+      </Routes>
     </div>
   );
 }
