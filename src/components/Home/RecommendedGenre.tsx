@@ -38,7 +38,7 @@ const RecommendedGenres: FC<RecommendedGenresProps> = ({ currentTab }) => {
       {randomGenres.map((genre, index) => (
         <li
           key={index}
-          className="mb-1  bg-slate-300 text-black rounded-full border-solid p-2"
+          className="mb-1  bg-gray-800  text-white rounded-full border-solid p-2"
         >
           <Link to="/">{genre?.name}</Link>
         </li>

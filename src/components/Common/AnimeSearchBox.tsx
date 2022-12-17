@@ -34,7 +34,7 @@ const AnimeSearchBox = ( {autoFocus} : AnimeSerachBoxProps) => {
   };
 
   return (
-    <div className="rounded-full  mt-5 bg-slate-300">
+    <div className="rounded-full  mt-5 bg-gray-800 ">
       <form onSubmit={handleSubmit}>
         <button className="absolute translate-x-4 translate-y-4 text-light-gray ">
           <FaSearch size={25} />
