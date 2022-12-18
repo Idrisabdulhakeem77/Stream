@@ -1,10 +1,4 @@
-import {
-  useState,
-  FC,
-  useRef,
-  useEffect,
-  FormEvent,
-} from "react";
+import { useState, FC, useRef, useEffect, FormEvent } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { getSearchKeyWord } from "../../services/search";
@@ -15,7 +9,7 @@ interface SearchBoxProps {
 
 let initialState = true;
 
-const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
+const SearchBox: FC<SearchBoxProps> = ({ autoFocus = false }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState(
@@ -28,32 +22,26 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
 
   useEffect(() => {
     if (timeOutRef.current) {
-       clearTimeout(timeOutRef.current)
-    };
-      
-    setSuggestion([])
-     
-     if (!searchInput.trim()) return;
+      clearTimeout(timeOutRef.current);
+    }
+
+    setSuggestion([]);
+
+    if (!searchInput.trim()) return;
 
     timeOutRef.current = setTimeout(async () => {
       const keywords = await getSearchKeyWord(searchInput.trim());
-       
-      
 
-       setSuggestion(keywords);
-      
+      setSuggestion(keywords);
 
-       if (initialState) {
+      if (initialState) {
         initialState = false;
         setSuggestion([]);
-      }     
+      }
     }, 300);
 
     return () => clearTimeout(timeOutRef.current);
-
   }, [searchInput]);
-
-
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -62,7 +50,7 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
 
     navigate(`/search?query=${encodeURIComponent(searchInput.trim())}`);
     clearTimeout(timeOutRef.current);
-    setSuggestion([])
+    setSuggestion([]);
   };
 
   useEffect(() => {
@@ -71,7 +59,11 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
   }, [location.search]);
 
   return (
-    <div className={` absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-gray-800  ${suggestion.length > 0 && "!rounded-3xl"} `}>
+    <div
+      className={` absolute rounded-full z-20 mt-5 top-10 left-7 right-6 bg-gray-800  ${
+        suggestion.length > 0 && "!rounded-3xl"
+      } `}
+    >
       <form className="relative" onSubmit={handleSearch}>
         <button className="absolute top-1/2 -translate-y-1/2 left-5 text-white">
           <FaSearch size={25} className="" />
@@ -86,7 +78,7 @@ const SearchBox: FC<SearchBoxProps> = ({autoFocus = false }) => {
           className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-black"
         />
       </form>
-                                  
+
       {suggestion.length > 0 && (
         <ul className="group-focus-within:flex flex-col gap-3 py-3 relative after:absolute after:top-0 after:h-[2px]  after:bg-gray-darken after:left-[5%] after:right-[5%] z-40">
           {suggestion.map((suggestion, index) => (
