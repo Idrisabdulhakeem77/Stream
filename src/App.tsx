@@ -112,8 +112,10 @@ function App() {
   };
 
   useEffect(() => {
-    fetchWatchAnime("https://api.jikan.moe/v4/watch/episodes/popular");
+    fetchWatchAnime("https://api.jikan.moe/v4/anime?sort=desc");
   }, []);
+
+
 
   return (
     <div className="App">

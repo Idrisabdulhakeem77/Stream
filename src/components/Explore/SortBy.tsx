@@ -42,6 +42,7 @@ const SortBy: FunctionComponent<SortByProps> = () => {
   };
 
   const [currentSearchParams] = useCurrentSeaarchParams();
+  
   const chooseSort = (option: any) => {
     const sortValue = option?.value || "";
 

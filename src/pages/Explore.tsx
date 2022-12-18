@@ -74,6 +74,11 @@ const Explore: FC<ExploreProps> = () => {
     changeConfig("air_date.gte", releaseFrom);
     changeConfig("air_date.lte", releaseTo);
 
+
+  const animeSortType = searchParams.get('sort') || "desc"
+  changeConfig("sort" , animeSortType)
+
+
     // eslint-disable-next-line
   }, [location.search]);
 

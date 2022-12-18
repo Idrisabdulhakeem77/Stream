@@ -67,3 +67,11 @@ export const getAnimeFullDetails  =  async(id : number) : Promise<any> =>  {
     
    return animeInfo
 }
+
+
+export const getRecentAnime = async() => {
+  const data = await (await (axios.get("https://api.jikan.moe/v4/recommendations/anime"))).data 
+
+
+  return data
+}

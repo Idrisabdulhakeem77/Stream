@@ -2,6 +2,10 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import Select from "react-select";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
+import { useSearchParams } from "react-router-dom";
+import { useCurrentSeaarchParams , useAnimeCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
+import {useQuery} from '@tanstack/react-query'
+import { getRecentAnime } from "../../services/anime";
 
 interface AnimeSortByProps {}
 
@@ -9,9 +13,11 @@ const AnimeSortBy = () => {
   const [openSort, setOpenSort] = useState(true);
   const [parent] = useAutoAnimate();
 
+  const [searchParams , setSearchParams] = useSearchParams()
+
   const options = [
-    { value: "popularity.desc", label: "Most popular" },
-    { value: "vote_average.desc", label: "Most rating" },
+    { value: "asc", label: "Most popular" },
+    { value: "desc", label: "Most rating" },
     { value: "release_date.desc", label: "Most recent" },
   ];
 
@@ -37,6 +43,29 @@ const AnimeSortBy = () => {
     }),
   };
 
+ const [animeCurrentSearchParms] = useAnimeCurrentSeaarchParams()
+
+
+ const {data} = useQuery(["get recommended"] , () => getRecentAnime())
+
+ console.log(data)
+
+
+  const  chooseSort =  ( option  : any) => {
+     const sortValue = option?.value || ""
+
+     
+
+     setSearchParams({ 
+        ...animeCurrentSearchParms ,
+        sort : sortValue
+     })
+
+  }
+
+  const sortType = searchParams.get("sort") || "asc"
+
+
   return (
     <div
       //@ts-ignore
@@ -54,7 +83,11 @@ const AnimeSortBy = () => {
       {openSort && (
         <div className="py-3 border-t border-dark-darken mb-24 md:mb-0 ">
           <p className="text-lg mb-2 text-white/80">Sort results by </p>
-          <Select options={options} defaultValue={options[0]} styles={customStyles} />
+          <Select 
+           onChange={chooseSort}
+          options={options} defaultValue={options[0]} styles={customStyles}
+           value={options.find((option) => option.value === sortType)}
+           />
         </div>
       )}
     </div>
