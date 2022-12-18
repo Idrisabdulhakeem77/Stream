@@ -151,7 +151,7 @@ const Explore: FC<ExploreProps> = () => {
                 }}
                 className={`${
                   currentTab === "movie" &&
-                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[10%] after:bg-white"
                 }`}
               >
                 Movie
@@ -163,7 +163,7 @@ const Explore: FC<ExploreProps> = () => {
                 }}
                 className={`${
                   currentTab === "tv" &&
-                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[45%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[45%] after:bg-white"
                 }`}
               >
                 Tv Shows
@@ -175,7 +175,7 @@ const Explore: FC<ExploreProps> = () => {
                 }}
                 className={`${
                   currentTab === "anime" &&
-                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[80%] after:bg-black"
+                  "font-medium  transition duration-200 hover:text-black after:absolute after:h-[3px] after:w-5 after:bottom-0 after:left-[82%] after:bg-white"
                 }`}
               >
                 Anime

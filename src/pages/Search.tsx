@@ -11,6 +11,7 @@ import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import Footer from "../components/Common/Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SearchResult from "../components/Search/SearchResult";
+import AnimeSearchBox from "../components/Common/AnimeSearchBox";
 
 interface SearchProps {}
 
@@ -56,7 +57,14 @@ const Search: FunctionComponent<SearchProps> = () => {
               {" "}
               Find your favourite movies, TV shows, Animes , People and more{" "}
             </h1>
-            <SearchBox autoFocus />
+            {(currentTab === "movie" ||
+              currentTab === "tv" ||
+              currentTab === "person" || currentTab === "multi") && <SearchBox autoFocus />}
+
+
+              { currentTab === "anime" && (
+                 <AnimeSearchBox autoFocus/>
+              )}
           </div>
 
           {!query ? (
@@ -208,6 +216,18 @@ const Search: FunctionComponent<SearchProps> = () => {
                     }`}
                   >
                     <span> People</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setSearchParams({ query: query || "", page: "1" });
+                      setCurrentTab("anime");
+                    }}
+                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
+                      currentTab === "People" && "bg-dark-lighten-2"
+                    }`}
+                  >
+                    <span> Anime</span>
                   </button>
                 </div>
               )}
