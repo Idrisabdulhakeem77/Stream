@@ -28,6 +28,7 @@ import ToggleButton from "./components/Common/ToggleButton";
 import { async } from "@firebase/util";
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
+import AnimeSearch from "./pages/AnimeSearch";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -115,11 +116,8 @@ function App() {
   //   fetchWatchAnime("https://api.jikan.moe/v4/anime?sort=desc");
   // }, []);
 
-
-
   return (
     <div className="App">
-       <AnimeSearchResult/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
@@ -160,6 +158,7 @@ function App() {
             </Protected>
           }
         />
+        <Route path="/animesearch" element={<AnimeSearch />} />
       </Routes>
     </div>
   );
