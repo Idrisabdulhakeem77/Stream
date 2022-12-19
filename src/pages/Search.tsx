@@ -12,6 +12,7 @@ import Footer from "../components/Common/Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SearchResult from "../components/Search/SearchResult";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
+import AnimeSearchResult from "../components/Anime/AnimeSearchResult";
 
 interface SearchProps {}
 
@@ -142,7 +143,7 @@ const Search: FunctionComponent<SearchProps> = () => {
               </div>
             </div>
           )}
-          {query && (
+          {query &&   (
             <SearchResult
               currentTab={currentTab}
               query={query}
@@ -216,18 +217,6 @@ const Search: FunctionComponent<SearchProps> = () => {
                     }`}
                   >
                     <span> People</span>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      // setSearchParams({ query: query || "", page: "1" });
-                      setCurrentTab("anime");
-                    }}
-                    className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "anime" && "bg-dark-lighten-2"
-                    }`}
-                  >
-                    <span> Anime</span>
                   </button>
                 </div>
               )}

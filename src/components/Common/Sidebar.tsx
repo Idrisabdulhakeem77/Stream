@@ -185,6 +185,17 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <FiAnchor size={25} />
             <p>Anime</p>
           </Link>
+
+          <Link
+            to="/animesearch"
+            className={`flex gap-6 items-center  ${
+              location.pathname === "/animesearch" && !isMobile &&
+              "!text-primary border-r-4 border-primary font-medium"
+            } hover:text-white transition duration-300`}
+          >
+            <FiAnchor size={25} />
+            <p>Anime Search</p>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">

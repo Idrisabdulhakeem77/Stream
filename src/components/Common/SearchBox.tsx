@@ -75,7 +75,7 @@ const SearchBox: FC<SearchBoxProps> = ({ autoFocus = false }) => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           autoFocus={autoFocus}
-          className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-black"
+          className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white"
         />
       </form>
 

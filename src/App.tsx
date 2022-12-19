@@ -105,15 +105,15 @@ function App() {
     });
   }, [dispatch]);
 
-  const fetchWatchAnime = async (url: string) => {
-    const { data } = await axios.get(url);
+  // const fetchWatchAnime = async (url: string) => {
+  //   const { data } = await axios.get(url);
 
-    console.log(data);
-  };
+  //   console.log(data);
+  // };
 
-  useEffect(() => {
-    fetchWatchAnime("https://api.jikan.moe/v4/anime?sort=desc");
-  }, []);
+  // useEffect(() => {
+  //   fetchWatchAnime("https://api.jikan.moe/v4/anime?sort=desc");
+  // }, []);
 
 
 

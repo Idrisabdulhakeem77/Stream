@@ -18,7 +18,6 @@ const AnimeSortBy = () => {
   const options = [
     { value: "asc", label: "Most popular" },
     { value: "desc", label: "Most rating" },
-    { value: "release_date.desc", label: "Most recent" },
   ];
 
   const customStyles = {

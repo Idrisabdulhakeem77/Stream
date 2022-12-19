@@ -6,7 +6,7 @@ import { getRecommendedAnimeGenreType } from "../../shared/types";
 interface AnimeFilterByGenreProps {}
 
 const AnimeFilterByGenre = () => {
-  const { data, isLoading, isError, error } = useQuery<
+  const { data, isLoading } = useQuery<
     getRecommendedAnimeGenreType,
     Error
   >(["genres"], getAnimeRecommendedGenres);
@@ -17,6 +17,10 @@ const AnimeFilterByGenre = () => {
 
 
   const [genres] = useAutoAnimate();
+
+  if (isLoading)
+  return <div className="mt-20 mb-20 mx-auto h-10 w-10 rounded-full border-[5px] border-dark-darken border-t-transparent animate-spin"></div>
+
   return (
     <ul
       //@ts-ignore
