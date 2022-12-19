@@ -220,11 +220,11 @@ const Search: FunctionComponent<SearchProps> = () => {
 
                   <button
                     onClick={() => {
-                      setSearchParams({ query: query || "", page: "1" });
+                      // setSearchParams({ query: query || "", page: "1" });
                       setCurrentTab("anime");
                     }}
                     className={`w-full hover:bg-dark-lighten-2  py-1 rounded-md transition duration-300 ${
-                      currentTab === "People" && "bg-dark-lighten-2"
+                      currentTab === "anime" && "bg-dark-lighten-2"
                     }`}
                   >
                     <span> Anime</span>

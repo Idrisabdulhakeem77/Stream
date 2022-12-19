@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-
+import AnimeSearchResult from "./components/Anime/AnimeSearchResult";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
@@ -119,6 +119,7 @@ function App() {
 
   return (
     <div className="App">
+       <AnimeSearchResult/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
