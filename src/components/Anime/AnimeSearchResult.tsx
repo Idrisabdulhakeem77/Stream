@@ -1,4 +1,4 @@
-import { AppContext, AppProvider, useGlobalState } from "../../context";
+import { SearchContext, SearchProvider, useGlobalContext } from "../../context";
 import AnimeItem from "../Common/AnimeItem";
 
 interface AnimeSearchResultsProps {
@@ -7,7 +7,7 @@ interface AnimeSearchResultsProps {
 
 const AnimeSearchResult = ({}) => {
    
-  const animes = useGlobalState()
+  const animes = useGlobalContext()
 
 
 
@@ -17,14 +17,14 @@ const AnimeSearchResult = ({}) => {
 
    if(!animes) return <div>No animes</div>
   return (
-    <AppProvider>
+    <SearchProvider>
       <div>
-      { animes.map((anime , index) =>  (
+      {/* { animes.map((anime , index) =>  (
          <AnimeItem item={anime}/>
-      ))}
+      ))} */}
       </div>
         
-    </AppProvider>
+    </SearchProvider>
   );
 };
 

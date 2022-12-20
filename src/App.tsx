@@ -29,6 +29,7 @@ import { async } from "@firebase/util";
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
 import AnimeSearch from "./pages/AnimeSearch";
+import AnimeSearchBox from "./components/Common/AnimeSearchBox";
 
 function App() {
   //  const user = useAppSelector(state => state.user.user)
@@ -118,6 +119,7 @@ function App() {
 
   return (
     <div className="App">
+      <AnimeSearchResult/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
