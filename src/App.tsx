@@ -21,51 +21,22 @@ import MovieDetail from "./pages/Movies/MovieDetail";
 import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
 import { getRandomAvatar } from "./shared/utils";
-import axios from "axios";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
 import TvDetails from "./pages/Tv/TvDetails";
-import ToggleButton from "./components/Common/ToggleButton";
-import { async } from "@firebase/util";
+
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
 import AnimeSearch from "./pages/AnimeSearch";
 import AnimeSearchBox from "./components/Common/AnimeSearchBox";
 
 function App() {
-  //  const user = useAppSelector(state => state.user.user)
 
-  const getStorageTheme = () => {
-    let theme = "light-theme";
-
-    if (localStorage.getItem("theme")) {
-      theme = String(localStorage.getItem("theme"));
-    }
-
-    return theme;
-  };
-
-  const [theme, setTheme] = useState(getStorageTheme());
 
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
   );
   const dispatch = useAppDispatch();
-  const location = useLocation();
-
-  const toggleTheme = () => {
-    if (theme === "light-theme") {
-      setTheme("dark-theme");
-    } else {
-      setTheme("light-theme");
-    }
-  };
-
-  // Propagate toggle theme
-
-  useEffect(() => {
-    document.documentElement.className = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -107,19 +78,9 @@ function App() {
     });
   }, [dispatch]);
 
-  // const fetchWatchAnime = async (url: string) => {
-  //   const { data } = await axios.get(url);
-
-  //   console.log(data);
-  // };
-
-  // useEffect(() => {
-  //   fetchWatchAnime("https://api.jikan.moe/v4/anime?sort=desc");
-  // }, []);
 
   return (
     <div className="App">
-      <AnimeSearchResult/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="explore" element={<Explore />} />
