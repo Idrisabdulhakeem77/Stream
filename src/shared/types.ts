@@ -26,8 +26,8 @@ export interface HomeFilms {
 }
 
 export interface HomeAnimes {
-  [ key : string] : Animes[]
-} 
+  [key: string]: Animes[]
+}
 
 export interface getRecommendedGenreType {
   movieGenres: { id: number; name: string }[];
@@ -56,10 +56,10 @@ export interface User {
 
 export interface Animes {
   score: number;
-   aired : {
-       string : string
-   }
-   status : string ;
+  aired: {
+    string: string
+  }
+  status: string;
   mal_id: number;
   title: string;
   synopsis: string;
@@ -70,7 +70,6 @@ export interface Animes {
       small_image_url: string;
     };
 
-    webp: {};
   };
   genres: Object[];
   trailer: Object[];
@@ -306,11 +305,11 @@ export interface FilmInfo {
 
 export interface getRecommendedAnimeGenreType {
   data: {
-    mal_id  : number ;
-    name : string ;
-    url : string
- 
-   
+    mal_id: number;
+    name: string;
+    url: string
+
+
   }[]
 }
 
@@ -318,4 +317,19 @@ export interface getWatchReturnedType {
   detail?: DetailTV | DetailMovie | undefined;
   recommendations?: Items[] | undefined;
   detailSeasons?: DetailSeason[] | undefined;
+}
+
+export interface getRecommendedAnimeType {
+  entry: {
+    mal_id: string,
+    title: string
+  }
+
+  images: {
+    jpg: {
+      image_url: string;
+      large_image_url: string;
+      small_image_url: string;
+    };
+  }
 }
