@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import AnimeSearchResult from "./components/Anime/AnimeSearchResult";
+import { Route, Routes,  } from "react-router-dom";
+// import AnimeSearchResult from "./components/Anime/AnimeSearchResult";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { useAppDispatch } from "./store/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./shared/firebase";
 import { setCurrentUser } from "./store/slice/userSlice";
@@ -20,23 +20,19 @@ import Protected from "./components/Common/Proctected";
 import MovieDetail from "./pages/Movies/MovieDetail";
 import Bookmark from "./pages/Bookmarked";
 import Recent from "./pages/Recent";
-import { getRandomAvatar } from "./shared/utils";
 import AnimeDetails from "./pages/Anime/AnimeDetails";
 import TvDetails from "./pages/Tv/TvDetails";
 
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
 import AnimeSearch from "./pages/AnimeSearch";
-import AnimeSearchBox from "./components/Common/AnimeSearchBox";
+
 
 function App() {
-
-
   const [isSignedIn, setIsSignedIn] = useState(
     Number(localStorage.getItem("isSignedIn")) ? true : false
   );
   const dispatch = useAppDispatch();
-  
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -78,7 +74,6 @@ function App() {
     });
   }, [dispatch]);
 
-
   return (
     <div className="App">
       <Routes>
@@ -89,11 +84,11 @@ function App() {
         <Route path="auth" element={<Auth />} />
         <Route path="anime" element={<Anime />} />
         <Route path="/anime/:id" element={<AnimeDetails />} />
-        <Route path="movies" element={<Movies />} />
+        <Route path="/movies" element={<Movies />} />
         <Route path="tv" element={<TvShows />} />
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path="tv/:id/watch" element={<TvWatch />} />
-        <Route path="search" element={<Search />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="profile"
           element={
@@ -116,8 +111,7 @@ function App() {
           path="recent"
           element={
             <Protected isSignedIn={isSignedIn}>
-              {" "}
-              <Recent />{" "}
+              <Recent />
             </Protected>
           }
         />

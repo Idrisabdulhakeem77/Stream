@@ -206,7 +206,7 @@ const AnimeDetail = ({
           </div>
         </div>
 
-        <div className="shrink-0 md:max-w-[310px] w-full relative px-6">
+        <div className="shrink-0 md:max-w-[350px] w-full relative px-6">
           {!isMobile && <AnimeSearchBox />}
           <AnimeRightBarFilms
                 name="Similar"
