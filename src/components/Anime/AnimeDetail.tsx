@@ -132,7 +132,7 @@ const AnimeDetail = ({
         </button>
       </div>
 
-      <div className="flex items-start">
+      <div className="flex items-start md:flex-row flex-col">
         {!isMobile && <MiniSidebar />}
         {isMobile && (
           <Sidebar

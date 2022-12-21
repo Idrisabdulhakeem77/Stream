@@ -21,7 +21,7 @@ const AnimeRightBarFilms = ({
   isLoading,
   animes,
 }: AnimeRightBarProps) => {
-  console.log(isLoading);
+  console.log(animes);
   return (
     <div className={className}>
       <p className="mb-6 text-xl font-medium flex justify-between items-center">
