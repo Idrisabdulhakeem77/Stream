@@ -65,6 +65,9 @@ const CommentUserContent = ({
   };
 
   const determineReactionText = (reactions: { [key: string]: string }) => {
+  
+    
+      
     if (!Object.keys(reactions).includes((currentUser as User).uid)) {
       return "Reaction";
     }

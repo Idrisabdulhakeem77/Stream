@@ -26,9 +26,6 @@ const UserWhoReacted = ({
   useEffect(() => {
     const infoReactionUser = Object.entries(docData.reactions).map(
       async (entry) => {
-   
-         console.log(entry)
-
         const dataSnap = await getDoc(doc(db, "users", entry[0]));
 
         return {
