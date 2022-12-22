@@ -20,8 +20,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/ 
-idris-abdulhakeem
+              href="https://www.linkedin.com/in/idris-abdulhakeem/
 "
             >
               <BsLinkedin size={20} />

@@ -15,6 +15,7 @@ import { db } from "../../../shared/firebase";
 import { AiFillHeart, AiTwotoneLike } from "react-icons/ai";
 import { BsEmojiLaughingFill } from "react-icons/bs";
 import { FaAngry, FaSadTear, FaSurprise } from "react-icons/fa";
+import EditComment from "./EditComment";
 
 interface CommentUserContentProps {
   commentData: QuerySnapshot<DocumentData> | null;
@@ -65,14 +66,11 @@ const CommentUserContent = ({
   };
 
   const determineReactionText = (reactions: { [key: string]: string }) => {
-  
-    
-      
     if (!Object.keys(reactions).includes((currentUser as User).uid)) {
       return "Reaction";
     }
-    
-     // @ts-ignore
+
+    // @ts-ignore
     const userReactionValue = Object.entries(reactions).find(
       (entry) => entry[0] === (currentUser as User).uid
     )[1];
@@ -202,7 +200,7 @@ const CommentUserContent = ({
                     </div>
 
                     <div className="flex gap-3 mt-3 items-center">
-                    {currentUser && (
+                      {currentUser && (
                         <div className="relative group">
                           <>
                             <button>
@@ -295,6 +293,16 @@ const CommentUserContent = ({
                       )}
                     </div>
                   </div>
+
+                  <EditComment
+                    setEditingCommentFor={setEditingCommentFor}
+                    media_type={media_type}
+                    id={id}
+                    singleDoc={doc}
+                    showOptionFor={showOptionFor}
+                    setShowOptionFor={setShowOptionFor}
+                    setCommentHiden={setCommentHidden}
+                  />
                 </li>
               )}
             </Fragment>
