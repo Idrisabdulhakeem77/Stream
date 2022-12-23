@@ -16,6 +16,9 @@ import { AiFillHeart, AiTwotoneLike } from "react-icons/ai";
 import { BsEmojiLaughingFill } from "react-icons/bs";
 import { FaAngry, FaSadTear, FaSurprise } from "react-icons/fa";
 import EditComment from "./EditComment";
+import { calculateTimePassed } from "../../../shared/utils";
+import Reply from "./Reply";
+import ReplyBox from "./ReplyBox";
 
 interface CommentUserContentProps {
   commentData: QuerySnapshot<DocumentData> | null;
@@ -291,7 +294,32 @@ const CommentUserContent = ({
                           </div>
                         </div>
                       )}
+                      {role !== "reply" && (
+                        <button
+                          onClick={() => {
+                            if (!currentUser) return;
+                            if (isReplyingFor !== doc.id)
+                              setIsReplyingFor(doc.id);
+                            else setIsReplyingFor(undefined);
+                          }}
+                        >
+                          <p className="hover:text-white transition duration-300">
+                            Reply
+                          </p>
+                        </button>
+                      )}
+                      <p className="text-sm">
+                        {calculateTimePassed(
+                          docData.createdAt?.seconds * 1000 || 0
+                        )}
+                      </p>
+                      {docData.isEdited && <p className="text-sm">Edited</p>}
                     </div>
+
+                    {isReplyingFor === doc.id && (
+                      <ReplyBox commentId={doc.id} />
+                    )}
+                    <Reply commentId={doc.id} />
                   </div>
 
                   <EditComment
