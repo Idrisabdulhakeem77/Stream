@@ -23,7 +23,6 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "../../shared/firebase";
-import { idText } from "typescript";
 
 interface AnimeDetailProps {
   characters: any;
@@ -201,7 +200,7 @@ const AnimeDetail = ({
                   )}
                 </div>
               </div>
-              <AnimeTabInfo detail={detail} />
+              <AnimeTabInfo detail={detail} characters={characters} />
             </div>
           </div>
         </div>

@@ -334,3 +334,27 @@ export interface getRecommendedAnimeType {
 
 
 }
+
+
+
+export interface AnimeCast {
+  character: {
+    images: {
+      jpg: {
+        image_url: string
+      }
+    }
+    name: string
+
+  }
+  role: "string"
+  voice_actors: {
+    images: {
+       jpg : {
+          image_url : string
+       }
+    }
+    name: string
+    mal_id: number
+  }[]
+} 

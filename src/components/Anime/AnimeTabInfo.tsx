@@ -6,12 +6,12 @@ import ReadMore from "../Common/ReadMore";
 
 interface AnimeTabInfoProps {
   detail: Animes;
+  characters : any
 }
 
-const AnimeTabInfo = ({ detail }: AnimeTabInfoProps) => {
+const AnimeTabInfo = ({ detail , characters }: AnimeTabInfoProps) => {
   const [currentTab, setCurrentTab] = useState("overall");
 
-//   console.log(detail.aired.string);
 
   return (
     <>
@@ -70,6 +70,11 @@ const AnimeTabInfo = ({ detail }: AnimeTabInfoProps) => {
             )}
           </>
         )}
+
+       {/* { currentTab === "cast" && (
+          
+       ) } */}
+
       </div>
     </>
   );
