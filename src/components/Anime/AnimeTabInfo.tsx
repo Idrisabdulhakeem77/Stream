@@ -1,4 +1,4 @@
-import { Animes } from "../../shared/types";
+import { Animes , AnimeCast } from "../../shared/types";
 import { useState } from "react";
 import Skeleton from "../Common/Skeleton";
 import ReadMore from "../Common/ReadMore";
@@ -6,7 +6,7 @@ import ReadMore from "../Common/ReadMore";
 
 interface AnimeTabInfoProps {
   detail: Animes;
-  characters : any
+  characters : AnimeCast[]
 }
 
 const AnimeTabInfo = ({ detail , characters }: AnimeTabInfoProps) => {

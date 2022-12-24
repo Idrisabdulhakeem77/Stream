@@ -1,15 +1,39 @@
 import Sidebar from "../components/Common/Sidebar";
-import { useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
+import { FaSearch } from "react-icons/fa";
+import axios from "axios";
+import AnimeItem from "../components/Common/AnimeItem";
+import { Animes } from "../shared/types";
 interface AnimeSearchProps {}
 
 const AnimeSearch = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const { isMobile } = useCurrentViewPort();
+  // const { isMobile } = useCurrentViewPort();
+  const [searchInput, setSearchInput] = useState("");
+  const [animes, setAnimes] = useState<Animes[]>([]);
+
+  const searhValue = useRef<any>("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!searchInput) return;
+
+    const response = (
+      await axios.get(`https://api.jikan.moe/v4/anime?q=${searchInput}`)
+    ).data;
+
+    const { data } = response;
+
+    setAnimes(data);
+
+    console.log(response);
+  };
 
   return (
     <>
@@ -31,9 +55,39 @@ const AnimeSearch = () => {
         />
         <div className="flex-grow">
           <h1 className="text-3xl font-xl text-center mt-2">
-            Find your favourite Animes 
+            Find your favourite Animes
           </h1>
-          <AnimeSearchBox />
+          {/* <AnimeSearchBox /> */}
+
+          {/* Starting of Anime Search Component */}
+          <div className="rounded-full  mt-5 bg-gray-800 ">
+            <form onSubmit={handleSubmit}>
+              <button className="absolute translate-x-4 translate-y-4 text-light-white ">
+                <FaSearch size={25} />
+              </button>
+
+              <input
+                type="text"
+                ref={searhValue}
+                placeholder="Search..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                // autoFocus={autoFocus}
+                className="w-full pl-14 pr-7 outline-none  bg-transparent placeholder-white py-4 text-white "
+              />
+            </form>
+          </div>
+
+          {/* Ending of the components */}
+
+          <ul className="grid  gap-x-8 gap-y-10 pt-2 grid-cols-sm lg:grid-cols-lg">
+            {animes &&
+              animes.map((anime, index) => (
+                <li key={anime.mal_id}>
+                  <AnimeItem item={anime} />
+                </li>
+              ))}
+          </ul>
         </div>
       </div>
     </>

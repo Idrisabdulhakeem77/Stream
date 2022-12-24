@@ -1,7 +1,6 @@
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef, FormEvent, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useGlobalContext } from "../../context";
-
+// import { AppContext, AppProvider   } from "../../context";
 
 interface AnimeSerachBoxProps {
   autoFocus?: boolean;
@@ -17,12 +16,7 @@ const AnimeSearchBox = ({ autoFocus }: AnimeSerachBoxProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
   };
-
-  const fetchSearchAnimes = useGlobalContext()
-
-  console.log(fetchSearchAnimes)
 
   return (
     <div className="rounded-full  mt-5 bg-gray-800 ">

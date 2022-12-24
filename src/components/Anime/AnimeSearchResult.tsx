@@ -1,30 +1,16 @@
-import { SearchContext, SearchProvider, useGlobalContext } from "../../context";
 import AnimeItem from "../Common/AnimeItem";
+// import { AppProvider, useGlobalContext } from "../../context";
 
 interface AnimeSearchResultsProps {
   page: number;
 }
 
 const AnimeSearchResult = ({}) => {
-   
-  const animes = useGlobalContext()
 
-
-
-
-   console.log(animes)
-
-
-   if(!animes) return <div>No animes</div>
   return (
-    <SearchProvider>
-      <div>
-      {/* { animes.map((anime , index) =>  (
-         <AnimeItem item={anime}/>
-      ))} */}
-      </div>
-        
-    </SearchProvider>
+    // <AppProvider>
+       <div>Search Box</div>
+    // </AppProvider>
   );
 };
 
