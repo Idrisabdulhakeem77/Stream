@@ -2,6 +2,7 @@ import { Animes, AnimeCast } from "../../shared/types";
 import { useState } from "react";
 import Skeleton from "../Common/Skeleton";
 import ReadMore from "../Common/ReadMore";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface AnimeTabInfoProps {
   detail: Animes;
@@ -29,9 +30,9 @@ const AnimeTabInfo = ({ detail, characters }: AnimeTabInfoProps) => {
               currentTab === "cast" &&
               "font-medium -translate-y-2 border-b-2 border-primary text-white"
             }`}
-            onClick={() => setCurrentTab("cast")}
+            onClick={() => setCurrentTab("characters")}
           >
-            Cast
+            Characters
           </button>
           <button
             className={`hover:text-white transition duration-300 pb-1 ${
@@ -68,10 +69,35 @@ const AnimeTabInfo = ({ detail, characters }: AnimeTabInfoProps) => {
             )}
           </>
         )}
-{/* 
-         {  currentTab === "cast" && (  
-            characters.ma
-          )} */}
+
+        {currentTab === "characters" && (
+          <ul className="grid grid-cols-2 gap-x-20 gap-y-8">
+            {characters &&
+              characters.map((c) => {
+                const { character, role } = c;
+
+                return (
+                  <li key={character.mal_id}>
+                    <div className="shrink-0 max-w-[65px] w-full h-[65px]">
+                      <LazyLoadImage
+                        src={character.images.jpg.image_url}
+                        alt=""
+                        effect="opacity"
+                        className="object-cover rounded-full h-[65px] w-[65px]"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <p className="text-primary text-lg font-medium"></p>
+                      <p className="text-white text-base">
+                        <span className="italic">as</span> {character.name}
+                      </p>
+                      <p text-white> {role} </p>
+                    </div>
+                  </li>
+                );
+              })}
+          </ul>
+        )}
       </div>
     </>
   );

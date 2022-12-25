@@ -111,7 +111,6 @@ const AnimeDetail = ({
     );
   };
 
-  const something = recommendations.map(( character : any) => console.log(character))
 
   return (
     <>
@@ -119,7 +118,6 @@ const AnimeDetail = ({
 
       {detail ? <Title value={`${detail.title}`} /> : null}
 
-      { console.log(something)}
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         {/* <div className="bg-gradient-to-br from-transparent to-black/70 h-full rounded-bl-2xl"> */}

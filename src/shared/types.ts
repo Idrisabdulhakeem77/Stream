@@ -345,16 +345,19 @@ export interface AnimeCast {
       }
     }
     name: string
+    mal_id: number
 
   }
   role: "string"
   voice_actors: {
-    images: {
-       jpg : {
-          image_url : string
-       }
+    person: {
+      images: {
+        jpg: {
+          image_url: string
+        }
+      }
+      name: string
+      mal_id: number
     }
-    name: string
-    mal_id: number
   }[]
 } 

@@ -22,7 +22,6 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
   selections,
   setSelection,
 }) => {
-  console.log(films);
 
   return (
     <>

@@ -43,7 +43,6 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
       setIsSelectAll(false);
       return;
     }
- 
 
     setIsSelectAll(true);
 
@@ -59,28 +58,25 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
           .filter((film) => film.media_type === "movie")
           .map((film) => film.id)
       );
-    } 
+    }
   };
-
   const clearSelection = () => {
     if (!user) return;
-    
-    console.log("reached")
-     
+
     const editedFilms = films.filter(
       (film) => selections.indexOf(film.id) === -1
     );
 
+    console.log(editedFilms);
+
     updateDoc(doc(db, "users", user?.uid), {
       ...(pageType === "bookmark" && { bookmarks: editedFilms.reverse() }),
-      ...(pageType === "recent" && { recentlyWatch: editedFilms.reverse() }),
+      ...(pageType === "history" && { recentlyWatch: editedFilms.reverse() }),
     });
 
     setSelections([]);
     setIsSelectAll(false);
     setIsShowPrompt(false);
-
-    console.log("this function reached here")
   };
 
   return (
@@ -110,7 +106,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                 Cancel
               </button>
               <button
-                onClick={clearSelection}
+                onClick={() => console.log("items delted")}
                 className="px-6 py-1 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-300"
               >
                 Yes
