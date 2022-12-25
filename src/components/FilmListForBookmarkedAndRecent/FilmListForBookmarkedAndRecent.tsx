@@ -122,7 +122,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
         <div className="flex md:hidden justify-between items-center px-5 my-5">
           <Link to="/" className="flex gap-2 items-center">
             <div className="uppercase font-medium text-lg tracking-widest ">
-              AnimeStream
+              Stream
             </div>
           </Link>
           <button onClick={() => setIsSidebarActive((prev) => !prev)}>

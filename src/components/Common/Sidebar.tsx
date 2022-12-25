@@ -83,7 +83,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           >
             <BsFillEyeFill size={15} className="mr-1 " />
             <h1 className="text-lg uppercase text-white font-medium">
-              <span>Anime</span>
               <span>Stream</span>
             </h1>
           </Link>

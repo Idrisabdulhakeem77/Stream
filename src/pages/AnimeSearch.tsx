@@ -42,7 +42,7 @@ const AnimeSearch = () => {
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest ">
-            AnimeStream
+            Stream
           </div>
         </Link>
         <button onClick={() => setIsSidebarOpen((prevState) => !prevState)}>

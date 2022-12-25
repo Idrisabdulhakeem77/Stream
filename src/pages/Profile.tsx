@@ -32,7 +32,7 @@ const Profile: FC<ProfileProps> = () => {
   const [isShowPromptReAuthFor, setIsShowPromptReAuthFor] = useState<
     string | undefined
   >();
-  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  // const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
   const [updatedPassword, setUpdatedPassword] = useState(false);
 
   const emailValueRef = useRef<HTMLInputElement>(null!);
@@ -200,7 +200,7 @@ const Profile: FC<ProfileProps> = () => {
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest">
             {" "}
-            AnimeStream{" "}
+            Stream{" "}
           </div>
         </Link>
         <button onClick={() => setIsSidebarActive((prevState) => !prevState)}>
@@ -286,8 +286,8 @@ const Profile: FC<ProfileProps> = () => {
             <EmailVerication setIsUpdating={setIsUpdating} />
 
             <Password
-              setIsUpdatingPassword={setIsUpdatingPassword}
-              isUpdatingPassword={isUpdatingPassword}
+              setIsUpdatedPassword={setUpdatedPassword}
+              isUpdatedPassword={updatedPassword}
               setUpdatedPassword={setUpdatedPassword}
               newPasswordRef={newPasswordRef}
             />

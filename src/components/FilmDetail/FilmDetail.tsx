@@ -118,7 +118,7 @@ const FilmDetail: FC<FilmInfo> = ({
         {/* <div className="bg-gradient-to-br from-transparent to-black/70 h-full rounded-bl-2xl"> */}
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest ">
-            AnimeStream
+            Stream
           </div>
         </Link>
         <button onClick={() => setIsSidebarActive((prevState) => !prevState)}>

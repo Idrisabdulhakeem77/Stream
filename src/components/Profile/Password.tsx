@@ -1,19 +1,19 @@
 interface PasswordProps {
-  setIsUpdatingPassword: any;
-  isUpdatingPassword: boolean;
+  setIsUpdatedPassword: any;
+  isUpdatedPassword: boolean;
   newPasswordRef: any;
   setUpdatedPassword: any;
 }
 
 const Password = ({
-  setIsUpdatingPassword,
-  isUpdatingPassword,
+  setIsUpdatedPassword,
+  isUpdatedPassword,
   newPasswordRef,
   setUpdatedPassword,
 }: PasswordProps) => {
   return (
     <>
-      {isUpdatingPassword && (
+      {isUpdatedPassword && (
         <>
           <div className="px-5 py-3 rounded-md z-10 bg-dark-lighten-2 md:w-[350px] fixed top-[35%] md:left-[35%] left-[5%] right-[5%] min-h-[100px]">
             <p className="text-white text-lg text-center">

@@ -109,7 +109,7 @@ const FilmWatch = ({
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest">
             {" "}
-            AnimeStream{" "}
+            Stream{" "}
           </div>
         </Link>
         <button onClick={() => setIsSidebarActive((prevState) => !prevState)}>

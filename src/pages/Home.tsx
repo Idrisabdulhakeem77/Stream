@@ -88,7 +88,7 @@ const Home: FC = () => {
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest text-white">
             {" "}
-            AnimeStream{" "}
+            Stream{" "}
           </div>
         </Link>
         <button onClick={() => setIsSidebarOpen((prevState) => !prevState)}>
