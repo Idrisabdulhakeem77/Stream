@@ -154,7 +154,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <Link
-            to="tv"
+            to="/tv"
             className={`flex gap-6 items-center  ${
               location.pathname === "/tv" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
@@ -165,7 +165,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </Link>
 
           <Link
-            to="movies"
+            to="/movies"
             className={`flex gap-6 items-center  ${
               location.pathname === "/movies" && !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
