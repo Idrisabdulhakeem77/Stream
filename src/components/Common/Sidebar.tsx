@@ -93,7 +93,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </button>
         </div>
         {/* "flex gap-3 items-center hover:text-gray-700 transition duration-300" */}
-        <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
+        <div className="flex flex-col gap-4 mt-4 ml-3 px-4">
           <Link
             to="/"
             className={`flex gap-6 items-center  ${
@@ -103,15 +103,15 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             } hover:text-white transition duration-300`}
           >
             <AiOutlineHome size={25} />
-            <p>Home</p>
+            <p >Home</p>
           </Link>
 
           <Link
             to="/explore"
-            className="flex gap-3 items-center hover:text-gray-700 transition duration-300"
+            className="flex gap-4 items-center hover:text-gray-700 transition duration-300"
           >
             <MdOutlineExplore size={25} />
-            <p>Discover</p>
+            <p className="pl-1">Discover</p>
           </Link>
 
           <Link
@@ -205,14 +205,14 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <div className="flex flex-col gap-4 mt-4 ml-4 px-4">
           <button
             onClick={() => privateUrlhandler("/profile")}
-            className="flex gap-3 items-center "
+            className="flex gap-4 items-center "
           >
             <BiUserCircle size={25} />
             <p> Profile </p>
           </button>
 
           <button
-            className="flex gap-3 items-center "
+            className="flex gap-4 items-center "
             onClick={() =>
               dispatch(
                 setCurrentUser({
@@ -232,7 +232,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           {currentUser ? (
             <button
               onClick={signOutHandler}
-              className="flex gap-3 items-center "
+              className="flex gap-4 items-center "
             >
               <HiOutlineLogin size={25} />
               <p> Logout</p>
