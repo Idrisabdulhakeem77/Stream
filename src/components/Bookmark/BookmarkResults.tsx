@@ -26,6 +26,7 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
 
   return (
     <>
+      {/* Error Message  */}
       {films.length === 0 && !isLoading && (
         <div className="text-white text-2xl text-center col-span-full mt-10">
           <div className=" flex justify-center">
@@ -46,24 +47,22 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
 
       {films.length > 0 &&
         films.map((item) => (
-          <li key={item.id}>
-            {(item.media_type === "movie" || item.media_type === "tv") && (
-              <FilmItem item={item} />
-            )}
+          <li key={item.id} className="relative">
+            <FilmItem item={item} />
 
             {isEditting && (
               <button
-                className="w-6 h-6 border-primary border-[3px] tw-absolute-center-horizontal mt-2 tw-flex-center"
-                onClick={() => {
-                  setSelection((prev: number[]) => {
+                onClick={() =>
+                  setSelection((prev: number[]) =>
                     prev.includes(item.id)
                       ? prev.filter((id: number) => id !== item.id)
-                      : prev.concat(item.id);
-                  });
-                }}
+                      : prev.concat(item.id)
+                  )
+                }
+                className="w-6 h-6 border-primary border-[3px] tw-absolute-center-horizontal mt-2 tw-flex-center"
               >
                 <HiCheck
-                  size={25}
+                  size={20}
                   className={`${
                     selections.includes(item.id) ? "opacity-100" : "opacity-0"
                   } transition duration-300 text-white`}

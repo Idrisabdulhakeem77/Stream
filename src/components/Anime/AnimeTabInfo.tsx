@@ -1,17 +1,15 @@
-import { Animes , AnimeCast } from "../../shared/types";
+import { Animes, AnimeCast } from "../../shared/types";
 import { useState } from "react";
 import Skeleton from "../Common/Skeleton";
 import ReadMore from "../Common/ReadMore";
 
-
 interface AnimeTabInfoProps {
   detail: Animes;
-  characters : AnimeCast[]
+  characters: AnimeCast[];
 }
 
-const AnimeTabInfo = ({ detail , characters }: AnimeTabInfoProps) => {
+const AnimeTabInfo = ({ detail, characters }: AnimeTabInfoProps) => {
   const [currentTab, setCurrentTab] = useState("overall");
-
 
   return (
     <>
@@ -62,19 +60,18 @@ const AnimeTabInfo = ({ detail , characters }: AnimeTabInfoProps) => {
               </>
             )}
 
-            { detail && (
-                <>
-                 <p>Status : {detail.status}</p>
-                 <p> Release Date : {detail.aired.string}</p>
+            {detail && (
+              <>
+                <p>Status : {detail.status}</p>
+                <p> Release Date : {detail.aired.string}</p>
               </>
             )}
           </>
         )}
-
-       {/* { currentTab === "cast" && (
-          
-       ) } */}
-
+{/* 
+         {  currentTab === "cast" && (  
+            characters.ma
+          )} */}
       </div>
     </>
   );

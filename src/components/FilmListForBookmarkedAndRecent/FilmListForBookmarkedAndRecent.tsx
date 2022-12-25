@@ -43,6 +43,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
       setIsSelectAll(false);
       return;
     }
+ 
 
     setIsSelectAll(true);
 
@@ -58,14 +59,14 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
           .filter((film) => film.media_type === "movie")
           .map((film) => film.id)
       );
-    } else if (currentTab === "anime") {
-      //  setSelections( films.map((film) => film.media_type === "anime"))
-    }
+    } 
   };
 
   const clearSelection = () => {
     if (!user) return;
-
+    
+    console.log("reached")
+     
     const editedFilms = films.filter(
       (film) => selections.indexOf(film.id) === -1
     );
@@ -78,6 +79,8 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
     setSelections([]);
     setIsSelectAll(false);
     setIsShowPrompt(false);
+
+    console.log("this function reached here")
   };
 
   return (
@@ -93,7 +96,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
             </div>
             <p className="text-white text-xl text-center font-medium mb-4">
               You are about to remove
-              {selections.length === 1 ? " this fil" : " these films"}
+              {selections.length === 1 ? " this film" : " these films"}
             </p>
             <p className="text-center mb-[2px]">
               This will remove your films from this {pageType} list.
@@ -232,14 +235,14 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
                     <BiSelectMultiple size={25} />
                     <p> Select All</p>
                   </button>
-                  {/* <button
+                  <button
                     disabled={selections.length === 0}
                     onClick={() => setIsShowPrompt(true)}
                     className="disabled:text-red flex gap-2 items-center  hover:text-primary transition duration-300 "
                   >
                     <AiOutlineDelete size={25} />
                     <p> Delete</p>
-                  </button> */}
+                  </button>
                   <button
                     onClick={() => setIsEditting(false)}
                     className="flex gap-2 items-center hover:text-primary transition duration-300"

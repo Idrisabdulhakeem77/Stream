@@ -2,13 +2,10 @@ import Sidebar from "../components/Common/Sidebar";
 import { FormEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import { useCurrentViewPort } from "../components/hooks/useCurrentViewPort";
-import AnimeSearchBox from "../components/Common/AnimeSearchBox";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import AnimeItem from "../components/Common/AnimeItem";
 import { Animes } from "../shared/types";
-interface AnimeSearchProps {}
 
 const AnimeSearch = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,12 +13,13 @@ const AnimeSearch = () => {
   // const { isMobile } = useCurrentViewPort();
   const [searchInput, setSearchInput] = useState("");
   const [animes, setAnimes] = useState<Animes[]>([]);
-
-  const searhValue = useRef<any>("");
+  const searchInputValue = useRef<any>("");
+  // const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    // setIsFormSubmitted(false);
     if (!searchInput) return;
 
     const response = (
@@ -30,8 +28,13 @@ const AnimeSearch = () => {
 
     const { data } = response;
 
-    setAnimes(data);
+    if (data) {
+      setAnimes(data);
+    }
 
+    setSearchInput("");
+
+    // setIsFormSubmitted(true);
     console.log(response);
   };
 
@@ -68,7 +71,7 @@ const AnimeSearch = () => {
 
               <input
                 type="text"
-                ref={searhValue}
+                ref={searchInputValue}
                 placeholder="Search..."
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
@@ -82,12 +85,20 @@ const AnimeSearch = () => {
 
           <ul className="grid  gap-x-8 gap-y-10 pt-2 grid-cols-sm lg:grid-cols-lg">
             {animes &&
-              animes.map((anime, index) => (
+              animes.map((anime) => (
                 <li key={anime.mal_id}>
                   <AnimeItem item={anime} />
                 </li>
               ))}
           </ul>
+
+          {animes && animes.length === 0 && (
+            <div className=" flex tw-flex-center mt-40 text-center text-lg text-[40px]">
+              {" "}
+              <span className=" text-primary text-[350px]"> 404</span>
+              <span className="absolute"> not found </span>
+            </div>
+          )}
         </div>
       </div>
     </>
