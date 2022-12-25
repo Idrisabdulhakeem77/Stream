@@ -13,5 +13,10 @@ const instance = axios.create({
 })
 
 
+const testing = ""
+
+console.log(testing)
+
+
 
 export default instance 
