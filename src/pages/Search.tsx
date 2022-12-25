@@ -12,7 +12,6 @@ import Footer from "../components/Common/Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import SearchResult from "../components/Search/SearchResult";
 import AnimeSearchBox from "../components/Common/AnimeSearchBox";
-import AnimeSearchResult from "../components/Anime/AnimeSearchResult";
 
 interface SearchProps {}
 

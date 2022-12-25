@@ -8,7 +8,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
     <>
 
      {/* Removed Fixed Postiion from footer */}
-      <div className="bg-dark-lighten text-white flex justify-between items-center py-4 px-4 shadow-md mt-3  bottom-0 w-full">
+      <div className="bg-dark-lighten text-white flex  flex-col md:flex-row gap-4 justify-between items-center py-4 px-4 shadow-md mt-3 fixed  bottom-0 w-full">
         <p>
           <span>Copyright@2022 Design by:Idris Abdulhakeem</span>
         </p>
