@@ -16,9 +16,6 @@ import { auth } from "../../shared/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import { setCurrentUser } from "../../store/slice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import ToggleButton from "./ToggleButton";
-import { toggleTheme } from "../../store/slice/themeSlice";
-
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: any;
@@ -101,7 +98,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/" && !isMobile &&
+              location.pathname === "/" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -120,7 +118,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/search"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/search" && isMobile && 
+              location.pathname === "/search" &&
+              isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -133,7 +132,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <button
             onClick={() => privateUrlhandler("/bookmarks")}
             className={`flex gap-6 items-center  ${
-              location.pathname === "/bookmarks" && !isMobile &&
+              location.pathname === "/bookmarks" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -144,7 +144,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <button
             onClick={() => privateUrlhandler("/recent")}
             className={`flex gap-6 items-center  ${
-              location.pathname === "/recent" && !isMobile &&
+              location.pathname === "/recent" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -156,7 +157,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/tv"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/tv" && !isMobile &&
+              location.pathname === "/tv" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -167,7 +169,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/movies"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/movies" && !isMobile &&
+              location.pathname === "/movies" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -178,7 +181,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/anime"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/anime" && !isMobile &&
+              location.pathname === "/anime" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -189,7 +193,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to="/animesearch"
             className={`flex gap-6 items-center  ${
-              location.pathname === "/animesearch" && !isMobile &&
+              location.pathname === "/animesearch" &&
+              !isMobile &&
               "!text-primary border-r-4 border-primary font-medium"
             } hover:text-white transition duration-300`}
           >
@@ -245,9 +250,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
           {/* <ToggleButton theme="light-theme" toggleTheme={""/> */}
 
-          <button>
-             
-          </button>
+          <button></button>
         </div>
       </div>
     </>

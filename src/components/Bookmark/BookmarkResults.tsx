@@ -22,7 +22,6 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
   selections,
   setSelection,
 }) => {
-
   return (
     <>
       {/* Error Message  */}
@@ -30,7 +29,7 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
         <div className="text-white text-2xl text-center col-span-full mt-10">
           <div className=" flex justify-center">
             <LazyLoadImage
-              src="/error.png"
+              src="/Images/error.png"
               effect="opacity"
               alt="error"
               className="w-[600px] object-cover"
@@ -40,6 +39,10 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
             {pageType === "bookmark"
               ? "Your bookmark list for this type is Empty Empty."
               : "Your recently watched films for this type is empty. "}
+
+            {pageType === "recent"
+              ? "Your recently watched films for this type is empty. "
+              : null}
           </p>
         </div>
       )}

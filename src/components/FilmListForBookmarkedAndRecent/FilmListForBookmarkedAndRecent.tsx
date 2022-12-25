@@ -71,7 +71,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
 
     updateDoc(doc(db, "users", user?.uid), {
       ...(pageType === "bookmark" && { bookmarks: editedFilms.reverse() }),
-      ...(pageType === "history" && { recentlyWatch: editedFilms.reverse() }),
+      ...(pageType === "recent" && { recentlyWatch: editedFilms.reverse() }),
     });
 
     setSelections([]);
@@ -155,7 +155,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
               // @ts-ignore
               ref={action}
               className="flex flex-col md:flex-row  items-start md:items-center gap-5 md:justify-between mb-8"
-              id="test"
+
             >
               <div className="inline-flex gap-[30px] pb-[12px] border-b border-gray-darken relative">
                 <button
