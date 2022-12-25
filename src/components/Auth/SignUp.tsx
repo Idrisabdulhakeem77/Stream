@@ -1,6 +1,6 @@
-import  { useState, FunctionComponent } from "react";
+import { useState, FunctionComponent } from "react";
 
-import {  FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -35,7 +35,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
   const [error, setError] = useState("");
 
   const SignUpHandler = async (values: { [key: string]: string }) => {
-
     try {
       setLoading(true);
 
@@ -47,8 +46,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         )
       ).user;
 
-     
-
       setDoc(doc(db, "users", user.uid), {
         displayName: values.fullname,
         photoUrl: getRandomAvatar(),
@@ -56,9 +53,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({
         recentlyWatch: [],
       });
     } catch (err) {
-       console.log(err)
+      console.log(err);
     }
-
   };
 
   const SignUpSchema = Yup.object({
@@ -74,16 +70,16 @@ const SignUp: FunctionComponent<SignUpProps> = ({
       {currentUser && (
         <ModalNotification type="success" message="Signed Up successfully 🤓" />
       )}
-      {loading && <div>Loading</div>}
+      {loading && (
+        <div className="mt-20 mb-20 mx-auto h-10 w-10 rounded-full border-[5px] border-dark-darken border-t-transparent animate-spin"></div>
+      )}
       {error && (
         <ModalNotification
           type="error"
           message="Something went Wrong 😵 try again later"
         />
       )}
-      <div
-        className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white"
-      >
+      <div className="max-w-xl w-full min-h-[500px]   absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-white">
         <div className="flex flex-col items-center mb-6 mt-12">
           <div className="leading-none mb-4 text-[40px] font-light text-primary">
             Create An Account For Free
@@ -195,7 +191,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({
                 type="submit"
                 className="px-12 py-3  rounded-full text-xl font-medium hover:bg-primary transition duration-300  absolute left-1/2 -translate-x-1/2 mt-3 border-2 white"
               >
-                
                 Sign Up
               </button>
             </div>

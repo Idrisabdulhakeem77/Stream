@@ -64,7 +64,9 @@ const SignIn: FunctionComponent<SignUpProps> = ({
       )}
 
       {/* Add Loader to App */}
-      {Loading && <div>Loading.....</div>}
+      {Loading && (
+        <div className="mt-20 mb-20 mx-auto h-10 w-10 rounded-full border-[5px] border-dark-darken border-t-transparent animate-spin"></div>
+      )}
       {error && (
         <ModalNotification
           message="Couldnt Sign in"

@@ -14,28 +14,27 @@ const AnimeSearch = () => {
   const [searchInput, setSearchInput] = useState("");
   const [animes, setAnimes] = useState<Animes[]>([]);
   const searchInputValue = useRef<any>("");
-  // const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // setIsFormSubmitted(false);
+    setLoading(true);
+
     if (!searchInput) return;
 
+    setAnimes([]);
     const response = (
       await axios.get(`https://api.jikan.moe/v4/anime?q=${searchInput}`)
     ).data;
 
     const { data } = response;
 
-    if (data) {
-      setAnimes(data);
-    }
+    setAnimes(data);
 
     setSearchInput("");
 
-    // setIsFormSubmitted(true);
-    console.log(response);
+    setLoading(false);
   };
 
   return (
@@ -60,7 +59,6 @@ const AnimeSearch = () => {
           <h1 className="text-3xl font-xl text-center mt-2">
             Find your favourite Animes
           </h1>
-          {/* <AnimeSearchBox /> */}
 
           {/* Starting of Anime Search Component */}
           <div className="rounded-full  mt-5 bg-gray-800 ">
@@ -83,6 +81,10 @@ const AnimeSearch = () => {
 
           {/* Ending of the components */}
 
+          {loading && (
+            <div className="mt-20 mb-20 mx-auto h-10 w-10 rounded-full border-[5px] border-dark-darken border-t-transparent animate-spin"></div>
+          )}
+
           <ul className="grid  gap-x-8 gap-y-10 pt-2 grid-cols-sm lg:grid-cols-lg">
             {animes &&
               animes.map((anime) => (
@@ -92,7 +94,7 @@ const AnimeSearch = () => {
               ))}
           </ul>
 
-          {animes && animes.length === 0 && (
+          {animes && !loading && animes.length === 0 && (
             <div className=" flex tw-flex-center mt-40 text-center text-lg text-[40px]">
               {" "}
               <span className=" text-primary text-[350px]"> 404</span>
