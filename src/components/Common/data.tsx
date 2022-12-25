@@ -51,6 +51,11 @@ export const links = [
     icon: <FiAnchor size={25} />,
   },
   {
+    name: "animesearch",
+    url: "/animesearch",
+    icon: <FiAnchor size={25} />,
+  },
+  {
     name: "profile",
     url: "/profile",
     icon: <BiUserCircle size={25} />,
