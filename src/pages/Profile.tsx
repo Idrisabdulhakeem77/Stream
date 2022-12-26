@@ -207,14 +207,13 @@ const Profile: FC<ProfileProps> = () => {
           <FaBars size={25} />
         </button>
       </div>
-      
+
       {isUpdating && (
         <>
           <div className="border-[8px] border-primary border-t-transparent h-32 w-32 rounded-full animate-spin fixed top-[40%] left-[40%] z-10"></div>
           <div className="fixed top-0 left-0 w-full h-full z-[5]"></div>
         </>
       )}
-
 
       {isShowPromptReAuthFor && (
         <>
@@ -247,7 +246,7 @@ const Profile: FC<ProfileProps> = () => {
         </>
       )}
 
-      <div className="flex  md:flex-row flex-col-reverse item-start gap-4 mr-4">
+      <div className="flex  md:flex-row flex-col-reverse item-start gap-4  mr-4">
         {!isMobile ? <MiniSidebar /> : null}
         {isMobile ? (
           <Sidebar
@@ -258,10 +257,7 @@ const Profile: FC<ProfileProps> = () => {
         <ProfileImage />
 
         <div className="flex-grow">
-          <div
-            id="test"
-            className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%] mt-10 ml-10 "
-          >
+          <div className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%]   md:ml-0  -ml-4">
             <p className="text-lg font-bold pb-4"> User Info </p>
             <p>Here you can edit public information about yourself.</p>
             <p>

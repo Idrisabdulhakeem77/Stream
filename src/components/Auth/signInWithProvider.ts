@@ -4,7 +4,7 @@ import {
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { auth, db } from "../../shared/firebase";
 
-export const SignInWithProvder = (provider: any, type: string) => {
+export const SignInWithProvder = (provider: any , type : any) => {
   signInWithPopup(auth, provider).then(async (result) => {
     const user = result.user;
     let isStored = false;
@@ -16,7 +16,7 @@ export const SignInWithProvder = (provider: any, type: string) => {
       }
     });
 
-    if (isStored) return;
+    if (isStored) return ;
 
     setDoc(doc(db, "users", user.uid), {
       fullname: user.displayName,
@@ -24,5 +24,5 @@ export const SignInWithProvder = (provider: any, type: string) => {
       bookmarks: [],
       recentlyWatch: [],
     });
-  });
+  }).catch((err) => console.log(err)) ;
 };

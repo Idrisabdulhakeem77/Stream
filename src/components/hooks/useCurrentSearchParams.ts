@@ -13,16 +13,9 @@ export const useCurrentSeaarchParams = () => {
         currentSearchParms[key].push(value)
     })
     
-    console.log(currentSearchParms)
 
     return [currentSearchParms] as const 
 }
-
-
-// export const useAnimeCurrentSearchParams = () => {
-//       const [searchParams ] = useSearchParams()
-// }
-
 
 export const useAnimeCurrentSeaarchParams = () => {
     const [searchParams ] = useSearchParams()
@@ -30,10 +23,7 @@ export const useAnimeCurrentSeaarchParams = () => {
     const animeCurrentSearchParms =  JSON.parse(JSON.stringify(ANIME_SUPPORTED_QURIES)) as {
          [key : string] : string[]
     }
-    
-    
 
-    // console.log(animeCurrentSearchParms)
       
      searchParams.forEach(( value , index) => {
            animeCurrentSearchParms[index].push(value)

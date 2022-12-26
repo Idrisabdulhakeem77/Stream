@@ -55,7 +55,7 @@ const FilterByGenre: FunctionComponent<FilterByGenreProps> = ({
       className="flex gap-3 flex-wrap max-h-[200px] overflow-y-auto"
     >
       {currentTab === "movie" &&
-        data.movieGenres.map((genre) => (
+        data.movieGenres?.map((genre) => (
           <li key={genre.id}>
             <button
               onClick={() => chooseGenre(String(genre.id))}
@@ -69,7 +69,7 @@ const FilterByGenre: FunctionComponent<FilterByGenreProps> = ({
           </li>
         ))}
       {currentTab === "tv" &&
-        data.tvGenres.map((genre) => (
+        data.tvGenres?.map((genre) => (
           <li key={genre.id}>
             <button
               onClick={() => chooseGenre(String(genre.id))}
