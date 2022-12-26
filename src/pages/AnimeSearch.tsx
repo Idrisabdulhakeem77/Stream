@@ -8,7 +8,6 @@ import AnimeItem from "../components/Common/AnimeItem";
 import { Animes } from "../shared/types";
 import { useSearchParams } from "react-router-dom";
 import Title from "../components/Common/Title";
-import { useCurrentSeaarchParams } from "../components/hooks/useCurrentSearchParams";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const AnimeSearch = () => {
@@ -16,9 +15,6 @@ const AnimeSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q");
 
-  console.log(searchParams);
-
-  // const { isMobile } = useCurrentViewPort();
   const [searchInput, setSearchInput] = useState("");
   const [animes, setAnimes] = useState<Animes[]>([]);
   const searchInputValue = useRef<any>("");
@@ -48,7 +44,8 @@ const AnimeSearch = () => {
 
   return (
     <>
-      <Title value=" Anime Search " />
+      {!query ? <Title value="Anime Search | Stream" /> : null}
+      {query ? <Title value={`Search | ${query} | Steam`} /> : null}
       <div className="flex justify-between items-center my-4 px-4 md:hidden ">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest ">
@@ -114,11 +111,14 @@ const AnimeSearch = () => {
             </div>
           ) : null}
 
-          {animes && !loading &&  query && animes.length === 0 && (
+          {animes && !loading && query && animes.length === 0 && (
             <div className=" flex flex-col tw-flex-center mt-40 text-center text-lg ">
               {" "}
               <span className=" text-primary text-[300px]"> 404</span>
-              <span className="mt-32 text-[50px] font-light"> Anime not found </span>
+              <span className="mt-32 text-[50px] font-light">
+                {" "}
+                Anime not found{" "}
+              </span>
             </div>
           )}
         </div>

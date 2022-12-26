@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes,  } from "react-router-dom";
-// import AnimeSearchResult from "./components/Anime/AnimeSearchResult";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
@@ -26,12 +25,15 @@ import TvDetails from "./pages/Tv/TvDetails";
 import MovieWatch from "./pages/Movies/MovieWatch";
 import TvWatch from "./pages/Tv/TvWatch";
 import AnimeSearch from "./pages/AnimeSearch";
+import { AppContext } from "./context";
 
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(
-    Number(localStorage.getItem("isSignedIn")) ? true : false
-  );
+  // const [isSignedIn, setIsSignedIn] = useState(
+  //   Number(localStorage.getItem("isSignedIn")) ? true : false
+  // );
+
+  const {isSignedIn , setIsSignedIn  }   = useContext(AppContext)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -58,7 +60,8 @@ function App() {
             })
           );
         });
-      } else {
+      }
+       else {
         onSnapshot(doc(db, "users", user.uid), (doc) => {
           dispatch(
             setCurrentUser({
@@ -73,6 +76,7 @@ function App() {
       }
     });
   }, [dispatch]);
+
 
   return (
     <div className="App">

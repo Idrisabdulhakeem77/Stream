@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { AiOutlineHome, AiOutlineHistory, AiOutlineStar } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineExplore } from "react-icons/md";
@@ -16,6 +16,10 @@ import { auth } from "../../shared/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import { setCurrentUser } from "../../store/slice/userSlice";
 import { useAppDispatch } from "../../store/hooks";
+import { onSnapshot, doc } from "firebase/firestore";
+import { db } from "../../shared/firebase";
+import { AppContext } from "../../context";
+
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: any;
@@ -30,6 +34,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const closeSideBar = () => {
     setIsSidebarOpen(false);
   };
+  
+  const { setIsSignedIn} = useContext(AppContext)
 
   const dispatch = useAppDispatch();
 
@@ -54,6 +60,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   const privateUrlhandler = (destinationurl: string) => {
+    console.log(currentUser);
+
     if (!currentUser) {
       toast.info(" You need to sign in to access this route", {
         autoClose: 3000,
@@ -66,6 +74,42 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
       return;
     }
     navigate(destinationurl);
+  };
+
+  const guestLoginHandler = () => {
+    
+
+    const guestUser = {
+      email: "guest",
+      emailVerified: true,
+      uid: "wnVa6slGemYdwxCXs7ph7wkSpZw2",
+    };
+
+    onSnapshot(doc(db, "users", guestUser.uid), (doc) => {
+      console.log(doc?.data());
+
+      dispatch(
+        setCurrentUser({
+          email: guestUser.email,
+          displayName: doc.data()?.displayName,
+          emailVerified: guestUser.emailVerified,
+          photoURL: doc.data()?.photoUrl,
+          uid: guestUser.uid,
+        })
+      );
+      setIsSignedIn(true)
+      localStorage.setItem("isSignedIn", "1");
+    });
+
+    toast.success("Successfully Signed in as guest Account", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
   };
   return (
     <>
@@ -214,17 +258,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           {!currentUser && (
             <button
               className="flex gap-4 items-center "
-              onClick={() =>
-                dispatch(
-                  setCurrentUser({
-                    displayName: "Guest",
-                    email: "guest@gmail.com",
-                    emailVerified: true,
-                    photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg",
-                    uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2",
-                  })
-                )
-              }
+              onClick={guestLoginHandler}
             >
               <HiOutlineLogin size={25} />
               <p>Demo Login</p>
@@ -248,8 +282,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
               <p> Login</p>
             </Link>
           )}
-
-          {/* <ToggleButton theme="light-theme" toggleTheme={""/> */}
 
           <button></button>
         </div>

@@ -22,7 +22,7 @@ const Bookmark: FunctionComponent<BookmarkProps> = () => {
     const unSubscribe = onSnapshot(
       doc(db, "users", user?.uid),
       (doc) => {
-        setRecent(doc.data()?.recentlyWatched.slice().reverse());
+        setRecent(doc.data()?.recentlyWatched?.slice().reverse());
         setLoading(false);
       },
       (error) => {

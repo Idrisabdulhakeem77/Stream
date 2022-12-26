@@ -57,18 +57,14 @@ const Search: FunctionComponent<SearchProps> = () => {
             
               Find your favourite movies, TV shows , People and more
             </h1>
-            {(currentTab === "movie" ||
-              currentTab === "tv" ||
-              currentTab === "person" || currentTab === "multi") && <SearchBox autoFocus />}
+            
+            <SearchBox autoFocus/>
 
-
-              { currentTab === "anime" && (
-                 <AnimeSearchBox autoFocus/>
-              )}
+        
           </div>
 
           {!query ? (
-            <div className="mt-[90px] flex justify-center">
+            <div className="mt-[100px] flex justify-center">
               <LazyLoadImage
                 src="/Images/ken.png"
                 effect="opacity"
