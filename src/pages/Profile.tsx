@@ -229,14 +229,14 @@ const Profile: FC<ProfileProps> = () => {
               Type Your password to reauthentificate
             </p>
             <input
-              type="password"
               ref={oldPasswordRef}
+              type="password"
               autoFocus
-              className="w-full rounded-md outline-none px-2 py-4 mt-3 mb-4"
-              placeholder="Type in Your password..."
+              className="bg-dark-lighten-2 py-3 mt-3 rounded-md  outline-none px-5 text-blak mb-4 w-full"
+              placeholder="Type your password..."
             />
-            <button className="px-4 py-6 rounded-xl transition duration-300 hover:brightness-125 md:top-[130px] top-[160px] tw-absolute-center-horizontal">
-              Continue{" "}
+            <button className="px-6 py-4 bg-dark-lighten-2 rounded-xl hover:brightness-125 transition duration-300 text-white md:top-[130px] top-[160px] tw-absolute-center-horizontal">
+              Continue
             </button>
           </form>
           <div
@@ -257,7 +257,7 @@ const Profile: FC<ProfileProps> = () => {
         <ProfileImage />
 
         <div className="flex-grow">
-          <div className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%]   md:ml-0  -ml-4">
+          <div className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%]   md:ml-0  -ml-16">
             <p className="text-lg font-bold pb-4"> User Info </p>
             <p>Here you can edit public information about yourself.</p>
             <p>

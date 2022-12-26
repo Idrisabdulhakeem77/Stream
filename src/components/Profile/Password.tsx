@@ -42,7 +42,7 @@ const Password = ({
               ref={newPasswordRef}
               autoFocus
               placeholder="New password"
-              className="px-2 py-2"
+              className="bg-dark-lighten py-3 rounded-md  outline-none px-5 text-red w-full"
             />
           </div>
 
