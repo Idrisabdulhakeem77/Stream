@@ -103,7 +103,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             } hover:text-white transition duration-300`}
           >
             <AiOutlineHome size={25} />
-            <p >Home</p>
+            <p>Home</p>
           </Link>
 
           <Link
@@ -211,23 +211,25 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <p> Profile </p>
           </button>
 
-          <button
-            className="flex gap-4 items-center "
-            onClick={() =>
-              dispatch(
-                setCurrentUser({
-                  displayName: "Guest",
-                  email: "guest@gmail.com",
-                  emailVerified: true,
-                  photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg",
-                  uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2",
-                })
-              )
-            }
-          >
-            <HiOutlineLogin size={25} />
-            <p>Demo Login</p>
-          </button>
+          {!currentUser && (
+            <button
+              className="flex gap-4 items-center "
+              onClick={() =>
+                dispatch(
+                  setCurrentUser({
+                    displayName: "Guest",
+                    email: "guest@gmail.com",
+                    emailVerified: true,
+                    photoURL: "https://i.ibb.co/stB42Nb/catface-5.jpg",
+                    uid: "D3xcrHOuQ7fI2kPPH8eljwUrqcH2",
+                  })
+                )
+              }
+            >
+              <HiOutlineLogin size={25} />
+              <p>Demo Login</p>
+            </button>
+          )}
 
           {currentUser ? (
             <button

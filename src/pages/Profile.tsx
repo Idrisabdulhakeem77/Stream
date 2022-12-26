@@ -246,7 +246,7 @@ const Profile: FC<ProfileProps> = () => {
         </>
       )}
 
-      <div className="flex  md:flex-row flex-col-reverse item-start gap-4  mr-4">
+      <div className="flex  md:flex-row flex-col item-start gap-4  mr-4">
         {!isMobile ? <MiniSidebar /> : null}
         {isMobile ? (
           <Sidebar
@@ -257,7 +257,7 @@ const Profile: FC<ProfileProps> = () => {
         <ProfileImage />
 
         <div className="flex-grow">
-          <div className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%]   md:ml-0  -ml-16">
+          <div className=" rounded-md   md:h-[90%] p-[40px]  w-[100%] md:w-[90%]   md:ml-0  -ml-8">
             <p className="text-lg font-bold pb-4"> User Info </p>
             <p>Here you can edit public information about yourself.</p>
             <p>
