@@ -13,7 +13,7 @@ const Bookmark: FunctionComponent<BookmarkProps> = () => {
   const user = useAppSelector((state) => state.user.user);
   const [recent, setRecent] = useState<Items[]>([]);
 
-  const [loading, setLoading] = useState(!Boolean(recent.length));
+  const [loading, setLoading] = useState(!Boolean(recent?.length));
   const [error, setError] = useState(false);
 
   useEffect(() => {

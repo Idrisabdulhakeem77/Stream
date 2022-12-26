@@ -25,7 +25,7 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
   return (
     <>
       {/* Error Message  */}
-      {films.length === 0 && !isLoading && (
+      {films?.length === 0 && !isLoading && (
         <div className="text-white text-2xl text-center col-span-full mt-10">
           <div className=" flex justify-center">
             <LazyLoadImage
@@ -47,7 +47,7 @@ const BookmarkResults: FunctionComponent<BookmarkResultsProps> = ({
         </div>
       )}
 
-      {films.length > 0 &&
+      {films?.length > 0 &&
         films.map((item) => (
           <li key={item.id} className="relative">
             <FilmItem item={item} />

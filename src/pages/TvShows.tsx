@@ -120,7 +120,7 @@ const TvShows: FC<MoviesProps> = () => {
                   return (
                     <ul className="grid grid-cols-sm lg:grid-cols-lg gap-x-8 gap-y-10 pt-2">
                       {results.map((item) => (
-                        <li key={item.id} >
+                        <li >
                           <FilmItem item={item} key={item.id} />
                         </li>
                       ))}

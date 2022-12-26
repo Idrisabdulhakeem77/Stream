@@ -6,9 +6,17 @@ import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import AnimeItem from "../components/Common/AnimeItem";
 import { Animes } from "../shared/types";
+import { useSearchParams } from "react-router-dom";
+import Title from "../components/Common/Title";
+import { useCurrentSeaarchParams } from "../components/hooks/useCurrentSearchParams";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const AnimeSearch = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("q");
+
+  console.log(searchParams);
 
   // const { isMobile } = useCurrentViewPort();
   const [searchInput, setSearchInput] = useState("");
@@ -24,6 +32,7 @@ const AnimeSearch = () => {
     if (!searchInput) return;
 
     setAnimes([]);
+    setSearchParams({ q: searchInput });
     const response = (
       await axios.get(`https://api.jikan.moe/v4/anime?q=${searchInput}`)
     ).data;
@@ -39,7 +48,8 @@ const AnimeSearch = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center my-4 px-4 md:hidden">
+      <Title value=" Anime Search " />
+      <div className="flex justify-between items-center my-4 px-4 md:hidden ">
         <Link to="/">
           <div className="uppercase font-medium text-lg tracking-widest ">
             Stream
@@ -50,12 +60,12 @@ const AnimeSearch = () => {
         </button>
       </div>
 
-      <div className="flex">
+      <div className="flex ">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <div className="flex-grow">
+        <div className="flex-grow w-full">
           <h1 className="text-3xl font-xl text-center mt-2">
             Find your favourite Animes
           </h1>
@@ -94,11 +104,21 @@ const AnimeSearch = () => {
               ))}
           </ul>
 
-          {animes && !loading && animes.length === 0 && (
-            <div className=" flex tw-flex-center mt-40 text-center text-lg text-[40px]">
+          {!query ? (
+            <div className="mt-4 flex justify-center">
+              <LazyLoadImage
+                src="/Images/ken.png"
+                effect="opacity"
+                className="object-cover  w-[80vw] h-[80%] rounded-xl"
+              />
+            </div>
+          ) : null}
+
+          {animes && !loading &&  query && animes.length === 0 && (
+            <div className=" flex flex-col tw-flex-center mt-40 text-center text-lg ">
               {" "}
-              <span className=" text-primary text-[350px]"> 404</span>
-              <span className="absolute"> not found </span>
+              <span className=" text-primary text-[300px]"> 404</span>
+              <span className="mt-32 text-[50px] font-light"> Anime not found </span>
             </div>
           )}
         </div>

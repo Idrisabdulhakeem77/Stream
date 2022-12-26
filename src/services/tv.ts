@@ -18,8 +18,6 @@ export const getTVFullDetail = async (id: number): Promise<FilmInfo> => {
   ]);
   
 
-   console.log(response)
-
   const tvInfo = response.reduce((final, current, index) => {
 
     switch (index) {

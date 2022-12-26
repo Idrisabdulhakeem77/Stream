@@ -21,6 +21,7 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { convertErrorCodeToMessage } from "../shared/utils";
+import Title from "../components/Common/Title";
 
 interface ProfileProps {}
 
@@ -194,7 +195,10 @@ const Profile: FC<ProfileProps> = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer /> 
+
+
+      <Title value=" Profile | Stream "/>
 
       <div className="flex justify-between items-center my-4 px-4 md:hidden">
         <Link to="/">

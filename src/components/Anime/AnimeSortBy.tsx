@@ -3,9 +3,8 @@ import { useState } from "react";
 import Select from "react-select";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
-import { useCurrentSeaarchParams , useAnimeCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
-import {useQuery} from '@tanstack/react-query'
-import { getRecentAnime } from "../../services/anime";
+import {  useAnimeCurrentSeaarchParams } from "../hooks/useCurrentSearchParams";
+
 
 interface AnimeSortByProps {}
 
@@ -44,16 +43,9 @@ const AnimeSortBy = () => {
 
  const [animeCurrentSearchParms] = useAnimeCurrentSeaarchParams()
 
-
- const {data} = useQuery(["get recommended"] , () => getRecentAnime())
-
- console.log(data)
-
-
   const  chooseSort =  ( option  : any) => {
      const sortValue = option?.value || ""
 
-     
 
      setSearchParams({ 
         ...animeCurrentSearchParms ,
