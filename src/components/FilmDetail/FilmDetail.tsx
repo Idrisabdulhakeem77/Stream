@@ -126,7 +126,7 @@ const FilmDetail: FC<FilmInfo> = ({
         </button>
       </div>
 
-      <div className="flex items-start">
+      <div className="flex items-start flex-col md:flex-row ">
         { !isMobile  && <MiniSidebar />}
         {isMobile && (
           <Sidebar
@@ -134,7 +134,7 @@ const FilmDetail: FC<FilmInfo> = ({
             setIsSidebarOpen={setIsSidebarActive}
           />
         )}
-        <div className="flex-grow ">
+        <div className="flex-grow  w-full">
           {!detail && <Skeleton className="h-[400px] rounded-bl-2xl" />}
 
           {detail && (
