@@ -34,8 +34,8 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const closeSideBar = () => {
     setIsSidebarOpen(false);
   };
-  
-  const { setIsSignedIn} = useContext(AppContext)
+
+  const { setIsSignedIn } = useContext(AppContext);
 
   const dispatch = useAppDispatch();
 
@@ -60,8 +60,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   const privateUrlhandler = (destinationurl: string) => {
-    console.log(currentUser);
-
     if (!currentUser) {
       toast.info(" You need to sign in to access this route", {
         autoClose: 3000,
@@ -77,8 +75,6 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   const guestLoginHandler = () => {
-    
-
     const guestUser = {
       email: "guest",
       emailVerified: true,
@@ -97,7 +93,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
           uid: guestUser.uid,
         })
       );
-      setIsSignedIn(true)
+      setIsSignedIn(true);
       localStorage.setItem("isSignedIn", "1");
     });
 
@@ -109,7 +105,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    })
+    });
   };
   return (
     <>

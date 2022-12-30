@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { Route, Routes,  } from "react-router-dom";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
@@ -29,14 +29,12 @@ import { AppContext } from "./context";
 
 
 function App() {
-  // const [isSignedIn, setIsSignedIn] = useState(
-  //   Number(localStorage.getItem("isSignedIn")) ? true : false
-  // );
+  
 
   const {isSignedIn , setIsSignedIn  }   = useContext(AppContext)
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  useCallback(() => {
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         dispatch(setCurrentUser(null));
@@ -75,7 +73,7 @@ function App() {
         });
       }
     });
-  }, [dispatch]);
+  }, [dispatch , setIsSignedIn]);
 
 
   return (
