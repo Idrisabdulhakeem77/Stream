@@ -288,7 +288,7 @@ const FilmListForBookmarkedAndRecent: FunctionComponent<
 
               {currentTab === "movie" && (
                 <BookmarkResults
-                  films={films.filter((film) => film.media_type === "movie")}
+                  films={films?.filter((film) => film.media_type === "movie")}
                   isEditting={isEditting}
                   selections={selections}
                   setSelection={setSelections}
