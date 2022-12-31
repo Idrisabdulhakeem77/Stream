@@ -1,7 +1,8 @@
 { 
-  "name": "stream",
+  "name": "strimov",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "@reduxjs/toolkit": "^1.8.5",
